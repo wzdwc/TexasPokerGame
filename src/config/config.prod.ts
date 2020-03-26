@@ -13,11 +13,11 @@ export default () => {
     credentials: true,
     origin(ctx: Context) {
       const origin: string = ctx.get('origin');
-      // 允许*.ssjlicai.com域名访问
-      if (origin.indexOf('.ssjlicai.com') > -1) {
+      // 允许*域名访问
+      if (origin.indexOf('*') > -1) {
         return origin;
       } else {
-        return 'marketres.ssjlicai.com';
+        return '*';
       }
     },
   };
