@@ -1,0 +1,9 @@
+digraph G {
+  "AccountService" [ label = "AccountService(AccountService)
+scope:Request", fontsize = 10 ];
+  "ctx";
+  "account" [ label = "account(Account)
+scope:Request", fontsize = 10 ];
+  "AccountService" -> "ctx" [ label = "properties", fontsize = 8 ];
+  "account" -> "ctx" [ label = "properties", fontsize = 8 ];
+}

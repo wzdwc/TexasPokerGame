@@ -39,8 +39,8 @@ export default (appInfo: EggAppInfo) => {
     credentials: true,
     origin(ctx: Context) {
       const origin: string = ctx.get('origin');
-      // 允许*域名访问
-      if (origin.indexOf('127.0.0.1') > -1) {
+      // 允许*.ssjlicai.com域名访问
+      if (origin.indexOf('172.22.88.118') > -1) {
         console.log('come in');
         return origin;
       } else {
@@ -58,11 +58,39 @@ export default (appInfo: EggAppInfo) => {
     errorLogName: 'error.log',
   };
 
-  // redis
+  // 业务接口domain
+  config.apiDomain = {
+    loanDomain: '*',
+  };
+
+  // jsonwebtoken 插件配置
+  config.jwt = {
+    secret: "123456",
+    enable: true,
+    match(ctx: Context) {
+      const reg = /login/;
+      return !reg.test(ctx.originalUrl);
+    },
+  };
+
+  // socket io setting
+  config.io = {
+    namespace: {
+      '/socket': {
+        connectionMiddleware: ['auth'],
+        packetMiddleware: [],
+      }
+    },
+    redis: {
+      host: '127.0.0.1',
+      port: 6379,
+    },
+  };
+
   config.redis = {
     client: {
-      port: 6379,          // Redis port
-      host: '127.0.0.1',   // Redis host
+      port: 6379,
+      host: '127.0.0.1',
       password: '123456',
       db: 0,
     },

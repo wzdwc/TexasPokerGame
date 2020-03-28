@@ -1,0 +1,14 @@
+digraph G {
+  "AccountService" [ label = "AccountService(AccountService)
+scope:Request", fontsize = 10 ];
+  "app";
+  "ctx";
+  "account" [ label = "account(Account)
+scope:Request", fontsize = 10 ];
+  "authMiddleware" [ label = "authMiddleware(authMiddleware)
+scope:Request", fontsize = 10 ];
+  "AccountService" -> "app" [ label = "properties", fontsize = 8 ];
+  "AccountService" -> "ctx" [ label = "properties", fontsize = 8 ];
+  "account" -> "AccountService" [ label = "properties", fontsize = 8 ];
+  "account" -> "ctx" [ label = "properties", fontsize = 8 ];
+}

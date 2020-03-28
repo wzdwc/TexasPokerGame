@@ -26,7 +26,7 @@ export default class BaseController {
     const result: IResult = {
       code: ResultCode.SUCCESS,
       data: data,
-      message: ''
+      message: 'successful'
     }
     this.ctx.body = result
   }

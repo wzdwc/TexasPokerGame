@@ -1,0 +1,706 @@
+[
+  {
+    "name": "Application Start",
+    "start": 1585289113560,
+    "end": 1585289114706,
+    "duration": 1146,
+    "pid": 21780,
+    "index": 0
+  },
+  {
+    "name": "Load Plugin",
+    "start": 1585289113576,
+    "end": 1585289113631,
+    "duration": 55,
+    "pid": 21780,
+    "index": 1
+  },
+  {
+    "name": "Load Config",
+    "start": 1585289113631,
+    "end": 1585289113693,
+    "duration": 62,
+    "pid": 21780,
+    "index": 2
+  },
+  {
+    "name": "Require(0) config/config.default.ts",
+    "start": 1585289113632,
+    "end": 1585289113634,
+    "duration": 2,
+    "pid": 21780,
+    "index": 3
+  },
+  {
+    "name": "Require(1) config/config.local.ts",
+    "start": 1585289113635,
+    "end": 1585289113637,
+    "duration": 2,
+    "pid": 21780,
+    "index": 4
+  },
+  {
+    "name": "Require(2) E:/self/2020/project/game-node-center/node_modules/egg-session/config/config.default.js",
+    "start": 1585289113638,
+    "end": 1585289113639,
+    "duration": 1,
+    "pid": 21780,
+    "index": 5
+  },
+  {
+    "name": "Require(3) E:/self/2020/project/game-node-center/node_modules/egg-security/config/config.default.js",
+    "start": 1585289113640,
+    "end": 1585289113640,
+    "duration": 0,
+    "pid": 21780,
+    "index": 6
+  },
+  {
+    "name": "Require(4) E:/self/2020/project/game-node-center/node_modules/egg-jsonp/config/config.default.js",
+    "start": 1585289113642,
+    "end": 1585289113643,
+    "duration": 1,
+    "pid": 21780,
+    "index": 7
+  },
+  {
+    "name": "Require(5) E:/self/2020/project/game-node-center/node_modules/egg-onerror/config/config.default.js",
+    "start": 1585289113644,
+    "end": 1585289113644,
+    "duration": 0,
+    "pid": 21780,
+    "index": 8
+  },
+  {
+    "name": "Require(6) E:/self/2020/project/game-node-center/node_modules/egg-i18n/config/config.default.js",
+    "start": 1585289113646,
+    "end": 1585289113647,
+    "duration": 1,
+    "pid": 21780,
+    "index": 9
+  },
+  {
+    "name": "Require(7) E:/self/2020/project/game-node-center/node_modules/egg-watcher/config/config.default.js",
+    "start": 1585289113647,
+    "end": 1585289113648,
+    "duration": 1,
+    "pid": 21780,
+    "index": 10
+  },
+  {
+    "name": "Require(8) E:/self/2020/project/game-node-center/node_modules/egg-schedule/config/config.default.js",
+    "start": 1585289113649,
+    "end": 1585289113650,
+    "duration": 1,
+    "pid": 21780,
+    "index": 11
+  },
+  {
+    "name": "Require(9) E:/self/2020/project/game-node-center/node_modules/egg-multipart/config/config.default.js",
+    "start": 1585289113651,
+    "end": 1585289113652,
+    "duration": 1,
+    "pid": 21780,
+    "index": 12
+  },
+  {
+    "name": "Require(10) E:/self/2020/project/game-node-center/node_modules/egg-development/config/config.default.js",
+    "start": 1585289113653,
+    "end": 1585289113654,
+    "duration": 1,
+    "pid": 21780,
+    "index": 13
+  },
+  {
+    "name": "Require(11) E:/self/2020/project/game-node-center/node_modules/egg-logrotator/config/config.default.js",
+    "start": 1585289113654,
+    "end": 1585289113655,
+    "duration": 1,
+    "pid": 21780,
+    "index": 14
+  },
+  {
+    "name": "Require(12) E:/self/2020/project/game-node-center/node_modules/egg-static/config/config.default.js",
+    "start": 1585289113656,
+    "end": 1585289113657,
+    "duration": 1,
+    "pid": 21780,
+    "index": 15
+  },
+  {
+    "name": "Require(13) E:/self/2020/project/game-node-center/node_modules/egg-view/config/config.default.js",
+    "start": 1585289113658,
+    "end": 1585289113659,
+    "duration": 1,
+    "pid": 21780,
+    "index": 16
+  },
+  {
+    "name": "Require(14) E:/self/2020/project/game-node-center/node_modules/egg-cors/config/config.default.js",
+    "start": 1585289113662,
+    "end": 1585289113662,
+    "duration": 0,
+    "pid": 21780,
+    "index": 17
+  },
+  {
+    "name": "Require(15) E:/self/2020/project/game-node-center/node_modules/egg-redis/config/config.default.js",
+    "start": 1585289113663,
+    "end": 1585289113664,
+    "duration": 1,
+    "pid": 21780,
+    "index": 18
+  },
+  {
+    "name": "Require(16) E:/self/2020/project/game-node-center/node_modules/egg-socket.io/config/config.default.js",
+    "start": 1585289113665,
+    "end": 1585289113666,
+    "duration": 1,
+    "pid": 21780,
+    "index": 19
+  },
+  {
+    "name": "Require(17) E:/self/2020/project/game-node-center/node_modules/egg-jwt/config/config.default.js",
+    "start": 1585289113666,
+    "end": 1585289113667,
+    "duration": 1,
+    "pid": 21780,
+    "index": 20
+  },
+  {
+    "name": "Require(18) E:/self/2020/project/game-node-center/node_modules/egg/config/config.default.js",
+    "start": 1585289113668,
+    "end": 1585289113668,
+    "duration": 0,
+    "pid": 21780,
+    "index": 21
+  },
+  {
+    "name": "Require(19) E:/self/2020/project/game-node-center/node_modules/midway-web/config/config.default.js",
+    "start": 1585289113671,
+    "end": 1585289113672,
+    "duration": 1,
+    "pid": 21780,
+    "index": 22
+  },
+  {
+    "name": "Require(20) config/config.default.ts",
+    "start": 1585289113674,
+    "end": 1585289113674,
+    "duration": 0,
+    "pid": 21780,
+    "index": 23
+  },
+  {
+    "name": "Require(21) E:/self/2020/project/game-node-center/node_modules/egg-security/config/config.local.js",
+    "start": 1585289113676,
+    "end": 1585289113676,
+    "duration": 0,
+    "pid": 21780,
+    "index": 24
+  },
+  {
+    "name": "Require(22) E:/self/2020/project/game-node-center/node_modules/egg-watcher/config/config.local.js",
+    "start": 1585289113679,
+    "end": 1585289113680,
+    "duration": 1,
+    "pid": 21780,
+    "index": 25
+  },
+  {
+    "name": "Require(23) E:/self/2020/project/game-node-center/node_modules/egg-view/config/config.local.js",
+    "start": 1585289113684,
+    "end": 1585289113685,
+    "duration": 1,
+    "pid": 21780,
+    "index": 26
+  },
+  {
+    "name": "Require(24) E:/self/2020/project/game-node-center/node_modules/egg/config/config.local.js",
+    "start": 1585289113691,
+    "end": 1585289113692,
+    "duration": 1,
+    "pid": 21780,
+    "index": 27
+  },
+  {
+    "name": "Require(25) E:/self/2020/project/game-node-center/node_modules/midway-web/config/config.local.js",
+    "start": 1585289113692,
+    "end": 1585289113693,
+    "duration": 1,
+    "pid": 21780,
+    "index": 28
+  },
+  {
+    "name": "Require(26) config/config.local.ts",
+    "start": 1585289113693,
+    "end": 1585289113693,
+    "duration": 0,
+    "pid": 21780,
+    "index": 29
+  },
+  {
+    "name": "Load extend/application.js",
+    "start": 1585289113694,
+    "end": 1585289113877,
+    "duration": 183,
+    "pid": 21780,
+    "index": 30
+  },
+  {
+    "name": "Require(27) E:/self/2020/project/game-node-center/node_modules/egg-session/app/extend/application.js",
+    "start": 1585289113695,
+    "end": 1585289113696,
+    "duration": 1,
+    "pid": 21780,
+    "index": 31
+  },
+  {
+    "name": "Require(28) E:/self/2020/project/game-node-center/node_modules/egg-security/app/extend/application.js",
+    "start": 1585289113697,
+    "end": 1585289113700,
+    "duration": 3,
+    "pid": 21780,
+    "index": 32
+  },
+  {
+    "name": "Require(29) E:/self/2020/project/game-node-center/node_modules/egg-jsonp/app/extend/application.js",
+    "start": 1585289113701,
+    "end": 1585289113703,
+    "duration": 2,
+    "pid": 21780,
+    "index": 33
+  },
+  {
+    "name": "Require(30) E:/self/2020/project/game-node-center/node_modules/egg-logrotator/app/extend/application.js",
+    "start": 1585289113708,
+    "end": 1585289113711,
+    "duration": 3,
+    "pid": 21780,
+    "index": 34
+  },
+  {
+    "name": "Require(31) E:/self/2020/project/game-node-center/node_modules/egg-view/app/extend/application.js",
+    "start": 1585289113713,
+    "end": 1585289113716,
+    "duration": 3,
+    "pid": 21780,
+    "index": 35
+  },
+  {
+    "name": "Require(32) E:/self/2020/project/game-node-center/node_modules/egg-socket.io/app/extend/application.js",
+    "start": 1585289113719,
+    "end": 1585289113782,
+    "duration": 63,
+    "pid": 21780,
+    "index": 36
+  },
+  {
+    "name": "Require(33) E:/self/2020/project/game-node-center/node_modules/egg-jwt/app/extend/application.js",
+    "start": 1585289113783,
+    "end": 1585289113862,
+    "duration": 79,
+    "pid": 21780,
+    "index": 37
+  },
+  {
+    "name": "Load extend/request.js",
+    "start": 1585289113877,
+    "end": 1585289113907,
+    "duration": 30,
+    "pid": 21780,
+    "index": 38
+  },
+  {
+    "name": "Require(34) E:/self/2020/project/game-node-center/node_modules/egg/app/extend/request.js",
+    "start": 1585289113890,
+    "end": 1585289113892,
+    "duration": 2,
+    "pid": 21780,
+    "index": 39
+  },
+  {
+    "name": "Load extend/response.js",
+    "start": 1585289113907,
+    "end": 1585289113937,
+    "duration": 30,
+    "pid": 21780,
+    "index": 40
+  },
+  {
+    "name": "Require(35) E:/self/2020/project/game-node-center/node_modules/egg/app/extend/response.js",
+    "start": 1585289113918,
+    "end": 1585289113922,
+    "duration": 4,
+    "pid": 21780,
+    "index": 41
+  },
+  {
+    "name": "Load extend/context.js",
+    "start": 1585289113937,
+    "end": 1585289114050,
+    "duration": 113,
+    "pid": 21780,
+    "index": 42
+  },
+  {
+    "name": "Require(36) E:/self/2020/project/game-node-center/node_modules/egg-security/app/extend/context.js",
+    "start": 1585289113938,
+    "end": 1585289113958,
+    "duration": 20,
+    "pid": 21780,
+    "index": 43
+  },
+  {
+    "name": "Require(37) E:/self/2020/project/game-node-center/node_modules/egg-jsonp/app/extend/context.js",
+    "start": 1585289113958,
+    "end": 1585289113961,
+    "duration": 3,
+    "pid": 21780,
+    "index": 44
+  },
+  {
+    "name": "Require(38) E:/self/2020/project/game-node-center/node_modules/egg-i18n/app/extend/context.js",
+    "start": 1585289113963,
+    "end": 1585289113963,
+    "duration": 0,
+    "pid": 21780,
+    "index": 45
+  },
+  {
+    "name": "Require(39) E:/self/2020/project/game-node-center/node_modules/egg-multipart/app/extend/context.js",
+    "start": 1585289113966,
+    "end": 1585289114023,
+    "duration": 57,
+    "pid": 21780,
+    "index": 46
+  },
+  {
+    "name": "Require(40) E:/self/2020/project/game-node-center/node_modules/egg-view/app/extend/context.js",
+    "start": 1585289114026,
+    "end": 1585289114027,
+    "duration": 1,
+    "pid": 21780,
+    "index": 47
+  },
+  {
+    "name": "Require(41) E:/self/2020/project/game-node-center/node_modules/egg/app/extend/context.js",
+    "start": 1585289114032,
+    "end": 1585289114033,
+    "duration": 1,
+    "pid": 21780,
+    "index": 48
+  },
+  {
+    "name": "Require(42) E:/self/2020/project/game-node-center/node_modules/midway-web/app/extend/context.js",
+    "start": 1585289114034,
+    "end": 1585289114035,
+    "duration": 1,
+    "pid": 21780,
+    "index": 49
+  },
+  {
+    "name": "Require(43) app/extend/context.ts",
+    "start": 1585289114036,
+    "end": 1585289114037,
+    "duration": 1,
+    "pid": 21780,
+    "index": 50
+  },
+  {
+    "name": "Load extend/helper.js",
+    "start": 1585289114050,
+    "end": 1585289114108,
+    "duration": 58,
+    "pid": 21780,
+    "index": 51
+  },
+  {
+    "name": "Require(44) E:/self/2020/project/game-node-center/node_modules/egg-security/app/extend/helper.js",
+    "start": 1585289114052,
+    "end": 1585289114081,
+    "duration": 29,
+    "pid": 21780,
+    "index": 52
+  },
+  {
+    "name": "Require(45) E:/self/2020/project/game-node-center/node_modules/egg/app/extend/helper.js",
+    "start": 1585289114092,
+    "end": 1585289114092,
+    "duration": 0,
+    "pid": 21780,
+    "index": 53
+  },
+  {
+    "name": "Require(46) app/extend/helper.ts",
+    "start": 1585289114094,
+    "end": 1585289114096,
+    "duration": 2,
+    "pid": 21780,
+    "index": 54
+  },
+  {
+    "name": "Load app.js",
+    "start": 1585289114179,
+    "end": 1585289114331,
+    "duration": 152,
+    "pid": 21780,
+    "index": 55
+  },
+  {
+    "name": "Require(47) E:/self/2020/project/game-node-center/node_modules/egg-session/app.js",
+    "start": 1585289114179,
+    "end": 1585289114180,
+    "duration": 1,
+    "pid": 21780,
+    "index": 56
+  },
+  {
+    "name": "Require(48) E:/self/2020/project/game-node-center/node_modules/egg-security/app.js",
+    "start": 1585289114181,
+    "end": 1585289114184,
+    "duration": 3,
+    "pid": 21780,
+    "index": 57
+  },
+  {
+    "name": "Require(49) E:/self/2020/project/game-node-center/node_modules/egg-onerror/app.js",
+    "start": 1585289114186,
+    "end": 1585289114200,
+    "duration": 14,
+    "pid": 21780,
+    "index": 58
+  },
+  {
+    "name": "Require(50) E:/self/2020/project/game-node-center/node_modules/egg-i18n/app.js",
+    "start": 1585289114201,
+    "end": 1585289114227,
+    "duration": 26,
+    "pid": 21780,
+    "index": 59
+  },
+  {
+    "name": "Require(51) E:/self/2020/project/game-node-center/node_modules/egg-watcher/app.js",
+    "start": 1585289114228,
+    "end": 1585289114233,
+    "duration": 5,
+    "pid": 21780,
+    "index": 60
+  },
+  {
+    "name": "Require(52) E:/self/2020/project/game-node-center/node_modules/egg-schedule/app.js",
+    "start": 1585289114234,
+    "end": 1585289114238,
+    "duration": 4,
+    "pid": 21780,
+    "index": 61
+  },
+  {
+    "name": "Require(53) E:/self/2020/project/game-node-center/node_modules/egg-multipart/app.js",
+    "start": 1585289114239,
+    "end": 1585289114246,
+    "duration": 7,
+    "pid": 21780,
+    "index": 62
+  },
+  {
+    "name": "Require(54) E:/self/2020/project/game-node-center/node_modules/egg-development/app.js",
+    "start": 1585289114247,
+    "end": 1585289114247,
+    "duration": 0,
+    "pid": 21780,
+    "index": 63
+  },
+  {
+    "name": "Require(55) E:/self/2020/project/game-node-center/node_modules/egg-logrotator/app.js",
+    "start": 1585289114248,
+    "end": 1585289114248,
+    "duration": 0,
+    "pid": 21780,
+    "index": 64
+  },
+  {
+    "name": "Require(56) E:/self/2020/project/game-node-center/node_modules/egg-static/app.js",
+    "start": 1585289114249,
+    "end": 1585289114249,
+    "duration": 0,
+    "pid": 21780,
+    "index": 65
+  },
+  {
+    "name": "Require(57) E:/self/2020/project/game-node-center/node_modules/midway-schedule/app.js",
+    "start": 1585289114251,
+    "end": 1585289114252,
+    "duration": 1,
+    "pid": 21780,
+    "index": 66
+  },
+  {
+    "name": "Require(58) E:/self/2020/project/game-node-center/node_modules/egg-cors/app.js",
+    "start": 1585289114253,
+    "end": 1585289114253,
+    "duration": 0,
+    "pid": 21780,
+    "index": 67
+  },
+  {
+    "name": "Require(59) E:/self/2020/project/game-node-center/node_modules/egg-redis/app.js",
+    "start": 1585289114254,
+    "end": 1585289114256,
+    "duration": 2,
+    "pid": 21780,
+    "index": 68
+  },
+  {
+    "name": "Require(60) E:/self/2020/project/game-node-center/node_modules/egg-socket.io/app.js",
+    "start": 1585289114256,
+    "end": 1585289114326,
+    "duration": 70,
+    "pid": 21780,
+    "index": 69
+  },
+  {
+    "name": "Require(61) E:/self/2020/project/game-node-center/node_modules/egg-jwt/app.js",
+    "start": 1585289114327,
+    "end": 1585289114328,
+    "duration": 1,
+    "pid": 21780,
+    "index": 70
+  },
+  {
+    "name": "Require(62) app.ts",
+    "start": 1585289114331,
+    "end": 1585289114331,
+    "duration": 0,
+    "pid": 21780,
+    "index": 71
+  },
+  {
+    "name": "Before Start in E:/self/2020/project/game-node-center/node_modules/egg-watcher/lib/init.js:15:14",
+    "start": 1585289114340,
+    "end": 1585289114706,
+    "duration": 366,
+    "pid": 21780,
+    "index": 72
+  },
+  {
+    "name": "Before Start in E:/self/2020/project/game-node-center/node_modules/egg-redis/lib/redis.js:53:7",
+    "start": 1585289114450,
+    "end": 1585289114697,
+    "duration": 247,
+    "pid": 21780,
+    "index": 73
+  },
+  {
+    "name": "Load Controller",
+    "start": 1585289114465,
+    "end": 1585289114661,
+    "duration": 196,
+    "pid": 21780,
+    "index": 74
+  },
+  {
+    "name": "Load \"controller\" to Application",
+    "start": 1585289114466,
+    "end": 1585289114661,
+    "duration": 195,
+    "pid": 21780,
+    "index": 75
+  },
+  {
+    "name": "Before Start in E:/self/2020/project/game-node-center/node_modules/egg-socket.io/lib/io.js:26:7",
+    "start": 1585289114475,
+    "end": 1585289114682,
+    "duration": 207,
+    "pid": 21780,
+    "index": 76
+  },
+  {
+    "name": "Before Start in app.ts:6:9",
+    "start": 1585289114480,
+    "end": 1585289114682,
+    "duration": 202,
+    "pid": 21780,
+    "index": 77
+  },
+  {
+    "name": "Load Service",
+    "start": 1585289114482,
+    "end": 1585289114497,
+    "duration": 15,
+    "pid": 21780,
+    "index": 78
+  },
+  {
+    "name": "Load \"service\" to Context",
+    "start": 1585289114483,
+    "end": 1585289114497,
+    "duration": 14,
+    "pid": 21780,
+    "index": 79
+  },
+  {
+    "name": "Load Middleware",
+    "start": 1585289114497,
+    "end": 1585289114661,
+    "duration": 164,
+    "pid": 21780,
+    "index": 80
+  },
+  {
+    "name": "Load \"middlewares\" to Application",
+    "start": 1585289114497,
+    "end": 1585289114650,
+    "duration": 153,
+    "pid": 21780,
+    "index": 81
+  },
+  {
+    "name": "Load Controller",
+    "start": 1585289114661,
+    "end": 1585289114663,
+    "duration": 2,
+    "pid": 21780,
+    "index": 82
+  },
+  {
+    "name": "Load \"controller\" to Application",
+    "start": 1585289114661,
+    "end": 1585289114663,
+    "duration": 2,
+    "pid": 21780,
+    "index": 83
+  },
+  {
+    "name": "Load Router",
+    "start": 1585289114663,
+    "end": 1585289114664,
+    "duration": 1,
+    "pid": 21780,
+    "index": 84
+  },
+  {
+    "name": "Require(63) app/router.ts",
+    "start": 1585289114663,
+    "end": 1585289114663,
+    "duration": 0,
+    "pid": 21780,
+    "index": 85
+  },
+  {
+    "name": "Before Start in E:/self/2020/project/game-node-center/node_modules/midway-web/dist/loader/loader.js:28:18",
+    "start": 1585289114664,
+    "end": 1585289114683,
+    "duration": 19,
+    "pid": 21780,
+    "index": 86
+  },
+  {
+    "name": "Before Start in E:/self/2020/project/game-node-center/node_modules/egg-core/lib/egg.js:303:10",
+    "start": 1585289114669,
+    "end": 1585289114682,
+    "duration": 13,
+    "pid": 21780,
+    "index": 87
+  }
+]

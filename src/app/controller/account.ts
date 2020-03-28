@@ -13,10 +13,13 @@ export class Account extends BaseController {
   @post('/login')
   async login() {
     try {
-      const accountInfo: IAccountInfo = {userAccount: 'cai', password: '123'};
+      const { body } = this.getRequestBody();
+      const { userAccount, password } = body;
+      const accountInfo: IAccountInfo = {userAccount, password};
       const result = await this.service.login(accountInfo);
       this.success(result)
     } catch (e) {
+      this.ctx.logger.error('login-----:', e);
       this.fail(e)
     }
   }

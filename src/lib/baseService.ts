@@ -7,7 +7,7 @@ export default class BaseService {
   protected ctx: Context;
 
   @config('apiDomain')
-  protected config: any;
+  protected apiDomainConfig: any;
 
   /**
    * 处理请求
@@ -24,7 +24,7 @@ export default class BaseService {
       const headers = {
         Authorization: `Bearer ${option.ssjToken}`,
       };
-      const ajaxUrl = this.config.loanDomain + option.url;
+      const ajaxUrl = this.apiDomainConfig.loanDomain + option.url;
       // 发起服务请求
       const result = await this.ctx.curl(ajaxUrl, {
         data,
