@@ -13,9 +13,7 @@ class NspController extends Controller {
     const rooms = [room];
     try {
       const { payload } = message;
-      console.log('rooms', rooms)
       nsp.adapter.clients(rooms, (err: any, clients: any) => {
-        console.log('clients-------exchange', clients);
         // 广播信息
         nsp.to(room).emit('online', {
           clients,
