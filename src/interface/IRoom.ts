@@ -3,6 +3,7 @@ export interface IRoom {
 }
 
 export interface IRoomService {
-  findById(uid: string): IRoom;
+  findById(uid: string): Promise<IRoom>;
+  findByRoomNumber(roomNumber: number): Promise<boolean>
   add(): Promise<any>;
 }

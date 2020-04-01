@@ -1,8 +1,10 @@
 import {Context, inject, provide, plugin} from "midway";
 import { IUser } from '../interface/IUser';
+import { IUserService } from '../interface/IUserService';
+import { IAccountInfo } from '../interface/IAccountInfo';
 
 @provide('UserService')
-export class UserService {
+export class UserService implements IUserService{
 
   @inject()
   ctx: Context;
@@ -10,19 +12,20 @@ export class UserService {
   @plugin()
   mysql: any;
 
-  async findById(uid: string){
-    const user = await this.mysql.get('user', { id: uid});
-    return { user }
+  async findById(uid: string): Promise<IUser>{
+    return await this.mysql.get('user', { id: uid});
   }
 
-  async findByAccount(account: string){
-    const user = await this.mysql.get('user', { account: account});
-    return { user }
+  async findByAccount(account: string) {
+    return await this.mysql.get('user', { account: account});
   }
 
-  async addUser(data: IUser) {
-    const result = await this.mysql.insert('user', data)
-    return result
+  async addUser(accountInfo: IAccountInfo): Promise<any> {
+    return await this.mysql.insert('user', {
+      account: accountInfo.userAccount,
+      password: accountInfo.password,
+      nick_name: accountInfo.nickName
+    });
   }
 
 }

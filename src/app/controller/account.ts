@@ -22,5 +22,19 @@ export class Account extends BaseController {
       this.ctx.logger.error('login-----:', e);
       this.fail(e)
     }
+  };
+
+  @post('/register')
+  async register() {
+    try {
+      const { body } = this.getRequestBody();
+      const { userAccount, password, nickName } = body;
+      const accountInfo: IAccountInfo = {userAccount, password, nickName};
+      const result = await this.service.register(accountInfo);
+      this.success(result)
+    } catch (e) {
+      this.ctx.logger.error('login-----:', e);
+      this.fail(e)
+    }
   }
 }

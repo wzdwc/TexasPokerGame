@@ -12,17 +12,26 @@ export class RoomController extends BaseController {
   @inject('RoomService')
   roomService: IRoomService;
   /**
-   * 处理ocr数据转发
+   *
    */
   @post('/')
   async index() {
     try {
       const result = await this.roomService.add();
-      if(result.affectedRows === 1) {
-        this.success({ username: 'cai'});
-      } else {
-        this.fail('create room error');
-      }
+      this.success(result);
+    } catch (e) {
+      this.fail('create room error');
+      console.log(e)
+    }
+  }
+
+  @post('/find')
+  async find() {
+    try {
+      const { body } = this.getRequestBody();
+      const result = await this.roomService.findByRoomNumber(body.roomNumber);
+      console.log(result, 'roomNumber');
+      this.success(result);
     } catch (e) {
       this.fail('create room error');
       console.log(e)

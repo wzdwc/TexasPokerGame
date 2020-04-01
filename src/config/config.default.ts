@@ -68,7 +68,7 @@ export default (appInfo: EggAppInfo) => {
     secret: "123456",
     enable: true,
     match(ctx: Context) {
-      const reg = /login/;
+      const reg = /login|register/;
       return !reg.test(ctx.originalUrl);
     },
   };
