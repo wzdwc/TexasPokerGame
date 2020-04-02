@@ -9,6 +9,23 @@ class NspController extends Controller {
     const app = ctx.app as any;
     const nsp = app.io.of('/socket');
     const message = ctx.args[0] || {};
+    const client = socket.id;
+    try {
+      const { target, payload } = message;
+      if (!target) return;
+      const msg = ctx.helper.parseMsg('exchange', payload, { client, target });
+      nsp.emit(target, msg);
+    } catch (error) {
+      app.logger.error(error);
+    }
+  }
+
+  async broadcast() {
+    const { ctx } = this;
+    const socket = ctx.socket as any;
+    const app = ctx.app as any;
+    const nsp = app.io.of('/socket');
+    const message = ctx.args[0] || {};
     const { room } = socket.handshake.query;
     const rooms = [room];
     try {

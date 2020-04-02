@@ -39,7 +39,7 @@ export default (appInfo: EggAppInfo) => {
     credentials: true,
     origin(ctx: Context) {
       const origin: string = ctx.get('origin');
-      // 允许*.ssjlicai.com域名访问
+      // 允许*域名访问
       if (origin.indexOf('172.22.88.118') > -1) {
         console.log('come in');
         return origin;
