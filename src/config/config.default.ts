@@ -65,7 +65,7 @@ export default (appInfo: EggAppInfo) => {
 
   // jsonwebtoken 插件配置
   config.jwt = {
-    secret: "123456",
+    secret: '123456',
     enable: true,
     match(ctx: Context) {
       const reg = /login|register/;
@@ -77,9 +77,9 @@ export default (appInfo: EggAppInfo) => {
   config.io = {
     namespace: {
       '/socket': {
-        connectionMiddleware: ['auth'],
+        connectionMiddleware: [ 'auth' ],
         packetMiddleware: [],
-      }
+      },
     },
     redis: {
       host: '127.0.0.1',

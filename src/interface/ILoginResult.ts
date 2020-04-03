@@ -1,3 +1,3 @@
 export interface ILoginResult {
-  token:string
+  token: string;
 }

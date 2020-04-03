@@ -9,7 +9,7 @@ import { Context, EggAppConfig } from 'egg';
 export default function elkLogger(options: EggAppConfig['elkLogger']): any {
   return async (ctx: Context, next: () => Promise<any>) => {
     const { match, enable } = options;
-    console.log('jwt', ctx.jwt)
+    console.log('jwt', ctx.jwt);
     // 是否符合配置规则
     if (match(ctx) && enable) {
       ctx.setLogCollection('fetchStart', Date.now());

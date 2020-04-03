@@ -1,22 +1,22 @@
-import {Application} from 'egg';
+import { Application } from 'egg';
 import * as path from 'path';
 import ElkTransport from './app/helper/logTransport';
 
 export default (app: Application) => {
   app.beforeStart(async () => {
   });
-  app.use(async function (ctx, next) {
+  app.use(async (ctx, next) => {
     try {
       await next();
     } catch (err) {
-      if (err.name === "UnauthorizedError") {
+      if (err.name === 'UnauthorizedError') {
         ctx.status = 401;
         ctx.body = {
           code: '999999',
           data: {},
           message: 'invalid token...',
         };
-        ctx.logger.error('invalid token...', err)
+        ctx.logger.error('invalid token...', err);
       }
     }
   });

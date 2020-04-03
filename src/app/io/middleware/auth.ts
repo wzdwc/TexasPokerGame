@@ -1,7 +1,7 @@
-import {Context} from "midway";
+import { Context } from 'midway';
 import { ITickMsg } from '../../../interface/ITickMsg';
 
-export default function auth(): any{
+export default function auth(): any {
   return async (ctx: Context, next: () => Promise<any>) => {
     const socket = ctx.socket as any;
     const id = socket.id;
@@ -15,7 +15,7 @@ export default function auth(): any{
     // 检查房间是否存在，不存在则踢出用户
     // 备注：此处 app.redis 与插件无关，可用其他存储代替
     const hasRoom = await roomService.findByRoomNumber(room);
-    function tick(id: Number, msg: ITickMsg, nsp: any, socket: any) {
+    function tick(id: number, msg: ITickMsg, nsp: any, socket: any) {
       // 踢出用户前发送消息
       socket.emit(id, ctx.helper.parseMsg('deny', msg));
       // 调用 adapter 方法踢出用户，客户端触发 disconnect 事件
@@ -31,7 +31,7 @@ export default function auth(): any{
 
     function updatePlayer(roomNumber: string, message: string, nsp: any) {
       // 在线列表
-      nsp.adapter.clients([roomNumber], (err: any, clients: any) => {
+      nsp.adapter.clients([ roomNumber ], (err: any, clients: any) => {
         // 更新在线用户列表
         nsp.to(roomNumber).emit('online', {
           clients,

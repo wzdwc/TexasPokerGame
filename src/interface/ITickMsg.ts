@@ -1,4 +1,4 @@
 export interface ITickMsg {
-  type: string,
+  type: string;
   message: string;
 }

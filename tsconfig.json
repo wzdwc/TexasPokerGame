@@ -15,6 +15,7 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "stripInternal": true,
+    "suppressImplicitAnyIndexErrors": true,
     "target": "ES2018"
   },
   "exclude": [

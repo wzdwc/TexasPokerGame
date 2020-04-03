@@ -1,6 +1,6 @@
 import { inject, Context } from 'midway';
 import { IRequestBody } from '../interface/IRequestBody';
-import {IResult, ResultCode} from "../interface/IResult";
+import { IResult, ResultCode } from '../interface/IResult';
 
 export default class BaseController {
 
@@ -25,10 +25,10 @@ export default class BaseController {
   public success(data: any) {
     const result: IResult = {
       code: ResultCode.SUCCESS,
-      data: data,
-      message: 'successful'
-    }
-    this.ctx.body = result
+      data,
+      message: 'successful',
+    };
+    this.ctx.body = result;
   }
   /**
    * 错误回调封装
@@ -38,8 +38,8 @@ export default class BaseController {
     const result: IResult = {
       code: ResultCode.FAILD,
       data: {},
-      message
+      message,
     };
-    this.ctx.body = result
+    this.ctx.body = result;
   }
 }

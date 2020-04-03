@@ -44,7 +44,7 @@ export class AccountService extends BaseService implements IAccountService {
       try {
         const hasUser = await this.checkHasUser(accountInfo.userAccount);
         if (!hasUser) {
-          let result = await this.user.addUser(accountInfo);
+          const result = await this.user.addUser(accountInfo);
           if (result.affectedRow === 1) {
             resolve('user create successful');
           }
@@ -60,7 +60,7 @@ export class AccountService extends BaseService implements IAccountService {
 
   public async authUser(accountInfo: IAccountInfo) {
     const user: IUser = await this.checkHasUser(accountInfo.userAccount);
-    let valid = user.password === accountInfo.password;
+    const valid = user.password === accountInfo.password;
     if (!valid) {
       throw 'incorrect user account or password.';
     }
@@ -72,7 +72,7 @@ export class AccountService extends BaseService implements IAccountService {
   }
 
   private getToken(userAccount: string) {
-    const token = this.jwt.sign({ userAccount: userAccount },
+    const token = this.jwt.sign({ userAccount },
       this.jwtConfig.secret, { expiresIn: 60 * 60 });
     this.ctx.logger.info(`AccountService getToken token--${token}`);
     return token;

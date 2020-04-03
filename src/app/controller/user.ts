@@ -25,8 +25,8 @@ export class UserController extends BaseController {
       const user = this.user.findByAccount(userInfo.userAccount);
       this.success(user);
     } catch (e) {
-      console.log(e)
-      this.fail('server error')
+      console.log(e);
+      this.fail('server error');
     }
   }
 }

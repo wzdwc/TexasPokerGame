@@ -38,7 +38,7 @@ class LogFormat extends Map {
    * @param logInfo
    * @param level 日志级别
    */
-  public formatFetchInfoMsg(logInfo: Array<any>, level: LoggerLevel) {
+  public formatFetchInfoMsg(logInfo: any[], level: LoggerLevel) {
     const collect = logInfo[0];
     this.logField = {
       fetchConsumeTime: 0,
@@ -57,7 +57,7 @@ class LogFormat extends Map {
       this.logField.message = collect;
       this.logField.requestTime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
       this.logField.level = level;
-      this.logField.stack = level === 'ERROR' ? logInfo[1] : ''
+      this.logField.stack = level === 'ERROR' ? logInfo[1] : '';
     } else {
       this.logField.timestamp = collect.startTime;
       this.logField.requestTime = moment(collect.startTime).format('YYYY-MM-DD HH:mm:ss');

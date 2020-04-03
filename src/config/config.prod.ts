@@ -1,5 +1,5 @@
 import { EggAppConfig, PowerPartial } from 'egg';
-import {Context} from "midway";
+import { Context } from 'midway';
 
 export default () => {
   const config: PowerPartial<EggAppConfig> = {};

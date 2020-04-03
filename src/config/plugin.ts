@@ -14,14 +14,14 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-socket.io',
   },
-  jwt:{
+  jwt: {
     enable: true,
-    package: "egg-jwt",
+    package: 'egg-jwt',
   },
-  mysql:{
+  mysql: {
     enable: true,
     package: 'egg-mysql',
-  }
+  },
 };
 
 export default plugin;

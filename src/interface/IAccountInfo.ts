@@ -3,4 +3,3 @@ export interface IAccountInfo {
   password: string;
   nickName?: string;
 }
-

@@ -27,7 +27,7 @@ class NspController extends Controller {
     const nsp = app.io.of('/socket');
     const message = ctx.args[0] || {};
     const { room } = socket.handshake.query;
-    const rooms = [room];
+    const rooms = [ room ];
     try {
       const { payload } = message;
       nsp.adapter.clients(rooms, (err: any, clients: any) => {
