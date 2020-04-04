@@ -3,6 +3,7 @@
  */
 import { Poker } from './Poker';
 import { Player, IPlayer } from './Player';
+import { PokerStyle } from './PokerStyle';
 
 interface IPokerGame {
   users: IPlayer[];
@@ -63,8 +64,8 @@ class PokerGame {
     }
   }
 
-  compareCard(cards: string[]) {
-
+  compareCard(cards: string[], otherCards: string[]) {
+    return new PokerStyle(cards).getPokerWeight() > new PokerStyle(otherCards).getPokerWeight();
   }
 
   getPlayer(users: IPlayer[]) {

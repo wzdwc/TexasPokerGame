@@ -17,7 +17,7 @@ function sort(cards: string []): string[] {
 
 interface IPokerStyle {
   init(): void;
-  isStraight(str?: string): number;
+  isStraight(str?: string []): string;
 }
 
 export class PokerStyle implements IPokerStyle {
@@ -29,12 +29,11 @@ export class PokerStyle implements IPokerStyle {
     4: [],
   };
   straightArr: string[] = [];
-  pokerStyle: string[] = [ '0', '0', '0', '0', '0', '0', '0', '0' ];
+  pokerStyle: string[] = [ '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ];
   numObj: Map<string, number> = new Map(
     POKER_STR.split('').map(m => [ m, 0 ]));
 
-  constructor(commonCards: string[], handCards: string[]) {
-    const cards = [ ...commonCards, ...handCards ];
+  constructor(cards: string[]) {
     this.cards = sort(cards);
     this.init();
   }
@@ -92,13 +91,13 @@ export class PokerStyle implements IPokerStyle {
       }
     }
     // straight flush
-    if (isFlush.length !== 0 && this.isStraight(isFlush) > -1) {
-      if (this.isStraight(isFlush) === 8) {
+    if (isFlush.length !== 0 && this.isStraight(isFlush) !== '0') {
+      if (this.isStraight(isFlush) === 'i') {
         isRoyalFlush = '1';
         this.pokerStyle[0] = isRoyalFlush;
         return;
       }
-      isStraightFlush = '1' + this.isStraight(isFlush);
+      isStraightFlush = this.isStraight(isFlush);
       this.pokerStyle[1] = isStraightFlush;
       return;
     }
@@ -119,11 +118,23 @@ export class PokerStyle implements IPokerStyle {
       return;
     }
 
+    // flush
+    if (isFlush.length !== 0) {
+      this.pokerStyle[4] = isFlush;
+      return;
+    }
+
+    // straight
+    if (this.isStraight() !== '0') {
+      this.pokerStyle[5] = `${this.isStraight()}`;
+      return;
+    }
+
     // three of kind
     if (isThree.length > 0) {
       isThreeKind = isThree.join('');
       isThreeKind += highCard[0] + highCard[1];
-      this.pokerStyle[4] = isThreeKind;
+      this.pokerStyle[6] = isThreeKind;
       return;
     }
     // tow pair
@@ -132,40 +143,52 @@ export class PokerStyle implements IPokerStyle {
       // third tow pair card big then high card
       const highCardForTowPair = isTwo[3] && isTwo[3] > highCard[0] ? isTwo[3] : highCard[0];
       isTowPair += highCardForTowPair;
-      this.pokerStyle[5] = isTowPair;
+      this.pokerStyle[7] = isTowPair;
       return;
     }
     // pair
     if (isTwo.length === 1) {
       isPair = isTwo.join('');
       isPair += highCard[0] + highCard[1] + highCard[2];
-      this.pokerStyle[6] = isPair;
+      this.pokerStyle[8] = isPair;
       return;
     }
     // High card
-    this.pokerStyle[7] = highCard.join('');
+    highCard.length = 5;
+    this.pokerStyle[9] = highCard.join('');
   }
 
-  isStraight(str?: string): number {
-    const straightStr = str || [ ...new Set(this.straightArr) ].join('');
+  isStraight(str?: string []): string {
+    const straightStr = str && str.join('') || [ ...new Set(this.straightArr) ].join('');
     let first = -1;
     let second = -1;
     let three = -1;
-    if (straightStr.length === 5) {
-      return POKER_STR.indexOf(straightStr);
+    function indexOf(str: string): number {
+      return POKER_STR.indexOf(str);
+    }
+    if (straightStr.length === 5 && indexOf(straightStr) > -1) {
+      return POKER_STR.charAt(indexOf(straightStr));
     }
     if (straightStr.length === 6) {
-      first = POKER_STR.indexOf(straightStr.slice(0, 4));
-      second = POKER_STR.indexOf(straightStr.slice(1, 5));
-      return Math.max(first, second);
+      first = indexOf(straightStr.slice(0, 5));
+      second = indexOf(straightStr.slice(1, 6));
+      if (Math.max(first, second) > -1) {
+        return POKER_STR.charAt(Math.max(first, second));
+      }
     }
     if (straightStr.length === 7) {
-      first = POKER_STR.indexOf(straightStr.slice(0, 4));
-      second = POKER_STR.indexOf(straightStr.slice(1, 5));
-      three = POKER_STR.indexOf(straightStr.slice(2, 6));
-      return Math.max(first, second, three);
+      first = indexOf(straightStr.slice(0, 5));
+      second = indexOf(straightStr.slice(1, 6));
+      three = indexOf(straightStr.slice(2, 7));
+      if (Math.max(first, second, three) > -1) {
+        return POKER_STR.charAt(Math.max(first, second, three));
+      }
     }
-    return -1;
+    // special straight "A2345",'m' -> A
+    if (straightStr.indexOf('m') > -1 && straightStr.indexOf('abcd') > -1) {
+      return POKER_STR.charAt(12);
+    }
+    return '0';
   }
 
   getPokerWeight() {

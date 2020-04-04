@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@types/socket.io": "^2.1.4",
+    "chai": "^4.2.0",
     "egg-cors": "^2.2.3",
     "egg-jwt": "^3.1.7",
     "egg-mysql": "^3.0.0",
