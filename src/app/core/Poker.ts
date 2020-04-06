@@ -1,5 +1,6 @@
+import { Application } from 'midway';
 export interface IPoker {
-  init(): void;
+  init(redis: any): void;
 
   getCard(): string;
 
@@ -12,8 +13,23 @@ export interface IPoker {
 export class Poker implements IPoker {
   pokers: string[] = [];
 
-  constructor() {
-    this.init();
+
+  redis: any = '';
+
+  roomId = '';
+
+  gameId = '';
+
+  constructor(app: Application, roomId: string, gameId: string) {
+    this.roomId = roomId;
+    this.gameId = gameId;
+    this.redis = app.redis;
+    const hasPoker = this.hasPokers();
+    if (hasPoker) {
+      this.pokers = hasPoker;
+    } else {
+      this.init();
+    }
   }
 
   init() {
@@ -37,6 +53,16 @@ export class Poker implements IPoker {
         this.pokers.push(`${i}:${j}`);
       }
     }
+    // start game ,init pokers
+    this.setPokers();
+  }
+
+  hasPokers() {
+    return this.redis.get(`${this.roomId}:${this.gameId}`);
+  }
+
+  setPokers() {
+    this.redis.set(`${this.roomId}:${this.gameId}`, this.pokers.join(''));
   }
 
   getCard(): string {
@@ -44,6 +70,7 @@ export class Poker implements IPoker {
     const currCardIndex = this.getRandom(this.pokers.length);
     const currCard = this.pokers[currCardIndex];
     this.pokers.splice(currCardIndex, 1);
+    this.setPokers();
     return currCard;
   }
 

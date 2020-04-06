@@ -1,9 +1,37 @@
 import { PokerGame } from '../../../src/app/core/PokerGame';
-
-const assert = require('assert');
+import { expect } from 'chai';
 
 describe('test/app/core/pokerGame.test.ts', () => {
-  it('', async () => {
+  /**
+   * game ready
+   */
+  it('game init', async () => {
 
   });
+
+  /**
+   * game playing
+   */
+  it('game init', async () => {
+
+  });
+  // flop
+  // turn
+  // river
+  // chip in
+    // has Allin need separate pot
+
+  /**
+   * game over
+   */
+  it('game over', async () => {
+
+  });
+  /**
+   * count
+   */
+  it('count', async () => {
+
+  });
+  // has other pot
 });
