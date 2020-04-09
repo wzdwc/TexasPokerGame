@@ -23,10 +23,10 @@ interface IPokerStyle {
 export class PokerStyle implements IPokerStyle {
   cards: string[] = [];
   flushObj = {
-    1: [],
-    2: [],
-    3: [],
-    4: [],
+    1: [] as string[],
+    2: [] as string[],
+    3: [] as string[],
+    4: [] as string[],
   };
   straightArr: string[] = [];
   pokerStyle: string[] = [ '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ];

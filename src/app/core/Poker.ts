@@ -1,6 +1,5 @@
-import { Application } from 'midway';
 export interface IPoker {
-  init(redis: any): void;
+  init(): void;
 
   getCard(): string;
 
@@ -11,28 +10,13 @@ export interface IPoker {
  * Created by jorky on 2020/2/23.
  */
 export class Poker implements IPoker {
-  pokers: string[] = [];
+  private pokers: string [] = [];
 
-
-  redis: any = '';
-
-  roomId = '';
-
-  gameId = '';
-
-  constructor(app: Application, roomId: string, gameId: string) {
-    this.roomId = roomId;
-    this.gameId = gameId;
-    this.redis = app.redis;
-    const hasPoker = this.hasPokers();
-    if (hasPoker) {
-      this.pokers = hasPoker;
-    } else {
-      this.init();
-    }
+  constructor() {
+    this.init();
   }
 
-  init() {
+  init(): void {
     const size = [
       'a',
       'b',
@@ -53,16 +37,6 @@ export class Poker implements IPoker {
         this.pokers.push(`${i}:${j}`);
       }
     }
-    // start game ,init pokers
-    this.setPokers();
-  }
-
-  hasPokers() {
-    return this.redis.get(`${this.roomId}:${this.gameId}`);
-  }
-
-  setPokers() {
-    this.redis.set(`${this.roomId}:${this.gameId}`, this.pokers.join(''));
   }
 
   getCard(): string {
@@ -70,7 +44,6 @@ export class Poker implements IPoker {
     const currCardIndex = this.getRandom(this.pokers.length);
     const currCard = this.pokers[currCardIndex];
     this.pokers.splice(currCardIndex, 1);
-    this.setPokers();
     return currCard;
   }
 
@@ -79,10 +52,3 @@ export class Poker implements IPoker {
     return Math.floor(Math.random() * maxNumber);
   }
 }
-
-// let poker = new Poker()
-// let arr = []
-// for(let i = 0; i< 53; i++) {
-//   arr.push(poker.getCard())
-// }
-// console.log(arr)
