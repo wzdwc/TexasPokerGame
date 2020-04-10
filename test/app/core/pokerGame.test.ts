@@ -52,13 +52,20 @@ describe('test/app/core/pokerGame.test.ts', () => {
   // river
   // chip in
     // has Allin need separate pot
+      // many allin
 
   /**
    * game over
    */
   it('game over', async () => {
-    // showdown
-    // last player
+    // only one player
+      // last player, other player fold
+
+    // many player
+      // last player, has all in player
+      // all player all in
+        // one player all in
+        // many player all in
     // other pots
   });
   /**

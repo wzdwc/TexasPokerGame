@@ -21,6 +21,7 @@ export class Player {
   counter: number = 0;
   userId: string = '';
   actionSize: number;
+  evPot: number;
 
   // commandRecord: Array<string> = [];
   constructor(config: IPlayer = { counter: 0, position: 0, userId: '' }) {
