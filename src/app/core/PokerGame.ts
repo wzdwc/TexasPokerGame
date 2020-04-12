@@ -2,7 +2,7 @@
  * Created by jorky on 2020/2/23.
  */
 import { Poker } from './Poker';
-import { ECommand, IPlayer, Player } from './Player';
+import { ECommand, EPlayerType, IPlayer, Player } from './Player';
 import { PokerStyle } from './PokerStyle';
 import { ILinkNode, Link } from '../../utils/Link';
 
@@ -11,7 +11,7 @@ interface IPokerGame {
   smallBlind: number;
 }
 
-enum EGameStatus {
+export enum EGameStatus {
   GAME_READY,
   GAME_START,
   GAME_FLOP,
@@ -25,9 +25,9 @@ enum EGameStatus {
 export class PokerGame {
   commonCard: string[] = [];
   fireCards: string[] = [];
-  players: Link<Player>;
+  playerLink: Link<Player>;
+  allPlayer: Player[] = [];
   poker = new Poker();
-  pots: number[] = [];
   pot: number;
   status: EGameStatus;
   currPlayer: ILinkNode<Player>;
@@ -38,7 +38,7 @@ export class PokerGame {
   allInPlayers: Player[] = [];
   currActionAllinPlayer: Player[] = [];
   hasStraddle = false;
-  winner: Player;
+  winner: Player[][];
 
   constructor(config: IPokerGame) {
     this.smallBlind = config.smallBlind;
@@ -47,18 +47,19 @@ export class PokerGame {
 
   init(users: IPlayer[]) {
     this.status = EGameStatus.GAME_READY;
-    // init players
-    this.players = this.setPlayer(users);
+    // init playerLink
+    this.playerLink = this.setPlayer(users);
     this.playerSize = users.length;
     // set SB, BB,Straddle
     this.getBlind();
     // utg
-    this.currPlayer = this.players.getNode(3);
+    this.currPlayer = this.playerLink.getNode(3);
+    console.log(this.currPlayer, '--------------------');
   }
 
   getBlind() {
     // sb blind
-    const SBPlayerNode = this.players.getNode(1);
+    const SBPlayerNode = this.playerLink.getNode(1);
     const SBPlayer = SBPlayerNode.node;
     // big blind
     const BBPlayerNode = SBPlayerNode.next;
@@ -79,52 +80,64 @@ export class PokerGame {
 
   action(commandString: string) {
     if (this.status === EGameStatus.GAME_ACTION) {
+      console.log('this.currPlayer', this.currPlayer);
       const commandArr = commandString.split(':');
       const command = commandArr[0];
       let size = Number(commandArr[1]);
       if (command === ECommand.ALL_IN) {
-        size = this.currPlayer.node.counter;
+        size = this.currPlayer.node.counter > this.prevSize ?
+          this.currPlayer.node.counter : this.prevSize;
         this.allIn();
-        this.pot += size;
+        this.pot += this.currPlayer.node.counter;
         // other pot
       }
       if (command === ECommand.CALL) {
-        // counter small then raise size,must be all in
-        if (size > this.currPlayer.node.counter) {
-          size = this.currPlayer.node.counter;
-          this.allIn();
-        } else {
-          size = this.prevSize;
-          this.pot += size;
-        }
+        size = this.prevSize;
+        this.pot += size - this.currPlayer.node.actionSize;
       }
       if (command === ECommand.FOLD) {
         size = this.prevSize;
         this.removePlayer(this.currPlayer.node);
       }
-      // if (command === ECommand.CHECK) {
-      //   // prev player must be check
-      //   if (this.prevSize === 0) {
-      //     size = 0;
-      //   } else {
-      //     throw 'action incorrect';
-      //   }
-      // }
-      if (command === ECommand.RAISE) {
-        if (size < this.prevSize * 2) {
-          throw 'action incorrect';
+      if (command === ECommand.CHECK) {
+        console.log(this.currPlayer.node.type === EPlayerType.BIG_BLIND
+          && this.prevSize === this.smallBlind * 2, 'big blind', this.currPlayer);
+        // prev player must be check
+        if (!(this.prevSize === 0 ||
+          (this.currPlayer.node.type === EPlayerType.BIG_BLIND
+          && this.prevSize === this.smallBlind * 2))) {
+          throw 'incorrect action: check';
         }
+      }
+      if (command === ECommand.RAISE) {
+        console.log(size, 'prevSize', this.prevSize);
         this.pot += size;
+        // 3 bet
+        size += this.currPlayer.node.actionSize;
+
+        if ((size + this.currPlayer.node.actionSize) < this.prevSize * 2) {
+          throw 'incorrect action: raise';
+        }
       }
       this.currPlayer.node.action(commandString, this.prevSize);
       this.prevSize = size;
       const nextPlayer = this.currPlayer.next.node;
-      if (nextPlayer.actionSize === this.currPlayer.node.actionSize) {
+      // all check actionSize === -1
+      // all player allin
+      // only 2 player ,one player fold
+      // pre flop big blind check and other player call
+      if (this.playerSize === 0
+        || (this.playerSize === 2 && command === ECommand.FOLD)
+        || nextPlayer.actionSize === this.currPlayer.node.actionSize
+        || (this.commonCard.length === 0
+          && this.currPlayer.node.type === EPlayerType.BIG_BLIND
+          && command === ECommand.CHECK)) {
         this.actionComplete();
+        return;
       }
       this.currPlayer = this.currPlayer.next;
     } else {
-      throw 'error action';
+      throw 'incorrect action flow';
     }
   }
   allIn() {
@@ -133,28 +146,37 @@ export class PokerGame {
   }
 
   private actionComplete() {
+    console.log('pre flop,', this.commonCard.length, this.currPlayer.node);
+    // pre flop
+    if (this.commonCard.length === 0
+      && this.currPlayer.node.actionSize === this.smallBlind * 2
+      && this.currPlayer.node.type !== EPlayerType.BIG_BLIND) {
+      this.currPlayer = this.currPlayer.next;
+      return;
+    }
     // action has allin, sum the allin player ev_pot
     if (this.currActionAllinPlayer.length !== 0) {
       let currAllinPlayerPot = 0;
-      const players = this.getPlayers();
-      this.currActionAllinPlayer.forEach(actionP => {
-        players.forEach(p => {
-          if (p.actionSize < actionP.actionSize) {
+      this.currActionAllinPlayer.forEach(allinPlayer => {
+        this.allPlayer.forEach(p => {
+          if (p.actionSize < allinPlayer.actionSize) {
             currAllinPlayerPot += p.actionSize;
           } else {
-            currAllinPlayerPot += actionP.actionSize;
+            currAllinPlayerPot += allinPlayer.actionSize;
           }
         });
-        actionP.evPot = this.prevPot + currAllinPlayerPot;
+        allinPlayer.evPot = this.prevPot + currAllinPlayerPot;
+        currAllinPlayerPot = 0;
       });
-      this.allInPlayers.concat(this.currActionAllinPlayer);
+      this.allInPlayers = [ ...this.allInPlayers, ...this.currActionAllinPlayer ];
     }
-
     // action complete clear player actionSize = 0
     this.clearPlayerAction();
     this.currActionAllinPlayer = [];
     this.prevSize = 0;
     this.prevPot = this.pot;
+    // new action ring first action is sb
+    this.currPlayer = this.playerLink.getNode(1);
     if (this.commonCard.length === 0) {
       this.status = EGameStatus.GAME_FLOP;
     }
@@ -173,16 +195,22 @@ export class PokerGame {
   sendCard() {
     if (this.status === EGameStatus.GAME_START) {
       this.setHandCard();
+      this.status = EGameStatus.GAME_ACTION;
+      return;
     }
     if (this.status === EGameStatus.GAME_FLOP) {
       this.fireCards.push(this.poker.getCard());
       this.flop();
+      this.status = EGameStatus.GAME_ACTION;
+      return;
     }
     if (this.status === EGameStatus.GAME_TURN || this.status === EGameStatus.GAME_RIVER) {
       this.fireCards.push(this.poker.getCard());
       this.commonCard.push(this.poker.getCard());
+      this.status = EGameStatus.GAME_ACTION;
+      return;
     }
-    this.status = EGameStatus.GAME_ACTION;
+    throw 'error flow sendCard';
   }
 
   flop() {
@@ -208,17 +236,19 @@ export class PokerGame {
   }
 
   setPlayer(users: IPlayer[]) {
-    const players: Player [] = [];
-    users.forEach(u => {
-      const player = new Player(u);
-      players.push(player);
+    users.forEach((u, position) => {
+      const player = new Player({
+        ...u,
+        position,
+      });
+      this.allPlayer.push(player);
     });
-    return new Link<Player>(players);
+    return new Link<Player>(this.allPlayer);
   }
 
   getPlayers(type= 'all') {
     const players = [];
-    let nextPlayer = this.players.link;
+    let nextPlayer = this.playerLink.link;
     let i = 0;
     while (i < this.playerSize) {
       players.push(nextPlayer.node);
@@ -229,19 +259,13 @@ export class PokerGame {
   }
 
   private clearPlayerAction() {
-    let playerLink = this.players.link;
-    let player: Player;
-    let j = 0;
-    while (j < this.playerSize) {
-      player = playerLink.node;
+    this.allPlayer.forEach(player => {
       player.clearActionSize();
-      playerLink = playerLink.next;
-      j++;
-    }
+    });
   }
 
   removePlayer(currPlayer: Player) {
-    let playerLink = this.players.link;
+    let playerLink = this.playerLink.link;
     let player: Player;
     while (playerLink.next) {
       player = playerLink.next.node;
@@ -256,7 +280,7 @@ export class PokerGame {
 
   getWinner() {
     if (this.allInPlayers.length === 0 && this.playerSize === 1) {
-      this.winner = this.currPlayer.node;
+      this.winner.push([ this.currPlayer.node ]);
       return;
     }
     while (this.status !== EGameStatus.GAME_SHOWDOWN) {
@@ -265,15 +289,14 @@ export class PokerGame {
     }
     // compare allin player and last player
     const allPlayers = this.getPlayers();
-    const winner = [];
     const maxPlayers = this.maxPlayers(allPlayers);
-    winner.push(maxPlayers);
+    this.winner.push(maxPlayers);
     const hasSecondWinner = maxPlayers.filter(p => p.evPot !== 0).length === 0;
     // all of winner is all in, must get max curr player
     if (hasSecondWinner) {
       const lastPlayer = this.getPlayers('');
       const maxLastPlayer = this.maxPlayers(lastPlayer);
-      winner.push(maxLastPlayer);
+      this.winner.push(maxLastPlayer);
     }
   }
 
@@ -297,7 +320,7 @@ export class PokerGame {
 
   setHandCard() {
     // send card start by small blind
-    let playerLink = this.players.link;
+    let playerLink = this.playerLink.link;
     let player: Player;
     for (let i = 0; i < 2; i++) {
       let j = 0;

@@ -9,6 +9,7 @@ describe('test/utils/link.test.ts', () => {
     const person4 = new Player({ counter: 2, position: 4, userId: '4' });
     // const person5 = new Player({ counter: 2, position: 5, userId: '5' });
     const link = new Link<Player>([ person1, person2, person3, person4 ], false);
+    console.log(link.getNode(0), 'link--------')
     console.log(link.link);
   });
 

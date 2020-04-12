@@ -1,4 +1,4 @@
-import { PokerGame } from '../../../src/app/core/PokerGame';
+import { PokerGame, EGameStatus } from '../../../src/app/core/PokerGame';
 // @ts-ignore
 import { expect } from 'chai';
 import { IPlayer } from '../../../src/app/core/Player';
@@ -7,13 +7,23 @@ describe('test/app/core/pokerGame.test.ts', () => {
   const users: IPlayer[] = [
     {
       userId: '1',
-      position: 0,
       counter: 200,
     },
     {
       userId: '2',
-      position: 1,
       counter: 200,
+    },
+    {
+      userId: '3',
+      counter: 50,
+    },
+    {
+      userId: '4',
+      counter: 400,
+    },
+    {
+      userId: '5',
+      counter: 1200,
     },
   ];
 
@@ -25,11 +35,13 @@ describe('test/app/core/pokerGame.test.ts', () => {
       smallBlind: 1,
       users,
     });
-    expect(game.status).to.equal(0);
-    expect(game.currPlayer.node.counter).to.equal(199);
-    expect(game.currPlayer.node.actionSize).to.equal(1);
-    expect(game.pots[0]).to.equal(3);
-    expect(game.pots[0]).to.equal(3);
+    game.play();
+    expect(game.status).to.equal(EGameStatus.GAME_ACTION);
+    console.log(game.currPlayer, 'currPlayer');
+    expect(game.currPlayer.node.actionSize).to.equal(0);
+    expect(game.pot).to.equal(3);
+    expect(game.pot).to.equal(3);
+    expect(game.playerLink.getNode(1).node.actionSize).to.equal(1);
   });
 
   /**
@@ -42,10 +54,36 @@ describe('test/app/core/pokerGame.test.ts', () => {
     });
     game.play();
     console.log(game.currPlayer.node.handCard)
-    console.log(game.commonCard);
+    game.action('call');
+    game.action('call');
+    game.action('call');
+    game.action('call');
+    game.action('check');
+    game.sendCard();
+    console.log(game.status, '------a');
+    console.log(game.currPlayer, '------b')
     game.action('raise:10');
     game.action('raise:20');
-    console.log(game.pots);
+    game.action('call');
+    game.action('call');
+    game.action('raise:40');
+    game.action('call');
+    game.action('call');
+    game.action('call');
+    game.action('call');
+    game.sendCard();
+    console.log(game.status, '------c');
+    console.log(game.currPlayer, '------c')
+    game.action('allin');
+    game.action('allin');
+    game.action('allin');
+    game.action('allin');
+    game.action('allin');
+    console.log(game.status, '---------b')
+    // game.action('raise:10');
+    console.log(game.commonCard);
+    console.log(game.pot);
+    console.log(game.getPlayers());
   });
   // flop
   // turn

@@ -15,19 +15,35 @@ export enum ECommand {
   FOLD = 'fold',
 }
 
+export enum EPlayerType {
+  DEALER = 'dealer',
+  BIG_BLIND = 'big_blind',
+  SMALL_BLIND = 'small_blind',
+}
+
 export class Player {
   handCard: string[] = [];
   position: number = 0;
   counter: number = 0;
   userId: string = '';
-  actionSize: number;
-  evPot: number;
+  actionSize: number = 0;
+  type: string;
+  evPot: number = 0;
 
   // commandRecord: Array<string> = [];
   constructor(config: IPlayer = { counter: 0, position: 0, userId: '' }) {
     this.counter = config.counter;
     this.position = config.position;
     this.userId = config.userId;
+    if (this.position === 0) {
+      this.type = EPlayerType.DEALER;
+    }
+    if (this.position === 1) {
+      this.type = EPlayerType.SMALL_BLIND;
+    }
+    if (this.position === 2) {
+      this.type = EPlayerType.BIG_BLIND;
+    }
   }
 
   setHandCard(card: string) {
@@ -49,6 +65,12 @@ export class Player {
     const command = commandArr[0];
     const raiseSize = Number(commandArr[1]);
     let size = 0;
+    console.log('action----', prevSize, raiseSize, this.counter, this.actionSize);
+    if (command !== ECommand.ALL_IN
+      && (prevSize > (this.counter + this.actionSize) || raiseSize > this.counter)) {
+      throw 'error action, overflow action size';
+    }
+
     // BLIND
     if (command === ECommand.SMALL_BLIND || command === ECommand.BIG_BLIND) {
       size = raiseSize;
@@ -67,8 +89,8 @@ export class Player {
     // player raise,get the raise size
     if (command === ECommand.RAISE) {
       // raise must double to prevSize
-      if (raiseSize >= prevSize * 2) {
-        size = raiseSize;
+      if ((raiseSize + this.actionSize) >= prevSize * 2) {
+        size = raiseSize + this.actionSize;
       } else {
         throw 'error action: raise size too small';
       }
@@ -79,14 +101,20 @@ export class Player {
     }
 
     if (command === ECommand.CALL) {
-      size = prevSize;
+      size = prevSize - this.actionSize;
     }
 
-    if (command === ECommand.CHECK || command === ECommand.FOLD) {
+    if (command === ECommand.CHECK) {
+      size = -1;
+    }
+
+    if (command === ECommand.FOLD) {
       size = 0;
     }
-    this.counter -= size;
-    this.actionSize = size;
+    if (size > 0) {
+      this.counter -= size;
+    }
+    this.actionSize += size;
     return size;
   }
 
