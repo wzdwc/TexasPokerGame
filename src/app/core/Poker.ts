@@ -34,7 +34,7 @@ export class Poker implements IPoker {
     const color = [ 1, 2, 3, 4 ];
     for (const i of size) {
       for (const j of color) {
-        this.pokers.push(`${i}:${j}`);
+        this.pokers.push(`${i}${j}`);
       }
     }
   }

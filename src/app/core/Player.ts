@@ -16,6 +16,7 @@ export enum ECommand {
 }
 
 export enum EPlayerType {
+  DEFAULT = 'default',
   DEALER = 'dealer',
   BIG_BLIND = 'big_blind',
   SMALL_BLIND = 'small_blind',
@@ -27,8 +28,9 @@ export class Player {
   counter: number = 0;
   userId: string = '';
   actionSize: number = 0;
-  type: string;
-  evPot: number = 0;
+  type: string = EPlayerType.DEFAULT;
+  evPot: number = Infinity;
+  pokeStyle: string = '';
 
   // commandRecord: Array<string> = [];
   constructor(config: IPlayer = { counter: 0, position: 0, userId: '' }) {
@@ -65,7 +67,6 @@ export class Player {
     const command = commandArr[0];
     const raiseSize = Number(commandArr[1]);
     let size = 0;
-    console.log('action----', prevSize, raiseSize, this.counter, this.actionSize);
     if (command !== ECommand.ALL_IN
       && (prevSize > (this.counter + this.actionSize) || raiseSize > this.counter)) {
       throw 'error action, overflow action size';
@@ -120,5 +121,9 @@ export class Player {
 
   clearActionSize() {
     this.actionSize = 0;
+  }
+
+  income(size: number) {
+    this.counter += size;
   }
 }

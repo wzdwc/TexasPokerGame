@@ -37,7 +37,6 @@ describe('test/app/core/pokerGame.test.ts', () => {
     });
     game.play();
     expect(game.status).to.equal(EGameStatus.GAME_ACTION);
-    console.log(game.currPlayer, 'currPlayer');
     expect(game.currPlayer.node.actionSize).to.equal(0);
     expect(game.pot).to.equal(3);
     expect(game.pot).to.equal(3);
@@ -53,15 +52,12 @@ describe('test/app/core/pokerGame.test.ts', () => {
       users,
     });
     game.play();
-    console.log(game.currPlayer.node.handCard)
     game.action('call');
     game.action('call');
     game.action('call');
     game.action('call');
     game.action('check');
     game.sendCard();
-    console.log(game.status, '------a');
-    console.log(game.currPlayer, '------b')
     game.action('raise:10');
     game.action('raise:20');
     game.action('call');
@@ -72,18 +68,18 @@ describe('test/app/core/pokerGame.test.ts', () => {
     game.action('call');
     game.action('call');
     game.sendCard();
-    console.log(game.status, '------c');
-    console.log(game.currPlayer, '------c')
     game.action('allin');
     game.action('allin');
     game.action('allin');
+    game.action('fold');
     game.action('allin');
-    game.action('allin');
-    console.log(game.status, '---------b')
+    console.log('cc');
     // game.action('raise:10');
     console.log(game.commonCard);
     console.log(game.pot);
     console.log(game.getPlayers());
+    console.log(game.winner);
+    console.log(game.winner[0][0].handCard, game.commonCard);
   });
   // flop
   // turn
@@ -99,12 +95,19 @@ describe('test/app/core/pokerGame.test.ts', () => {
     // only one player
       // last player, other player fold
 
-    // many player
+    // multiple  player
       // last player, has all in player
       // all player all in
         // one player all in
         // many player all in
-    // other pots
+
+    // winner
+      // one winner
+      // multiple winner
+        // bisecting pot
+        // allin player winner and small pot, multiple second winner bisecting pot
+        // allin player winner and small pot, one second winner
+        // all player allin, winner can't win all pot,
   });
   /**
    * count

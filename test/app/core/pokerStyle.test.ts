@@ -22,7 +22,7 @@ describe('test/app/core/pokerStyle.test.ts', () => {
     let pokerStyle: PokerStyle = new PokerStyle(['a1','b2', 'c3', 'b4', 'd1', 'a2', 'b3'])
     assert.strictEqual(pokerStyle.getPokerWeight(), '000ba000000');
   });
-  it('tow full house', async () => {
+  it('two full house', async () => {
     let pokerStyle: PokerStyle = new PokerStyle(['a1','b2', 'a3', 'b4', 'd1', 'a2', 'b3'])
     assert.strictEqual(pokerStyle.getPokerWeight() , '000ba000000')
   });
