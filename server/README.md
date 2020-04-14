@@ -1,6 +1,6 @@
-# node-loan-center
+# poke-game-center
 
-node服务中心
+pokeGame服务中心
 
 ## 快速入门
 详细文档，参见 [egg 文档][eggjs], [midway 文档][midway]。
