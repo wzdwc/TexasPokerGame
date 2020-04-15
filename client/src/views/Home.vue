@@ -1,18 +1,16 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="create-room" @creatRoom = 'createRoom'>create room</div>
+    <div class="join room" @joinRoom = 'joinRoom'>join room</div>
+    <div class="room number">room number: </div>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  export default class Login extends Vue {
+    roomNumber: string = '';
+    createRoom() {}
+    joinRoom() {}
   }
-}
 </script>
