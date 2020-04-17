@@ -10,7 +10,11 @@ export default function auth(): any {
     const roomService = await app.applicationContext.getAsync('RoomService');
     const query = socket.handshake.query;
     // 用户信息
-    const { room, userName } = query;
+    const { room, token } = query;
+
+    const userInfo = app.jwt.verify(token);
+
+    const { userName } = userInfo;
 
     // 检查房间是否存在，不存在则踢出用户
     // 备注：此处 app.redis 与插件无关，可用其他存储代替

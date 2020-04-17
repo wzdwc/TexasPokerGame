@@ -71,8 +71,10 @@ export class AccountService extends BaseService implements IAccountService {
     return await this.user.findByAccount(userAccount);
   }
 
-  private getToken(userAccount: string) {
-    const token = this.jwt.sign({ userAccount },
+  private async getToken(userAccount: string) {
+    const user = await this.user.findByAccount(userAccount);
+    console.log(user, 'user----------');
+    const token = this.jwt.sign({ userName: user.nick_name },
       this.jwtConfig.secret, { expiresIn: 60 * 60 });
     this.ctx.logger.info(`AccountService getToken token--${token}`);
     return token;

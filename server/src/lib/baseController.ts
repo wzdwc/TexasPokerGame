@@ -1,5 +1,5 @@
 import { inject, Context } from 'midway';
-import { IRequestBody } from '../interface/IRequestBody';
+// import { IRequestBody } from '../interface/IRequestBody';
 import { IResult, ResultCode } from '../interface/IResult';
 
 export default class BaseController {
@@ -11,11 +11,11 @@ export default class BaseController {
    * 获取请求内容
    * @returns {IRequestBody}
    */
-  public getRequestBody(): IRequestBody {
-    let params: IRequestBody;
-    params = this.ctx.request.body.params && JSON.parse(this.ctx.request.body.params) || {};
-    console.log(this.ctx.request.body, 'params');
-    return params;
+  public getRequestBody() {
+    // let params: IRequestBody;
+    // params = this.ctx.request.body.params && JSON.parse(this.ctx.request.body.params) || {};
+    // console.log(this.ctx.request.body, 'params');
+    return this.ctx.request;
   }
 
   /**

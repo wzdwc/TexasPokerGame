@@ -14,7 +14,9 @@ export class Account extends BaseController {
   async login() {
     try {
       const { body } = this.getRequestBody();
+      console.log(body, 'body');
       const { userAccount, password } = body;
+      console.log(userAccount, 'userAccount');
       const accountInfo: IAccountInfo = { userAccount, password };
       const result = await this.service.login(accountInfo);
       this.success(result);
