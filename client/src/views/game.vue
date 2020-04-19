@@ -1,12 +1,15 @@
 <template>
-  <div class="game-container">
-    <div class="game-body">
+  <div class="game-container container">
+    <div class="game-player-info">
       <div class="users">
         <span v-for="user in users"> {{user.nick_name}}: {{user.counter}}</span>
       </div>
       <div class="join">
         {{joinMsg}}
       </div>
+    </div>
+    <div class="game-body">
+      <div class="btn play"><span @click="play">play game</span></div>
     </div>
     <div class="buy-in">
       <div class="input-bd">
@@ -16,6 +19,7 @@
                  v-model="buyInSize"/>
         </div>
       </div>
+      <div class="btn"><span @click="buyIn">buy in</span></div>
     </div>
   </div>
 </template>
@@ -100,10 +104,25 @@
 
     private async buyIn() {
       try {
-        const result = await service.buyIn(this.buyInSize);
+        this.emit('buyIn', {
+          buyInSize: this.buyInSize
+        });
       } catch (e) {
         console.log(e);
       }
+    }
+    play() {
+      console.log('play')
+      this.emit('playGame')
+    }
+
+    emit(eventType: string, data: any = {}) {
+      this.socket.emit(eventType, {
+        target: '',
+        payload: {
+          ...data,
+        },
+      });
     }
 
     private mounted() {

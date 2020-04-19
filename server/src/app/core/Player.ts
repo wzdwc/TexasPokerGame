@@ -2,6 +2,8 @@ export interface IPlayer {
   counter: number;
   position?: number;
   userId: string;
+  nick_name: string;
+  account: string;
 }
 
 export enum ECommand {
@@ -33,7 +35,7 @@ export class Player {
   pokeStyle: string = '';
 
   // commandRecord: Array<string> = [];
-  constructor(config: IPlayer = { counter: 0, position: 0, userId: '' }) {
+  constructor(config: IPlayer) {
     this.counter = config.counter;
     this.position = config.position || 0;
     this.userId = config.userId;

@@ -1,5 +1,7 @@
 import { Context } from 'midway';
 import { ITickMsg } from '../../../interface/ITickMsg';
+import { IGameRoom } from '../../../interface/IGameRoom';
+import { IPlayer } from '../../core/Player';
 
 export default function auth(): any {
   return async (ctx: Context, next: () => Promise<any>) => {
@@ -7,18 +9,9 @@ export default function auth(): any {
     const id = socket.id;
     const app = ctx.app as any;
     const nsp = app.io.of('/socket');
-    const roomService = await app.applicationContext.getAsync('RoomService');
     const query = socket.handshake.query;
     // 用户信息
     const { room, token } = query;
-
-    const userInfo = app.jwt.verify(token);
-
-    const { userName } = userInfo;
-
-    // 检查房间是否存在，不存在则踢出用户
-    // 备注：此处 app.redis 与插件无关，可用其他存储代替
-    const hasRoom = await roomService.findByRoomNumber(room);
     function tick(id: number, msg: ITickMsg, nsp: any, socket: any) {
       // 踢出用户前发送消息
       socket.emit(id, ctx.helper.parseMsg('deny', msg));
@@ -28,32 +21,86 @@ export default function auth(): any {
       });
     }
 
-    function join(roomNumber: string, userName: string, nsp: any, socket: any) {
-      socket.join(roomNumber);
-      updatePlayer(roomNumber, `User(${userName}) joined.`, nsp);
+    function leave() {
     }
 
-    function updatePlayer(roomNumber: string, message: string, nsp: any) {
+    function join(roomNumber: string, user: IPlayer, nsp: any, socket: any) {
+      const hasRoom = nsp.gameRoom.find((r: IGameRoom) => r.number === roomNumber);
+      let gameRoom: IGameRoom = {
+        number: roomNumber,
+        roomInfo: {
+          players: [],
+          game: null,
+        },
+      };
+      if (!hasRoom) {
+        nsp.gameRoom.push(gameRoom);
+        gameRoom.roomInfo = {
+          players: [{
+            ...user,
+            counter: 0,
+          }],
+          game: null,
+        };
+        socket.join(roomNumber);
+      } else {
+        gameRoom = nsp.gameRoom.find((r: IGameRoom) => r.number === roomNumber);
+        const player = gameRoom.roomInfo.players.find((p: IPlayer) => p.account === user.account);
+        if (!player) {
+          const player = {
+              ...user,
+              counter: 0,
+          };
+          gameRoom.roomInfo.players.push(player);
+          socket.join(roomNumber);
+        }
+      }
+      console.log('players', JSON.stringify(gameRoom.roomInfo.players));
+      updatePlayer(roomNumber, `User(${user.nick_name}) joined.`, 'join', nsp);
+      updatePlayer(roomNumber, JSON.stringify(gameRoom.roomInfo.players), 'players', nsp);
+    }
+
+    function updatePlayer(roomNumber: string, message: string, action: string, nsp: any) {
       // 在线列表
       nsp.adapter.clients([ roomNumber ], (err: any, clients: any) => {
         // 更新在线用户列表
         nsp.to(roomNumber).emit('online', {
           clients,
-          action: 'join',
+          action,
           target: 'participator',
           message,
         });
       });
     }
-    if (!hasRoom) {
+
+    try {
+      // room缓存信息是否存在
+      if (!nsp.gameRoom) {
+        nsp.gameRoom = [];
+      }
+      const userInfo = await app.jwt.verify(token);
+      // const { nick_name: userName } = userInfo.user;
+
+      // 检查房间是否存在，不存在则踢出用户
+      const roomService = await app.applicationContext.getAsync('RoomService');
+      const hasRoom = await roomService.findByRoomNumber(room);
+      if (!hasRoom) {
+        tick(id, {
+          type: 'deleted',
+          message: 'deleted, room has been deleted.',
+        }, nsp, socket);
+        return;
+      }
+      join(room, userInfo.user, nsp, socket);
+      console.log('play------------', room);
+      await next();
+      leave();
+    } catch (e) {
+      console.log(e);
       tick(id, {
         type: 'deleted',
         message: 'deleted, room has been deleted.',
       }, nsp, socket);
-      return;
     }
-    join(room, userName, nsp, socket);
-    await next();
-    updatePlayer(room, userName, nsp);
   };
 }

@@ -41,7 +41,7 @@ export default (appInfo: EggAppInfo) => {
       const origin: string = ctx.get('origin');
       console.log(origin, 'orgin');
       // 允许*域名访问
-      if (origin.indexOf('http://172.22.72.70:8080') > -1) {
+      if (origin.indexOf('') > -1) {
         console.log('come in');
         return origin;
       } else {
@@ -100,7 +100,7 @@ export default (appInfo: EggAppInfo) => {
     // 单数据库信息配置
     client: {
       // host
-      host: '127.0.0.1',
+      host: '47.104.172.100',
       // 端口号
       port: '3306',
       // 用户名

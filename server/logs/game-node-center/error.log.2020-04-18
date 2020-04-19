@@ -1,0 +1,330 @@
+2020-04-18 00:00:59,201 ERROR 40033 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 40033
+hostname: 192.168.0.104
+
+2020-04-18 00:00:59,202 ERROR 40033 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 40033
+hostname: 192.168.0.104
+
+2020-04-18 00:00:59,202 ERROR 40033 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 40033
+hostname: 192.168.0.104
+
+2020-04-18 00:00:59,203 ERROR 40033 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 40033
+hostname: 192.168.0.104
+
+2020-04-18 00:02:57,432 ERROR 40064 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 40064
+hostname: 192.168.0.104
+
+2020-04-18 00:02:57,432 ERROR 40064 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 40064
+hostname: 192.168.0.104
+
+2020-04-18 00:02:57,433 ERROR 40064 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 40064
+hostname: 192.168.0.104
+
+2020-04-18 00:02:57,433 ERROR 40064 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 40064
+hostname: 192.168.0.104
+
+2020-04-18 00:04:46,775 ERROR 40142 [-/127.0.0.1/-/6ms GET /] invalid token... UnauthorizedError: No authorization token was found
+    at middleware (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:89:15)
+    at fn (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-core/lib/loader/mixin/middleware.js:112:12)
+    at dispatch (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-compose/index.js:42:32)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/egg-development/app/middleware/egg_loader_trace.js:9:56
+    at dispatch (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-compose/index.js:42:32)
+    at i18n (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-i18n/app/middleware/i18n.js:13:12)
+    at dispatch (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-compose/index.js:42:32)
+    at dispatch (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-compose/index.js:42:32)
+    at dta (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/dta.js:12:12)
+    at dispatch (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-compose/index.js:42:32) {
+  name: 'UnauthorizedError',
+  message: 'No authorization token was found',
+  code: 'credentials_required',
+  status: 401,
+  inner: { message: 'No authorization token was found' }
+}
+2020-04-18 17:38:09,637 ERROR 44297 [-/127.0.0.1/-/10014ms POST /node/user/login] login service error: Error: connect ETIMEDOUT
+    at PoolConnection.Connection._handleConnectTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:409:13)
+    at Object.onceWrapper (events.js:417:28)
+    at Socket.emit (events.js:311:20)
+    at Socket._onTimeout (net.js:478:8)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: SELECT * FROM `user` WHERE `account` = 'cai' LIMIT 0, 1 {
+  errorno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  syscall: 'connect',
+  fatal: true
+}
+2020-04-18 17:38:09,643 ERROR 44297 [-/127.0.0.1/-/10021ms POST /node/user/login] login-----: Error: connect ETIMEDOUT
+    at PoolConnection.Connection._handleConnectTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:409:13)
+    at Object.onceWrapper (events.js:417:28)
+    at Socket.emit (events.js:311:20)
+    at Socket._onTimeout (net.js:478:8)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: SELECT * FROM `user` WHERE `account` = 'cai' LIMIT 0, 1 {
+  errorno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  syscall: 'connect',
+  fatal: true
+}
+2020-04-18 17:38:17,935 ERROR 44297 [-/undefined/-/20041ms POST /node/user/login] login service error: Error: Handshake inactivity timeout
+    at Handshake.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:160:17)
+    at Handshake.emit (events.js:311:20)
+    at Handshake._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/sequences/Sequence.js:124:8)
+    at Timer._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Timer.js:32:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.releaseConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:157:10)
+    at Pool._removeConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:277:8)
+    sql: SELECT * FROM `user` WHERE `account` = 'cai' LIMIT 0, 1 {
+  code: 'PROTOCOL_SEQUENCE_TIMEOUT',
+  fatal: true,
+  timeout: 10000
+}
+2020-04-18 17:38:17,937 ERROR 44297 [-/undefined/-/20044ms POST /node/user/login] login-----: Error: Handshake inactivity timeout
+    at Handshake.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:160:17)
+    at Handshake.emit (events.js:311:20)
+    at Handshake._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/sequences/Sequence.js:124:8)
+    at Timer._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Timer.js:32:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.releaseConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:157:10)
+    at Pool._removeConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:277:8)
+    sql: SELECT * FROM `user` WHERE `account` = 'cai' LIMIT 0, 1 {
+  code: 'PROTOCOL_SEQUENCE_TIMEOUT',
+  fatal: true,
+  timeout: 10000
+}
+2020-04-18 18:15:32,592 ERROR 44714 [-/127.0.0.1/-/45ms GET /socket.io/?room=929975&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEifSwiaWF0IjoxNTg3MTM5OTczLCJleHAiOjE1ODcxNDM1NzN9.ylMZwcO3zJBv0cEiCzqUN5kbMlg0XZMC-x9x2Q_Oh14&EIO=3&transport=websocket] room service tick null
+2020-04-18 18:17:04,321 ERROR 44714 [-/127.0.0.1/-/12ms GET /socket.io/?room=929975&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEifSwiaWF0IjoxNTg3MTM5OTczLCJleHAiOjE1ODcxNDM1NzN9.ylMZwcO3zJBv0cEiCzqUN5kbMlg0XZMC-x9x2Q_Oh14&EIO=3&transport=websocket] room service tick null
+2020-04-18 18:39:31,788 ERROR 44850 [-/127.0.0.1/-/24ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIn0sImlhdCI6MTU4NzIwMjc3MCwiZXhwIjoxNTg3MjA2MzcwfQ.8Pf5WDBNIU9FCPEJmOoOLzbFEYkM_FMg-Z0IeyRfssc&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:17:48,958 ERROR 45196 [-/127.0.0.1/-/1ms GET /] nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at PoolConnection.Connection._handleConnectTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:409:13)
+    at Object.onceWrapper (events.js:417:28)
+    at Socket.emit (events.js:311:20)
+    at Socket._onTimeout (net.js:478:8)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: select now() as currentTime;
+errorno: "ETIMEDOUT"
+code: "ETIMEDOUT"
+syscall: "connect"
+fatal: true
+name: "ETIMEDOUTError"
+pid: 45196
+hostname: 192.168.0.104
+
+2020-04-18 21:18:28,859 ERROR 45220 [-/127.0.0.1/-/1ms GET /] nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at PoolConnection.Connection._handleConnectTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:409:13)
+    at Object.onceWrapper (events.js:417:28)
+    at Socket.emit (events.js:311:20)
+    at Socket._onTimeout (net.js:478:8)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: select now() as currentTime;
+errorno: "ETIMEDOUT"
+code: "ETIMEDOUT"
+syscall: "connect"
+fatal: true
+name: "ETIMEDOUTError"
+pid: 45220
+hostname: 192.168.0.104
+
+2020-04-18 21:19:36,800 ERROR 45257 [-/127.0.0.1/-/34ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEifSwiaWF0IjoxNTg3MjA1MzgyLCJleHAiOjE1ODcyMDg5ODJ9.pzbNJypC05Ee8YWE0U35I11CJe_z8kiU2RYjNwiY3TM&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:19:36,814 ERROR 45257 [-/127.0.0.1/-/28ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEifSwiaWF0IjoxNTg3MjA1MzgyLCJleHAiOjE1ODcyMDg5ODJ9.pzbNJypC05Ee8YWE0U35I11CJe_z8kiU2RYjNwiY3TM&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:19:36,835 ERROR 45257 [-/127.0.0.1/-/19ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEifSwiaWF0IjoxNTg3MjA1MzgyLCJleHAiOjE1ODcyMDg5ODJ9.pzbNJypC05Ee8YWE0U35I11CJe_z8kiU2RYjNwiY3TM&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:19:36,850 ERROR 45257 [-/127.0.0.1/-/9ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEifSwiaWF0IjoxNTg3MjA1MzgyLCJleHAiOjE1ODcyMDg5ODJ9.pzbNJypC05Ee8YWE0U35I11CJe_z8kiU2RYjNwiY3TM&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:19:36,852 ERROR 45257 [-/127.0.0.1/-/6ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEifSwiaWF0IjoxNTg3MjA1MzgyLCJleHAiOjE1ODcyMDg5ODJ9.pzbNJypC05Ee8YWE0U35I11CJe_z8kiU2RYjNwiY3TM&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:19:36,857 ERROR 45257 [-/127.0.0.1/-/9ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEifSwiaWF0IjoxNTg3MjA1MzgyLCJleHAiOjE1ODcyMDg5ODJ9.pzbNJypC05Ee8YWE0U35I11CJe_z8kiU2RYjNwiY3TM&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:19:41,019 ERROR 45257 [-/127.0.0.1/-/7ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIn0sImlhdCI6MTU4NzIwNTA2OSwiZXhwIjoxNTg3MjA4NjY5fQ.utpvl1Ub8OtCOOibSffU1R_5ooYbyha-tS-ng-VYmpA&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:19:45,446 ERROR 45257 [-/127.0.0.1/-/4ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEifSwiaWF0IjoxNTg3MjA1MzgyLCJleHAiOjE1ODcyMDg5ODJ9.pzbNJypC05Ee8YWE0U35I11CJe_z8kiU2RYjNwiY3TM&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:20:17,560 ERROR 45257 [-/127.0.0.1/-/6ms GET /socket.io/?room=134216&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIn0sImlhdCI6MTU4NzIwNTA2OSwiZXhwIjoxNTg3MjA4NjY5fQ.utpvl1Ub8OtCOOibSffU1R_5ooYbyha-tS-ng-VYmpA&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:22:53,052 ERROR 45257 [-/127.0.0.1/-/2ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VyX2lkIjozfSwiaWF0IjoxNTg3MjE2MDI5LCJleHAiOjE1ODcyMTk2Mjl9.YMj4yujsyMGM1F-HSIxsToG7t_G8VTij51kuNk0qi1w&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:23:04,866 ERROR 45257 [-/127.0.0.1/-/1ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VyX2lkIjozfSwiaWF0IjoxNTg3MjE2MDI5LCJleHAiOjE1ODcyMTk2Mjl9.YMj4yujsyMGM1F-HSIxsToG7t_G8VTij51kuNk0qi1w&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:26:20,304 ERROR 45291 [-/127.0.0.1/-/4ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VyX2lkIjozfSwiaWF0IjoxNTg3MjE2MDI5LCJleHAiOjE1ODcyMTk2Mjl9.YMj4yujsyMGM1F-HSIxsToG7t_G8VTij51kuNk0qi1w&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:31:30,778 ERROR 45375 [-/127.0.0.1/-/6ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VyX2lkIjozfSwiaWF0IjoxNTg3MjE2MDI5LCJleHAiOjE1ODcyMTk2Mjl9.YMj4yujsyMGM1F-HSIxsToG7t_G8VTij51kuNk0qi1w&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:32:39,762 ERROR 45375 [-/127.0.0.1/-/2ms GET /socket.io/?room=804189&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VyX2lkIjozfSwiaWF0IjoxNTg3MjE2MDI5LCJleHAiOjE1ODcyMTk2Mjl9.YMj4yujsyMGM1F-HSIxsToG7t_G8VTij51kuNk0qi1w&EIO=3&transport=websocket] room service tick null
+2020-04-18 21:32:55,118 ERROR 45375 nodejs.TypeError: Cannot read property 'call' of undefined (uncaughtException throw 1 times on pid:45375)
+    at Socket.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-socket.io/lib/io.js:104:23)
+    at Socket.emit (events.js:311:20)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/socket.io/lib/socket.js:528:12
+    at processTicksAndRejections (internal/process/task_queues.js:79:11)
+
+pid: 45375
+hostname: 192.168.0.104
+
+2020-04-18 21:34:56,733 ERROR 45395 nodejs.TypeError: Cannot read property 'call' of undefined (uncaughtException throw 1 times on pid:45395)
+    at Socket.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-socket.io/lib/io.js:104:23)
+    at Socket.emit (events.js:311:20)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/socket.io/lib/socket.js:528:12
+    at processTicksAndRejections (internal/process/task_queues.js:79:11)
+
+pid: 45395
+hostname: 192.168.0.104
+
+2020-04-18 22:22:58,078 ERROR 45505 nodejs.ClusterClientNoResponseError: client no response in 74702ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 45505
+hostname: 192.168.0.104
+
+2020-04-18 22:59:04,929 ERROR 45505 nodejs.ClusterClientNoResponseError: client no response in 2126888ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 45505
+hostname: 192.168.0.104
+
+2020-04-18 22:59:40,117 ERROR 45521 [-/127.0.0.1/-/21ms GET /socket.io/?room=508810&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3MjE4MzMyLCJleHAiOjE1ODcyMjE5MzJ9.UsxrDW65P8IS8At_1Hr9VxU4F1ttjW4wGA_tWoqhGdk&EIO=3&transport=websocket] room service tick null
+2020-04-18 23:00:07,878 ERROR 45521 [-/127.0.0.1/-/3ms GET /socket.io/?room=508810&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODcyMTgzNjAsImV4cCI6MTU4NzIyMTk2MH0.-RXsh2rGbQqknxH7Xm_JDoEAQNNW9NpsYIeJxgS9vdI&EIO=3&transport=websocket] room service tick null
+2020-04-18 23:39:39,817 ERROR 45505 nodejs.ClusterClientNoResponseError: client no response in 2354819ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 45505
+hostname: 192.168.0.104
+
+2020-04-19 01:27:30,630 ERROR 45505 nodejs.ClusterClientNoResponseError: client no response in 6450790ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 45505
+hostname: 192.168.0.104
+
+2020-04-19 03:15:39,008 ERROR 45505 nodejs.ClusterClientNoResponseError: client no response in 6428187ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 45505
+hostname: 192.168.0.104
+
+2020-04-19 04:24:30,344 ERROR 45505 nodejs.ClusterClientNoResponseError: client no response in 4091053ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 45505
+hostname: 192.168.0.104
+
+2020-04-19 06:12:42,072 ERROR 45505 nodejs.ClusterClientNoResponseError: client no response in 6451702ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 45505
+hostname: 192.168.0.104
+
+2020-04-19 07:44:48,928 ERROR 45505 nodejs.ClusterClientNoResponseError: client no response in 5486822ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 45505
+hostname: 192.168.0.104
+

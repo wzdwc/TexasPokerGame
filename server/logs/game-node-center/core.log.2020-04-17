@@ -1,0 +1,199 @@
+2020-04-14 22:10:47,071 INFO 36443 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-04-14 22:10:47,096 INFO 36443 [egg-multipart] stream mode enable
+2020-04-14 22:10:47,154 INFO 36443 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-04-14 22:10:47,176 INFO 36443 [egg-mysql] connecting root@127.0.0.1:3306/poker
+2020-04-14 22:10:47,342 INFO 36443 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-04-14 22:10:47,343 INFO 36443 [egg-security] use noopen middleware
+2020-04-14 22:10:47,344 INFO 36443 [egg-security] use nosniff middleware
+2020-04-14 22:10:47,345 INFO 36443 [egg-security] use xssProtection middleware
+2020-04-14 22:10:47,345 INFO 36443 [egg-security] use xframe middleware
+2020-04-14 22:10:47,346 INFO 36443 [egg-security] use dta middleware
+2020-04-14 22:10:47,346 INFO 36443 [egg-security] compose 5 middlewares into one security middleware
+2020-04-14 22:10:47,355 INFO 36443 [egg:core] dump config after load, 6ms
+2020-04-14 22:10:47,370 INFO 36443 [egg-redis] client connect success
+2020-04-14 22:10:47,380 ERROR 36443 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 36443
+hostname: 192.168.0.100
+
+2020-04-14 22:10:47,380 ERROR 36443 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 36443
+hostname: 192.168.0.100
+
+2020-04-14 22:10:47,390 ERROR 36443 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 36443
+hostname: 192.168.0.100
+
+2020-04-14 22:10:47,391 ERROR 36443 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 36443
+hostname: 192.168.0.100
+
+2020-04-14 22:10:47,394 INFO 36443 [egg-redis] instance[0] status OK, client ready
+2020-04-14 22:10:47,400 INFO 36443 [egg-watcher:application] watcher start success
+2020-04-14 22:10:47,434 INFO 36443 [egg-mysql] instance[0] status OK, rds currentTime: Tue Apr 14 2020 22:10:47 GMT+0800 (China Standard Time)
+2020-04-14 22:10:47,458 INFO 36443 [egg:core] dump config after ready, 5ms
+2020-04-17 23:56:22,569 INFO 39851 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-04-17 23:56:22,595 INFO 39851 [egg-multipart] stream mode enable
+2020-04-17 23:56:22,646 INFO 39851 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-04-17 23:56:22,664 INFO 39851 [egg-mysql] connecting root@127.0.0.1:3306/poker
+2020-04-17 23:56:22,846 INFO 39851 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-04-17 23:56:22,849 INFO 39851 [egg-security] use noopen middleware
+2020-04-17 23:56:22,850 INFO 39851 [egg-security] use nosniff middleware
+2020-04-17 23:56:22,851 INFO 39851 [egg-security] use xssProtection middleware
+2020-04-17 23:56:22,852 INFO 39851 [egg-security] use xframe middleware
+2020-04-17 23:56:22,853 INFO 39851 [egg-security] use dta middleware
+2020-04-17 23:56:22,853 INFO 39851 [egg-security] compose 5 middlewares into one security middleware
+2020-04-17 23:56:22,862 INFO 39851 [egg:core] dump config after load, 6ms
+2020-04-17 23:56:22,880 INFO 39851 [egg-redis] client connect success
+2020-04-17 23:56:22,887 ERROR 39851 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39851
+hostname: 192.168.0.104
+
+2020-04-17 23:56:22,888 ERROR 39851 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39851
+hostname: 192.168.0.104
+
+2020-04-17 23:56:22,888 ERROR 39851 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39851
+hostname: 192.168.0.104
+
+2020-04-17 23:56:22,888 ERROR 39851 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39851
+hostname: 192.168.0.104
+
+2020-04-17 23:56:22,890 INFO 39851 [egg-redis] instance[0] status OK, client ready
+2020-04-17 23:56:22,896 INFO 39851 [egg-watcher:application] watcher start success
+2020-04-17 23:56:22,915 INFO 39851 [egg-mysql] instance[0] status OK, rds currentTime: Fri Apr 17 2020 23:56:22 GMT+0800 (China Standard Time)
+2020-04-17 23:56:22,938 INFO 39851 [egg:core] dump config after ready, 7ms
+2020-04-17 23:56:55,608 INFO 39899 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-04-17 23:56:55,630 INFO 39899 [egg-multipart] stream mode enable
+2020-04-17 23:56:55,687 INFO 39899 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-04-17 23:56:55,704 INFO 39899 [egg-mysql] connecting root@47.104.172.100:3306/poker
+2020-04-17 23:56:55,862 INFO 39899 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-04-17 23:56:55,864 INFO 39899 [egg-security] use noopen middleware
+2020-04-17 23:56:55,866 INFO 39899 [egg-security] use nosniff middleware
+2020-04-17 23:56:55,866 INFO 39899 [egg-security] use xssProtection middleware
+2020-04-17 23:56:55,867 INFO 39899 [egg-security] use xframe middleware
+2020-04-17 23:56:55,868 INFO 39899 [egg-security] use dta middleware
+2020-04-17 23:56:55,868 INFO 39899 [egg-security] compose 5 middlewares into one security middleware
+2020-04-17 23:56:55,876 INFO 39899 [egg:core] dump config after load, 6ms
+2020-04-17 23:56:55,888 INFO 39899 [egg-redis] client connect success
+2020-04-17 23:56:55,891 ERROR 39899 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39899
+hostname: 192.168.0.104
+
+2020-04-17 23:56:55,892 ERROR 39899 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39899
+hostname: 192.168.0.104
+
+2020-04-17 23:56:55,892 ERROR 39899 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39899
+hostname: 192.168.0.104
+
+2020-04-17 23:56:55,892 ERROR 39899 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39899
+hostname: 192.168.0.104
+
+2020-04-17 23:56:55,894 INFO 39899 [egg-redis] instance[0] status OK, client ready
+2020-04-17 23:56:55,895 INFO 39899 [egg-watcher:application] watcher start success
+2020-04-17 23:56:56,095 INFO 39899 [egg-mysql] instance[0] status OK, rds currentTime: Fri Apr 17 2020 23:56:56 GMT+0800 (China Standard Time)
+2020-04-17 23:56:56,130 INFO 39899 [egg:core] dump config after ready, 7ms
+2020-04-17 23:57:56,991 INFO 39967 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-04-17 23:57:57,018 INFO 39967 [egg-multipart] stream mode enable
+2020-04-17 23:57:57,039 INFO 39967 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-04-17 23:57:57,054 INFO 39967 [egg-mysql] connecting root@47.104.172.100:3306/poker
+2020-04-17 23:57:57,132 INFO 39967 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-04-17 23:57:57,134 INFO 39967 [egg-security] use noopen middleware
+2020-04-17 23:57:57,134 INFO 39967 [egg-security] use nosniff middleware
+2020-04-17 23:57:57,135 INFO 39967 [egg-security] use xssProtection middleware
+2020-04-17 23:57:57,135 INFO 39967 [egg-security] use xframe middleware
+2020-04-17 23:57:57,135 INFO 39967 [egg-security] use dta middleware
+2020-04-17 23:57:57,135 INFO 39967 [egg-security] compose 5 middlewares into one security middleware
+2020-04-17 23:57:57,144 INFO 39967 [egg:core] dump config after load, 6ms
+2020-04-17 23:57:57,157 INFO 39967 [egg-redis] client connect success
+2020-04-17 23:57:57,162 ERROR 39967 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39967
+hostname: 192.168.0.104
+
+2020-04-17 23:57:57,163 ERROR 39967 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39967
+hostname: 192.168.0.104
+
+2020-04-17 23:57:57,164 ERROR 39967 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39967
+hostname: 192.168.0.104
+
+2020-04-17 23:57:57,164 ERROR 39967 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39967
+hostname: 192.168.0.104
+
+2020-04-17 23:57:57,166 INFO 39967 [egg-redis] instance[0] status OK, client ready
+2020-04-17 23:57:57,168 INFO 39967 [egg-watcher:application] watcher start success
+2020-04-17 23:57:57,536 INFO 39967 [egg-mysql] instance[0] status OK, rds currentTime: Fri Apr 17 2020 23:57:57 GMT+0800 (China Standard Time)
+2020-04-17 23:57:57,553 INFO 39967 [egg:core] dump config after ready, 7ms
+2020-04-18 00:00:00,117 INFO 39967 [egg-logrotator] clean all log before 31 days
+2020-04-18 00:00:01,016 INFO 39967 [egg-logrotator] broadcast log-reload
+2020-04-18 00:00:01,017 INFO 39967 [egg-logrotator] rotate files success by DayRotator, files ["/Users/jorky/code/TexasPokerGame/server/logs/game-node-center/error.log -> /Users/jorky/code/TexasPokerGame/server/logs/game-node-center/error.log.2020-04-17","/Users/jorky/code/TexasPokerGame/server/logs/game-node-center/app.log -> /Users/jorky/code/TexasPokerGame/server/logs/game-node-center/app.log.2020-04-17","/Users/jorky/code/TexasPokerGame/server/logs/ELKLog/info.log -> /Users/jorky/code/TexasPokerGame/server/logs/ELKLog/info.log.2020-04-17","/Users/jorky/code/TexasPokerGame/server/logs/ELKLog/error.log -> /Users/jorky/code/TexasPokerGame/server/logs/ELKLog/error.log.2020-04-17","/Users/jorky/code/TexasPokerGame/server/logs/game-node-center/core.log -> /Users/jorky/code/TexasPokerGame/server/logs/game-node-center/core.log.2020-04-17","/Users/jorky/code/TexasPokerGame/server/logs/game-node-center/egg-schedule.log -> /Users/jorky/code/TexasPokerGame/server/logs/game-node-center/egg-schedule.log.2020-04-17","/Users/jorky/code/TexasPokerGame/server/logs/game-node-center/agent.log -> /Users/jorky/code/TexasPokerGame/server/logs/game-node-center/agent.log.2020-04-17"]

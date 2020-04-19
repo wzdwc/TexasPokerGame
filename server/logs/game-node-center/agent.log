@@ -1,12 +1,1 @@
-2020-04-14 22:10:45,972 INFO 36442 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
-2020-04-14 22:10:45,983 INFO 36442 [egg:core] dump config after load, 6ms
-2020-04-14 22:10:46,034 INFO 36442 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
-2020-04-14 22:10:46,034 INFO 36442 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
-2020-04-14 22:10:46,035 INFO 36442 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
-2020-04-14 22:10:46,035 INFO 36442 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
-2020-04-14 22:10:46,035 INFO 36442 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
-2020-04-14 22:10:46,035 INFO 36442 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
-2020-04-14 22:10:46,036 INFO 36442 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
-2020-04-14 22:10:46,036 INFO 36442 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
-2020-04-14 22:10:46,037 INFO 36442 [egg-watcher:agent] watcher start success
-2020-04-14 22:10:46,045 INFO 36442 [egg:core] dump config after ready, 5ms
+2020-04-19 09:15:14,979 INFO 45505 [egg-logrotator] agent logger reload: got log-reload message

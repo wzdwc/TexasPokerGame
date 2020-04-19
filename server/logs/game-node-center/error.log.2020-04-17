@@ -1,0 +1,128 @@
+2020-04-14 22:10:47,379 ERROR 36443 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 36443
+hostname: 192.168.0.100
+
+2020-04-14 22:10:47,380 ERROR 36443 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 36443
+hostname: 192.168.0.100
+
+2020-04-14 22:10:47,381 ERROR 36443 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 36443
+hostname: 192.168.0.100
+
+2020-04-14 22:10:47,390 ERROR 36443 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 36443
+hostname: 192.168.0.100
+
+2020-04-17 23:56:22,886 ERROR 39851 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39851
+hostname: 192.168.0.104
+
+2020-04-17 23:56:22,887 ERROR 39851 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39851
+hostname: 192.168.0.104
+
+2020-04-17 23:56:22,888 ERROR 39851 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39851
+hostname: 192.168.0.104
+
+2020-04-17 23:56:22,888 ERROR 39851 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39851
+hostname: 192.168.0.104
+
+2020-04-17 23:56:55,891 ERROR 39899 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39899
+hostname: 192.168.0.104
+
+2020-04-17 23:56:55,891 ERROR 39899 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39899
+hostname: 192.168.0.104
+
+2020-04-17 23:56:55,892 ERROR 39899 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39899
+hostname: 192.168.0.104
+
+2020-04-17 23:56:55,892 ERROR 39899 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39899
+hostname: 192.168.0.104
+
+2020-04-17 23:57:57,162 ERROR 39967 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39967
+hostname: 192.168.0.104
+
+2020-04-17 23:57:57,163 ERROR 39967 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39967
+hostname: 192.168.0.104
+
+2020-04-17 23:57:57,163 ERROR 39967 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39967
+hostname: 192.168.0.104
+
+2020-04-17 23:57:57,164 ERROR 39967 nodejs.ReplyError: Ready check failed: NOAUTH Authentication required.
+    at parseError (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:193:12)
+    at parseType (/Users/jorky/code/TexasPokerGame/server/node_modules/redis/node_modules/redis-parser/lib/parser.js:303:14)
+command: "INFO"
+code: "NOAUTH"
+pid: 39967
+hostname: 192.168.0.104
+

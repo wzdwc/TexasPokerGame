@@ -20,7 +20,6 @@ export class RoomService extends BaseService {
 
   async findByRoomNumber(number: string): Promise<boolean> {
     const roomNumber = await this.redis.get(`room:${number}`);
-    console.log(roomNumber, 'redis', number);
     return !!roomNumber;
   }
 
