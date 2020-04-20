@@ -8,22 +8,37 @@ describe('test/app/core/pokerGame.test.ts', () => {
     {
       userId: '1',
       counter: 200,
+      nick_name: '1',
+      account: '',
+      socketId: '',
     },
     {
       userId: '2',
       counter: 200,
+      nick_name: '1',
+      account: '',
+      socketId: '',
     },
     {
       userId: '3',
       counter: 50,
+      nick_name: '1',
+      account: '',
+      socketId: '',
     },
     {
       userId: '4',
       counter: 400,
+      nick_name: '1',
+      account: '',
+      socketId: '',
     },
     {
       userId: '5',
       counter: 1200,
+      nick_name: '1',
+      account: '',
+      socketId: '',
     },
   ];
 

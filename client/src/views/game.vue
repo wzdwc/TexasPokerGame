@@ -9,6 +9,8 @@
       </div>
     </div>
     <div class="game-body">
+      <div class="common-card">commonCard:{{commonCardString}}</div>
+      <div class="hand-card">handCard:{{handCardString}}</div>
       <div class="btn play"><span @click="play">play game</span></div>
     </div>
     <div class="buy-in">
@@ -48,10 +50,32 @@
     public socket: any = null;
     private users: IUser[] = [];
     private joinMsg = '';
+    private handCard = [];
+    private commonCard = [];
     private buyInSize = 0;
 
     get roomId() {
       return this.$route.params.roomNumber;
+    }
+
+    get commonCardString() {
+      const cardNumber = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
+      const color = ['♦', '♣', '♥', '♠'];
+      return this.commonCard.map((c: string) => {
+        const cNumber = c.charCodeAt(0) - 97;
+        const cColor = Number(c[1]) - 1;
+        return `${cardNumber[cNumber]}${color[cColor]}`;
+      });
+    }
+
+    get handCardString() {
+      const cardNumber = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
+      const color = ['♦', '♣', '♥', '♠'];
+      return this.handCard.map((c: string) => {
+        const cNumber = c.charCodeAt(0) - 97;
+        const cColor = Number(c[1]) - 1;
+        return `${cardNumber[cNumber]}${color[cColor]}`;
+      });
     }
 
     private socketInit() {
@@ -71,8 +95,12 @@
         log('#connect,', id, this.socket);
 
         // 监听自身 id 以实现 p2p 通讯
-        this.socket.on(id, (msg: IMsg) => {
+        this.socket.on(id, (msg: any) => {
           log('#receive,', msg);
+          const data = msg.data;
+          if (data.action === 'handCard') {
+            this.handCard = data.payload.handCard;
+          }
         });
       });
 
@@ -84,6 +112,10 @@
         }
         if (msg.action === 'players') {
           this.users = JSON.parse(msg.message);
+          console.log('users', JSON.parse(msg.message));
+        }
+        if (msg.action === 'commonCard') {
+          this.commonCard = JSON.parse(msg.message);
           console.log('users', JSON.parse(msg.message));
         }
       });
@@ -105,18 +137,19 @@
     private async buyIn() {
       try {
         this.emit('buyIn', {
-          buyInSize: this.buyInSize
+          buyInSize: this.buyInSize,
         });
       } catch (e) {
         console.log(e);
       }
     }
-    play() {
-      console.log('play')
-      this.emit('playGame')
+
+    private play() {
+      console.log('play');
+      this.emit('playGame');
     }
 
-    emit(eventType: string, data: any = {}) {
+    private emit(eventType: string, data: any = {}) {
       this.socket.emit(eventType, {
         target: '',
         payload: {

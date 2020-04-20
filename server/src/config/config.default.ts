@@ -78,7 +78,7 @@ export default (appInfo: EggAppInfo) => {
   config.io = {
     namespace: {
       '/socket': {
-        connectionMiddleware: [ 'auth' ],
+        connectionMiddleware: [ 'auth', 'join', 'leave' ],
         packetMiddleware: [],
       },
     },

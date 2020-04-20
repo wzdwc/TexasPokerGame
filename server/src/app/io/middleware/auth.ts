@@ -1,7 +1,5 @@
 import { Context } from 'midway';
 import { ITickMsg } from '../../../interface/ITickMsg';
-import { IGameRoom } from '../../../interface/IGameRoom';
-import { IPlayer } from '../../core/Player';
 
 export default function auth(): any {
   return async (ctx: Context, next: () => Promise<any>) => {
@@ -23,62 +21,8 @@ export default function auth(): any {
 
     function leave() {
     }
-
-    function join(roomNumber: string, user: IPlayer, nsp: any, socket: any) {
-      const hasRoom = nsp.gameRoom.find((r: IGameRoom) => r.number === roomNumber);
-      let gameRoom: IGameRoom = {
-        number: roomNumber,
-        roomInfo: {
-          players: [],
-          game: null,
-        },
-      };
-      if (!hasRoom) {
-        nsp.gameRoom.push(gameRoom);
-        gameRoom.roomInfo = {
-          players: [{
-            ...user,
-            counter: 0,
-          }],
-          game: null,
-        };
-        socket.join(roomNumber);
-      } else {
-        gameRoom = nsp.gameRoom.find((r: IGameRoom) => r.number === roomNumber);
-        const player = gameRoom.roomInfo.players.find((p: IPlayer) => p.account === user.account);
-        if (!player) {
-          const player = {
-              ...user,
-              counter: 0,
-          };
-          gameRoom.roomInfo.players.push(player);
-          socket.join(roomNumber);
-        }
-      }
-      console.log('players', JSON.stringify(gameRoom.roomInfo.players));
-      updatePlayer(roomNumber, `User(${user.nick_name}) joined.`, 'join', nsp);
-      updatePlayer(roomNumber, JSON.stringify(gameRoom.roomInfo.players), 'players', nsp);
-    }
-
-    function updatePlayer(roomNumber: string, message: string, action: string, nsp: any) {
-      // 在线列表
-      nsp.adapter.clients([ roomNumber ], (err: any, clients: any) => {
-        // 更新在线用户列表
-        nsp.to(roomNumber).emit('online', {
-          clients,
-          action,
-          target: 'participator',
-          message,
-        });
-      });
-    }
-
     try {
-      // room缓存信息是否存在
-      if (!nsp.gameRoom) {
-        nsp.gameRoom = [];
-      }
-      const userInfo = await app.jwt.verify(token);
+      await app.jwt.verify(token);
       // const { nick_name: userName } = userInfo.user;
 
       // 检查房间是否存在，不存在则踢出用户
@@ -91,7 +35,6 @@ export default function auth(): any {
         }, nsp, socket);
         return;
       }
-      join(room, userInfo.user, nsp, socket);
       console.log('play------------', room);
       await next();
       leave();

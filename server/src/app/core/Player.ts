@@ -4,6 +4,7 @@ export interface IPlayer {
   userId: string;
   nick_name: string;
   account: string;
+  socketId: string;
 }
 
 export enum ECommand {
@@ -29,6 +30,7 @@ export class Player {
   position: number = 0;
   counter: number = 0;
   userId: string = '';
+  socketId: string = '';
   actionSize: number = 0;
   type: string = EPlayerType.DEFAULT;
   evPot: number = Infinity;
@@ -39,6 +41,7 @@ export class Player {
     this.counter = config.counter;
     this.position = config.position || 0;
     this.userId = config.userId;
+    this.socketId = config.socketId;
     if (this.position === 0) {
       this.type = EPlayerType.DEALER;
     }

@@ -5,10 +5,12 @@ import { Poker } from './Poker';
 import { ECommand, EPlayerType, IPlayer, Player } from './Player';
 import { PokerStyle } from './PokerStyle';
 import { ILinkNode, Link } from '../../utils/Link';
+import Timeout = NodeJS.Timeout;
 
 interface IPokerGame {
   users: IPlayer[];
   smallBlind: number;
+  updateCommonCard: () => void;
 }
 
 export enum EGameStatus {
@@ -35,13 +37,16 @@ export class PokerGame {
   playerSize: number;
   prevSize: number;
   prevPot: number;
+  actionTimeOut: Timeout;
   allInPlayers: Player[] = [];
   currActionAllinPlayer: Player[] = [];
+  updateCommonCard: () => void;
   hasStraddle = false;
   winner: Player[][] = [];
 
   constructor(config: IPokerGame) {
     this.smallBlind = config.smallBlind;
+    this.updateCommonCard = config.updateCommonCard;
     this.init(config.users);
   }
 
@@ -56,7 +61,7 @@ export class PokerGame {
     this.playerSize = users.length;
     // set SB, BB,Straddle
     this.getBlind();
-    // utg
+    // UTG
     this.currPlayer = this.playerLink.getNode(3);
   }
 
@@ -143,9 +148,19 @@ export class PokerGame {
           && command === ECommand.CHECK)) {
         // console.log('ccc------', this.currPlayer, nextPlayer, command, this.playerSize);
         this.actionComplete();
+        clearTimeout(this.actionTimeOut);
         return;
       }
       this.currPlayer = this.currPlayer.next;
+      // action time is 60s
+      clearTimeout(this.actionTimeOut);
+      this.actionTimeOut = setTimeout(async () => {
+        if (command === ECommand.CHECK || command === ECommand.FOLD) {
+          this.action('check');
+        } else {
+          this.action('fold');
+        }
+      }, 6000);
     } else {
       throw 'incorrect action flow';
     }
@@ -194,6 +209,8 @@ export class PokerGame {
     console.log(this.playerSize, 'playerS-------', this.status);
     if (this.status === EGameStatus.GAME_SHOWDOWN || this.playerSize <= 1) {
       this.gameOver();
+    } else {
+      this.sendCard();
     }
   }
   setSate() {
@@ -219,18 +236,21 @@ export class PokerGame {
     if (this.status === EGameStatus.GAME_START) {
       this.setHandCard();
       this.setSate();
+      this.updateCommonCard();
       return;
     }
     if (this.status === EGameStatus.GAME_FLOP) {
       this.fireCards.push(this.poker.getCard());
       this.flop();
       this.setSate();
+      this.updateCommonCard();
       return;
     }
     if (this.status === EGameStatus.GAME_TURN || this.status === EGameStatus.GAME_RIVER) {
       this.fireCards.push(this.poker.getCard());
       this.commonCard.push(this.poker.getCard());
       this.setSate();
+      this.updateCommonCard();
       return;
     }
     throw 'error flow sendCard';

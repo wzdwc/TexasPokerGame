@@ -80,7 +80,7 @@ export class AccountService extends BaseService implements IAccountService {
            userId: id,
           },
         },
-    this.jwtConfig.secret, { expiresIn: 60 * 60 });
+    this.jwtConfig.secret, { expiresIn: 60 * 60 * 6 });
     this.ctx.logger.info(`AccountService getToken token--${token}`);
     return token;
   }
