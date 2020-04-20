@@ -88,6 +88,9 @@ export class PokerGame {
   play() {
     this.status = EGameStatus.GAME_START;
     this.sendCard();
+    this.actionTimeOut = setTimeout(async () => {
+      this.action('fold');
+    }, 6000);
   }
 
   action(commandString: string) {
@@ -147,6 +150,8 @@ export class PokerGame {
           && this.currPlayer.node.type === EPlayerType.BIG_BLIND
           && command === ECommand.CHECK)) {
         // console.log('ccc------', this.currPlayer, nextPlayer, command, this.playerSize);
+        console.log('actionComplete');
+
         this.actionComplete();
         clearTimeout(this.actionTimeOut);
         return;
@@ -154,6 +159,7 @@ export class PokerGame {
       this.currPlayer = this.currPlayer.next;
       // action time is 60s
       clearTimeout(this.actionTimeOut);
+      console.log('action auto');
       this.actionTimeOut = setTimeout(async () => {
         if (command === ECommand.CHECK || command === ECommand.FOLD) {
           this.action('check');
@@ -209,8 +215,6 @@ export class PokerGame {
     console.log(this.playerSize, 'playerS-------', this.status);
     if (this.status === EGameStatus.GAME_SHOWDOWN || this.playerSize <= 1) {
       this.gameOver();
-    } else {
-      this.sendCard();
     }
   }
   setSate() {
@@ -236,7 +240,6 @@ export class PokerGame {
     if (this.status === EGameStatus.GAME_START) {
       this.setHandCard();
       this.setSate();
-      this.updateCommonCard();
       return;
     }
     if (this.status === EGameStatus.GAME_FLOP) {

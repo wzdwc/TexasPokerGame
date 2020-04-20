@@ -10,6 +10,7 @@ class GameController extends BaseSocketController {
   async playGame() {
     const { room } = this.socket.handshake.query;
     console.log('play------------', room);
+    console.log('socket------------', this.socket.id);
     try {
       // const gameRecord: IGameRecord = {
       //   game_id: 0,
@@ -43,15 +44,15 @@ class GameController extends BaseSocketController {
         console.log('hand card', roomInfo.game.allPlayer);
         roomInfo.players.forEach(p => {
           if (roomInfo.game) {
-            console.log('game msg---------1');
+            // console.log('game msg---------1');
             const player = roomInfo.game.allPlayer.find(player => player.socketId === p.socketId);
-            console.log(player, 'game msg---------1');
+            // console.log(player, 'game msg---------1');
             if (player) {
               const msg = this.ctx.helper.parseMsg('handCard', {
                 handCard: player.handCard,
               }, { client: p.socketId });
-              console.log(msg, 'game msg---------');
-              this.socket.emit(p.socketId, msg);
+              console.log(msg, 'game msg---------', p.socketId);
+              this.nsp.emit(p.socketId, msg);
             }
           }
         });

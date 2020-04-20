@@ -42,7 +42,6 @@
         const { token } = result.data;
         cookie.set('token', token, {expires: 1});
         this.$router.replace({name: 'home'});
-        console.log(result);
       } catch (e) {
         console.log(e);
       }

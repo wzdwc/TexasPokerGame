@@ -22,6 +22,7 @@ export default function join(): any {
     const nsp = app.io.of('/socket');
     const query = socket.handshake.query;
     const { room, token } = query;
+    console.log('socket-----join', id);
     // room缓存信息是否存在
     if (!nsp.gameRooms) {
       nsp.gameRooms = [];
@@ -56,10 +57,12 @@ export default function join(): any {
             counter: 0,
           };
           gameRoom.roomInfo.players.push(player);
+        } else {
+          player.socketId = id;
         }
       }
       socket.join(room);
-      console.log('players', JSON.stringify(gameRoom.roomInfo.players));
+      // console.log('players', JSON.stringify(gameRoom.roomInfo.players));
       updatePlayer(room, `User(${user.nick_name}) joined.`, 'join', nsp);
       updatePlayer(room, JSON.stringify(gameRoom.roomInfo.players), 'players', nsp);
       // in the game, update hand cards
@@ -70,7 +73,7 @@ export default function join(): any {
           const msg = ctx.helper.parseMsg('handCard', {
             handCard: gamePlayer.handCard,
           }, { client: player.socketId });
-          console.log(msg, 'join: game msg---------2222222');
+          // console.log(msg, 'join: game msg---------2222222');
           socket.emit(id, msg);
         }
       }

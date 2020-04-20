@@ -1,0 +1,11 @@
+2020-04-21 00:28:45,512 ERROR 48633 [-/127.0.0.1/-/6ms GET /socket.io/?room=394598&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODczOTY2MDQsImV4cCI6MTU4NzQxODIwNH0.5eVb-sKMAuFF3x3t8wH3O8BeG3lhJUEwHWwYM64jgbE&EIO=3&transport=websocket] room service tick null
+2020-04-21 00:29:37,029 ERROR 48633 nodejs.unhandledRejectionError: incorrect action: check
+    at MidwayApplication._unhandledRejectionHandler (/Users/jorky/code/TexasPokerGame/server/node_modules/egg/lib/egg.js:344:24)
+    at process.emit (events.js:311:20)
+    at process.emit (/Users/jorky/code/TexasPokerGame/server/node_modules/source-map-support/source-map-support.js:485:21)
+    at processPromiseRejections (internal/process/promises.js:209:33)
+    at processTicksAndRejections (internal/process/task_queues.js:98:32)
+name: "unhandledRejectionError"
+pid: 48633
+hostname: 192.168.0.105
+

@@ -81,7 +81,7 @@
     private socketInit() {
       const token = cookie.get('token');
       const log = console.log;
-      this.socket = io('http://127.0.0.1:7001/socket', {
+      this.socket = io('http://192.168.0.105:7001/socket', {
         // 实际使用中可以在这里传递参数
         query: {
           room: this.roomId,
