@@ -9,3 +9,5 @@ name: "unhandledRejectionError"
 pid: 48633
 hostname: 192.168.0.105
 
+2020-04-21 23:04:55,154 ERROR 49495 [-/192.168.0.101/-/13ms GET /socket.io/?room=751675&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoSIsImFjY291bnQiOiJjYWkxMTEiLCJ1c2VySWQiOjJ9LCJpYXQiOjE1ODczOTk4ODQsImV4cCI6MTU4NzQyMTQ4NH0.CVCe19KN0vg_4m1-axLTR6pz7DQPRQkcOWvBN5mn6PE&EIO=3&transport=websocket] room service tick null
+2020-04-21 23:40:05,072 ERROR 49588 game already paling

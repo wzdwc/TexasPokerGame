@@ -3,6 +3,7 @@ import cookie from 'js-cookie';
 
 const request = async ({method = 'post' as Method, url = '', body = {}, timeout = 8000}) => {
   const origin = 'http://192.168.0.105:7001/node';
+  // const origin = 'http://172.22.72.70:7001/node';
   if (!url) {
     return Promise.reject('Request url is null!');
   }

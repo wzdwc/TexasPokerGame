@@ -54,6 +54,7 @@ export default class App extends Vue {}
       border-radius: 8px;
       padding: 5px 20px;
       display: inline-block;
+      margin: 10px;
     }
     b{
       display: inline-block;

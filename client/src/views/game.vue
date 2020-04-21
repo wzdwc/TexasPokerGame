@@ -9,8 +9,26 @@
       </div>
     </div>
     <div class="game-body">
+      <div class="pot">pot: {{pot}}</div>
       <div class="common-card">commonCard:{{commonCardString}}</div>
       <div class="hand-card">handCard:{{handCardString}}</div>
+      <div class="action">
+         <div class="action-type btn" v-show="isAction">
+           <span @click="action('check')">check</span>
+           <span @click="action('fold')">fold</span>
+           <span @click="action('call')">call</span>
+           <span @click="action('raise')">raise</span>
+         </div>
+         <div class="raise-size" v-show="isRaise">
+           <i @click="raise(pot / 3)">1/3 pot</i>
+           <i @click="raise(pot / 2)">1/2 pot</i>
+           <i @click="raise(pot / 4)">3/4 pot</i>
+           <i @click="raise(pot)">1 pot</i>
+           <i @click="raise(pot * 2)">2 pot</i>
+           <i @click="raise(pot * 3)">3 pot</i>
+           <i @click="raise(-1)">allin</i>
+         </div>
+      </div>
       <div class="btn play"><span @click="play">play game</span></div>
     </div>
     <div class="buy-in">
@@ -36,23 +54,39 @@
   interface IUser {
     counter: number;
     nick_name: string;
+    actionSize: number;
+    type: string;
+    userId?: number;
+  }
+
+  export enum ECommand {
+    CALL = 'call',
+    ALL_IN = 'allin',
+    RAISE = 'raise',
+    CHECK = 'check',
+    FOLD = 'fold',
   }
 
   interface IMsg {
     action: string;
     clients: string[];
     target: string;
-    message: string;
+    data: any;
   }
 
   @Component
   export default class Game extends Vue {
     public socket: any = null;
     private users: IUser[] = [];
+    private userInfo: any = {};
     private joinMsg = '';
     private handCard = [];
     private commonCard = [];
     private buyInSize = 0;
+    private pot = 0;
+    private prevSize = 0;
+    private isAction = false;
+    private isRaise = false;
 
     get roomId() {
       return this.$route.params.roomNumber;
@@ -78,10 +112,26 @@
       });
     }
 
+    private raise(size: number) {
+      if (size === -1) {
+        size = this.userInfo.counter;
+      }
+      this.emit('action', { command: `raise:${size}` });
+    }
+
+    private action(type: string) {
+      this.isAction = false;
+      if (type === ECommand.RAISE) {
+        this.isRaise = true;
+      }
+    }
+
     private socketInit() {
       const token = cookie.get('token');
       const log = console.log;
-      this.socket = io('http://192.168.0.105:7001/socket', {
+      // const origin = 'http://172.22.72.70:7001';
+      const origin = 'http://192.168.0.105:7001';
+      this.socket = io(`${origin}/socket`, {
         // 实际使用中可以在这里传递参数
         query: {
           room: this.roomId,
@@ -101,6 +151,9 @@
           if (data.action === 'handCard') {
             this.handCard = data.payload.handCard;
           }
+          if (data.action === 'userInfo') {
+            this.userInfo = data.payload;
+          }
         });
       });
 
@@ -108,15 +161,21 @@
       this.socket.on('online', (msg: IMsg) => {
         log('#online,', msg);
         if (msg.action === 'join') {
-          this.joinMsg = msg.message;
+          this.joinMsg = msg.data;
         }
         if (msg.action === 'players') {
-          this.users = JSON.parse(msg.message);
-          console.log('users', JSON.parse(msg.message));
+          this.users = msg.data.players;
         }
         if (msg.action === 'commonCard') {
-          this.commonCard = JSON.parse(msg.message);
-          console.log('users', JSON.parse(msg.message));
+          this.commonCard = msg.data.commonCard;
+          console.log('users', msg.data);
+        }
+        if (msg.action === 'gameInfo') {
+          this.users = msg.data.players;
+          this.pot = msg.data.pot;
+          this.prevSize = msg.data.prevSize;
+          this.isAction = !!(this.userInfo && this.userInfo.userId === msg.data.currPlayer.userId);
+          console.log('gameInfo', msg.data);
         }
       });
 
@@ -167,5 +226,20 @@
 <style lang="less"
        scoped>
   .game-container {
+    .raise-size{
+      i{
+        padding: 5px;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        font-style: normal;
+        font-size: 12px;
+        line-height: 30px;
+        border-radius: 50%;
+        border: 1px solid #bababa;
+        margin: 10px;
+        vertical-align: middle;
+      }
+    }
   }
 </style>

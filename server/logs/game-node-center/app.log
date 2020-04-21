@@ -87,3 +87,44 @@
   fetchEnd: 1587399884656
 }
 2020-04-21 00:28:45,512 ERROR 48633 [-/127.0.0.1/-/6ms GET /socket.io/?room=394598&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODczOTY2MDQsImV4cCI6MTU4NzQxODIwNH0.5eVb-sKMAuFF3x3t8wH3O8BeG3lhJUEwHWwYM64jgbE&EIO=3&transport=websocket] room service tick null
+2020-04-21 22:52:33,923 INFO 49450 [-/192.168.0.105/-/230ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3NDgwNzUzLCJleHAiOjE1ODc1MDIzNTN9.KxxH7Eiw4toDFNZGwaHSALgEbfIPT8Qjw-7-Hp6XllU
+2020-04-21 22:52:33,928 INFO 49450 [-/192.168.0.105/-/234ms POST /node/user/login] {
+  fetchStart: 1587480753710,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587480753927
+}
+2020-04-21 22:52:35,039 INFO 49450 [-/192.168.0.105/-/170ms POST /node/game/room] {
+  fetchStart: 1587480754871,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587480755038
+}
+2020-04-21 23:01:35,326 INFO 49495 [-/192.168.0.105/-/209ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODc0ODEyOTUsImV4cCI6MTU4NzUwMjg5NX0.04tWzzIEspNyYmtY-EzyesrnpVwD7zx-0zG7K9Rdb2s
+2020-04-21 23:01:35,331 INFO 49495 [-/192.168.0.105/-/213ms POST /node/user/login] {
+  fetchStart: 1587481295131,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587481295330
+}
+2020-04-21 23:04:55,154 ERROR 49495 [-/192.168.0.101/-/13ms GET /socket.io/?room=751675&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoSIsImFjY291bnQiOiJjYWkxMTEiLCJ1c2VySWQiOjJ9LCJpYXQiOjE1ODczOTk4ODQsImV4cCI6MTU4NzQyMTQ4NH0.CVCe19KN0vg_4m1-axLTR6pz7DQPRQkcOWvBN5mn6PE&EIO=3&transport=websocket] room service tick null
+2020-04-21 23:05:14,040 INFO 49495 [-/192.168.0.101/-/181ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoSIsImFjY291bnQiOiJjYWkxMTEiLCJ1c2VySWQiOjJ9LCJpYXQiOjE1ODc0ODE1MTQsImV4cCI6MTU4NzUwMzExNH0.C9J4r3Xp_Uf9eslayzzu8f_JOLdaAJd53NeeUsOvhx4
+2020-04-21 23:05:14,041 INFO 49495 [-/192.168.0.101/-/182ms POST /node/user/login] {
+  fetchStart: 1587481513861,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587481514041
+}
+2020-04-21 23:40:05,073 ERROR 49588 game already paling

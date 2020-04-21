@@ -9,36 +9,22 @@ describe('test/app/core/pokerGame.test.ts', () => {
       userId: '1',
       counter: 200,
       nick_name: '1',
-      account: '',
-      socketId: '',
+      account: '1',
+      socketId: '1',
     },
     {
       userId: '2',
       counter: 200,
-      nick_name: '1',
-      account: '',
-      socketId: '',
+      nick_name: '2',
+      account: '2',
+      socketId: '2',
     },
     {
       userId: '3',
       counter: 50,
-      nick_name: '1',
-      account: '',
-      socketId: '',
-    },
-    {
-      userId: '4',
-      counter: 400,
-      nick_name: '1',
-      account: '',
-      socketId: '',
-    },
-    {
-      userId: '5',
-      counter: 1200,
-      nick_name: '1',
-      account: '',
-      socketId: '',
+      nick_name: '3',
+      account: '3',
+      socketId: '3',
     },
   ];
 
@@ -49,6 +35,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
     const game = new PokerGame({
       smallBlind: 1,
       users,
+      updateCommonCard: () => {},
     });
     game.play();
     expect(game.status).to.equal(EGameStatus.GAME_ACTION);
@@ -65,36 +52,37 @@ describe('test/app/core/pokerGame.test.ts', () => {
     const game = new PokerGame({
       smallBlind: 1,
       users,
+      updateCommonCard: () => {},
     });
     game.play();
-    game.action('call');
-    game.action('call');
-    game.action('call');
-    game.action('call');
-    game.action('check');
-    game.sendCard();
-    game.action('raise:10');
-    game.action('raise:20');
-    game.action('call');
-    game.action('call');
-    game.action('raise:40');
-    game.action('call');
-    game.action('call');
-    game.action('call');
-    game.action('call');
-    game.sendCard();
-    game.action('allin');
-    game.action('allin');
-    game.action('allin');
-    game.action('fold');
-    game.action('allin');
+    // game.action('call');
+    // game.action('call');
+    // game.action('call');
+    // game.action('call');
+    // game.action('check');
+    // game.sendCard();
+    // game.action('raise:10');
+    // game.action('raise:20');
+    // game.action('call');
+    // game.action('call');
+    // game.action('raise:40');
+    // game.action('call');
+    // game.action('call');
+    // game.action('call');
+    // game.action('call');
+    // game.sendCard();
+    // game.action('allin');
+    // game.action('allin');
+    // game.action('allin');
+    // game.action('fold');
+    // game.action('allin');
     console.log('cc');
     // game.action('raise:10');
     console.log(game.commonCard);
     console.log(game.pot);
     console.log(game.getPlayers());
     console.log(game.winner);
-    console.log(game.winner[0][0].handCard, game.commonCard);
+    // console.log(game.winner[0][0], game.commonCard);
   });
   // flop
   // turn

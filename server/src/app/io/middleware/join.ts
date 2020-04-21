@@ -3,7 +3,7 @@ import { IGameRoom } from '../../../interface/IGameRoom';
 import { IPlayer } from '../../core/Player';
 
 export default function join(): any {
-  function updatePlayer(roomNumber: string, message: string, action: string, nsp: any) {
+  function updatePlayer(roomNumber: string, players: any, action: string, nsp: any) {
     // 在线列表
     nsp.adapter.clients([ roomNumber ], (err: any, clients: any) => {
       // 更新在线用户列表
@@ -11,7 +11,9 @@ export default function join(): any {
         clients,
         action,
         target: 'participator',
-        message,
+        data: {
+          players,
+        },
       });
     });
   }
@@ -62,16 +64,18 @@ export default function join(): any {
         }
       }
       socket.join(room);
+      socket.emit(id, ctx.helper.parseMsg('userInfo', user));
+
       // console.log('players', JSON.stringify(gameRoom.roomInfo.players));
       updatePlayer(room, `User(${user.nick_name}) joined.`, 'join', nsp);
-      updatePlayer(room, JSON.stringify(gameRoom.roomInfo.players), 'players', nsp);
+      updatePlayer(room, gameRoom.roomInfo.players, 'players', nsp);
       // in the game, update hand cards
       const player = gameRoom.roomInfo.players.find((p: IPlayer) => p.nick_name === user.nick_name);
       if (player && gameRoom.roomInfo.game) {
         const gamePlayer = gameRoom.roomInfo.game.allPlayer.find(p => player.socketId === p.socketId);
         if (gamePlayer) {
           const msg = ctx.helper.parseMsg('handCard', {
-            handCard: gamePlayer.handCard,
+            handCard: gamePlayer.getHandCard(),
           }, { client: player.socketId });
           // console.log(msg, 'join: game msg---------2222222');
           socket.emit(id, msg);

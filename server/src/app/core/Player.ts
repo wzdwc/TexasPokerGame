@@ -26,11 +26,12 @@ export enum EPlayerType {
 }
 
 export class Player {
-  handCard: string[] = [];
+  private handCard: string[] = [];
   position: number = 0;
   counter: number = 0;
   userId: string = '';
   socketId: string = '';
+  nick_name: string = '';
   actionSize: number = 0;
   type: string = EPlayerType.DEFAULT;
   evPot: number = Infinity;
@@ -42,6 +43,7 @@ export class Player {
     this.position = config.position || 0;
     this.userId = config.userId;
     this.socketId = config.socketId;
+    this.nick_name = config.nick_name;
     if (this.position === 0) {
       this.type = EPlayerType.DEALER;
     }

@@ -402,7 +402,7 @@ export class PokerGame {
       let j = 0;
       while (j < this.playerSize) {
         player = playerLink.node;
-        player.handCard.push(this.poker.getCard());
+        player.setHandCard(this.poker.getCard());
         if (playerLink.next) {
           playerLink = playerLink.next;
         }

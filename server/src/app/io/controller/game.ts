@@ -28,20 +28,51 @@ class GameController extends BaseSocketController {
           updateCommonCard: () => {
             console.log('send common card');
             this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
-                if (roomInfo.game) {
-                  // 广播信息
-                  this.nsp.to(this.roomNumber).emit('online', {
-                    clients,
-                    action: 'commonCard',
-                    target: 'participator',
-                    message: JSON.stringify(roomInfo.game.commonCard),
-                  });
-                }
-              });
+              if (roomInfo.game) {
+                // 更新common card
+                this.nsp.to(this.roomNumber).emit('online', {
+                  clients,
+                  action: 'commonCard',
+                  target: 'participator',
+                  data: {
+                    commonCard: roomInfo.game.commonCard,
+                  },
+                });
+              }
+            });
           },
         });
         roomInfo.game.play();
         console.log('hand card', roomInfo.game.allPlayer);
+        // update counter, pot
+        this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
+          if (roomInfo.game) {
+            roomInfo.players.forEach(p => {
+              const currPlayer = roomInfo.game && roomInfo.game.allPlayer.find(player => player.userId === p.userId);
+              p.counter = currPlayer && currPlayer.counter || 0;
+            });
+            const gameInfo = {
+              players: roomInfo.game.allPlayer.map(p => Object.assign({}, {
+                counter: p.counter,
+                actionSize: p.actionSize,
+                nick_name: p.nick_name,
+                type: p.type,
+              }, {})),
+              pot: roomInfo.game.pot,
+              prevSize: roomInfo.game.prevSize,
+              currPlayer: {
+                userId: roomInfo.game.currPlayer.node.userId,
+              },
+            };
+            // 广播信息
+            this.nsp.to(this.roomNumber).emit('online', {
+              clients,
+              action: 'gameInfo',
+              target: 'participator',
+              data: gameInfo,
+            });
+          }
+        });
         roomInfo.players.forEach(p => {
           if (roomInfo.game) {
             // console.log('game msg---------1');
@@ -49,7 +80,7 @@ class GameController extends BaseSocketController {
             // console.log(player, 'game msg---------1');
             if (player) {
               const msg = this.ctx.helper.parseMsg('handCard', {
-                handCard: player.handCard,
+                handCard: player.getHandCard(),
               }, { client: p.socketId });
               console.log(msg, 'game msg---------', p.socketId);
               this.nsp.emit(p.socketId, msg);
@@ -87,7 +118,9 @@ class GameController extends BaseSocketController {
           clients,
           action: 'players',
           target: 'participator',
-          message: JSON.stringify(roomInfo.players),
+          data: {
+            players: roomInfo.players,
+          },
         });
       });
     } catch (e) {
@@ -105,7 +138,7 @@ class GameController extends BaseSocketController {
         const gamePlayer = roomInfo.game.allPlayer.find(p => player.socketId === p.socketId);
         if (gamePlayer) {
           const msg = this.ctx.helper.parseMsg('handCard', {
-            handCard: gamePlayer.handCard,
+            handCard: gamePlayer.getHandCard(),
           }, { client: player.socketId });
           console.log(msg, 'game msg---------');
           this.nsp.emit(player.socketId, msg);
