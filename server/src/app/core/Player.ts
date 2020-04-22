@@ -76,7 +76,7 @@ export class Player {
     let size = 0;
     if (command !== ECommand.ALL_IN
       && (prevSize > (this.counter + this.actionSize) || raiseSize > this.counter)) {
-      throw 'error action, overflow action size';
+      throw 'player: error action, overflow action size';
     }
 
     // BLIND
@@ -90,7 +90,7 @@ export class Player {
       if (this.position === 3) {
         size = raiseSize;
       } else {
-        throw 'error action STRADDLE';
+        throw 'player: error action STRADDLE';
       }
     }
 
@@ -98,9 +98,9 @@ export class Player {
     if (command === ECommand.RAISE) {
       // raise must double to prevSize
       if ((raiseSize + this.actionSize) >= prevSize * 2) {
-        size = raiseSize + this.actionSize;
+        size = raiseSize;
       } else {
-        throw 'error action: raise size too small';
+        throw 'player: error action: raise size too small';
       }
     }
 
@@ -109,6 +109,7 @@ export class Player {
     }
 
     if (command === ECommand.CALL) {
+      console.log('player: call----------------', prevSize, this.actionSize);
       size = prevSize - this.actionSize;
     }
 

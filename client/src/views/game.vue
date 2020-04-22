@@ -1,8 +1,9 @@
 <template>
   <div class="game-container container">
     <div class="game-player-info">
-      <div class="users">
-        <span v-for="user in users"> {{user.nick_name}}: {{user.counter}}</span>
+      <div class="users" v-for="user in users">
+        <span> {{user.nick_name}}: {{user.counter}}</span>
+        <span> actionSize:{{user.actionSize}} </span>
       </div>
       <div class="join">
         {{joinMsg}}
@@ -17,7 +18,7 @@
            <span @click="action('check')">check</span>
            <span @click="action('fold')">fold</span>
            <span @click="action('call')">call</span>
-           <span @click="action('raise')">raise</span>
+           <span @click="isRaise = true">raise</span>
          </div>
          <div class="raise-size" v-show="isRaise">
            <i @click="raise(pot / 3)">1/3 pot</i>
@@ -26,7 +27,7 @@
            <i @click="raise(pot)">1 pot</i>
            <i @click="raise(pot * 2)">2 pot</i>
            <i @click="raise(pot * 3)">3 pot</i>
-           <i @click="raise(-1)">allin</i>
+           <i @click="action('allin')">allin</i>
          </div>
       </div>
       <div class="btn play"><span @click="play">play game</span></div>
@@ -113,17 +114,13 @@
     }
 
     private raise(size: number) {
-      if (size === -1) {
-        size = this.userInfo.counter;
-      }
-      this.emit('action', { command: `raise:${size}` });
+      this.action(`raise:${size}`);
     }
 
-    private action(type: string) {
+    private action(command: string) {
+      this.emit('action', { command });
       this.isAction = false;
-      if (type === ECommand.RAISE) {
-        this.isRaise = true;
-      }
+      this.isRaise = false;
     }
 
     private socketInit() {

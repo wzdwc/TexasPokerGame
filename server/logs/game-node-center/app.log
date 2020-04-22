@@ -128,3 +128,89 @@
   fetchEnd: 1587481514041
 }
 2020-04-21 23:40:05,073 ERROR 49588 game already paling
+2020-04-22 23:38:24,980 ERROR 51857 [-/127.0.0.1/-/1ms GET /] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:160:17)
+    at Handshake.emit (events.js:311:20)
+    at Handshake._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/sequences/Sequence.js:124:8)
+    at Timer._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Timer.js:32:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: select now() as currentTime;
+code: "PROTOCOL_SEQUENCE_TIMEOUT"
+fatal: true
+timeout: 10000
+name: "PROTOCOL_SEQUENCE_TIMEOUTError"
+pid: 51857
+hostname: 192.168.0.105
+
+2020-04-22 23:39:39,501 ERROR 51873 [-/192.168.0.105/-/12ms GET /socket.io/?room=751675&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODc0ODEyOTUsImV4cCI6MTU4NzUwMjg5NX0.04tWzzIEspNyYmtY-EzyesrnpVwD7zx-0zG7K9Rdb2s&EIO=3&transport=websocket] room service tick null
+2020-04-22 23:40:04,092 INFO 51873 [-/192.168.0.105/-/209ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3NTcwMDA0LCJleHAiOjE1ODc1OTE2MDR9.qCv_9sbRdWKY2lYPVz6imLwUkvpRXr1ImmLIPLnwxf4
+2020-04-22 23:40:04,094 INFO 51873 [-/192.168.0.105/-/211ms POST /node/user/login] {
+  fetchStart: 1587570003886,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570004094
+}
+2020-04-22 23:40:05,232 INFO 51873 [-/192.168.0.105/-/110ms POST /node/game/room] {
+  fetchStart: 1587570005123,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570005232
+}
+2020-04-22 23:41:20,878 INFO 51873 [-/192.168.0.105/-/205ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3NTcwMDgwLCJleHAiOjE1ODc1OTE2ODB9.S73RaBIpGQVhaELO6yfvBwDNUlrDdo1WUpfE4J_HwZs
+2020-04-22 23:41:20,879 INFO 51873 [-/192.168.0.105/-/206ms POST /node/user/login] {
+  fetchStart: 1587570080673,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570080879
+}
+2020-04-22 23:41:22,229 INFO 51873 [-/192.168.0.105/-/103ms POST /node/game/room] {
+  fetchStart: 1587570082127,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570082229
+}
+2020-04-22 23:41:48,445 INFO 51873 [-/192.168.0.105/-/202ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODc1NzAxMDgsImV4cCI6MTU4NzU5MTcwOH0.1kZQu3oihvSnCIkyBl9vFK8BK_6wxM7QvlMv0-cfggs
+2020-04-22 23:41:48,446 INFO 51873 [-/192.168.0.105/-/203ms POST /node/user/login] {
+  fetchStart: 1587570108243,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570108446
+}
+2020-04-22 23:43:45,866 ERROR 51873 game already paling
+2020-04-22 23:45:53,762 INFO 51959 [-/192.168.0.101/-/233ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoSIsImFjY291bnQiOiJjYWkxMTEiLCJ1c2VySWQiOjJ9LCJpYXQiOjE1ODc1NzAzNTMsImV4cCI6MTU4NzU5MTk1M30.QCROHyWqK_5kwhIpE3i2AwOfqsktIcRC7J9FwoZFTX8
+2020-04-22 23:45:53,766 INFO 51959 [-/192.168.0.101/-/237ms POST /node/user/login] {
+  fetchStart: 1587570353557,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570353766
+}

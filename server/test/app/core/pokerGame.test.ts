@@ -19,13 +19,13 @@ describe('test/app/core/pokerGame.test.ts', () => {
       account: '2',
       socketId: '2',
     },
-    {
-      userId: '3',
-      counter: 50,
-      nick_name: '3',
-      account: '3',
-      socketId: '3',
-    },
+    // {
+    //   userId: '3',
+    //   counter: 50,
+    //   nick_name: '3',
+    //   account: '3',
+    //   socketId: '3',
+    // },
   ];
 
   /**
@@ -39,7 +39,6 @@ describe('test/app/core/pokerGame.test.ts', () => {
     });
     game.play();
     expect(game.status).to.equal(EGameStatus.GAME_ACTION);
-    expect(game.currPlayer.node.actionSize).to.equal(0);
     expect(game.pot).to.equal(3);
     expect(game.pot).to.equal(3);
     expect(game.playerLink.getNode(1).node.actionSize).to.equal(1);
@@ -55,7 +54,8 @@ describe('test/app/core/pokerGame.test.ts', () => {
       updateCommonCard: () => {},
     });
     game.play();
-    // game.action('call');
+    game.action('raise:9');
+    game.action('call');
     // game.action('call');
     // game.action('call');
     // game.action('call');

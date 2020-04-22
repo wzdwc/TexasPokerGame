@@ -24,6 +24,8 @@ export enum EGameStatus {
   GAME_OVER,
 }
 
+const ACTION_TIME = 60 * 1000;
+
 export class PokerGame {
   commonCard: string[] = [];
   fireCards: string[] = [];
@@ -88,9 +90,12 @@ export class PokerGame {
   play() {
     this.status = EGameStatus.GAME_START;
     this.sendCard();
+  }
+
+  startActionRound() {
     this.actionTimeOut = setTimeout(async () => {
       this.action('fold');
-    }, 6000);
+    }, ACTION_TIME);
   }
 
   action(commandString: string) {
@@ -120,7 +125,8 @@ export class PokerGame {
           && this.prevSize === this.smallBlind * 2, 'big blind', this.currPlayer);
         // prev player must be check
         if (!(this.prevSize === 0 ||
-          (this.currPlayer.node.type === EPlayerType.BIG_BLIND
+          ((this.currPlayer.node.type === EPlayerType.BIG_BLIND
+            || this.playerSize === 2 && this.currPlayer.node.type === EPlayerType.DEALER)
           && this.prevSize === this.smallBlind * 2))) {
           throw 'incorrect action: check';
         }
@@ -134,39 +140,41 @@ export class PokerGame {
           throw 'incorrect action: raise';
         }
       }
-      this.currPlayer.node.action(commandString, this.prevSize);
-      this.prevSize = size;
-      const nextPlayer = this.currPlayer.next.node;
-      // all check actionSize === -1
-      // all player allin
-      // only 2 player, curr player fold, next player already action
-      // only one player ,one player fold,other player allin
-      // pre flop big blind check and other player call
-      // console.log('this.currPlayer----------', this.currPlayer, nextPlayer, command);
-      if (this.playerSize === 0
-        || (command === ECommand.FOLD && this.currPlayer.next.node.actionSize !== 0)
-        || (nextPlayer.actionSize === this.currPlayer.node.actionSize && command !== ECommand.FOLD)
-        || (this.commonCard.length === 0
-          && this.currPlayer.node.type === EPlayerType.BIG_BLIND
-          && command === ECommand.CHECK)) {
-        // console.log('ccc------', this.currPlayer, nextPlayer, command, this.playerSize);
-        console.log('actionComplete');
-
-        this.actionComplete();
+      try {
         clearTimeout(this.actionTimeOut);
-        return;
-      }
-      this.currPlayer = this.currPlayer.next;
-      // action time is 60s
-      clearTimeout(this.actionTimeOut);
-      console.log('action auto');
-      this.actionTimeOut = setTimeout(async () => {
-        if (command === ECommand.CHECK || command === ECommand.FOLD) {
-          this.action('check');
-        } else {
-          this.action('fold');
+        this.currPlayer.node.action(commandString, this.prevSize);
+        this.prevSize = size;
+        const nextPlayer = this.currPlayer.next.node;
+        // all check actionSize === -1
+        // all player allin
+        // only 2 player, curr player fold, next player already action
+        // only one player ,one player fold,other player allin
+        // pre flop big blind check and other player call
+        console.log('this.currPlayer----------', this.currPlayer, nextPlayer, command);
+        if (this.playerSize === 0
+          || (nextPlayer.actionSize === size)
+          || (this.commonCard.length === 0
+            && (this.currPlayer.node.type === EPlayerType.BIG_BLIND
+              || this.playerSize === 2 && this.currPlayer.node.type === EPlayerType.DEALER)
+            && command === ECommand.CHECK)) {
+          // console.log('ccc------', this.currPlayer, nextPlayer, command, this.playerSize);
+          console.log('actionComplete');
+          this.actionComplete();
+          return;
         }
-      }, 6000);
+        this.currPlayer = this.currPlayer.next;
+        // action time is 60s
+        console.log('action auto');
+        this.actionTimeOut = setTimeout(() => {
+          if (command === ECommand.CHECK || command === ECommand.FOLD) {
+            this.action('check');
+          } else {
+            this.action('fold');
+          }
+        }, ACTION_TIME);
+      } catch (e) {
+        throw 'action:' + e;
+      }
     } else {
       throw 'incorrect action flow';
     }
@@ -216,6 +224,7 @@ export class PokerGame {
     if (this.status === EGameStatus.GAME_SHOWDOWN || this.playerSize <= 1) {
       this.gameOver();
     }
+    this.updateCommonCard();
   }
   setSate() {
     if (this.status === EGameStatus.GAME_ACTION) {
@@ -246,14 +255,12 @@ export class PokerGame {
       this.fireCards.push(this.poker.getCard());
       this.flop();
       this.setSate();
-      this.updateCommonCard();
       return;
     }
     if (this.status === EGameStatus.GAME_TURN || this.status === EGameStatus.GAME_RIVER) {
       this.fireCards.push(this.poker.getCard());
       this.commonCard.push(this.poker.getCard());
       this.setSate();
-      this.updateCommonCard();
       return;
     }
     throw 'error flow sendCard';

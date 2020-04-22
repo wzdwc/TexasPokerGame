@@ -4,6 +4,5 @@ dist/
 npm-debug.log
 yarn-error.log
 test/unit/coverage
-/.idea/
 run/
 npm-debug.*
