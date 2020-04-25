@@ -27,31 +27,52 @@ class GameController extends BaseSocketController {
           smallBlind: 1,
           updateCommonCard: () => {
             // game over
-            if (roomInfo.game?.status !== 6) {
-              roomInfo.game?.startActionRound();
-              roomInfo.game?.sendCard();
-            } else {
-              console.log('game over-------------');
-              console.log(roomInfo.game.commonCard);
-              console.log(roomInfo.game.pot);
-              console.log(roomInfo.game.getPlayers());
-              console.log(roomInfo.game.winner);
+            if (roomInfo.game) {
+              if (roomInfo.game.status < 6) {
+                roomInfo.game.startActionRound();
+                roomInfo.game.sendCard();
+              } else {
+                roomInfo.game.allPlayer.forEach(gamePlayer => {
+                  const player = roomInfo.players.find(
+                    (p: IPlayer) => p.nickName === gamePlayer.nickName);
+                  if (player) {
+                    player.counter = gamePlayer.counter;
+                  }
+                });
+                console.log('game over-------------');
+                console.log(roomInfo.game.commonCard);
+                console.log(roomInfo.game.pot);
+                console.log(roomInfo.players, '=============players');
+                console.log(roomInfo.game.getPlayers());
+                console.log(roomInfo.game.winner);
+                // new game
+                setTimeout(() => {
+                  if (roomInfo.players.length >= 2) {
+                    const player = roomInfo.players.shift();
+                    if (player) {
+                      roomInfo.players.push(player);
+                    }
+                    roomInfo.game = null;
+                    this.playGame();
+                  }
+                }, 100000);
+              }
+              console.log('send common card', roomInfo.game.status);
+              this.nsp.adapter.clients([ this.roomNumber ],
+                (err: any, clients: any) => {
+                  if (roomInfo.game) {
+                    // 更新common card
+                    this.nsp.to(this.roomNumber).emit('online', {
+                      clients,
+                      action: 'commonCard',
+                      target: 'participator',
+                      data: {
+                        commonCard: roomInfo.game.commonCard,
+                      },
+                    });
+                  }
+                });
             }
-            console.log('send common card', roomInfo.game?.status);
-            this.nsp.adapter.clients([ this.roomNumber ],
-              (err: any, clients: any) => {
-                if (roomInfo.game) {
-                  // 更新common card
-                  this.nsp.to(this.roomNumber).emit('online', {
-                    clients,
-                    action: 'commonCard',
-                    target: 'participator',
-                    data: {
-                      commonCard: roomInfo.game.commonCard,
-                    },
-                  });
-                }
-              });
           },
         });
         roomInfo.game.play();
@@ -85,13 +106,15 @@ class GameController extends BaseSocketController {
       const { payload } = this.ctx.args[0] || {};
       const { buyInSize } = payload;
       const player = roomInfo.players.find(
-        (p: IPlayer) => p.nick_name === userInfo.nick_name);
+        (p: IPlayer) => p.nickName === userInfo.nickName);
       console.log(userInfo, 'userInfo------');
       if (player) {
-        player.counter = buyInSize;
+        player.counter += Number(buyInSize);
+        player.buyIn += Number(buyInSize);
       } else {
         const player: IPlayer = {
-          counter: buyInSize,
+          counter: Number(buyInSize),
+          buyIn: Number(buyInSize),
           ...userInfo,
         };
         roomInfo.players.push(player);
@@ -117,7 +140,7 @@ class GameController extends BaseSocketController {
       const userInfo: IPlayer = await this.getUserInfo();
       const roomInfo: IRoomInfo = await this.getRoomInfo();
       const player = roomInfo.players.find(
-        (p: IPlayer) => p.nick_name === userInfo.nick_name);
+        (p: IPlayer) => p.nickName === userInfo.nickName);
       console.log(userInfo, 'userInfo------');
       if (player && roomInfo.game) {
         const gamePlayer = roomInfo.game.allPlayer.find(
@@ -135,39 +158,6 @@ class GameController extends BaseSocketController {
     } catch (e) {
       console.log(e);
     }
-  }
-
-  async updateGameInfo() {
-    const roomInfo = await this.getRoomInfo();
-    this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
-      if (roomInfo.game) {
-        roomInfo.players.forEach(p => {
-          const currPlayer = roomInfo.game &&
-            roomInfo.game.allPlayer.find(player => player.userId === p.userId);
-          p.counter = currPlayer && currPlayer.counter || 0;
-        });
-        const gameInfo = {
-          players: roomInfo.game.allPlayer.map(p => Object.assign({}, {
-            counter: p.counter,
-            actionSize: p.actionSize,
-            nick_name: p.nick_name,
-            type: p.type,
-          }, {})),
-          pot: roomInfo.game.pot,
-          prevSize: roomInfo.game.prevSize,
-          currPlayer: {
-            userId: roomInfo.game.currPlayer.node.userId,
-          },
-        };
-        // 广播信息
-        this.nsp.to(this.roomNumber).emit('online', {
-          clients,
-          action: 'gameInfo',
-          target: 'participator',
-          data: gameInfo,
-        });
-      }
-    });
   }
 
   async action() {

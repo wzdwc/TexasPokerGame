@@ -1,9 +1,11 @@
 <template>
   <div class="game-container container">
     <div class="game-player-info">
-      <div class="users" v-for="user in users">
-        <span> {{user.nick_name}}: {{user.counter}}</span>
-        <span> actionSize:{{user.actionSize}} </span>
+      <div class="users"
+           v-for="user in users">
+        <span> {{user.nickName}}: {{user.counter}}</span>
+        <span v-show="user.actionSize > 0"> actionSize:{{user.actionSize}} </span>
+        <span> type:{{user.type}} </span>
       </div>
       <div class="join">
         {{joinMsg}}
@@ -14,21 +16,28 @@
       <div class="common-card">commonCard:{{commonCardString}}</div>
       <div class="hand-card">handCard:{{handCardString}}</div>
       <div class="action">
-         <div class="action-type btn" v-show="isAction">
-           <span @click="action('check')">check</span>
-           <span @click="action('fold')">fold</span>
-           <span @click="action('call')">call</span>
-           <span @click="isRaise = true">raise</span>
-         </div>
-         <div class="raise-size" v-show="isRaise">
-           <i @click="raise(pot / 3)">1/3 pot</i>
-           <i @click="raise(pot / 2)">1/2 pot</i>
-           <i @click="raise(pot / 4)">3/4 pot</i>
-           <i @click="raise(pot)">1 pot</i>
-           <i @click="raise(pot * 2)">2 pot</i>
-           <i @click="raise(pot * 3)">3 pot</i>
-           <i @click="action('allin')">allin</i>
-         </div>
+        <div class="action-type btn"
+             v-show="isAction">
+          <span @click="action('check')"
+                v-show="showActionBtn('check')">check</span>
+          <span @click="action('fold')">fold</span>
+          <span @click="action('call')"
+                v-show="showActionBtn('call')">call</span>
+          <span @click="isRaise = true">raise</span>
+        </div>
+        <div class="raise-size"
+             v-show="isRaise">
+          <div class="not-allin"
+               v-show="showActionBtn('raise')">
+            <i @click="raise(pot / 3)">1/3 pot</i>
+            <i @click="raise(pot / 2)">1/2 pot</i>
+            <i @click="raise(pot / 4)">3/4 pot</i>
+            <i @click="raise(pot)">1 pot</i>
+            <i @click="raise(pot * 2)">2 pot</i>
+            <i @click="raise(pot * 3)">3 pot</i>
+          </div>
+          <i @click="action('allin')">allin</i>
+        </div>
       </div>
       <div class="btn play"><span @click="play">play game</span></div>
     </div>
@@ -46,7 +55,7 @@
 </template>
 
 <script lang="ts">
-  import {Vue} from 'vue-property-decorator';
+  import { Vue } from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import io from 'socket.io-client';
   import cookie from 'js-cookie';
@@ -56,16 +65,17 @@
     counter: number;
     nick_name: string;
     actionSize: number;
+    actionCommand: string;
     type: string;
     userId?: number;
   }
 
   export enum ECommand {
-    CALL = 'call',
+    CALL   = 'call',
     ALL_IN = 'allin',
-    RAISE = 'raise',
-    CHECK = 'check',
-    FOLD = 'fold',
+    RAISE  = 'raise',
+    CHECK  = 'check',
+    FOLD   = 'fold',
   }
 
   interface IMsg {
@@ -93,6 +103,14 @@
       return this.$route.params.roomNumber;
     }
 
+    get currPlayer() {
+      return this.users.find((u: IUser) => this.userInfo.userId === u.userId);
+    }
+
+    get canActionSize() {
+      return Number(this.currPlayer && this.currPlayer.counter + this.currPlayer.actionSize);
+    }
+
     get commonCardString() {
       const cardNumber = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
       const color = ['♦', '♣', '♥', '♠'];
@@ -113,6 +131,22 @@
       });
     }
 
+    private showActionBtn(type: string) {
+      // check
+      if ('check' === type) {
+        return this.prevSize === -1;
+      }
+      // raise
+      if ('raise' === type) {
+        return this.canActionSize > this.prevSize * 2;
+      }
+      // call
+      if ('call' === type) {
+        return this.canActionSize > this.prevSize;
+      }
+      return true;
+    }
+
     private raise(size: number) {
       this.action(`raise:${size}`);
     }
@@ -127,7 +161,7 @@
       const token = cookie.get('token');
       const log = console.log;
       // const origin = 'http://172.22.72.70:7001';
-      const origin = 'http://192.168.0.105:7001';
+      const origin = 'http://192.168.0.101:7001';
       this.socket = io(`${origin}/socket`, {
         // 实际使用中可以在这里传递参数
         query: {
@@ -223,8 +257,8 @@
 <style lang="less"
        scoped>
   .game-container {
-    .raise-size{
-      i{
+    .raise-size {
+      i {
         padding: 5px;
         width: 30px;
         height: 30px;

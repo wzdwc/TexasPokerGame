@@ -74,3 +74,39 @@
 2020-04-22 23:44:42,500 INFO 51958 [egg:core] dump config after ready, 5ms
 2020-04-22 23:51:32,377 INFO 51958 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594144547,"size":13522,"blocks":32,"atimeMs":1587569691708.252,"mtimeMs":1587570690863.5278,"ctimeMs":1587570690863.5278,"birthtimeMs":1587545680156.9385,"atime":"2020-04-22T15:34:51.708Z","mtime":"2020-04-22T15:51:30.864Z","ctime":"2020-04-22T15:51:30.864Z","birthtime":"2020-04-22T08:54:40.157Z"},"remove":false,"isDirectory":false,"isFile":true}
 2020-04-22 23:51:32,585 WARN 51958 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts change
+2020-04-23 21:20:10,675 INFO 52895 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-04-23 21:20:10,684 INFO 52895 [egg:core] dump config after load, 5ms
+2020-04-23 21:20:10,734 INFO 52895 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-04-23 21:20:10,734 INFO 52895 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-04-23 21:20:10,735 INFO 52895 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-04-23 21:20:10,735 INFO 52895 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-04-23 21:20:10,735 INFO 52895 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-04-23 21:20:10,735 INFO 52895 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-04-23 21:20:10,735 INFO 52895 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-04-23 21:20:10,735 INFO 52895 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-04-23 21:20:10,736 INFO 52895 [egg-watcher:agent] watcher start success
+2020-04-23 21:20:10,823 INFO 52895 [egg:core] dump config after ready, 74ms
+2020-04-23 22:40:56,834 ERROR 52895 nodejs.ClusterClientNoResponseError: client no response in 4284658ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 52895
+hostname: 192.168.0.101
+
+2020-04-24 00:21:50,021 ERROR 52895 nodejs.ClusterClientNoResponseError: client no response in 6012576ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 52895
+hostname: 192.168.0.101
+
+2020-04-24 00:30:09,627 ERROR 52895 nodejs.ClusterClientNoResponseError: client no response in 459401ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 52895
+hostname: 192.168.0.101
+

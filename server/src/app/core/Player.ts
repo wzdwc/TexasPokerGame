@@ -1,8 +1,9 @@
 export interface IPlayer {
   counter: number;
+  buyIn: number;
   position?: number;
   userId: string;
-  nick_name: string;
+  nickName: string;
   account: string;
   socketId: string;
 }
@@ -31,8 +32,9 @@ export class Player {
   counter: number = 0;
   userId: string = '';
   socketId: string = '';
-  nick_name: string = '';
+  nickName: string = '';
   actionSize: number = 0;
+  actionCommand: string = '';
   type: string = EPlayerType.DEFAULT;
   evPot: number = Infinity;
   pokeStyle: string = '';
@@ -43,7 +45,7 @@ export class Player {
     this.position = config.position || 0;
     this.userId = config.userId;
     this.socketId = config.socketId;
-    this.nick_name = config.nick_name;
+    this.nickName = config.nickName;
     if (this.position === 0) {
       this.type = EPlayerType.DEALER;
     }
@@ -77,6 +79,8 @@ export class Player {
     if (command !== ECommand.ALL_IN
       && (prevSize > (this.counter + this.actionSize) || raiseSize > this.counter)) {
       throw 'player: error action, overflow action size';
+    } else {
+      this.actionCommand = command;
     }
 
     // BLIND
@@ -132,6 +136,7 @@ export class Player {
   }
 
   income(size: number) {
+    console.log('size', size);
     this.counter += size;
   }
 }

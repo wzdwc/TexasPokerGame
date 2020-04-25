@@ -75,7 +75,7 @@ export class AccountService extends BaseService implements IAccountService {
     const { nick_name, account, id } = await this.user.findByAccount(userAccount);
     const token = this.jwt.sign({
           user: {
-           nick_name,
+           nickName: nick_name,
            account,
            userId: id,
           },

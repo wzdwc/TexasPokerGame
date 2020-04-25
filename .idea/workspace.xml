@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/request.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/ELKLog/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/ELKLog/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/ELKLog/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/ELKLog/info.log" afterDir="false" />
@@ -15,7 +16,11 @@
       <change beforePath="$PROJECT_DIR$/server/src/app/core/Player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Player.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/service/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/account.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/test/utils/link.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/utils/link.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1586870120922</updated>
       <workItem from="1586870126995" duration="5800000" />
-      <workItem from="1587201178537" duration="19314000" />
+      <workItem from="1587201178537" duration="25531000" />
     </task>
     <servers />
   </component>

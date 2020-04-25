@@ -24,4 +24,38 @@ export default class BaseSocketController extends Controller {
     const roomInfo = this.gameRooms.find((gr: IGameRoom) => gr.number === room);
     return roomInfo.roomInfo;
   }
+
+  async updateGameInfo() {
+    const roomInfo = await this.getRoomInfo();
+    this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
+      if (roomInfo.game) {
+        roomInfo.players.forEach(p => {
+          const currPlayer = roomInfo.game &&
+            roomInfo.game.allPlayer.find(player => player.userId === p.userId);
+          p.counter = currPlayer && currPlayer.counter || 0;
+        });
+        const gameInfo = {
+          players: roomInfo.game.allPlayer.map(p => Object.assign({}, {
+            counter: p.counter,
+            actionSize: p.actionSize,
+            nickName: p.nickName,
+            type: p.type,
+            userId: p.userId,
+          }, {})),
+          pot: roomInfo.game.pot,
+          prevSize: roomInfo.game.prevSize,
+          currPlayer: {
+            userId: roomInfo.game.currPlayer.node.userId,
+          },
+        };
+        // 广播信息
+        this.nsp.to(this.roomNumber).emit('online', {
+          clients,
+          action: 'gameInfo',
+          target: 'participator',
+          data: gameInfo,
+        });
+      }
+    });
+  }
 }

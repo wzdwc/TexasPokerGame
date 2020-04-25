@@ -32,6 +32,12 @@ export default function join(): any {
     try {
       const hasRoom = nsp.gameRooms.find((r: IGameRoom) => r.number === room);
       const { user } = await app.jwt.verify(token);
+      const player = {
+        ...user,
+        socketId: id,
+        counter: 0,
+        buyIn: 0,
+      };
       let gameRoom: IGameRoom = {
         number: room,
         roomInfo: {
@@ -42,45 +48,32 @@ export default function join(): any {
       if (!hasRoom) {
         nsp.gameRooms.push(gameRoom);
         gameRoom.roomInfo = {
-          players: [{
-            ...user,
-            socketId: id,
-            counter: 0,
-          }],
+          players: [ player ],
           game: null,
         };
       } else {
         gameRoom = nsp.gameRooms.find((r: IGameRoom) => r.number === room);
-        const player = gameRoom.roomInfo.players.find((p: IPlayer) => p.account === user.account);
-        if (!player) {
-          const player = {
-            ...user,
-            socketId: id,
-            counter: 0,
-          };
+        const findPlayer = gameRoom.roomInfo.players.find((p: IPlayer) => p.account === user.account);
+        if (!findPlayer) {
           gameRoom.roomInfo.players.push(player);
         } else {
-          player.socketId = id;
+          findPlayer.socketId = id;
+          // in the game, update hand cards
+          const gamePlayer = gameRoom.roomInfo.game?.allPlayer.find(p => user.userId === p.userId);
+          if (gamePlayer) {
+            const msg = ctx.helper.parseMsg('handCard', {
+              handCard: gamePlayer.getHandCard(),
+            }, { client: id });
+            socket.emit(id, msg);
+          }
         }
       }
       socket.join(room);
       socket.emit(id, ctx.helper.parseMsg('userInfo', user));
 
       // console.log('players', JSON.stringify(gameRoom.roomInfo.players));
-      updatePlayer(room, `User(${user.nick_name}) joined.`, 'join', nsp);
+      updatePlayer(room, `User(${user.nickName}) joined.`, 'join', nsp);
       updatePlayer(room, gameRoom.roomInfo.players, 'players', nsp);
-      // in the game, update hand cards
-      const player = gameRoom.roomInfo.players.find((p: IPlayer) => p.nick_name === user.nick_name);
-      if (player && gameRoom.roomInfo.game) {
-        const gamePlayer = gameRoom.roomInfo.game.allPlayer.find(p => player.socketId === p.socketId);
-        if (gamePlayer) {
-          const msg = ctx.helper.parseMsg('handCard', {
-            handCard: gamePlayer.getHandCard(),
-          }, { client: player.socketId });
-          // console.log(msg, 'join: game msg---------2222222');
-          socket.emit(id, msg);
-        }
-      }
       await next();
     } catch (e) {
       throw e;

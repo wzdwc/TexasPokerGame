@@ -38,7 +38,7 @@ export class PokerGame {
   smallBlind: number;
   playerSize: number;
   prevSize: number;
-  prevPot: number;
+  prevPot: number = 0;
   actionTimeOut: Timeout;
   allInPlayers: Player[] = [];
   currActionAllinPlayer: Player[] = [];
@@ -107,6 +107,7 @@ export class PokerGame {
         size = this.currPlayer.node.counter > this.prevSize ?
           this.currPlayer.node.counter : this.prevSize;
         this.allIn();
+        console.log('allin: -----------', this.currPlayer);
         this.pot += this.currPlayer.node.counter;
         // other pot
         // only one player，or none player，game is over
@@ -123,8 +124,9 @@ export class PokerGame {
       if (command === ECommand.CHECK) {
         console.log(this.currPlayer.node.type === EPlayerType.BIG_BLIND
           && this.prevSize === this.smallBlind * 2, 'big blind', this.currPlayer);
+        size = -1;
         // prev player must be check
-        if (!(this.prevSize === 0 ||
+        if (!(this.prevSize <= 0 ||
           ((this.currPlayer.node.type === EPlayerType.BIG_BLIND
             || this.playerSize === 2 && this.currPlayer.node.type === EPlayerType.DEALER)
           && this.prevSize === this.smallBlind * 2))) {
@@ -207,9 +209,11 @@ export class PokerGame {
             currAllinPlayerPot += allinPlayer.actionSize;
           }
         });
+        console.log('evPot--------------------', this.prevPot, currAllinPlayerPot);
         allinPlayer.evPot = this.prevPot + currAllinPlayerPot;
         currAllinPlayerPot = 0;
       });
+      console.log('currActionAllinPlayer--------------------', this.allInPlayers, this.currActionAllinPlayer);
       this.allInPlayers = [ ...this.allInPlayers, ...this.currActionAllinPlayer ];
     }
     // action complete clear player actionSize = 0
@@ -220,7 +224,7 @@ export class PokerGame {
     // new action ring first action is sb
     this.currPlayer = this.playerLink.getNode(1);
     this.setSate();
-    console.log(this.playerSize, 'playerS-------', this.status);
+    console.log(this.playerSize, 'playerS-------3', this.playerLink);
     if (this.status === EGameStatus.GAME_SHOWDOWN || this.playerSize <= 1) {
       this.gameOver();
     }
@@ -326,12 +330,15 @@ export class PokerGame {
 
   removePlayer(currPlayer: Player) {
     let playerLink = this.playerLink.link;
-    let player: Player;
+    let player: ILinkNode<Player>;
     while (playerLink.next) {
-      player = playerLink.next.node;
-      if (currPlayer.userId === player.userId) {
-        playerLink.next = playerLink.next.next;
+      player = playerLink.next;
+      if (currPlayer.userId === player.node.userId) {
+        const nextNext = playerLink.next.next;
+        // player.next = null;
+        playerLink.next = nextNext;
         this.playerSize--;
+        this.playerLink.link = playerLink;
         return;
       }
       playerLink = playerLink.next;
@@ -340,6 +347,8 @@ export class PokerGame {
 
   getWinner() {
     if (this.allInPlayers.length === 0 && this.playerSize === 1) {
+      console.log('only one player');
+      this.status = EGameStatus.GAME_OVER;
       this.winner.push([ this.currPlayer.node ]);
       return;
     }
@@ -347,12 +356,17 @@ export class PokerGame {
       this.sendCard();
       this.setSate();
     }
+    this.status = EGameStatus.GAME_OVER;
 
     this.getPlayerPokeStyle();
 
     const getOtherWinner = (withoutPlayers: Player[]) => {
       // all player allin, winner can't get all pot
       const allPlayer = this.getPlayers('all', withoutPlayers);
+      // withoutPlayer is allPlayer
+      if (allPlayer.length === 0) {
+        return;
+      }
       const maxLastPlayer = this.getMaxPlayers(allPlayer);
       this.winner.push(maxLastPlayer);
       if (this.getLeftoverPot() > 0) {
@@ -360,17 +374,6 @@ export class PokerGame {
       }
     };
     getOtherWinner([]);
-    // // compare allin player and last player
-    // const allPlayers: Player [] = this.getPlayers()
-    // const maxPlayers = this.getMaxPlayers(allPlayers);
-    // this.winner.push(maxPlayers);
-    // // max player can't winner all pot
-    // const hasSecondWinner = maxPlayers[0].evPot < this.pot;
-    // // all of winner is all in, must get max curr player
-    // if (hasSecondWinner) {
-    //   // all player allin, winner can't get all pot
-    //   getOtherWinner(maxPlayers);
-    // }
   }
 
   getPlayerPokeStyle() {
@@ -424,7 +427,8 @@ export class PokerGame {
         prevEvPot = this.winner[key - 1][0].evPot;
       }
       winnerList.forEach(winner => {
-        winner.income((winner.evPot - prevEvPot) / winnerList.length);
+        const pot = winner.evPot === Infinity ? this.pot : winner.evPot;
+        winner.income((pot - prevEvPot) / winnerList.length);
       });
     });
   }

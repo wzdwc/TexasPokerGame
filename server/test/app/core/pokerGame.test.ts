@@ -8,16 +8,18 @@ describe('test/app/core/pokerGame.test.ts', () => {
     {
       userId: '1',
       counter: 200,
-      nick_name: '1',
+      nickName: '1',
       account: '1',
       socketId: '1',
+      buyIn: 0,
     },
     {
       userId: '2',
-      counter: 200,
-      nick_name: '2',
+      counter: 400,
+      nickName: '2',
       account: '2',
       socketId: '2',
+      buyIn: 0,
     },
     // {
     //   userId: '3',
@@ -84,6 +86,144 @@ describe('test/app/core/pokerGame.test.ts', () => {
     console.log(game.winner);
     // console.log(game.winner[0][0], game.commonCard);
   });
+
+  it('raise check ', async () => {
+    const game = new PokerGame({
+      smallBlind: 1,
+      users,
+      updateCommonCard: () => {
+        if (game.status < 6) {
+          game.startActionRound();
+          game.sendCard();
+        }
+      },
+    });
+    game.play();
+    game.action('raise:9');
+    game.action('call');
+    game.action('check');
+    game.action('check');
+    // game.action('raise:10');
+    console.log(game.commonCard);
+    console.log(game.pot);
+    console.log(game.getPlayers());
+    console.log(game.winner);
+    // console.log(game.winner[0][0], game.commonCard);
+  });
+
+  it('raise call raise fold ', async () => {
+    const game = new PokerGame({
+      smallBlind: 1,
+      users,
+      updateCommonCard: () => {
+        if (game.status < 6) {
+          game.startActionRound();
+          game.sendCard();
+        }
+      },
+    });
+    game.play();
+    game.action('raise:9');
+    game.action('call');
+    // game.action('check');
+    // game.action('check');
+    game.action('raise:90');
+    game.action('fold');
+    // game.action('raise:10');
+    console.log(game.commonCard);
+    console.log(game.pot);
+    console.log(game.getPlayers());
+    console.log(game.winner);
+    // console.log(game.winner[0][0], game.commonCard);
+  });
+
+  it('show down', async () => {
+    const game = new PokerGame({
+      smallBlind: 1,
+      users,
+      updateCommonCard: () => {
+        if (game.status < 6) {
+          game.startActionRound();
+          game.sendCard();
+        }
+      },
+    });
+    game.play();
+    // pre flop
+    game.action('raise:9');
+    game.action('call');
+    // flop
+    game.action('raise:90');
+    game.action('call');
+    // turn
+    game.action('check');
+    game.action('check');
+    // river
+    game.action('raise:90');
+    game.action('call');
+    // show down
+    // game.action('raise:10');
+    console.log(game.commonCard);
+    console.log(game.pot);
+    console.log(game.getPlayers());
+    console.log(game.winner);
+    // console.log(game.winner[0][0], game.commonCard);
+  });
+
+  it('all player allin for pre flop', async () => {
+    const game = new PokerGame({
+      smallBlind: 1,
+      users,
+      updateCommonCard: () => {
+        if (game.status < 6) {
+          game.startActionRound();
+          game.sendCard();
+        }
+      },
+    });
+    game.play();
+    // pre flop
+    game.action('raise:9');
+    game.action('allin');
+    game.action('allin');
+    // game over
+    // game.action('raise:10');
+    console.log(game.commonCard);
+    console.log(game.pot);
+    console.log(game.getPlayers());
+    console.log(game.winner);
+    // console.log(game.winner[0][0], game.commonCard);
+  });
+
+  it('one player allin', async () => {
+    const game = new PokerGame({
+      smallBlind: 1,
+      users,
+      updateCommonCard: () => {
+        if (game.status < 6) {
+          game.startActionRound();
+          game.sendCard();
+        }
+      },
+    });
+    game.play();
+    // pre flop
+    game.action('raise:9');
+    game.action('call');
+    game.action('raise: 9');
+    game.action('raise: 18');
+    game.action('raise: 200');
+    game.action('allin');
+    // game over
+    // game.action('raise:10');
+    console.log(game.commonCard);
+    console.log(game.pot);
+    console.log(game.getPlayers());
+    console.log(game.winner);
+    // console.log(game.winner[0][0], game.commonCard);
+  });
+
+
   // flop
   // turn
   // river
