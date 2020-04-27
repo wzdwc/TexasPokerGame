@@ -32,6 +32,8 @@ export default function join(): any {
     try {
       const hasRoom = nsp.gameRooms.find((r: IGameRoom) => r.number === room);
       const { user } = await app.jwt.verify(token);
+      socket.join(room);
+      await socket.emit(id, ctx.helper.parseMsg('userInfo', user));
       const player = {
         ...user,
         socketId: id,
@@ -51,11 +53,13 @@ export default function join(): any {
           players: [ player ],
           game: null,
         };
+        updatePlayer(room, gameRoom.roomInfo.players, 'players', nsp);
       } else {
         gameRoom = nsp.gameRooms.find((r: IGameRoom) => r.number === room);
         const findPlayer = gameRoom.roomInfo.players.find((p: IPlayer) => p.account === user.account);
         if (!findPlayer) {
           gameRoom.roomInfo.players.push(player);
+          updatePlayer(room, gameRoom.roomInfo.players, 'players', nsp);
         } else {
           findPlayer.socketId = id;
           // in the game, update hand cards
@@ -65,15 +69,34 @@ export default function join(): any {
               handCard: gamePlayer.getHandCard(),
             }, { client: id });
             socket.emit(id, msg);
+            if (gameRoom.roomInfo && gameRoom.roomInfo.game) {
+              const roomInfo = gameRoom.roomInfo;
+              const gameInfo = {
+                players: gameRoom.roomInfo.game.allPlayer.map(p => Object.assign({}, {
+                  counter: p.counter,
+                  actionSize: p.actionSize,
+                  nickName: p.nickName,
+                  type: p.type,
+                  userId: p.userId,
+                }, {})),
+                pot: roomInfo.game?.pot,
+                prevSize: roomInfo.game?.prevSize,
+                currPlayer: {
+                  userId: roomInfo.game?.currPlayer.node.userId,
+                },
+              };
+              const game = ctx.helper.parseMsg('gameInfo', {
+                data: gameInfo,
+              }, { client: id });
+              socket.emit(id, game);
+            }
+          } else {
+            updatePlayer(room, gameRoom.roomInfo.players, 'players', nsp);
           }
         }
       }
-      socket.join(room);
-      socket.emit(id, ctx.helper.parseMsg('userInfo', user));
-
       // console.log('players', JSON.stringify(gameRoom.roomInfo.players));
       updatePlayer(room, `User(${user.nickName}) joined.`, 'join', nsp);
-      updatePlayer(room, gameRoom.roomInfo.players, 'players', nsp);
       await next();
     } catch (e) {
       throw e;

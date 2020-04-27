@@ -24,7 +24,7 @@ const routes: RouteConfig[] = [
     component: Register,
   },
   {
-    path: '/game/:roomNumber',
+    path: '/game/:roomNumber/:isOwner?',
     name: 'game',
     component: Game,
   },

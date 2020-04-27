@@ -8,9 +8,6 @@ import { IPlayer } from '../../core/Player';
 class GameController extends BaseSocketController {
 
   async playGame() {
-    const { room } = this.socket.handshake.query;
-    console.log('play------------', room);
-    console.log('socket------------', this.socket.id);
     try {
       // const gameRecord: IGameRecord = {
       //   game_id: 0,
@@ -21,43 +18,21 @@ class GameController extends BaseSocketController {
       // };
       // await this.gameRecordService.add(gameRecord);
       const roomInfo = await this.getRoomInfo();
+      if (roomInfo.players.length < 2) {
+        throw 'player not enough';
+      }
+
       if (!roomInfo.game) {
         roomInfo.game = new PokerGame({
           users: roomInfo.players,
           smallBlind: 1,
           updateCommonCard: () => {
-            // game over
             if (roomInfo.game) {
+              console.log('come in', roomInfo.game.status);
               if (roomInfo.game.status < 6) {
                 roomInfo.game.startActionRound();
                 roomInfo.game.sendCard();
-              } else {
-                roomInfo.game.allPlayer.forEach(gamePlayer => {
-                  const player = roomInfo.players.find(
-                    (p: IPlayer) => p.nickName === gamePlayer.nickName);
-                  if (player) {
-                    player.counter = gamePlayer.counter;
-                  }
-                });
-                console.log('game over-------------');
-                console.log(roomInfo.game.commonCard);
-                console.log(roomInfo.game.pot);
-                console.log(roomInfo.players, '=============players');
-                console.log(roomInfo.game.getPlayers());
-                console.log(roomInfo.game.winner);
-                // new game
-                setTimeout(() => {
-                  if (roomInfo.players.length >= 2) {
-                    const player = roomInfo.players.shift();
-                    if (player) {
-                      roomInfo.players.push(player);
-                    }
-                    roomInfo.game = null;
-                    this.playGame();
-                  }
-                }, 100000);
               }
-              console.log('send common card', roomInfo.game.status);
               this.nsp.adapter.clients([ this.roomNumber ],
                 (err: any, clients: any) => {
                   if (roomInfo.game) {
@@ -73,6 +48,56 @@ class GameController extends BaseSocketController {
                   }
                 });
             }
+          },
+          gameOverCallBack: () => {
+            if (roomInfo.game) {
+              // game over
+              roomInfo.game.allPlayer.forEach(gamePlayer => {
+                const player = roomInfo.players.find(
+                  (p: IPlayer) => p.nickName === gamePlayer.nickName);
+                if (player) {
+                  player.counter = gamePlayer.counter;
+                }
+              });
+              console.log('game over-------------');
+              console.log(roomInfo.game.commonCard);
+              console.log(roomInfo.game.pot);
+              console.log(roomInfo.players, '=============players');
+              console.log(roomInfo.game.getPlayers());
+              console.log(roomInfo.game.winner);
+              // new game
+              setTimeout(() => {
+                if (roomInfo.players.length >= 2) {
+                  const player = roomInfo.players.shift();
+                  if (player) {
+                    roomInfo.players.push(player);
+                  }
+                  roomInfo.game = null;
+                  this.playGame();
+                }
+              }, 100000);
+            }
+            this.nsp.adapter.clients([ this.roomNumber ],
+              (err: any, clients: any) => {
+                if (roomInfo.game) {
+                  // game over show winner
+                  if (roomInfo.game.status === 7) {
+                    let winner: any = [[{ ...roomInfo.game.winner[0][0], handCard: [] }]];
+                    // only player, other fold
+                    if (roomInfo.game.getPlayers().length !== 1) {
+                      winner = roomInfo.game.winner;
+                    }
+                    this.nsp.to(this.roomNumber).emit('online', {
+                      clients,
+                      action: 'gameOver',
+                      target: 'participator',
+                      data: {
+                        winner,
+                      },
+                    });
+                  }
+                }
+              });
           },
         });
         roomInfo.game.play();

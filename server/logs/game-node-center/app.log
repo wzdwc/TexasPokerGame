@@ -257,3 +257,32 @@ hostname: 192.168.0.105
   fetchEnd: 1587648315562
 }
 2020-04-23 22:41:00,428 ERROR 52898 [-/192.168.0.101/-/2ms GET /socket.io/?room=652114&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4NzY0ODI1NSwiZXhwIjoxNTg3NjY5ODU1fQ.__TDymI59M3EkIQDEzsjRGaTiZme4EzcbOKvZRjWoQE&EIO=3&transport=websocket] room service tick null
+2020-04-27 21:22:04,595 INFO 56754 [-/192.168.0.103/-/288ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODc5OTM3MjQsImV4cCI6MTU4ODAxNTMyNH0.qg2Hyc4aGmeVpx83_5w8sNnFRxKGuGx_mNMFHEqrS5U
+2020-04-27 21:22:04,599 INFO 56754 [-/192.168.0.103/-/292ms POST /node/user/login] {
+  fetchStart: 1587993724327,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587993724599
+}
+2020-04-27 21:22:07,761 INFO 56754 [-/192.168.0.103/-/108ms POST /node/game/room] {
+  fetchStart: 1587993727655,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587993727761
+}
+2020-04-27 21:22:23,462 INFO 56754 [-/192.168.0.103/-/204ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4Nzk5Mzc0MywiZXhwIjoxNTg4MDE1MzQzfQ.8jtO2T8z2unBTHshVLfUgX78sr_QxMu9Va2BmxgjxAc
+2020-04-27 21:22:23,462 INFO 56754 [-/192.168.0.103/-/205ms POST /node/user/login] {
+  fetchStart: 1587993743257,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587993743462
+}

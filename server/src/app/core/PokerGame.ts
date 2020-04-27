@@ -11,6 +11,7 @@ interface IPokerGame {
   users: IPlayer[];
   smallBlind: number;
   updateCommonCard: () => void;
+  gameOverCallBack: () => void;
 }
 
 export enum EGameStatus {
@@ -43,12 +44,17 @@ export class PokerGame {
   allInPlayers: Player[] = [];
   currActionAllinPlayer: Player[] = [];
   updateCommonCard: () => void;
+  gameOverCallBack: () => void;
   hasStraddle = false;
   winner: Player[][] = [];
 
   constructor(config: IPokerGame) {
     this.smallBlind = config.smallBlind;
     this.updateCommonCard = config.updateCommonCard;
+    this.gameOverCallBack = config.gameOverCallBack;
+    if (config.users.length < 2) {
+      throw 'player must be max than 2 ';
+    }
     this.init(config.users);
   }
 
@@ -437,5 +443,6 @@ export class PokerGame {
     this.getWinner();
     // todo counting
     this.counting();
+    this.gameOverCallBack();
   }
 }

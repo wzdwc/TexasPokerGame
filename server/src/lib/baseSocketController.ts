@@ -28,7 +28,7 @@ export default class BaseSocketController extends Controller {
   async updateGameInfo() {
     const roomInfo = await this.getRoomInfo();
     this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
-      if (roomInfo.game) {
+      if (roomInfo.game && roomInfo.game.status < 6) {
         roomInfo.players.forEach(p => {
           const currPlayer = roomInfo.game &&
             roomInfo.game.allPlayer.find(player => player.userId === p.userId);
