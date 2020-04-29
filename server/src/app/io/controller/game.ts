@@ -1,5 +1,4 @@
 'use strict';
-
 import BaseSocketController from '../../../lib/baseSocketController';
 import { IRoomInfo } from '../../../interface/IGameRoom';
 import { PokerGame } from '../../core/PokerGame';
@@ -18,20 +17,23 @@ class GameController extends BaseSocketController {
       // };
       // await this.gameRecordService.add(gameRecord);
       const roomInfo = await this.getRoomInfo();
-      if (roomInfo.players.length < 2) {
+      console.log('players', roomInfo.players);
+      const sitDownPlayer = roomInfo.players.filter(p => p.counter > 0 && !!p.sit);
+
+      if (sitDownPlayer.length < 2) {
         throw 'player not enough';
       }
 
       if (!roomInfo.game) {
         roomInfo.game = new PokerGame({
-          users: roomInfo.players,
+          users: sitDownPlayer,
           smallBlind: 1,
           updateCommonCard: () => {
             if (roomInfo.game) {
               console.log('come in', roomInfo.game.status);
               if (roomInfo.game.status < 6) {
-                roomInfo.game.startActionRound();
                 roomInfo.game.sendCard();
+                roomInfo.game.startActionRound();
               }
               this.nsp.adapter.clients([ this.roomNumber ],
                 (err: any, clients: any) => {
@@ -67,14 +69,7 @@ class GameController extends BaseSocketController {
               console.log(roomInfo.game.winner);
               // new game
               setTimeout(() => {
-                if (roomInfo.players.length >= 2) {
-                  const player = roomInfo.players.shift();
-                  if (player) {
-                    roomInfo.players.push(player);
-                  }
-                  roomInfo.game = null;
-                  this.playGame();
-                }
+               this.reStart();
               }, 100000);
             }
             this.nsp.adapter.clients([ this.roomNumber ],
@@ -83,9 +78,11 @@ class GameController extends BaseSocketController {
                   // game over show winner
                   if (roomInfo.game.status === 7) {
                     let winner: any = [[{ ...roomInfo.game.winner[0][0], handCard: [] }]];
+                    let allPlayers = winner[0];
                     // only player, other fold
                     if (roomInfo.game.getPlayers().length !== 1) {
                       winner = roomInfo.game.winner;
+                      allPlayers = roomInfo.game.getPlayers();
                     }
                     this.nsp.to(this.roomNumber).emit('online', {
                       clients,
@@ -93,6 +90,7 @@ class GameController extends BaseSocketController {
                       target: 'participator',
                       data: {
                         winner,
+                        allPlayers,
                       },
                     });
                   }
@@ -124,6 +122,31 @@ class GameController extends BaseSocketController {
     }
   }
 
+  async reStart() {
+    const roomInfo: IRoomInfo = await this.getRoomInfo();
+    const player = roomInfo.players.shift();
+    if (player) {
+      roomInfo.players.push(player);
+    }
+    roomInfo.game = null;
+    // update player counter
+    roomInfo.players.forEach(p => {
+      p.counter += p.reBuy;
+      p.reBuy = 0;
+    })
+    // new game
+    this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
+      // 广播信息
+      this.nsp.to(this.roomNumber).emit('online', {
+        clients,
+        action: 'newGame',
+        target: 'participator',
+        data: {},
+      });
+    });
+    await this.playGame();
+  }
+
   async buyIn() {
     try {
       const userInfo: IPlayer = await this.getUserInfo();
@@ -134,8 +157,15 @@ class GameController extends BaseSocketController {
         (p: IPlayer) => p.nickName === userInfo.nickName);
       console.log(userInfo, 'userInfo------');
       if (player) {
-        player.counter += Number(buyInSize);
+        if (roomInfo.game) {
+          const inTheGame = roomInfo.game.allPlayer.find(p => p.userId === userInfo.userId);
+          // player in the game, can't buy in
+          if (inTheGame) {
+            player.reBuy += Number(buyInSize);
+          }
+        }
         player.buyIn += Number(buyInSize);
+        player.counter += Number(buyInSize);
       } else {
         const player: IPlayer = {
           counter: Number(buyInSize),

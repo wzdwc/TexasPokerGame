@@ -6,6 +6,8 @@ export interface IPlayer {
   nickName: string;
   account: string;
   socketId: string;
+  sit?: boolean;
+  reBuy: number;
 }
 
 export enum ECommand {
@@ -37,6 +39,7 @@ export class Player {
   actionCommand: string = '';
   type: string = EPlayerType.DEFAULT;
   evPot: number = Infinity;
+  inPot: number = 0;
   pokeStyle: string = '';
 
   // commandRecord: Array<string> = [];
@@ -76,7 +79,7 @@ export class Player {
     const command = commandArr[0];
     const raiseSize = Number(commandArr[1]);
     let size = 0;
-    if (command !== ECommand.ALL_IN
+    if ((command !== ECommand.ALL_IN && command !== ECommand.FOLD)
       && (prevSize > (this.counter + this.actionSize) || raiseSize > this.counter)) {
       throw 'player: error action, overflow action size';
     } else {
@@ -126,6 +129,7 @@ export class Player {
     }
     if (size > 0) {
       this.counter -= size;
+      this.inPot += size;
     }
     this.actionSize += size;
     return size;

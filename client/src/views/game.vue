@@ -5,8 +5,9 @@
         <div class="users"
              v-for="user in users">
           <span> {{user.nickName}}: {{user.counter}}</span>
+          <span>buyIn: {{user.buyIn}}</span>
           <span v-show="user.actionSize > 0"> actionSize:{{user.actionSize}} </span>
-          <span> type:{{user.type}} </span>
+          <span v-show="user.type"> type:{{user.type}} </span>
           <span v-show="gameOver && user.handCard">handCard: {{mapCard(user.handCard)}}</span>
         </div>
         <div class="join">
@@ -43,7 +44,7 @@
       <div class="btn play"
            v-show="isOwner && !isPlay"><span @click="play">play game</span></div>
     </div>
-    <div class="buy-in" v-show="showBuyIn">
+    <div class="buy-in">
       <div class="input-bd">
         <div class="input-name">buy in:</div>
         <div class="input-text">
@@ -61,7 +62,6 @@
   import Component from 'vue-class-component';
   import io from 'socket.io-client';
   import cookie from 'js-cookie';
-  import service from '../service';
 
   interface IUser {
     counter: number;
@@ -71,6 +71,7 @@
     type: string;
     userId?: number;
     handCard?: string[];
+    buyIn: number;
   }
 
   export enum ECommand {
@@ -105,11 +106,11 @@
     private showBuyIn = true;
 
     get isPlay() {
-      return this.pot !== 0 && this.currPlayer?.counter !== 0;
+      return this.pot !== 0 && this.currPlayer?.buyIn !== 0;
     }
 
     get hasBuyIn() {
-      return this.currPlayer?.counter !== 0;
+      return this.currPlayer?.buyIn !== 0;
     }
 
     get roomId() {
@@ -169,6 +170,10 @@
       // check
       if ('check' === type) {
         return this.prevSize <= 0
+          || (this.commonCard.length === 0
+            && this.users.length === 2
+            && this.currPlayer?.type === 'dealer'
+            && this.prevSize === 2)
           || (this.currPlayer?.type === 'big_blind' && this.prevSize === 2 &&
             this.commonCard.length === 0);
       }
@@ -200,7 +205,7 @@
       const token = cookie.get('token');
       const log = console.log;
       // const origin = 'http://172.22.72.70:7001';
-      const origin = 'http://192.168.0.103:7001';
+      const origin = 'http://192.168.0.101:7001';
       this.socket = io(`${origin}/socket`, {
         // 实际使用中可以在这里传递参数
         query: {
@@ -260,12 +265,18 @@
         if (msg.action === 'gameOver') {
           console.log('gameOver', msg.data);
           this.winner = msg.data.winner;
-          this.winner.forEach((w: IUser[]) => {
-            this.users = this.users.map((p) => {
-              const winner = w.find(wPlayer => wPlayer.userId === p.userId);
-              return Object.assign({}, p, { handCard: winner?.handCard });
+          const allPlayers = msg.data.allPlayers;
+          allPlayers.forEach((w: IUser) => {
+            this.users.forEach((p) => {
+              if (w.userId === p.userId) {
+                p.handCard = w.handCard;
+              }
             });
           });
+        }
+
+        if (msg.action === 'newGame') {
+          this.init();
         }
       });
 

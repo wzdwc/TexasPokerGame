@@ -39,6 +39,8 @@ export default function join(): any {
         socketId: id,
         counter: 0,
         buyIn: 0,
+        reBuy: 0,
+        sit: true,
       };
       let gameRoom: IGameRoom = {
         number: room,

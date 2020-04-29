@@ -286,3 +286,82 @@ hostname: 192.168.0.105
   status: 200,
   fetchEnd: 1587993743462
 }
+2020-04-27 22:23:31,588 ERROR 56936 [-/192.168.0.103/-/5ms GET /socket.io/?room=214310&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4Nzk5Mzc0MywiZXhwIjoxNTg4MDE1MzQzfQ.8jtO2T8z2unBTHshVLfUgX78sr_QxMu9Va2BmxgjxAc&EIO=3&transport=websocket] room service tick null
+2020-04-27 22:23:31,613 ERROR 56936 [-/192.168.0.103/-/3ms GET /socket.io/?room=214310&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4Nzk5Mzc0MywiZXhwIjoxNTg4MDE1MzQzfQ.8jtO2T8z2unBTHshVLfUgX78sr_QxMu9Va2BmxgjxAc&EIO=3&transport=websocket] room service tick null
+2020-04-27 22:23:31,614 ERROR 56936 [-/192.168.0.103/-/3ms GET /socket.io/?room=214310&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4Nzk5Mzc0MywiZXhwIjoxNTg4MDE1MzQzfQ.8jtO2T8z2unBTHshVLfUgX78sr_QxMu9Va2BmxgjxAc&EIO=3&transport=websocket] room service tick null
+2020-04-27 22:23:31,615 ERROR 56936 [-/192.168.0.103/-/3ms GET /socket.io/?room=214310&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4Nzk5Mzc0MywiZXhwIjoxNTg4MDE1MzQzfQ.8jtO2T8z2unBTHshVLfUgX78sr_QxMu9Va2BmxgjxAc&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:26:49,918 ERROR 57542 [-/127.0.0.1/-/1ms GET /] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:160:17)
+    at Handshake.emit (events.js:311:20)
+    at Handshake._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/sequences/Sequence.js:124:8)
+    at Timer._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Timer.js:32:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: select now() as currentTime;
+code: "PROTOCOL_SEQUENCE_TIMEOUT"
+fatal: true
+timeout: 10000
+name: "PROTOCOL_SEQUENCE_TIMEOUTError"
+pid: 57542
+hostname: 192.168.0.101
+
+2020-04-28 23:29:18,369 INFO 57568 [-/192.168.0.101/-/223ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODgwODc3NTgsImV4cCI6MTU4ODEwOTM1OH0.raY5uwkqn0zYe8tiY_2eDCwOzlxXbsnxQfcjL4bUiMs
+2020-04-28 23:29:18,372 INFO 57568 [-/192.168.0.101/-/226ms POST /node/user/login] {
+  fetchStart: 1588087758162,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588087758372
+}
+2020-04-28 23:29:20,885 INFO 57568 [-/192.168.0.101/-/103ms POST /node/game/room] {
+  fetchStart: 1588087760785,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588087760885
+}
+2020-04-28 23:29:41,536 INFO 57568 [-/192.168.0.101/-/186ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4ODA4Nzc4MSwiZXhwIjoxNTg4MTA5MzgxfQ.-HaI_Ir_qaEisBWdja_RWZVfA0GS9IHzgK7NAlkorKk
+2020-04-28 23:29:41,537 INFO 57568 [-/192.168.0.101/-/187ms POST /node/user/login] {
+  fetchStart: 1588087781350,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588087781537
+}
+2020-04-28 23:32:03,806 ERROR 57568 [-/192.168.0.103/-/25ms GET /socket.io/?room=652114&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:32:05,275 ERROR 57568 [-/192.168.0.103/-/4ms GET /socket.io/?room=652114&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:32:12,541 ERROR 57568 [-/192.168.0.103/-/7ms GET /socket.io/?room=652114&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:32:14,387 ERROR 57568 [-/192.168.0.103/-/4ms GET /socket.io/?room=473957&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:32:16,194 ERROR 57568 [-/192.168.0.103/-/4ms GET /socket.io/?room=473957&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:32:35,688 INFO 57568 [-/192.168.0.103/-/188ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4ODA4Nzk1NSwiZXhwIjoxNTg4MTA5NTU1fQ.ImRv9G2O2c7i0Vj0GmazIt5nrfQ8XXmncVNbL1_YzyA
+2020-04-28 23:32:35,689 INFO 57568 [-/192.168.0.103/-/189ms POST /node/user/login] {
+  fetchStart: 1588087955502,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588087955689
+}
+2020-04-28 23:33:03,015 ERROR 57568 player not enough
+2020-04-28 23:34:52,944 ERROR 59295 player not enough
+2020-04-28 23:37:18,491 ERROR 59320 player not enough
+2020-04-29 00:30:16,543 ERROR 59664 [-/192.168.0.103/-/4ms GET /socket.io/?room=473957&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4ODA4Nzk1NSwiZXhwIjoxNTg4MTA5NTU1fQ.ImRv9G2O2c7i0Vj0GmazIt5nrfQ8XXmncVNbL1_YzyA&EIO=3&transport=websocket] room service tick null
+2020-04-29 00:30:16,651 ERROR 59664 [-/192.168.0.103/-/4ms GET /socket.io/?room=473957&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4ODA4Nzk1NSwiZXhwIjoxNTg4MTA5NTU1fQ.ImRv9G2O2c7i0Vj0GmazIt5nrfQ8XXmncVNbL1_YzyA&EIO=3&transport=websocket] room service tick null

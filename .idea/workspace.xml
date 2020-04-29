@@ -7,13 +7,14 @@
       <change beforePath="$PROJECT_DIR$/client/src/utils/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/request.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/logs/ELKLog/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/ELKLog/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/ELKLog/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/ELKLog/info.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/agent.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/agent.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/app.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/core.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/core.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/egg-schedule.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/egg-schedule.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/core/Player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Player.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" afterDir="false" />
@@ -62,7 +63,7 @@
       <updated>1586870120922</updated>
       <workItem from="1586870126995" duration="5800000" />
       <workItem from="1587201178537" duration="25531000" />
-      <workItem from="1587993480577" duration="1347000" />
+      <workItem from="1587993480577" duration="4978000" />
     </task>
     <servers />
   </component>

@@ -35,13 +35,18 @@ export default class BaseSocketController extends Controller {
           p.counter = currPlayer && currPlayer.counter || 0;
         });
         const gameInfo = {
-          players: roomInfo.game.allPlayer.map(p => Object.assign({}, {
-            counter: p.counter,
-            actionSize: p.actionSize,
-            nickName: p.nickName,
-            type: p.type,
-            userId: p.userId,
-          }, {})),
+          players: roomInfo.game.allPlayer.map(p => {
+            const currPlayer = roomInfo.players.find(player => player.userId === p.userId);
+            p.counter = Number(currPlayer?.buyIn) - p.inPot;
+            return Object.assign({}, {
+              counter: p.counter,
+              actionSize: p.actionSize,
+              nickName: p.nickName,
+              type: p.type,
+              userId: p.userId,
+              buyIn: currPlayer ? currPlayer.buyIn : 0,
+            }, {});
+          }),
           pot: roomInfo.game.pot,
           prevSize: roomInfo.game.prevSize,
           currPlayer: {
