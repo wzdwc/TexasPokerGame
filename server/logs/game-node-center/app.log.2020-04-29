@@ -1,0 +1,373 @@
+2020-04-21 00:04:09,977 INFO 47851 [-/127.0.0.1/-/307ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3Mzk4NjQ5LCJleHAiOjE1ODc0MjAyNDl9.DHds4JdE1Ry6ONdqzaDH4D7ghAxvTPpoIuN6uwSKFvw
+2020-04-21 00:04:09,980 INFO 47851 [-/127.0.0.1/-/310ms POST /node/user/login] {
+  fetchStart: 1587398649669,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587398649979
+}
+2020-04-21 00:04:19,290 INFO 47851 [-/undefined/-/10246ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3Mzk4NjU5LCJleHAiOjE1ODc0MjAyNTl9.EKpMuQxGnIGRTQZMp9f4RBpwwBAZx1PGeGr4ohqw0I8
+2020-04-21 00:04:19,291 INFO 47851 [-/undefined/-/10248ms POST /node/user/login] {
+  fetchStart: 1587398649669,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587398659291
+}
+2020-04-21 00:04:35,332 INFO 47851 [-/127.0.0.1/-/235ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODczOTg2NzUsImV4cCI6MTU4NzQyMDI3NX0.jl4oGlWiohAYq6t-bpTxMSKhuYBymKqnsmYT7dZmbWs
+2020-04-21 00:04:35,333 INFO 47851 [-/127.0.0.1/-/235ms POST /node/user/login] {
+  fetchStart: 1587398675097,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587398675332
+}
+2020-04-21 00:13:39,093 INFO 47851 [-/192.168.0.103/-/317ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3Mzk5MjE5LCJleHAiOjE1ODc0MjA4MTl9.xmOGj5zY8OVhQ7JGJQi024xDlroaEqISeNDWNiZ0LnU
+2020-04-21 00:13:39,095 INFO 47851 [-/192.168.0.103/-/319ms POST /node/user/login] {
+  fetchStart: 1587399218777,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587399219095
+}
+2020-04-21 00:13:41,978 INFO 47851 [-/undefined/-/10245ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3Mzk5MjIxLCJleHAiOjE1ODc0MjA4MjF9.W2LH7QKBfMqtcQQDihw9FZafYX1UXFAQ7UO0rCDOxr0
+2020-04-21 00:13:41,979 INFO 47851 [-/undefined/-/10246ms POST /node/user/login] {
+  fetchStart: 1587399218777,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587399221979
+}
+2020-04-21 00:13:59,943 INFO 47851 [-/192.168.0.103/-/145ms POST /node/game/room] {
+  fetchStart: 1587399239806,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587399239943
+}
+2020-04-21 00:15:03,495 INFO 47851 [-/192.168.0.103/-/101ms POST /node/game/room] {
+  fetchStart: 1587399303396,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587399303495
+}
+2020-04-21 00:16:35,230 INFO 47851 [-/192.168.0.103/-/194ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoSIsImFjY291bnQiOiJjYWkxMTEiLCJ1c2VySWQiOjJ9LCJpYXQiOjE1ODczOTkzOTUsImV4cCI6MTU4NzQyMDk5NX0.NbHqCVkir6GpW50LD22aMID9gZmvdlKDSXjTWvyeLFs
+2020-04-21 00:16:35,230 INFO 47851 [-/192.168.0.103/-/194ms POST /node/user/login] {
+  fetchStart: 1587399395037,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587399395230
+}
+2020-04-21 00:24:44,652 INFO 48621 [-/192.168.0.103/-/245ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoSIsImFjY291bnQiOiJjYWkxMTEiLCJ1c2VySWQiOjJ9LCJpYXQiOjE1ODczOTk4ODQsImV4cCI6MTU4NzQyMTQ4NH0.CVCe19KN0vg_4m1-axLTR6pz7DQPRQkcOWvBN5mn6PE
+2020-04-21 00:24:44,656 INFO 48621 [-/192.168.0.103/-/249ms POST /node/user/login] {
+  fetchStart: 1587399884430,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587399884656
+}
+2020-04-21 00:28:45,512 ERROR 48633 [-/127.0.0.1/-/6ms GET /socket.io/?room=394598&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODczOTY2MDQsImV4cCI6MTU4NzQxODIwNH0.5eVb-sKMAuFF3x3t8wH3O8BeG3lhJUEwHWwYM64jgbE&EIO=3&transport=websocket] room service tick null
+2020-04-21 22:52:33,923 INFO 49450 [-/192.168.0.105/-/230ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3NDgwNzUzLCJleHAiOjE1ODc1MDIzNTN9.KxxH7Eiw4toDFNZGwaHSALgEbfIPT8Qjw-7-Hp6XllU
+2020-04-21 22:52:33,928 INFO 49450 [-/192.168.0.105/-/234ms POST /node/user/login] {
+  fetchStart: 1587480753710,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587480753927
+}
+2020-04-21 22:52:35,039 INFO 49450 [-/192.168.0.105/-/170ms POST /node/game/room] {
+  fetchStart: 1587480754871,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587480755038
+}
+2020-04-21 23:01:35,326 INFO 49495 [-/192.168.0.105/-/209ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODc0ODEyOTUsImV4cCI6MTU4NzUwMjg5NX0.04tWzzIEspNyYmtY-EzyesrnpVwD7zx-0zG7K9Rdb2s
+2020-04-21 23:01:35,331 INFO 49495 [-/192.168.0.105/-/213ms POST /node/user/login] {
+  fetchStart: 1587481295131,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587481295330
+}
+2020-04-21 23:04:55,154 ERROR 49495 [-/192.168.0.101/-/13ms GET /socket.io/?room=751675&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoSIsImFjY291bnQiOiJjYWkxMTEiLCJ1c2VySWQiOjJ9LCJpYXQiOjE1ODczOTk4ODQsImV4cCI6MTU4NzQyMTQ4NH0.CVCe19KN0vg_4m1-axLTR6pz7DQPRQkcOWvBN5mn6PE&EIO=3&transport=websocket] room service tick null
+2020-04-21 23:05:14,040 INFO 49495 [-/192.168.0.101/-/181ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoSIsImFjY291bnQiOiJjYWkxMTEiLCJ1c2VySWQiOjJ9LCJpYXQiOjE1ODc0ODE1MTQsImV4cCI6MTU4NzUwMzExNH0.C9J4r3Xp_Uf9eslayzzu8f_JOLdaAJd53NeeUsOvhx4
+2020-04-21 23:05:14,041 INFO 49495 [-/192.168.0.101/-/182ms POST /node/user/login] {
+  fetchStart: 1587481513861,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587481514041
+}
+2020-04-21 23:40:05,073 ERROR 49588 game already paling
+2020-04-22 23:38:24,980 ERROR 51857 [-/127.0.0.1/-/1ms GET /] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:160:17)
+    at Handshake.emit (events.js:311:20)
+    at Handshake._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/sequences/Sequence.js:124:8)
+    at Timer._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Timer.js:32:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: select now() as currentTime;
+code: "PROTOCOL_SEQUENCE_TIMEOUT"
+fatal: true
+timeout: 10000
+name: "PROTOCOL_SEQUENCE_TIMEOUTError"
+pid: 51857
+hostname: 192.168.0.105
+
+2020-04-22 23:39:39,501 ERROR 51873 [-/192.168.0.105/-/12ms GET /socket.io/?room=751675&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODc0ODEyOTUsImV4cCI6MTU4NzUwMjg5NX0.04tWzzIEspNyYmtY-EzyesrnpVwD7zx-0zG7K9Rdb2s&EIO=3&transport=websocket] room service tick null
+2020-04-22 23:40:04,092 INFO 51873 [-/192.168.0.105/-/209ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3NTcwMDA0LCJleHAiOjE1ODc1OTE2MDR9.qCv_9sbRdWKY2lYPVz6imLwUkvpRXr1ImmLIPLnwxf4
+2020-04-22 23:40:04,094 INFO 51873 [-/192.168.0.105/-/211ms POST /node/user/login] {
+  fetchStart: 1587570003886,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570004094
+}
+2020-04-22 23:40:05,232 INFO 51873 [-/192.168.0.105/-/110ms POST /node/game/room] {
+  fetchStart: 1587570005123,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570005232
+}
+2020-04-22 23:41:20,878 INFO 51873 [-/192.168.0.105/-/205ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6ImMiLCJhY2NvdW50IjoiY2FpIiwidXNlcklkIjoxfSwiaWF0IjoxNTg3NTcwMDgwLCJleHAiOjE1ODc1OTE2ODB9.S73RaBIpGQVhaELO6yfvBwDNUlrDdo1WUpfE4J_HwZs
+2020-04-22 23:41:20,879 INFO 51873 [-/192.168.0.105/-/206ms POST /node/user/login] {
+  fetchStart: 1587570080673,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570080879
+}
+2020-04-22 23:41:22,229 INFO 51873 [-/192.168.0.105/-/103ms POST /node/game/room] {
+  fetchStart: 1587570082127,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570082229
+}
+2020-04-22 23:41:48,445 INFO 51873 [-/192.168.0.105/-/202ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoTEiLCJhY2NvdW50IjoiY2FpMTEiLCJ1c2VySWQiOjN9LCJpYXQiOjE1ODc1NzAxMDgsImV4cCI6MTU4NzU5MTcwOH0.1kZQu3oihvSnCIkyBl9vFK8BK_6wxM7QvlMv0-cfggs
+2020-04-22 23:41:48,446 INFO 51873 [-/192.168.0.105/-/203ms POST /node/user/login] {
+  fetchStart: 1587570108243,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570108446
+}
+2020-04-22 23:43:45,866 ERROR 51873 game already paling
+2020-04-22 23:45:53,762 INFO 51959 [-/192.168.0.101/-/233ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tfbmFtZSI6IuiUoSIsImFjY291bnQiOiJjYWkxMTEiLCJ1c2VySWQiOjJ9LCJpYXQiOjE1ODc1NzAzNTMsImV4cCI6MTU4NzU5MTk1M30.QCROHyWqK_5kwhIpE3i2AwOfqsktIcRC7J9FwoZFTX8
+2020-04-22 23:45:53,766 INFO 51959 [-/192.168.0.101/-/237ms POST /node/user/login] {
+  fetchStart: 1587570353557,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587570353766
+}
+2020-04-23 21:23:56,163 INFO 52898 [-/192.168.0.101/-/233ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODc2NDgyMzYsImV4cCI6MTU4NzY2OTgzNn0.NLQVoRUOk2eKtPJpXtCoDpCYWkUXSL6vPljR-DKxYh4
+2020-04-23 21:23:56,167 INFO 52898 [-/192.168.0.101/-/237ms POST /node/user/login] {
+  fetchStart: 1587648235949,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587648236167
+}
+2020-04-23 21:23:57,773 INFO 52898 [-/192.168.0.101/-/112ms POST /node/game/room] {
+  fetchStart: 1587648237662,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587648237772
+}
+2020-04-23 21:24:15,611 INFO 52898 [-/192.168.0.101/-/205ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4NzY0ODI1NSwiZXhwIjoxNTg3NjY5ODU1fQ.__TDymI59M3EkIQDEzsjRGaTiZme4EzcbOKvZRjWoQE
+2020-04-23 21:24:15,612 INFO 52898 [-/192.168.0.101/-/206ms POST /node/user/login] {
+  fetchStart: 1587648255407,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587648255611
+}
+2020-04-23 21:24:57,588 ERROR 52898 [-/192.168.0.105/-/24ms GET /socket.io/?room=652114&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-23 21:25:02,486 ERROR 52898 [-/192.168.0.105/-/5ms GET /socket.io/?room=652114&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-23 21:25:04,225 ERROR 52898 [-/192.168.0.105/-/6ms GET /socket.io/?room=652114&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-23 21:25:15,562 INFO 52898 [-/192.168.0.105/-/203ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4NzY0ODMxNSwiZXhwIjoxNTg3NjY5OTE1fQ.Ts3MaDk8a6wFvN-TNG25Jvw5WOIjpcJHM3K-PMp-6vc
+2020-04-23 21:25:15,562 INFO 52898 [-/192.168.0.105/-/204ms POST /node/user/login] {
+  fetchStart: 1587648315359,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587648315562
+}
+2020-04-23 22:41:00,428 ERROR 52898 [-/192.168.0.101/-/2ms GET /socket.io/?room=652114&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4NzY0ODI1NSwiZXhwIjoxNTg3NjY5ODU1fQ.__TDymI59M3EkIQDEzsjRGaTiZme4EzcbOKvZRjWoQE&EIO=3&transport=websocket] room service tick null
+2020-04-27 21:22:04,595 INFO 56754 [-/192.168.0.103/-/288ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODc5OTM3MjQsImV4cCI6MTU4ODAxNTMyNH0.qg2Hyc4aGmeVpx83_5w8sNnFRxKGuGx_mNMFHEqrS5U
+2020-04-27 21:22:04,599 INFO 56754 [-/192.168.0.103/-/292ms POST /node/user/login] {
+  fetchStart: 1587993724327,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587993724599
+}
+2020-04-27 21:22:07,761 INFO 56754 [-/192.168.0.103/-/108ms POST /node/game/room] {
+  fetchStart: 1587993727655,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587993727761
+}
+2020-04-27 21:22:23,462 INFO 56754 [-/192.168.0.103/-/204ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4Nzk5Mzc0MywiZXhwIjoxNTg4MDE1MzQzfQ.8jtO2T8z2unBTHshVLfUgX78sr_QxMu9Va2BmxgjxAc
+2020-04-27 21:22:23,462 INFO 56754 [-/192.168.0.103/-/205ms POST /node/user/login] {
+  fetchStart: 1587993743257,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1587993743462
+}
+2020-04-27 22:23:31,588 ERROR 56936 [-/192.168.0.103/-/5ms GET /socket.io/?room=214310&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4Nzk5Mzc0MywiZXhwIjoxNTg4MDE1MzQzfQ.8jtO2T8z2unBTHshVLfUgX78sr_QxMu9Va2BmxgjxAc&EIO=3&transport=websocket] room service tick null
+2020-04-27 22:23:31,613 ERROR 56936 [-/192.168.0.103/-/3ms GET /socket.io/?room=214310&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4Nzk5Mzc0MywiZXhwIjoxNTg4MDE1MzQzfQ.8jtO2T8z2unBTHshVLfUgX78sr_QxMu9Va2BmxgjxAc&EIO=3&transport=websocket] room service tick null
+2020-04-27 22:23:31,614 ERROR 56936 [-/192.168.0.103/-/3ms GET /socket.io/?room=214310&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4Nzk5Mzc0MywiZXhwIjoxNTg4MDE1MzQzfQ.8jtO2T8z2unBTHshVLfUgX78sr_QxMu9Va2BmxgjxAc&EIO=3&transport=websocket] room service tick null
+2020-04-27 22:23:31,615 ERROR 56936 [-/192.168.0.103/-/3ms GET /socket.io/?room=214310&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4Nzk5Mzc0MywiZXhwIjoxNTg4MDE1MzQzfQ.8jtO2T8z2unBTHshVLfUgX78sr_QxMu9Va2BmxgjxAc&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:26:49,918 ERROR 57542 [-/127.0.0.1/-/1ms GET /] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:160:17)
+    at Handshake.emit (events.js:311:20)
+    at Handshake._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/sequences/Sequence.js:124:8)
+    at Timer._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Timer.js:32:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: select now() as currentTime;
+code: "PROTOCOL_SEQUENCE_TIMEOUT"
+fatal: true
+timeout: 10000
+name: "PROTOCOL_SEQUENCE_TIMEOUTError"
+pid: 57542
+hostname: 192.168.0.101
+
+2020-04-28 23:29:18,369 INFO 57568 [-/192.168.0.101/-/223ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODgwODc3NTgsImV4cCI6MTU4ODEwOTM1OH0.raY5uwkqn0zYe8tiY_2eDCwOzlxXbsnxQfcjL4bUiMs
+2020-04-28 23:29:18,372 INFO 57568 [-/192.168.0.101/-/226ms POST /node/user/login] {
+  fetchStart: 1588087758162,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588087758372
+}
+2020-04-28 23:29:20,885 INFO 57568 [-/192.168.0.101/-/103ms POST /node/game/room] {
+  fetchStart: 1588087760785,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588087760885
+}
+2020-04-28 23:29:41,536 INFO 57568 [-/192.168.0.101/-/186ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4ODA4Nzc4MSwiZXhwIjoxNTg4MTA5MzgxfQ.-HaI_Ir_qaEisBWdja_RWZVfA0GS9IHzgK7NAlkorKk
+2020-04-28 23:29:41,537 INFO 57568 [-/192.168.0.101/-/187ms POST /node/user/login] {
+  fetchStart: 1588087781350,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588087781537
+}
+2020-04-28 23:32:03,806 ERROR 57568 [-/192.168.0.103/-/25ms GET /socket.io/?room=652114&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:32:05,275 ERROR 57568 [-/192.168.0.103/-/4ms GET /socket.io/?room=652114&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:32:12,541 ERROR 57568 [-/192.168.0.103/-/7ms GET /socket.io/?room=652114&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:32:14,387 ERROR 57568 [-/192.168.0.103/-/4ms GET /socket.io/?room=473957&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:32:16,194 ERROR 57568 [-/192.168.0.103/-/4ms GET /socket.io/?room=473957&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-04-28 23:32:35,688 INFO 57568 [-/192.168.0.103/-/188ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4ODA4Nzk1NSwiZXhwIjoxNTg4MTA5NTU1fQ.ImRv9G2O2c7i0Vj0GmazIt5nrfQ8XXmncVNbL1_YzyA
+2020-04-28 23:32:35,689 INFO 57568 [-/192.168.0.103/-/189ms POST /node/user/login] {
+  fetchStart: 1588087955502,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588087955689
+}
+2020-04-28 23:33:03,015 ERROR 57568 player not enough
+2020-04-28 23:34:52,944 ERROR 59295 player not enough
+2020-04-28 23:37:18,491 ERROR 59320 player not enough
+2020-04-29 00:30:16,543 ERROR 59664 [-/192.168.0.103/-/4ms GET /socket.io/?room=473957&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4ODA4Nzk1NSwiZXhwIjoxNTg4MTA5NTU1fQ.ImRv9G2O2c7i0Vj0GmazIt5nrfQ8XXmncVNbL1_YzyA&EIO=3&transport=websocket] room service tick null
+2020-04-29 00:30:16,651 ERROR 59664 [-/192.168.0.103/-/4ms GET /socket.io/?room=473957&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4ODA4Nzk1NSwiZXhwIjoxNTg4MTA5NTU1fQ.ImRv9G2O2c7i0Vj0GmazIt5nrfQ8XXmncVNbL1_YzyA&EIO=3&transport=websocket] room service tick null
+2020-04-29 23:17:55,297 ERROR 60633 [-/192.168.0.101/-/40ms GET /socket.io/?room=628754&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODgxNjk1MTYsImV4cCI6MTU4ODE5MTExNn0.V79TJ82uJ3ZQMk5prn5VXiBLkDjYyWFznatFHtxx4b0&EIO=3&transport=websocket] room service tick null
+2020-04-29 23:18:03,853 ERROR 60633 [-/192.168.0.101/-/3ms GET /socket.io/?room=628754&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODgxNjk1MTYsImV4cCI6MTU4ODE5MTExNn0.V79TJ82uJ3ZQMk5prn5VXiBLkDjYyWFznatFHtxx4b0&EIO=3&transport=websocket] room service tick null
+2020-04-29 23:18:45,742 ERROR 60633 [-/192.168.0.101/-/2ms GET /socket.io/?room=628754&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODgxNjk1MTYsImV4cCI6MTU4ODE5MTExNn0.V79TJ82uJ3ZQMk5prn5VXiBLkDjYyWFznatFHtxx4b0&EIO=3&transport=websocket] room service tick null
+2020-04-29 23:20:25,926 ERROR 60633 [-/192.168.0.101/-/1ms GET /socket.io/?room=628754&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODgxNjk1MTYsImV4cCI6MTU4ODE5MTExNn0.V79TJ82uJ3ZQMk5prn5VXiBLkDjYyWFznatFHtxx4b0&EIO=3&transport=websocket] room service tick null
+2020-04-29 23:37:21,244 ERROR 60633 [-/192.168.0.101/-/22ms GET /socket.io/?room=628754&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODgxNjk1MTYsImV4cCI6MTU4ODE5MTExNn0.V79TJ82uJ3ZQMk5prn5VXiBLkDjYyWFznatFHtxx4b0&EIO=3&transport=websocket] room service tick null
+2020-04-29 23:45:40,080 ERROR 60633 [-/192.168.0.101/-/9ms GET /socket.io/?room=628754&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODgxNjk1MTYsImV4cCI6MTU4ODE5MTExNn0.V79TJ82uJ3ZQMk5prn5VXiBLkDjYyWFznatFHtxx4b0&EIO=3&transport=websocket] room service tick null

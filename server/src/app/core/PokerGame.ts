@@ -81,8 +81,8 @@ export class PokerGame {
       // big blind
       const BBPlayerNode: ILinkNode<Player> = SBPlayerNode.next;
       const BBPlayer = BBPlayerNode.node;
-      SBPlayer.action(`small_blind:${this.smallBlind}`);
-      BBPlayer.action(`big_blind:${this.smallBlind * 2}`);
+      SBPlayer.action(`sb:${this.smallBlind}`);
+      BBPlayer.action(`bb:${this.smallBlind * 2}`);
       this.prevSize = this.smallBlind * 2;
       // add counter to pot
       // this.pots.push(this.smallBlind * 3);

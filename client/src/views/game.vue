@@ -1,5 +1,7 @@
 <template>
   <div class="game-container container">
+    <sitList></sitList>
+    <common-card></common-card>
     <div class="game-body" v-show="hasBuyIn">
       <div class="game-player-info">
         <div class="users"
@@ -58,28 +60,20 @@
 </template>
 
 <script lang="ts">
-  import { Vue } from 'vue-property-decorator';
+  import {Vue} from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import io from 'socket.io-client';
   import cookie from 'js-cookie';
-
-  interface IUser {
-    counter: number;
-    nick_name: string;
-    actionSize: number;
-    actionCommand: string;
-    type: string;
-    userId?: number;
-    handCard?: string[];
-    buyIn: number;
-  }
+  import sitList from '../components/SitList.vue';
+  import commonCard from '../components/CommonCard.vue';
+  import {IUser} from '@/interface/user';
 
   export enum ECommand {
-    CALL   = 'call',
+    CALL = 'call',
     ALL_IN = 'allin',
-    RAISE  = 'raise',
-    CHECK  = 'check',
-    FOLD   = 'fold',
+    RAISE = 'raise',
+    CHECK = 'check',
+    FOLD = 'fold',
   }
 
   interface IMsg {
@@ -89,7 +83,12 @@
     data: any;
   }
 
-  @Component
+  @Component({
+    components: {
+      sitList,
+      commonCard,
+    },
+  })
   export default class Game extends Vue {
     public socket: any = null;
     private users: IUser[] = [];
@@ -196,7 +195,7 @@
     }
 
     private action(command: string) {
-      this.emit('action', { command });
+      this.emit('action', {command});
       this.isAction = false;
       this.isRaise = false;
     }
@@ -328,6 +327,8 @@
 <style lang="less"
        scoped>
   .game-container {
+    background: url("../assets/bg.png");
+    background-size: 100% 100%;
     .raise-size {
       i {
         padding: 5px;
@@ -341,6 +342,14 @@
         border: 1px solid #bababa;
         margin: 10px;
         vertical-align: middle;
+      }
+    }
+
+    .sit-list {
+      .sit {
+        i {
+
+        }
       }
     }
   }

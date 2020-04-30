@@ -27,7 +27,6 @@ export default class App extends Vue {}
   }
 
 .container{
-  margin-top: 30px;
   .input-bd{
     line-height: 30px;
     margin: 10px;

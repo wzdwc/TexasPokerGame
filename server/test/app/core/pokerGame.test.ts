@@ -12,6 +12,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
       account: '1',
       socketId: '1',
       buyIn: 0,
+      reBuy: 0,
     },
     {
       userId: '2',
@@ -20,6 +21,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
       account: '2',
       socketId: '2',
       buyIn: 0,
+      reBuy: 0,
     },
     // {
     //   userId: '3',
@@ -38,6 +40,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
       smallBlind: 1,
       users,
       updateCommonCard: () => {},
+      gameOverCallBack: () => {},
     });
     game.play();
     expect(game.status).to.equal(EGameStatus.GAME_ACTION);
@@ -54,6 +57,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
       smallBlind: 1,
       users,
       updateCommonCard: () => {},
+      gameOverCallBack: () => {},
     });
     game.play();
     game.action('raise:9');
@@ -97,6 +101,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
           game.sendCard();
         }
       },
+      gameOverCallBack: () => {},
     });
     game.play();
     game.action('raise:9');
@@ -121,6 +126,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
           game.sendCard();
         }
       },
+      gameOverCallBack: () => {},
     });
     game.play();
     game.action('raise:9');
@@ -147,6 +153,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
           game.sendCard();
         }
       },
+      gameOverCallBack: () => {},
     });
     game.play();
     // pre flop
@@ -180,6 +187,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
           game.sendCard();
         }
       },
+      gameOverCallBack: () => {},
     });
     game.play();
     // pre flop
@@ -205,6 +213,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
           game.sendCard();
         }
       },
+      gameOverCallBack: () => {},
     });
     game.play();
     // pre flop

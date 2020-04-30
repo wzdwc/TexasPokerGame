@@ -23,9 +23,9 @@ export enum ECommand {
 
 export enum EPlayerType {
   DEFAULT = 'default',
-  DEALER = 'dealer',
-  BIG_BLIND = 'big_blind',
-  SMALL_BLIND = 'small_blind',
+  DEALER = 'd',
+  BIG_BLIND = 'bb',
+  SMALL_BLIND = 'sb',
 }
 
 export class Player {
