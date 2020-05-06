@@ -1,25 +1,26 @@
 <template>
   <div class="home-container container">
-    <div class="room-btn" v-show="showBtn">
-      <div class="create-room btn"
-           @click="createRoom"><span>create room</span>
-      </div>
-      <div class="btn"
-           @click="joinRoom"> <span>join room</span>
-      </div>
-    </div>
-    <div class="room number" v-show="isJoin">
-      <div class="input-bd">
-        <div class="input-name">room number:</div>
-        <div class="input-text">
-          <input type="tel" maxlength="6"
-                 v-model="roomNumber"/>
-        </div>
-      </div>
-      <div class="btn">
-        <span @click="go">go</span>
-      </div>
-    </div>
+<!--    <div class="room-btn" v-show="showBtn">-->
+<!--      <div class="create-room btn"-->
+<!--           @click="createRoom"><span>create room</span>-->
+<!--      </div>-->
+<!--      <div class="btn"-->
+<!--           @click="joinRoom"> <span>join room</span>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="room number" v-show="isJoin">-->
+<!--      <div class="input-bd">-->
+<!--        <div class="input-name">room number:</div>-->
+<!--        <div class="input-text">-->
+<!--          <input type="tel" maxlength="6"-->
+<!--                 v-model="roomNumber"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="btn">-->
+<!--        <span @click="go">go</span>-->
+<!--      </div>-->
+<!--    </div>-->
+    <commonCard></commonCard>
   </div>
 </template>
 
@@ -27,8 +28,13 @@
   import { Vue } from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import service from '../service';
+  import commonCard from '@/components/CommonCard.vue';
 
-  @Component
+  @Component({
+    components: {
+      commonCard,
+    },
+  })
   export default class Home extends Vue {
     public roomNumber: string = '';
     private isJoin = false;
