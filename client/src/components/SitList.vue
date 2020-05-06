@@ -4,16 +4,16 @@
       <div class="item" v-for="(sit,key) in sitList" :key="key" @click="sitDown(key)">
         <div class="default"></div>
         <div class="player">
-          <div class="user-name">test</div>
-          <div class="icon"></div>
-          <div class="counter">100</div>
-          <div class="action-size">200</div>
-          <div class="action-command">call</div>
-          <div class="type">bb</div>
-          <div class="hand-card"></div>
+          <div class="user-name">{{sit.player.account}}</div>
+          <div class="icon iconfont icon-user-avatar"></div>
+          <div class="counter">{{sit.player.counter}}</div>
+          <div class="action-size">{{sit.player.actionSize}}</div>
+          <div class="action-command">{{sit.player.actionCommand}}</div>
+          <div class="type">{{sit.player.type}}</div>
+          <div class="hand-card">{{sit.player.handCard}}</div>
         </div>
         <div class="cards">
-          <div class="hand-card"></div>
+          <div class="hand-card">{{sit.player.handCard}}</div>
           <div class="card-style"></div>
         </div>
       </div>
@@ -76,17 +76,16 @@
           .icon{
             width: 45px;
             height: 45px;
-            background: url("../assets/poke-icon.png") #fff;
-            background-size: 100% 100%;
-            border-radius: 2px;
-            border: 1px solid #bababa;
+            font-size: 45px;
+            line-height: 45px;
+            border-radius: 50%;
             margin-bottom: 2px;
           }
           .user-name{
             color: #fff;
           }
           .counter{
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.6);
             color: #fff;
             font-weight: 600;
             font-size: 12px;
@@ -107,9 +106,9 @@
             color: #2b2b2b;
             border-radius: 50%;
             padding: 2px;
-            width: 18px;
-            height: 18px;
-            line-height: 18px;
+            width: 15px;
+            height: 15px;
+            line-height: 16px;
             position: absolute;
             top: 53px;
             left: 38px;
@@ -117,9 +116,10 @@
             transform: scale(0.8);
           }
           .action-size{
-            background-color: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.3) url("../assets/gold.svg") center left no-repeat;
+            background-size: contain;
             border-radius: 2px;
-            padding:1px 4px;
+            padding:1px 4px 1px 12px;
             text-align: center;
             min-width: 35px;
             color: #fff;
@@ -146,7 +146,7 @@
 
         &:nth-child(4) {
           left: 296px;
-          top: 200px;
+          top: 210px;
         }
 
         &:nth-child(5) {
@@ -178,7 +178,7 @@
 
         &:nth-child(8) {
           left: 0;
-          top: 200px;
+          top: 210px;
         }
 
         &:nth-child(9) {
@@ -193,8 +193,10 @@
             left: -16px;
           }
           .action-size{
+            background-position: right;
             left: -40px;
-            padding-right: 15px;
+            padding-left: 1px;
+            padding-right: 17px;
             text-align: right;
           }
         }

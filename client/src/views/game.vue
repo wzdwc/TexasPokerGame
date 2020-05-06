@@ -1,8 +1,9 @@
 <template>
   <div class="game-container container">
     <sitList></sitList>
-    <common-card></common-card>
-    <div class="game-body" v-show="hasBuyIn">
+    <common-card :cardList="commonCardString"></common-card>
+    <div class="game-body"
+         v-show="hasBuyIn">
       <div class="game-player-info">
         <div class="users"
              v-for="user in users">
@@ -60,20 +61,20 @@
 </template>
 
 <script lang="ts">
-  import {Vue} from 'vue-property-decorator';
+  import { Vue } from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import io from 'socket.io-client';
   import cookie from 'js-cookie';
   import sitList from '../components/SitList.vue';
   import commonCard from '../components/CommonCard.vue';
-  import {IUser} from '@/interface/user';
+  import { IUser } from '@/interface/user';
 
   export enum ECommand {
-    CALL = 'call',
+    CALL   = 'call',
     ALL_IN = 'allin',
-    RAISE = 'raise',
-    CHECK = 'check',
-    FOLD = 'fold',
+    RAISE  = 'raise',
+    CHECK  = 'check',
+    FOLD   = 'fold',
   }
 
   interface IMsg {
@@ -133,7 +134,12 @@
     }
 
     get commonCardString() {
-      return this.mapCard(this.commonCard);
+      const commonCardFlag = ['', '', '', '', ''];
+      const commonCardMap = this.mapCard(this.commonCard);
+      commonCardMap.forEach((card, key) => {
+        commonCardFlag[key] = card;
+      });
+      return commonCardFlag;
     }
 
     get handCardString() {
@@ -195,7 +201,7 @@
     }
 
     private action(command: string) {
-      this.emit('action', {command});
+      this.emit('action', { command });
       this.isAction = false;
       this.isRaise = false;
     }
@@ -204,7 +210,7 @@
       const token = cookie.get('token');
       const log = console.log;
       // const origin = 'http://172.22.72.70:7001';
-      const origin = 'http://192.168.0.101:7001';
+      const origin = 'http://192.168.0.102:7001';
       this.socket = io(`${origin}/socket`, {
         // 实际使用中可以在这里传递参数
         query: {
@@ -329,6 +335,7 @@
   .game-container {
     background: url("../assets/bg.png");
     background-size: 100% 100%;
+
     .raise-size {
       i {
         padding: 5px;
