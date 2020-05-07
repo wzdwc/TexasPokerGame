@@ -210,7 +210,7 @@
       const token = cookie.get('token');
       const log = console.log;
       // const origin = 'http://172.22.72.70:7001';
-      const origin = 'http://192.168.0.102:7001';
+      const origin = 'http://192.168.0.103:7001';
       this.socket = io(`${origin}/socket`, {
         // 实际使用中可以在这里传递参数
         query: {

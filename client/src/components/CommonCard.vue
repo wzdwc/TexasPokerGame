@@ -28,7 +28,7 @@
       return !!this.cardList[0];
     }
     private isBlack(type: string) {
-      return type === '♠' || type === '♣'
+      return type === '♠' || type === '♣';
     }
   }
 </script>
