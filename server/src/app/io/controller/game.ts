@@ -133,7 +133,7 @@ class GameController extends BaseSocketController {
     roomInfo.players.forEach(p => {
       p.counter += p.reBuy;
       p.reBuy = 0;
-    })
+    });
     // new game
     this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
       // 广播信息
@@ -213,6 +213,29 @@ class GameController extends BaseSocketController {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  async sitDown() {
+    try {
+      const { payload } = this.message;
+      const sitList = payload.sitList;
+      const roomInfo = await this.getRoomInfo();
+      console.log('sitList===========', sitList);
+      roomInfo.sit = sitList;
+      this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
+        // 广播信息
+        this.nsp.to(this.roomNumber).emit('online', {
+          clients,
+          action: 'sitList',
+          target: 'participator',
+          data: {
+            sitList,
+          },
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    };
   }
 
   async action() {

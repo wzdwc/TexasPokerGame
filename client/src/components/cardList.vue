@@ -1,33 +1,39 @@
 <template>
-  <div class="container">
-    <div class="common-card-container">
-      <cardList :card-list="cardListString"></cardList>
+  <div class="card-container">
+    <div
+      class="card"
+      v-for="(card, key) in cardList"
+      v-bind:class="{ show: show, turn: show && card.length !== 0 }"
+    >
+      <i></i>
+      <span class="card-bg" :class="[isBlack(card[1]) ? 'black' : 'red']">
+        <b class="number">{{ card[0] }}</b>
+        <b class="color">{{ card[1] }}</b>
+      </span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
   import {Component, Prop, Vue} from 'vue-property-decorator';
-  import cardList from './cardList.vue';
 
-  @Component({
-    components: {
-      cardList,
-    },
-  })
-  export default class CommonCard extends Vue {
-    @Prop() private cardListString: any;
+  @Component
+  export default class Card extends Vue {
+    @Prop() private cardList: any;
+
+    get show() {
+      return this.cardList[0].length !== 0;
+    }
+
+    private isBlack(type: string) {
+      return type === '♠' || type === '♣';
+    }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-  .common-card-container {
-    position: absolute;
-    top: 50vh;
-    left: 50%;
-    margin: -38px -114px;
-
+  .card-container {
     .card {
       height: 60px;
       width: 40px;

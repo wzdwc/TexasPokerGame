@@ -6,4 +6,5 @@ export default function (app: Application) {
   app.io.of('/socket').route('buyIn', app.io.controller.game.buyIn);
   app.io.of('/socket').route('playGame', app.io.controller.game.playGame);
   app.io.of('/socket').route('action', app.io.controller.game.action);
+  app.io.of('/socket').route('sitDown', app.io.controller.game.sitDown);
 }

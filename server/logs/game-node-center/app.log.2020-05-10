@@ -1,0 +1,376 @@
+2020-05-07 20:44:05,344 ERROR 78290 [-/127.0.0.1/-/0ms GET /] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:160:17)
+    at Handshake.emit (events.js:311:20)
+    at Handshake._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/sequences/Sequence.js:124:8)
+    at Timer._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Timer.js:32:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: select now() as currentTime;
+code: "PROTOCOL_SEQUENCE_TIMEOUT"
+fatal: true
+timeout: 10000
+name: "PROTOCOL_SEQUENCE_TIMEOUTError"
+pid: 78290
+hostname: 192.168.0.103
+
+2020-05-07 20:45:22,155 INFO 78332 [-/192.168.0.103/-/210ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODg4NTU1MjIsImV4cCI6MTU4ODg3NzEyMn0.cr3MhjjEwzyQolAeuWu2nDwdNgfJMi0UdTkAJ69y-nk
+2020-05-07 20:45:22,158 INFO 78332 [-/192.168.0.103/-/214ms POST /node/user/login] {
+  fetchStart: 1588855521964,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588855522158
+}
+2020-05-07 20:45:24,696 INFO 78332 [-/192.168.0.103/-/98ms POST /node/game/room] {
+  fetchStart: 1588855524600,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588855524696
+}
+2020-05-07 22:55:00,510 ERROR 78332 [-/192.168.0.103/-/7ms GET /socket.io/?room=993810&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODg4NTU1MjIsImV4cCI6MTU4ODg3NzEyMn0.cr3MhjjEwzyQolAeuWu2nDwdNgfJMi0UdTkAJ69y-nk&EIO=3&transport=websocket] room service tick null
+2020-05-07 22:59:00,651 ERROR 78332 [-/192.168.0.103/-/5ms GET /socket.io/?room=993810&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODg4NTU1MjIsImV4cCI6MTU4ODg3NzEyMn0.cr3MhjjEwzyQolAeuWu2nDwdNgfJMi0UdTkAJ69y-nk&EIO=3&transport=websocket] room service tick null
+2020-05-07 23:30:05,956 INFO 79897 [-/192.168.0.103/-/206ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODg4NjU0MDUsImV4cCI6MTU4ODg4NzAwNX0.EBGmwOyAYl5EeXsFU2TOOslSYQ8BVmDntMDDt5tE36A
+2020-05-07 23:30:05,960 INFO 79897 [-/192.168.0.103/-/210ms POST /node/user/login] {
+  fetchStart: 1588865405766,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588865405960
+}
+2020-05-07 23:30:06,916 INFO 79897 [-/192.168.0.103/-/100ms POST /node/game/room] {
+  fetchStart: 1588865406818,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1588865406916
+}
+2020-05-08 01:00:03,511 ERROR 79897 [-/192.168.0.103/-/18ms GET /socket.io/?room=318879&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODg4NjU0MDUsImV4cCI6MTU4ODg4NzAwNX0.EBGmwOyAYl5EeXsFU2TOOslSYQ8BVmDntMDDt5tE36A&EIO=3&transport=websocket] room service tick null
+2020-05-10 15:25:59,788 ERROR 82439 [-/127.0.0.1/-/1ms GET /] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:160:17)
+    at Handshake.emit (events.js:311:20)
+    at Handshake._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/sequences/Sequence.js:124:8)
+    at Timer._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Timer.js:32:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: select now() as currentTime;
+code: "PROTOCOL_SEQUENCE_TIMEOUT"
+fatal: true
+timeout: 10000
+name: "PROTOCOL_SEQUENCE_TIMEOUTError"
+pid: 82439
+hostname: 192.168.0.110
+
+2020-05-10 15:27:16,818 INFO 82567 [-/192.168.0.110/-/228ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY
+2020-05-10 15:27:16,822 INFO 82567 [-/192.168.0.110/-/232ms POST /node/user/login] {
+  fetchStart: 1589095636616,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589095636822
+}
+2020-05-10 15:27:19,774 INFO 82567 [-/192.168.0.110/-/102ms POST /node/game/room] {
+  fetchStart: 1589095639675,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589095639774
+}
+2020-05-10 16:32:07,502 ERROR 82567 [-/192.168.0.110/-/17ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:32:30,326 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:32:34,904 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:34:27,172 ERROR 82567 [-/192.168.0.110/-/3ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:35:19,964 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:35:22,346 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:35:44,838 ERROR 82567 [-/192.168.0.110/-/4ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:35:46,843 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:36:31,568 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:36:34,080 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:36:58,077 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:37:00,926 ERROR 82567 [-/192.168.0.110/-/3ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:37:41,976 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:37:45,411 ERROR 82567 [-/192.168.0.110/-/7ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:38:14,947 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:38:49,803 ERROR 82567 [-/192.168.0.110/-/3ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:38:53,062 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:39:15,483 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:39:18,193 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:39:33,476 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:39:50,794 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:40:50,663 ERROR 82567 [-/192.168.0.110/-/3ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:40:54,013 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:41:20,424 ERROR 82567 [-/192.168.0.110/-/9ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:41:50,758 ERROR 82567 [-/192.168.0.110/-/6ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:41:56,951 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:42:00,473 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:42:12,917 ERROR 82567 [-/192.168.0.110/-/8ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:42:15,476 ERROR 82567 [-/192.168.0.110/-/3ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:42:45,575 ERROR 82567 [-/192.168.0.110/-/4ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:42:48,270 ERROR 82567 [-/192.168.0.110/-/8ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:43:08,228 ERROR 82567 [-/192.168.0.110/-/3ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:43:10,011 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:43:25,615 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:43:31,020 ERROR 82567 [-/192.168.0.110/-/7ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:43:34,305 ERROR 82567 [-/192.168.0.110/-/3ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:44:14,583 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:44:18,178 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:44:33,055 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:45:11,591 ERROR 82567 [-/192.168.0.110/-/3ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:45:15,645 ERROR 82567 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:45:57,374 ERROR 82567 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:46:00,170 ERROR 82567 [-/192.168.0.110/-/3ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:46:51,146 ERROR 85208 [-/192.168.0.110/-/10ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:47:37,975 ERROR 85208 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:47:40,492 ERROR 85208 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:48:20,795 ERROR 85208 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:48:23,594 ERROR 85208 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:48:47,218 ERROR 85208 [-/192.168.0.110/-/7ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:48:52,112 ERROR 85208 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:49:00,674 ERROR 85208 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:49:08,511 ERROR 85208 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:49:18,857 ERROR 85208 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:49:54,011 ERROR 85208 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:50:04,672 ERROR 85208 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:51:09,161 ERROR 85208 [-/192.168.0.110/-/5ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:51:28,750 ERROR 85208 [-/192.168.0.110/-/2ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:52:49,053 ERROR 85208 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:52:52,806 ERROR 85208 [-/192.168.0.110/-/1ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:53:40,940 ERROR 85208 [-/192.168.0.110/-/3ms GET /socket.io/?room=966201&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkwOTU2MzYsImV4cCI6MTU4OTExNzIzNn0.OUgiIJmB_b_os3-8hLjCRimgjfzqVS7gVcz0A1Q80rY&EIO=3&transport=websocket] room service tick null
+2020-05-10 16:53:53,089 INFO 85208 [-/192.168.0.110/-/285ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDA4MzMsImV4cCI6MTU4OTEyMjQzM30.Wkho60ADUGIIqDp0HRPo8lVOf7M2glT0rXHzoc7japM
+2020-05-10 16:53:53,091 INFO 85208 [-/192.168.0.110/-/287ms POST /node/user/login] {
+  fetchStart: 1589100832805,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589100833091
+}
+2020-05-10 16:53:53,984 INFO 85208 [-/192.168.0.110/-/98ms POST /node/game/room] {
+  fetchStart: 1589100833887,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589100833984
+}
+2020-05-10 16:54:02,223 INFO 85208 [-/undefined/-/10211ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDA4NDIsImV4cCI6MTU4OTEyMjQ0Mn0.S87-MpjNroIgYME0Jt_U6kDdWrPnsa_GhSbEIdyLFpk
+2020-05-10 16:54:02,223 INFO 85208 [-/undefined/-/10211ms POST /node/user/login] {
+  fetchStart: 1589100833887,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589100842223
+}
+2020-05-10 17:58:03,419 ERROR 87355 [-/192.168.0.110/-/9ms GET /socket.io/?room=790528&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDA4MzMsImV4cCI6MTU4OTEyMjQzM30.Wkho60ADUGIIqDp0HRPo8lVOf7M2glT0rXHzoc7japM&EIO=3&transport=websocket] room service tick null
+2020-05-10 18:03:36,664 ERROR 87365 [-/192.168.0.110/-/14ms GET /socket.io/?room=790528&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDA4MzMsImV4cCI6MTU4OTEyMjQzM30.Wkho60ADUGIIqDp0HRPo8lVOf7M2glT0rXHzoc7japM&EIO=3&transport=websocket] room service tick null
+2020-05-10 18:03:55,076 ERROR 87365 [-/192.168.0.110/-/6ms GET /socket.io/?room=790528&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDA4MzMsImV4cCI6MTU4OTEyMjQzM30.Wkho60ADUGIIqDp0HRPo8lVOf7M2glT0rXHzoc7japM&EIO=3&transport=websocket] room service tick null
+2020-05-10 18:04:22,838 ERROR 87365 [-/192.168.0.110/-/2ms GET /socket.io/?room=790528&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDA4MzMsImV4cCI6MTU4OTEyMjQzM30.Wkho60ADUGIIqDp0HRPo8lVOf7M2glT0rXHzoc7japM&EIO=3&transport=websocket] room service tick null
+2020-05-10 18:05:13,181 ERROR 87365 [-/192.168.0.110/-/3ms GET /socket.io/?room=790528&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDA4MzMsImV4cCI6MTU4OTEyMjQzM30.Wkho60ADUGIIqDp0HRPo8lVOf7M2glT0rXHzoc7japM&EIO=3&transport=websocket] room service tick null
+2020-05-10 18:05:41,262 ERROR 87365 [-/192.168.0.110/-/2ms GET /socket.io/?room=790528&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDA4MzMsImV4cCI6MTU4OTEyMjQzM30.Wkho60ADUGIIqDp0HRPo8lVOf7M2glT0rXHzoc7japM&EIO=3&transport=websocket] room service tick null
+2020-05-10 18:06:01,383 INFO 87365 [-/undefined/-/10295ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDUxNjEsImV4cCI6MTU4OTEyNjc2MX0.jNl0KCubb4HdqkbiFvBMppGNLT3zLX7bOqY1TjZ-Mr8
+2020-05-10 18:06:01,386 INFO 87365 [-/undefined/-/10297ms POST /node/user/login] {
+  fetchStart: 1589105151093,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589105161385
+}
+2020-05-10 18:06:08,011 INFO 87365 [-/192.168.0.110/-/173ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDUxNjgsImV4cCI6MTU4OTEyNjc2OH0.3_BCoMqOaxrxa2YKu06JvDo4Vg_2OY5lXPNwLNLUGJc
+2020-05-10 18:06:08,012 INFO 87365 [-/192.168.0.110/-/174ms POST /node/user/login] {
+  fetchStart: 1589105167839,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589105168012
+}
+2020-05-10 18:06:09,097 INFO 87365 [-/192.168.0.110/-/95ms POST /node/game/room] {
+  fetchStart: 1589105169003,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589105169097
+}
+2020-05-10 18:21:43,488 INFO 87778 [-/192.168.0.110/-/274ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTEwNjEwMywiZXhwIjoxNTg5MTI3NzAzfQ.G9vV-ruCbwhlJlCw9I8Dq4UnmtGpoyQAu6JApSOz47c
+2020-05-10 18:21:43,494 INFO 87778 [-/192.168.0.110/-/279ms POST /node/user/login] {
+  fetchStart: 1589106103215,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589106103493
+}
+2020-05-10 18:21:49,052 INFO 87778 [-/undefined/-/10226ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTEwNjEwOSwiZXhwIjoxNTg5MTI3NzA5fQ.JQojMHp-3mGvnA-dTz4_fZb6P4W72TfJh5XduAJnlk8
+2020-05-10 18:21:49,054 INFO 87778 [-/undefined/-/10228ms POST /node/user/login] {
+  fetchStart: 1589106103215,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai11', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589106109054
+}
+2020-05-10 18:53:06,625 INFO 87778 [-/192.168.0.102/-/287ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTEwNzk4NiwiZXhwIjoxNTg5MTI5NTg2fQ.bZLcNkGGXZziBP1ldC7HbzOGlC20rijDTndyS-rr7Ic
+2020-05-10 18:53:06,627 INFO 87778 [-/192.168.0.102/-/289ms POST /node/user/login] {
+  fetchStart: 1589107986339,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589107986627
+}
+2020-05-10 18:53:11,144 INFO 87778 [-/undefined/-/10209ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTEwNzk5MSwiZXhwIjoxNTg5MTI5NTkxfQ.OZgtnfevtdA7uINuVi1DiHioPsjMpyaj-pNUTUNNg-0
+2020-05-10 18:53:11,145 INFO 87778 [-/undefined/-/10210ms POST /node/user/login] {
+  fetchStart: 1589107986339,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589107991145
+}
+2020-05-10 21:10:17,493 ERROR 87778 [-/192.168.0.110/-/33ms GET /socket.io/?room=760459&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDUxNjgsImV4cCI6MTU4OTEyNjc2OH0.3_BCoMqOaxrxa2YKu06JvDo4Vg_2OY5lXPNwLNLUGJc&EIO=3&transport=websocket] room service tick null
+2020-05-10 21:10:24,885 ERROR 87778 [-/192.168.0.110/-/1ms GET /socket.io/?room=760459&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDUxNjgsImV4cCI6MTU4OTEyNjc2OH0.3_BCoMqOaxrxa2YKu06JvDo4Vg_2OY5lXPNwLNLUGJc&EIO=3&transport=websocket] room service tick null
+2020-05-10 21:10:39,504 ERROR 89562 [-/192.168.0.102/-/8ms GET /socket.io/?room=760459&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTEwNzk4NiwiZXhwIjoxNTg5MTI5NTg2fQ.bZLcNkGGXZziBP1ldC7HbzOGlC20rijDTndyS-rr7Ic&EIO=3&transport=websocket] room service tick null
+2020-05-10 21:10:39,914 ERROR 89562 [-/192.168.0.102/-/2ms GET /socket.io/?room=760459&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTEwNzk4NiwiZXhwIjoxNTg5MTI5NTg2fQ.bZLcNkGGXZziBP1ldC7HbzOGlC20rijDTndyS-rr7Ic&EIO=3&transport=websocket] room service tick null
+2020-05-10 21:10:45,538 ERROR 89562 [-/192.168.0.102/-/2ms GET /socket.io/?room=760459&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTEwNzk4NiwiZXhwIjoxNTg5MTI5NTg2fQ.bZLcNkGGXZziBP1ldC7HbzOGlC20rijDTndyS-rr7Ic&EIO=3&transport=websocket] room service tick null
+2020-05-10 21:10:49,667 ERROR 89562 [-/192.168.0.102/-/3ms GET /socket.io/?room=760459&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTEwNzk4NiwiZXhwIjoxNTg5MTI5NTg2fQ.bZLcNkGGXZziBP1ldC7HbzOGlC20rijDTndyS-rr7Ic&EIO=3&transport=websocket] room service tick null
+2020-05-10 21:11:04,456 INFO 89562 [-/192.168.0.102/-/183ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTExNjI2NCwiZXhwIjoxNTg5MTM3ODY0fQ.OIs12lQ35ow3lpKEr89kr8N6EH1Znr9hPTqdrXz5j_4
+2020-05-10 21:11:04,458 INFO 89562 [-/192.168.0.102/-/185ms POST /node/user/login] {
+  fetchStart: 1589116264278,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589116264458
+}
+2020-05-10 21:11:07,138 INFO 89562 [-/192.168.0.102/-/95ms POST /node/game/room] {
+  fetchStart: 1589116267045,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589116267137
+}
+2020-05-10 21:29:27,548 ERROR 90146 [-/192.168.0.102/-/22ms POST /node/game/room] invalid token... UnauthorizedError: jwt malformed
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:117:18
+    at Object.module.exports [as verify] (/Users/jorky/code/TexasPokerGame/server/node_modules/jsonwebtoken/verify.js:63:12)
+    at decoded (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:115:11)
+    at new Promise (<anonymous>)
+    at middleware (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:114:27)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/egg-development/app/middleware/egg_loader_trace.js:9:50
+    at xframe (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/xframe.js:7:5)
+    at xssProtection (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/xssProtection.js:7:5)
+    at nosniff (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/nosniff.js:8:5) {
+  name: 'UnauthorizedError',
+  message: 'jwt malformed',
+  code: 'invalid_token',
+  status: 401,
+  inner: JsonWebTokenError: jwt malformed
+      at Object.module.exports [as verify] (/Users/jorky/code/TexasPokerGame/server/node_modules/jsonwebtoken/verify.js:63:17)
+      at decoded (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:115:11)
+      at new Promise (<anonymous>)
+      at middleware (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:114:27)
+      at processTicksAndRejections (internal/process/task_queues.js:97:5)
+      at /Users/jorky/code/TexasPokerGame/server/node_modules/egg-development/app/middleware/egg_loader_trace.js:9:50
+      at xframe (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/xframe.js:7:5)
+      at xssProtection (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/xssProtection.js:7:5)
+      at nosniff (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/nosniff.js:8:5)
+      at noopen (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/noopen.js:8:5) {
+    name: 'JsonWebTokenError',
+    message: 'jwt malformed'
+  },
+  headers: {
+    'Access-Control-Allow-Origin': 'http://192.168.0.110:8080',
+    'Access-Control-Allow-Credentials': 'true',
+    vary: 'Origin'
+  }
+}
+2020-05-10 21:29:42,397 INFO 90146 [-/192.168.0.102/-/190ms POST /node/user/login] AccountService getToken token--eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTExNzM4MiwiZXhwIjoxNTg5MTM4OTgyfQ.JDOdvBNP_qEyPrUaC2K-wAfHGEEfGD9hQ4NpXNthZTw
+2020-05-10 21:29:42,398 INFO 90146 [-/192.168.0.102/-/191ms POST /node/user/login] {
+  fetchStart: 1589117382209,
+  url: '/node/user/login',
+  requestBody: { userAccount: 'cai111', password: '123' },
+  message: 'POST /node/user/login info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589117382398
+}
+2020-05-10 21:29:43,625 INFO 90146 [-/192.168.0.102/-/98ms POST /node/game/room] {
+  fetchStart: 1589117383530,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589117383625
+}
+2020-05-10 22:08:56,377 INFO 91349 [-/192.168.0.110/-/114ms POST /node/game/room] {
+  fetchStart: 1589119736280,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589119736376
+}
+2020-05-10 22:09:53,990 ERROR 91349 player not enough
+2020-05-10 22:09:57,085 ERROR 91349 player not enough
+2020-05-10 23:26:58,518 ERROR 92720 [-/192.168.0.110/-/10ms GET /socket.io/?room=994786&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkxMDUxNjgsImV4cCI6MTU4OTEyNjc2OH0.3_BCoMqOaxrxa2YKu06JvDo4Vg_2OY5lXPNwLNLUGJc&EIO=3&transport=websocket] room service tick null
+2020-05-10 23:27:02,697 INFO 92720 [-/192.168.0.110/-/105ms POST /node/game/room] {
+  fetchStart: 1589124422596,
+  url: '/node/game/room',
+  requestBody: {},
+  message: 'POST /node/game/room info',
+  level: 'INFO',
+  status: 200,
+  fetchEnd: 1589124422697
+}

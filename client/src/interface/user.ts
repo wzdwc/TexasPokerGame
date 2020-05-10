@@ -1,6 +1,6 @@
 export interface IUser {
   counter: number;
-  nick_name: string;
+  nickName: string;
   actionSize: number;
   actionCommand: string;
   type: string;
