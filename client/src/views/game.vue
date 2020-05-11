@@ -23,32 +23,28 @@
       <div class="pot">pot: {{pot}}</div>
       <!--      <div class="common-card">commonCard:{{commonCardString}}</div>-->
       <!--      <div class="hand-card">handCard:{{handCardString}}</div>-->
-      <div class="action">
-        <div class="action-type btn"
-             v-show="isAction">
-          <span @click="action('check')"
-                v-show="showActionBtn('check')">check</span>
-          <span @click="action('fold')">fold</span>
-          <span @click="action('call')"
-                v-show="showActionBtn('call')">call</span>
-          <span @click="isRaise = true">raise</span>
-        </div>
-        <div class="raise-size"
-             v-show="isRaise">
-          <div class="not-allin"
-               v-show="showActionBtn('raise')">
-            <i @click="raise(pot / 3)">1/3 pot</i>
-            <i @click="raise(pot / 2)">1/2 pot</i>
-            <i @click="raise(pot / 4)">3/4 pot</i>
-            <i @click="raise(pot)">1 pot</i>
-            <i @click="raise(pot * 2)">2 pot</i>
-            <i @click="raise(pot * 3)">3 pot</i>
-          </div>
-          <i @click="action('allin')">allin</i>
-        </div>
-      </div>
       <div class="btn play"
            v-show="isOwner && !isPlay"><span @click="play">play game</span></div>
+    </div>
+    <div class="action" v-show="isAction">
+      <div class="action-type action-btn">
+          <span @click="action('check')"
+                v-show="showActionBtn('check')">check</span>
+        <span @click="action('fold')">fold</span>
+        <span @click="action('call')"
+              v-show="showActionBtn('call')">call</span>
+        <span @click="isRaise = true" v-show="showActionBtn('raise')">raise</span>
+        <span @click="action('allin')" v-show="!showActionBtn('raise')">allin</span>
+      </div>
+      <div class="raise-size">
+        <div class="not-allin"
+             v-show="showActionBtn('raise')">
+          <i @click="raise(pot / 3)">{{pot / 3}}</i>
+          <i @click="raise(pot / 2)">{{pot / 2}}</i>
+          <i @click="raise(pot)">{{pot}}</i>
+          <i @click="raise(pot * 2)">{{2*pot}}</i>
+        </div>
+      </div>
     </div>
     <div class="setting">
       <div class="iconfont icon-setting setting-btn" @click="showSetting = true"></div>
@@ -60,11 +56,8 @@
       <div class="shadow" @click="closeBuyIn"></div>
       <div class="buy-in-body">
         <div class="input-bd">
-          <div class="input-name">buy in:</div>
-          <div class="input-text">
-            <input type="text"
-                   v-model="buyInSize"/>
-          </div>
+          <div class="input-name">buy in: {{buyInSize}}</div>
+          <range :max="1000" :min="200" @change="getBuyInSize"></range>
         </div>
         <div class="btn"><span @click="buyIn">buy in</span></div>
       </div>
@@ -82,6 +75,7 @@
   import {IUser} from '@/interface/user';
   import {ILinkNode, Link} from '@/utils/Link';
   import ISit from '@/interface/sit';
+  import range from '../components/range.vue'
 
   export enum ECommand {
     CALL = 'call',
@@ -102,6 +96,7 @@
     components: {
       sitList,
       commonCard,
+      range
     },
   })
   export default class Game extends Vue {
@@ -161,6 +156,10 @@
 
     get handCardString() {
       return this.mapCard(this.handCard);
+    }
+
+    private getBuyInSize(val:string) {
+      this.buyInSize = Number(val);
     }
 
     private init() {
@@ -413,31 +412,18 @@
     background-size: 100% 100%;
     .game-body{
       position: absolute;
-      top: 300px;
+      top: 50%;
       left: 50%;
-      margin-left: -100px;
+      transform: translate3d(-50%,-50%,0);
+      z-index: 0;
     }
-    .raise-size {
-      i {
-        padding: 5px;
-        width: 30px;
-        height: 30px;
-        display: inline-block;
-        font-style: normal;
-        font-size: 12px;
-        line-height: 30px;
-        border-radius: 50%;
-        border: 1px solid #bababa;
-        margin: 10px;
-        vertical-align: middle;
-      }
-    }
+
 
     .buy-in {
       position: fixed;
       .shadow {
         position: fixed;
-        z-index: 1;
+        z-index: 9;
         top: 0;
         left: 0;
         right: 0;
@@ -446,7 +432,7 @@
       }
 
       .buy-in-body {
-        z-index: 9;
+        z-index: 99;
         position: fixed;
         left: 50%;
         top: 50%;
@@ -462,6 +448,50 @@
       .input-text {
         input {
           width: 100px;
+        }
+      }
+    }
+
+    .action{
+      position: absolute;
+      color: #fff;
+      width: 300px;
+      top: 470px;
+      left: 50%;
+      transform: translateX(-50%);
+      .raise-size {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        margin-left: -100px;
+        i {
+          padding: 2px;
+          width: 24px;
+          height: 24px;
+          display: inline-block;
+          font-style: normal;
+          font-size: 10px;
+          line-height: 24px;
+          border-radius: 50%;
+          color: #fff;
+          border: 1px solid #fff;
+          background: rgba(0,0,0,.2);
+          margin: 10px;
+          vertical-align: middle;
+        }
+      }
+      .action-btn{
+        span{
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          padding: 2px;
+          text-align: center;
+          margin:0 10px;
+          line-height: 40px;
+          border: 1px solid #fff;
+          font-size: 14px;
+          display: inline-block;
         }
       }
     }

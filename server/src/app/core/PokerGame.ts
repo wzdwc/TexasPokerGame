@@ -25,7 +25,7 @@ export enum EGameStatus {
   GAME_OVER,
 }
 
-const ACTION_TIME = 60 * 1000;
+const ACTION_TIME = 600000 * 1000;
 
 export class PokerGame {
   commonCard: string[] = [];

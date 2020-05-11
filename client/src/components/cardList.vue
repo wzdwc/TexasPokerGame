@@ -9,6 +9,7 @@
       <span class="card-bg" :class="[isBlack(card[1]) ? 'black' : 'red']">
         <b class="number">{{ card[0] }}</b>
         <b class="color">{{ card[1] }}</b>
+        <b class="color big">{{ card[1] }}</b>
       </span>
     </div>
   </div>
@@ -43,7 +44,7 @@
       transform-style: preserve-3d;
       opacity: 0;
       border-radius: 5px;
-
+      z-index: 8;
       i {
         background: url("../assets/poke.png");
         height: 60px;
@@ -86,15 +87,23 @@
         .number {
           text-align: left;
           position: absolute;
-          z-index: -2;
           left: 5px;
           font-size: 16px;
+          line-height: 25px;
+          font-family: initial;
         }
 
         .color {
-          flex: 1;
-          font-size: 28px;
+          position: absolute;
+          left: 5px;
+          top: -2px;
+          font-size: 20px;
           line-height: 60px;
+          &.big{
+            left: 15px;
+            font-size: 40px;
+            top:12px;
+          }
         }
       }
 

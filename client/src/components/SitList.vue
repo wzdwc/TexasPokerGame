@@ -9,7 +9,7 @@ y
         @click="sitDown(sit)"
       >
         <div class="default" v-show="!sit.player">
-          <i>sit {{ sit.position }}</i>
+          <i>sit</i>
         </div>
         <div class="sit-player" v-if="sit.player">
           <div class="player">
@@ -37,6 +37,7 @@ y
             <div class="hand-card">
               <cardList :cardList="handCard"></cardList>
             </div>
+            <div class="ready" v-show="handCard.length === 0">ready</div>
             <div class="card-style"></div>
           </div>
         </div>
@@ -313,6 +314,14 @@ export default class SitList extends Vue {
           position: absolute;
           left: 52px;
           top: 20px;
+          min-width: 60px;
+          min-height: 60px;
+          line-height: 60px;
+          .ready{
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: middle;
+          }
         }
       }
     }
