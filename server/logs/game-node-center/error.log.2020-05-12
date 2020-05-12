@@ -1,0 +1,190 @@
+2020-05-12 00:46:54,314 ERROR 924 [-/192.168.0.102/-/7ms GET /socket.io/?room=595390&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTIwNjk3NywiZXhwIjoxNTg5MjI4NTc3fQ.QoB-isD_SfwwYpmRlqagvuQXY-RWm9FcOD1i63bQmUY&EIO=3&transport=websocket] room service tick null
+2020-05-12 01:42:41,719 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 1923997ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 02:15:35,976 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 1914048ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 03:40:39,600 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 5063588ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 04:18:09,481 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 2209867ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 05:18:28,254 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 3598745ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 07:19:45,991 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 7217480ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 09:20:23,139 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 7217136ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 09:54:28,998 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 2005839ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 11:10:02,917 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 4493889ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 13:10:40,021 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 7217056ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 15:12:58,129 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 7217506ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 17:13:34,897 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 7216754ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 19:14:31,834 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 7216918ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 19:30:13,291 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 901431ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 20:53:35,957 ERROR 922 nodejs.ClusterClientNoResponseError: client no response in 1401306ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 20:59:14,170 ERROR 922 nodejs.unhandledExceptionError: ENOENT: no such file or directory, stat '/Users/jorky/code/TexasPokerGame/server/src/app.ts'
+    at Object.statSync (fs.js:932:3)
+    at DevelopmentEventSource._onFsWatchChange (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-watcher/lib/event-sources/development.js:82:16)
+    at FSWatcher.emit (events.js:311:20)
+    at FSEvent.FSWatcher._handle.onchange (internal/fs/watchers.js:135:12)
+errno: -2
+syscall: "stat"
+code: "ENOENT"
+path: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+name: "unhandledExceptionError"
+pid: 922
+hostname: 192.168.0.110
+
+2020-05-12 21:55:18,673 ERROR 5976 nodejs.ClusterClientNoResponseError: client no response in 1914323ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 5976
+hostname: 192.168.0.110
+
+2020-05-12 22:27:27,557 ERROR 5976 nodejs.ClusterClientNoResponseError: client no response in 1848986ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 5976
+hostname: 192.168.0.110
+
+2020-05-12 22:28:21,543 ERROR 5977 [-/192.168.0.110/-/20ms GET /socket.io/?room=309150&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkyODg0OTMsImV4cCI6MTU4OTMxMDA5M30.PXUIHiGCM4BQICZ_BymL0EMaBcsBdXkphPdb93K93Ks&EIO=3&transport=websocket] room service tick null
+2020-05-12 22:29:04,967 ERROR 5977 [-/192.168.0.110/-/7ms GET /socket.io/?room=309150&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkyODg0OTMsImV4cCI6MTU4OTMxMDA5M30.PXUIHiGCM4BQICZ_BymL0EMaBcsBdXkphPdb93K93Ks&EIO=3&transport=websocket] room service tick null
+2020-05-12 22:29:34,211 ERROR 5977 [-/192.168.0.110/-/2ms GET /socket.io/?room=309150&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkyODg0OTMsImV4cCI6MTU4OTMxMDA5M30.PXUIHiGCM4BQICZ_BymL0EMaBcsBdXkphPdb93K93Ks&EIO=3&transport=websocket] room service tick null
+2020-05-12 22:31:06,888 ERROR 5977 [-/192.168.0.110/-/10ms POST /node/game/room] invalid token... UnauthorizedError: jwt malformed
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:117:18
+    at Object.module.exports [as verify] (/Users/jorky/code/TexasPokerGame/server/node_modules/jsonwebtoken/verify.js:63:12)
+    at decoded (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:115:11)
+    at new Promise (<anonymous>)
+    at middleware (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:114:27)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/egg-development/app/middleware/egg_loader_trace.js:9:50
+    at xframe (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/xframe.js:7:5)
+    at xssProtection (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/xssProtection.js:7:5)
+    at nosniff (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/nosniff.js:8:5) {
+  name: 'UnauthorizedError',
+  message: 'jwt malformed',
+  code: 'invalid_token',
+  status: 401,
+  inner: JsonWebTokenError: jwt malformed
+      at Object.module.exports [as verify] (/Users/jorky/code/TexasPokerGame/server/node_modules/jsonwebtoken/verify.js:63:17)
+      at decoded (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:115:11)
+      at new Promise (<anonymous>)
+      at middleware (/Users/jorky/code/TexasPokerGame/server/node_modules/koa-jwt2/lib/index.js:114:27)
+      at processTicksAndRejections (internal/process/task_queues.js:97:5)
+      at /Users/jorky/code/TexasPokerGame/server/node_modules/egg-development/app/middleware/egg_loader_trace.js:9:50
+      at xframe (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/xframe.js:7:5)
+      at xssProtection (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/xssProtection.js:7:5)
+      at nosniff (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/nosniff.js:8:5)
+      at noopen (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-security/lib/middlewares/noopen.js:8:5) {
+    name: 'JsonWebTokenError',
+    message: 'jwt malformed'
+  },
+  headers: {
+    'Access-Control-Allow-Origin': 'http://192.168.0.110:8080',
+    'Access-Control-Allow-Credentials': 'true',
+    vary: 'Origin'
+  }
+}
+2020-05-12 22:36:48,534 ERROR 5977 player not enough
+2020-05-12 23:53:26,948 ERROR 8002 [-/192.168.0.110/-/13ms GET /socket.io/?room=641258&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODkyODg0OTMsImV4cCI6MTU4OTMxMDA5M30.PXUIHiGCM4BQICZ_BymL0EMaBcsBdXkphPdb93K93Ks&EIO=3&transport=websocket] room service tick null

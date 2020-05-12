@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import VConsole from 'vconsole';
+import './utils/init';
 
 Vue.config.productionTip = false;
 

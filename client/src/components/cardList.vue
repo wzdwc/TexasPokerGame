@@ -101,7 +101,7 @@
           line-height: 60px;
           &.big{
             left: 15px;
-            font-size: 40px;
+            font-size: 35px;
             top:12px;
           }
         }
@@ -114,8 +114,8 @@
       }
 
       &.turn {
-        animation: turnA 2s forwards;
-        animation-delay: 2s;
+        animation: turnA 1s forwards;
+        animation-delay: 1s;
       }
 
       &:nth-child(1) {

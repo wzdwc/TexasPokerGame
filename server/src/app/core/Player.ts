@@ -6,7 +6,6 @@ export interface IPlayer {
   nickName: string;
   account: string;
   socketId: string;
-  sit?: boolean;
   reBuy: number;
 }
 
@@ -83,7 +82,7 @@ export class Player {
       && (prevSize > (this.counter + this.actionSize) || raiseSize > this.counter)) {
       throw 'player: error action, overflow action size';
     } else {
-      this.actionCommand = command;
+      this.actionCommand = (command === 'sb' || command === 'bb') ? '' : command;
     }
 
     // BLIND
@@ -137,6 +136,7 @@ export class Player {
 
   clearActionSize() {
     this.actionSize = 0;
+    this.actionCommand = '';
   }
 
   income(size: number) {

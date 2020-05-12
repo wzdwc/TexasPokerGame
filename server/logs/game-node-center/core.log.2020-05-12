@@ -1,0 +1,144 @@
+2020-05-12 00:00:01,046 INFO 924 [egg-logrotator] app logger reload: got log-reload message
+2020-05-12 01:42:41,668 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 02:15:35,976 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 03:40:39,601 WARN 924 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2020-05-12 03:40:39,601 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 04:18:09,481 WARN 924 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2020-05-12 04:18:09,482 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 05:18:28,252 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 07:19:45,989 WARN 924 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2020-05-12 07:19:45,990 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 09:20:23,139 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 09:54:28,998 WARN 924 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2020-05-12 09:54:28,998 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 11:10:02,925 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 13:10:40,006 WARN 924 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2020-05-12 13:10:40,007 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 15:12:58,127 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 17:13:34,897 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 19:14:31,834 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 19:30:13,290 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 20:53:35,948 WARN 924 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2020-05-12 20:53:35,955 WARN 924 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 20:59:20,053 INFO 5644 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-05-12 20:59:20,086 INFO 5644 [egg-multipart] stream mode enable
+2020-05-12 20:59:20,140 INFO 5644 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-05-12 20:59:20,161 INFO 5644 [egg-mysql] connecting root@47.104.172.100:3306/poker
+2020-05-12 20:59:20,400 INFO 5644 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-05-12 20:59:20,402 INFO 5644 [egg-security] use noopen middleware
+2020-05-12 20:59:20,403 INFO 5644 [egg-security] use nosniff middleware
+2020-05-12 20:59:20,404 INFO 5644 [egg-security] use xssProtection middleware
+2020-05-12 20:59:20,405 INFO 5644 [egg-security] use xframe middleware
+2020-05-12 20:59:20,406 INFO 5644 [egg-security] use dta middleware
+2020-05-12 20:59:20,406 INFO 5644 [egg-security] compose 5 middlewares into one security middleware
+2020-05-12 20:59:20,414 INFO 5644 [egg:core] dump config after load, 5ms
+2020-05-12 20:59:20,429 INFO 5644 [egg-redis] client connect success
+2020-05-12 20:59:20,435 INFO 5644 [egg-redis] instance[0] status OK, client ready
+2020-05-12 20:59:20,437 INFO 5644 [egg-watcher:application] watcher start success
+2020-05-12 20:59:38,246 INFO 5707 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-05-12 20:59:38,282 INFO 5707 [egg-multipart] stream mode enable
+2020-05-12 20:59:38,374 INFO 5707 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-05-12 20:59:38,396 INFO 5707 [egg-mysql] connecting root@47.104.172.100:3306/poker
+2020-05-12 20:59:38,645 INFO 5707 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-05-12 20:59:38,647 INFO 5707 [egg-security] use noopen middleware
+2020-05-12 20:59:38,648 INFO 5707 [egg-security] use nosniff middleware
+2020-05-12 20:59:38,649 INFO 5707 [egg-security] use xssProtection middleware
+2020-05-12 20:59:38,650 INFO 5707 [egg-security] use xframe middleware
+2020-05-12 20:59:38,650 INFO 5707 [egg-security] use dta middleware
+2020-05-12 20:59:38,650 INFO 5707 [egg-security] compose 5 middlewares into one security middleware
+2020-05-12 20:59:38,660 INFO 5707 [egg:core] dump config after load, 7ms
+2020-05-12 20:59:38,678 INFO 5707 [egg-redis] client connect success
+2020-05-12 20:59:38,691 INFO 5707 [egg-redis] instance[0] status OK, client ready
+2020-05-12 20:59:38,708 INFO 5707 [egg-watcher:application] watcher start success
+2020-05-12 20:59:38,844 INFO 5707 [egg-mysql] instance[0] status OK, rds currentTime: Tue May 12 2020 20:59:38 GMT+0800 (China Standard Time)
+2020-05-12 20:59:38,868 INFO 5707 [egg:core] dump config after ready, 6ms
+2020-05-12 21:07:44,321 INFO 5977 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-05-12 21:07:44,354 INFO 5977 [egg-multipart] stream mode enable
+2020-05-12 21:07:44,425 INFO 5977 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-05-12 21:07:44,446 INFO 5977 [egg-mysql] connecting root@47.104.172.100:3306/poker
+2020-05-12 21:07:44,635 INFO 5977 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-05-12 21:07:44,637 INFO 5977 [egg-security] use noopen middleware
+2020-05-12 21:07:44,639 INFO 5977 [egg-security] use nosniff middleware
+2020-05-12 21:07:44,639 INFO 5977 [egg-security] use xssProtection middleware
+2020-05-12 21:07:44,640 INFO 5977 [egg-security] use xframe middleware
+2020-05-12 21:07:44,641 INFO 5977 [egg-security] use dta middleware
+2020-05-12 21:07:44,641 INFO 5977 [egg-security] compose 5 middlewares into one security middleware
+2020-05-12 21:07:44,650 INFO 5977 [egg:core] dump config after load, 6ms
+2020-05-12 21:07:44,676 INFO 5977 [egg-redis] client connect success
+2020-05-12 21:07:44,684 INFO 5977 [egg-redis] instance[0] status OK, client ready
+2020-05-12 21:07:44,686 INFO 5977 [egg-watcher:application] watcher start success
+2020-05-12 21:07:44,853 INFO 5977 [egg-mysql] instance[0] status OK, rds currentTime: Tue May 12 2020 21:07:44 GMT+0800 (China Standard Time)
+2020-05-12 21:07:44,882 INFO 5977 [egg:core] dump config after ready, 6ms
+2020-05-12 21:55:18,648 WARN 5977 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 22:27:27,556 WARN 5977 [ClusterClient:Watcher] follower closed, and try to init it again
+2020-05-12 23:07:37,581 INFO 7960 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-05-12 23:07:37,610 INFO 7960 [egg-multipart] stream mode enable
+2020-05-12 23:07:37,668 INFO 7960 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-05-12 23:07:37,686 INFO 7960 [egg-mysql] connecting root@47.104.172.100:3306/poker
+2020-05-12 23:07:37,817 INFO 7960 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-05-12 23:07:37,820 INFO 7960 [egg-security] use noopen middleware
+2020-05-12 23:07:37,821 INFO 7960 [egg-security] use nosniff middleware
+2020-05-12 23:07:37,822 INFO 7960 [egg-security] use xssProtection middleware
+2020-05-12 23:07:37,822 INFO 7960 [egg-security] use xframe middleware
+2020-05-12 23:07:37,823 INFO 7960 [egg-security] use dta middleware
+2020-05-12 23:07:37,823 INFO 7960 [egg-security] compose 5 middlewares into one security middleware
+2020-05-12 23:07:37,831 INFO 7960 [egg:core] dump config after load, 6ms
+2020-05-12 23:07:37,845 INFO 7960 [egg-redis] client connect success
+2020-05-12 23:07:37,851 INFO 7960 [egg-watcher:application] watcher start success
+2020-05-12 23:07:37,855 INFO 7960 [egg-redis] instance[0] status OK, client ready
+2020-05-12 23:07:38,024 INFO 7960 [egg-mysql] instance[0] status OK, rds currentTime: Tue May 12 2020 23:07:37 GMT+0800 (China Standard Time)
+2020-05-12 23:07:38,048 INFO 7960 [egg:core] dump config after ready, 6ms
+2020-05-12 23:08:27,463 INFO 8002 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-05-12 23:08:27,485 INFO 8002 [egg-multipart] stream mode enable
+2020-05-12 23:08:27,536 INFO 8002 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-05-12 23:08:27,558 INFO 8002 [egg-mysql] connecting root@47.104.172.100:3306/poker
+2020-05-12 23:08:27,688 INFO 8002 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-05-12 23:08:27,690 INFO 8002 [egg-security] use noopen middleware
+2020-05-12 23:08:27,691 INFO 8002 [egg-security] use nosniff middleware
+2020-05-12 23:08:27,691 INFO 8002 [egg-security] use xssProtection middleware
+2020-05-12 23:08:27,692 INFO 8002 [egg-security] use xframe middleware
+2020-05-12 23:08:27,693 INFO 8002 [egg-security] use dta middleware
+2020-05-12 23:08:27,693 INFO 8002 [egg-security] compose 5 middlewares into one security middleware
+2020-05-12 23:08:27,701 INFO 8002 [egg:core] dump config after load, 5ms
+2020-05-12 23:08:27,715 INFO 8002 [egg-redis] client connect success
+2020-05-12 23:08:27,720 INFO 8002 [egg-redis] instance[0] status OK, client ready
+2020-05-12 23:08:27,723 INFO 8002 [egg-watcher:application] watcher start success
+2020-05-12 23:08:27,889 INFO 8002 [egg-mysql] instance[0] status OK, rds currentTime: Tue May 12 2020 23:08:27 GMT+0800 (China Standard Time)
+2020-05-12 23:08:27,915 INFO 8002 [egg:core] dump config after ready, 6ms
+2020-05-12 23:55:25,745 INFO 9237 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-05-12 23:55:25,771 INFO 9237 [egg-multipart] stream mode enable
+2020-05-12 23:55:25,825 INFO 9237 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-05-12 23:55:25,846 INFO 9237 [egg-mysql] connecting root@47.104.172.100:3306/poker
+2020-05-12 23:55:26,036 INFO 9237 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-05-12 23:55:26,038 INFO 9237 [egg-security] use noopen middleware
+2020-05-12 23:55:26,039 INFO 9237 [egg-security] use nosniff middleware
+2020-05-12 23:55:26,040 INFO 9237 [egg-security] use xssProtection middleware
+2020-05-12 23:55:26,042 INFO 9237 [egg-security] use xframe middleware
+2020-05-12 23:55:26,043 INFO 9237 [egg-security] use dta middleware
+2020-05-12 23:55:26,043 INFO 9237 [egg-security] compose 5 middlewares into one security middleware
+2020-05-12 23:55:26,052 INFO 9237 [egg:core] dump config after load, 6ms
+2020-05-12 23:55:26,067 INFO 9237 [egg-redis] client connect success
+2020-05-12 23:55:26,078 INFO 9237 [egg-redis] instance[0] status OK, client ready
+2020-05-12 23:55:26,082 INFO 9237 [egg-watcher:application] watcher start success
+2020-05-12 23:55:26,243 INFO 9237 [egg-mysql] instance[0] status OK, rds currentTime: Tue May 12 2020 23:55:26 GMT+0800 (China Standard Time)
+2020-05-12 23:55:26,271 INFO 9237 [egg:core] dump config after ready, 6ms
+2020-05-12 23:59:22,115 INFO 9393 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2020-05-12 23:59:22,191 INFO 9393 [egg-multipart] stream mode enable
+2020-05-12 23:59:22,420 INFO 9393 [egg-redis] server connecting redis://:***@127.0.0.1:6379/0
+2020-05-12 23:59:22,452 INFO 9393 [egg-mysql] connecting root@47.104.172.100:3306/poker
+2020-05-12 23:59:23,026 INFO 9393 [egg-static] starting static serve /public/ -> /Users/jorky/code/TexasPokerGame/server/src/app/public
+2020-05-12 23:59:23,030 INFO 9393 [egg-security] use noopen middleware
+2020-05-12 23:59:23,031 INFO 9393 [egg-security] use nosniff middleware
+2020-05-12 23:59:23,032 INFO 9393 [egg-security] use xssProtection middleware
+2020-05-12 23:59:23,033 INFO 9393 [egg-security] use xframe middleware
+2020-05-12 23:59:23,034 INFO 9393 [egg-security] use dta middleware
+2020-05-12 23:59:23,034 INFO 9393 [egg-security] compose 5 middlewares into one security middleware
+2020-05-12 23:59:23,045 INFO 9393 [egg:core] dump config after load, 8ms
+2020-05-12 23:59:23,063 INFO 9393 [egg-redis] client connect success
+2020-05-12 23:59:23,134 INFO 9393 [egg-redis] instance[0] status OK, client ready
+2020-05-12 23:59:23,138 INFO 9393 [egg-watcher:application] watcher start success
+2020-05-12 23:59:23,275 INFO 9393 [egg-mysql] instance[0] status OK, rds currentTime: Tue May 12 2020 23:59:23 GMT+0800 (China Standard Time)
+2020-05-12 23:59:23,367 INFO 9393 [egg:core] dump config after ready, 27ms
+2020-05-13 00:00:00,080 INFO 9393 [egg-logrotator] clean all log before 31 days
+2020-05-13 00:00:01,064 INFO 9393 [egg-logrotator] broadcast log-reload
+2020-05-13 00:00:01,065 INFO 9393 [egg-logrotator] rotate files success by DayRotator, files ["/Users/jorky/code/TexasPokerGame/server/logs/game-node-center/error.log -> /Users/jorky/code/TexasPokerGame/server/logs/game-node-center/error.log.2020-05-12","/Users/jorky/code/TexasPokerGame/server/logs/game-node-center/app.log -> /Users/jorky/code/TexasPokerGame/server/logs/game-node-center/app.log.2020-05-12","/Users/jorky/code/TexasPokerGame/server/logs/ELKLog/info.log -> /Users/jorky/code/TexasPokerGame/server/logs/ELKLog/info.log.2020-05-12","/Users/jorky/code/TexasPokerGame/server/logs/ELKLog/error.log -> /Users/jorky/code/TexasPokerGame/server/logs/ELKLog/error.log.2020-05-12","/Users/jorky/code/TexasPokerGame/server/logs/game-node-center/core.log -> /Users/jorky/code/TexasPokerGame/server/logs/game-node-center/core.log.2020-05-12","/Users/jorky/code/TexasPokerGame/server/logs/game-node-center/egg-schedule.log -> /Users/jorky/code/TexasPokerGame/server/logs/game-node-center/egg-schedule.log.2020-05-12","/Users/jorky/code/TexasPokerGame/server/logs/game-node-center/agent.log -> /Users/jorky/code/TexasPokerGame/server/logs/game-node-center/agent.log.2020-05-12"]

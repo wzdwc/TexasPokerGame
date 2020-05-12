@@ -41,6 +41,7 @@ export default class BaseSocketController extends Controller {
             return Object.assign({}, {
               counter: p.counter,
               actionSize: p.actionSize,
+              actionCommand: p.actionCommand,
               nickName: p.nickName,
               type: p.type,
               userId: p.userId,

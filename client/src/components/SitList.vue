@@ -1,4 +1,3 @@
-y
 <template>
   <div class="sit-list-container">
     <div class="sit-list">
@@ -20,7 +19,7 @@ y
             <div class="counter" v-show="sit.player.counter">
               {{ sit.player.counter }}
             </div>
-            <div class="action-size" v-show="sit.player.actionSize">
+            <div class="action-size" v-show="sit.player.actionSize > 0">
               {{ sit.player.actionSize }}
             </div>
             <div class="action-command" v-show="sit.player.actionCommand">
@@ -33,7 +32,7 @@ y
               {{ sit.player.handCard }}
             </div>
           </div>
-          <div class="cards" v-show="sit.player.userId === currPlayer.userId">
+          <div class="cards" v-show="showHandCard(sit)">
             <div class="hand-card">
               <cardList :cardList="handCard"></cardList>
             </div>
@@ -43,35 +42,57 @@ y
         </div>
       </div>
     </div>
+    <BuyIn :show-buy-in.sync="showBuyIn" @buyIn = 'buyIn'></BuyIn>
   </div>
 </template>
 
 <script lang="ts">
 import {Component, Prop, Watch, Vue} from 'vue-property-decorator';
-import {IUser} from '@/interface/user';
-import {ILinkNode, Link} from '@/utils/Link';
-import ISit from '@/interface/sit';
+import {IPlayer} from '@/interface/IPlayer';
+import {ILinkNode} from '@/utils/Link';
+import ISit from '@/interface/ISit';
 import cardList from './cardList.vue';
+import BuyIn from '@/components/BuyIn.vue';
 
 @Component({
   components: {
     cardList,
+    BuyIn
   },
 })
 export default class SitList extends Vue {
   @Prop() private msg!: string;
-  @Prop() private currPlayer: IUser | undefined;
-  @Prop() private sitLink: ILinkNode<ISit> | undefined;
-  @Prop() private handCard: string[] | undefined;
+  @Prop() private currPlayer!: IPlayer;
+  @Prop() private sitLink!: ILinkNode<ISit>;
+  @Prop() private handCard!: string[];
+  @Prop() private isPlay!:boolean;
   private sitLinkNode: any = '';
+  private showBuyIn = false;
+  private currSit!: ISit;
 
   @Watch('sitLink')
   private getSit(val: ILinkNode<ISit>) {
     this.sitLinkNode = val;
   }
+
+  private buyIn(size: number) {
+    console.log('ccc');
+    this.showBuyIn = false
+    this.$emit('buyIn', size);
+    this.sitDown(this.currSit);
+  }
+  private showHandCard(sit: ISit) {
+    return sit.player?.userId === this.currPlayer?.userId;
+  }
+
   private sitDown(sit: ISit) {
-    if (!sit.player) {
+    if (!sit.player && !this.isPlay) {
       console.log('ccc', sit.position);
+      if (this.currPlayer.counter <= 0) {
+        this.showBuyIn = true;
+        this.currSit = sit;
+        return;
+      }
       let sitNode = this.sitLinkNode;
       for (let i = 0; i < 9; i++) {
         if (sitNode) {
@@ -86,9 +107,10 @@ export default class SitList extends Vue {
         if (sitNode) {
           const next = sitNode.next;
           if (sit.position === sitNode.node.position) {
-            sitNode.node.player = this.currPlayer as IUser;
+            sitNode.node.player = this.currPlayer as IPlayer;
             this.$emit('update:sitLink', sitNode);
             this.$emit('sit', sitNode);
+            break;
           }
           sitNode = next as ILinkNode<ISit>;
         }
@@ -141,7 +163,7 @@ export default class SitList extends Vue {
     .sit-list {
       position: relative;
       width: 100vw;
-      height: 620px;
+      height: 620 / 6.67vh;
       padding: 10px;
       margin: 0 15px;
       box-sizing: border-box;
@@ -152,14 +174,14 @@ export default class SitList extends Vue {
 
         .default {
           i {
-            width: 45px;
-            height: 45px;
+            width: 45 / 3.75vw ;
+            height: 45 / 3.75vw;
             border-radius: 50%;
             border: 1px solid #bababa;
             display: block;
             font-style: normal;
             font-size: 20px;
-            line-height: 45px;
+            line-height: 45 / 3.75vw;
             color: #fff;
           }
         }
@@ -168,10 +190,10 @@ export default class SitList extends Vue {
           position: relative;
 
           .icon {
-            width: 45px;
-            height: 45px;
+            width: 45 / 3.75vw;
+            height: 45 / 3.75vw;
             font-size: 45px;
-            line-height: 45px;
+            line-height: 45 / 3.75vw;
             border-radius: 50%;
             margin-bottom: 2px;
           }
@@ -189,8 +211,8 @@ export default class SitList extends Vue {
           }
 
           .action-command {
-            top: 15px;
-            left: 45px;
+            top: 15 / 6.67vh;
+            left: 45 / 3.75vw;
             padding: 1px 8px;
             border-radius: 9px;
             color: #ffffff;
@@ -204,12 +226,12 @@ export default class SitList extends Vue {
             color: #2b2b2b;
             border-radius: 50%;
             padding: 2px;
-            width: 15px;
+            width: 15 / 3.75vw;
             height: 15px;
             line-height: 16px;
             position: absolute;
-            top: 53px;
-            left: 38px;
+            top: 53 / 6.67vh;
+            left: 38 / 3.75vw;
             font-size: 12px;
             transform: scale(0.8);
           }
@@ -220,30 +242,30 @@ export default class SitList extends Vue {
             border-radius: 2px;
             padding: 1px 4px 1px 12px;
             text-align: center;
-            min-width: 35px;
+            min-width: 35 / 3.75vw;
             color: #fff;
             font-weight: 600;
             position: absolute;
-            top: 35px;
-            left: 40px;
+            top: 35 / 6.67vh;
+            left: 40 / 3.75vw;
           }
         }
 
         &:nth-child(1) {
-          left: 100px;
-          top: 460px;
+          left: 100 / 3.75vw;
+          top: 460 / 6.67vh;
 
           .action-command {
-            left: -22px;
+            left: -22 / 3.75vw;
           }
 
           .type {
-            left: -16px;
+            left: -16 / 3.75vw;
           }
 
           .action-size {
-            top: -5px;
-            left: 57px;
+            top: -5 / 6.67vh;
+            left: 57 / 3.75vw;
             padding-right: 15px;
             text-align: right;
           }
@@ -251,42 +273,42 @@ export default class SitList extends Vue {
 
         &:nth-child(2) {
           left: 0;
-          top: 330px;
+          top: 330 / 6.67vh;
         }
 
         &:nth-child(3) {
           left: 0;
-          top: 210px;
+          top: 210 / 6.67vh;
         }
 
         &:nth-child(4) {
           left: 0;
-          top: 100px;
+          top: 100 / 6.67vh;
         }
 
         &:nth-child(5) {
-          left: 75px;
+          left: 75 / 3.75vw;
           top: 0;
         }
 
         &:nth-child(6) {
-          left: 240px;
+          left: 240 / 3.75vw;
           top: 0;
         }
 
         &:nth-child(7) {
-          left: 296px;
-          top: 100px;
+          left: 296 / 3.75vw;
+          top: 100 / 6.67vh;
         }
 
         &:nth-child(8) {
-          left: 296px;
-          top: 210px;
+          left: 296 / 3.75vw;
+          top: 210 / 6.67vh;
         }
 
         &:nth-child(9) {
-          left: 296px;
-          top: 330px;
+          left: 296 / 3.75vw;
+          top: 330 / 6.67vh;
         }
 
         &:nth-child(6),
@@ -294,29 +316,30 @@ export default class SitList extends Vue {
         &:nth-child(8),
         &:nth-child(9) {
           .action-command {
-            left: -22px;
+            left: -22 / 3.75vw;
           }
 
           .type {
-            left: -16px;
+            left: -16 / 3.75vw;
           }
 
           .action-size {
             background-position: right;
-            left: -40px;
+            left: -40 / 3.75vw;
             padding-left: 1px;
             padding-right: 17px;
+            text-align: right;
             text-align: right;
           }
         }
 
         .cards {
           position: absolute;
-          left: 52px;
-          top: 20px;
-          min-width: 60px;
-          min-height: 60px;
-          line-height: 60px;
+          left: 52 / 3.75vw;
+          top: 20 / 6.67vh;
+          min-width: 60 / 3.75vw;
+          min-height: 60 / 6.67vh;
+          line-height: 60 / 6.67vh;
           .ready{
             font-size: 14px;
             display: inline-block;

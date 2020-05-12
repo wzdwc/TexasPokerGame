@@ -3,23 +3,24 @@
     <sitList :sitLink.sync='sitLink'
              :curr-player="currPlayer"
              @sit="sitDown"
-             :hand-card="handCardString"
-             :userInfo.sync="userInfo"></sitList>
+             @buyIn="buyIn"
+             :isPlay = 'isPlay'
+             :hand-card="handCardString"></sitList>
     <common-card :cardListString="commonCardString"></common-card>
     <div class="game-body">
-      <div class="game-player-info">
-        <!--        <div class="users"-->
-        <!--             v-for="user in users">-->
-        <!--          <span> {{user.nickName}}: {{user.counter}}</span>-->
-        <!--          <span>buyIn: {{user.buyIn}}</span>-->
-        <!--          <span v-show="user.actionSize > 0"> actionSize:{{user.actionSize}} </span>-->
-        <!--          <span v-show="user.type"> type:{{user.type}} </span>-->
-        <!--          <span v-show="gameOver && user.handCard">handCard: {{mapCard(user.handCard)}}</span>-->
-        <!--        </div>-->
-        <div class="join">
-          {{joinMsg}}
-        </div>
-      </div>
+<!--      <div class="game-player-info">-->
+<!--        &lt;!&ndash;        <div class="users"&ndash;&gt;-->
+<!--        &lt;!&ndash;             v-for="user in users">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <span> {{user.nickName}}: {{user.counter}}</span>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <span>buyIn: {{user.buyIn}}</span>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <span v-show="user.actionSize > 0"> actionSize:{{user.actionSize}} </span>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <span v-show="user.type"> type:{{user.type}} </span>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <span v-show="gameOver && user.handCard">handCard: {{mapCard(user.handCard)}}</span>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div class="join">-->
+<!--          {{joinMsg}}-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="pot">pot: {{pot}}</div>
       <!--      <div class="common-card">commonCard:{{commonCardString}}</div>-->
       <!--      <div class="hand-card">handCard:{{handCardString}}</div>-->
@@ -39,8 +40,8 @@
       <div class="raise-size">
         <div class="not-allin"
              v-show="showActionBtn('raise')">
-          <i @click="raise(pot / 3)">{{pot / 3}}</i>
-          <i @click="raise(pot / 2)">{{pot / 2}}</i>
+          <i @click="raise(Math.floor(pot / 3))">{{Math.floor(pot / 3)}}</i>
+          <i @click="raise(Math.floor(pot / 2))">{{Math.floor(pot / 2)}}</i>
           <i @click="raise(pot)">{{pot}}</i>
           <i @click="raise(pot * 2)">{{2*pot}}</i>
         </div>
@@ -52,30 +53,21 @@
         <i @click="showBuyInDialog()">buy in</i>
       </div>
     </div>
-    <div class="buy-in" v-show="showBuyIn">
-      <div class="shadow" @click="closeBuyIn"></div>
-      <div class="buy-in-body">
-        <div class="input-bd">
-          <div class="input-name">buy in: {{buyInSize}}</div>
-          <range :max="1000" :min="200" @change="getBuyInSize"></range>
-        </div>
-        <div class="btn"><span @click="buyIn">buy in</span></div>
-      </div>
-    </div>
+    <BuyIn :showBuyIn.sync = 'showBuyIn' @buyIn = 'buyIn'></BuyIn>
   </div>
 </template>
 
 <script lang="ts">
-  import {Vue} from 'vue-property-decorator';
+  import {Vue, Watch} from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import io from 'socket.io-client';
   import cookie from 'js-cookie';
   import sitList from '../components/SitList.vue';
   import commonCard from '../components/CommonCard.vue';
-  import {IUser} from '@/interface/user';
+  import {IPlayer} from '@/interface/IPlayer';
   import {ILinkNode, Link} from '@/utils/Link';
-  import ISit from '@/interface/sit';
-  import range from '../components/range.vue'
+  import ISit from '../interface/ISit';
+  import BuyIn from '../components/BuyIn.vue';
 
   export enum ECommand {
     CALL = 'call',
@@ -96,26 +88,36 @@
     components: {
       sitList,
       commonCard,
-      range
+      BuyIn
     },
   })
   export default class Game extends Vue {
     public socket: any = null;
-    private users: IUser[] = [];
+    // in the room user
+    // have a sit user
+    private players: IPlayer[] = [];
     private userInfo: any = {};
     private joinMsg = '';
     private handCard = [];
     private commonCard = [];
-    private buyInSize = 0;
     private pot = 0;
     private prevSize = 0;
     private isAction = false;
     private isRaise = false;
     private winner = [];
-    private showBuyIn = true;
+    private showBuyIn = false;
     private showSetting = false;
     private sitLink: any = '';
     private sitList: ISit[] = [];
+
+    @Watch('players')
+    private playerChange(players: IPlayer[]) {
+      this.sitList = this.sitList.map((sit: ISit) => {
+        const player = players.find(p => p.userId === sit.player?.userId);
+        return Object.assign({}, {}, {player, position: sit.position}) as ISit;
+      });
+      this.initSitLink();
+    }
 
     get isPlay() {
       return this.pot !== 0 && this.currPlayer?.buyIn !== 0;
@@ -138,7 +140,7 @@
     }
 
     get currPlayer() {
-      return this.users.find((u: IUser) => this.userInfo.userId === u.userId);
+      return this.players.find((u: IPlayer) => this.userInfo.userId === u.userId);
     }
 
     get canActionSize() {
@@ -158,17 +160,11 @@
       return this.mapCard(this.handCard);
     }
 
-    private getBuyInSize(val:string) {
-      this.buyInSize = Number(val);
-    }
-
     private init() {
-      this.users = [];
       this.userInfo = {};
       this.joinMsg = '';
       this.handCard = [];
       this.commonCard = [];
-      this.buyInSize = 0;
       this.pot = 0;
       this.prevSize = 0;
       this.isAction = false;
@@ -216,7 +212,7 @@
       if ('check' === type) {
         return this.prevSize <= 0
           || (this.commonCard.length === 0
-            && this.users.length === 2
+            && this.players.length === 2
             && this.currPlayer?.type === 'dealer'
             && this.prevSize === 2)
           || (this.currPlayer?.type === 'big_blind' && this.prevSize === 2 &&
@@ -272,13 +268,18 @@
             this.handCard = data.payload.handCard;
           }
           if (data.action === 'userInfo') {
-            this.userInfo = data.payload;
+            this.userInfo = data.payload.userInfo;
+          }
+          if (data.action === 'sitList') {
+            this.sitList = data.payload.sitList;
+            this.initSitLink();
           }
           if (data.action === 'gameInfo') {
             const payload = data.payload;
-            this.users = payload.data.players;
+            this.players = payload.data.players;
             this.pot = payload.data.pot;
             this.prevSize = payload.data.prevSize;
+            this.commonCard = payload.data.commonCard;
             console.log('msg.data.currPlayer.userId', msg.data);
             this.isAction = !!(this.userInfo && this.userInfo.userId ===
               payload.data.currPlayer.userId);
@@ -298,14 +299,14 @@
           this.joinMsg = msg.data;
         }
         if (msg.action === 'players') {
-          this.users = msg.data.players;
+          this.players = msg.data.players;
         }
         if (msg.action === 'commonCard') {
           this.commonCard = msg.data.commonCard;
-          console.log('users', msg.data);
+          console.log('players', msg.data);
         }
         if (msg.action === 'gameInfo') {
-          this.users = msg.data.players;
+          this.players = msg.data.players;
           this.pot = msg.data.pot;
           this.prevSize = msg.data.prevSize;
           this.isAction = !!(this.userInfo && this.userInfo.userId === msg.data.currPlayer.userId);
@@ -316,10 +317,10 @@
           console.log('gameOver', msg.data);
           this.winner = msg.data.winner;
           const allPlayers = msg.data.allPlayers;
-          allPlayers.forEach((w: IUser) => {
-            this.users.forEach((p) => {
-              if (w.userId === p.userId) {
-                p.handCard = w.handCard;
+          allPlayers.forEach((winner: IPlayer) => {
+            this.players.forEach((p) => {
+              if (winner.userId === p.userId) {
+                p.handCard = winner.handCard;
               }
             });
           });
@@ -344,20 +345,22 @@
       });
     }
 
-    private async buyIn() {
+    private async buyIn(size: number) {
       try {
         this.emit('buyIn', {
-          buyInSize: this.buyInSize,
+          buyInSize: size,
         });
-        this.closeBuyIn();
       } catch (e) {
         console.log(e);
       }
     }
 
     private play() {
-      console.log('play');
-      this.emit('playGame');
+      if (this.players.length >= 2) {
+        this.emit('playGame');
+      } else {
+        console.log('no enough player');
+      }
     }
 
     private emit(eventType: string, data: any = {}) {
@@ -410,60 +413,31 @@
   .game-container {
     background: url("../assets/bg.png");
     background-size: 100% 100%;
-    .game-body{
+
+    .game-body {
       position: absolute;
-      top: 50%;
+      top: 38vh;
       left: 50%;
-      transform: translate3d(-50%,-50%,0);
+      transform: translate3d(-50%, -50%, 0);
       z-index: 0;
     }
 
 
-    .buy-in {
-      position: fixed;
-      .shadow {
-        position: fixed;
-        z-index: 9;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.2);
-      }
 
-      .buy-in-body {
-        z-index: 99;
-        position: fixed;
-        left: 50%;
-        top: 50%;
-        margin: -100px -150px;
-        width: 300px;
-        height: 150px;
-        border-radius: 12px;
-        box-sizing: border-box;
-        background: #fff;
-        padding: 20px;
-      }
-
-      .input-text {
-        input {
-          width: 100px;
-        }
-      }
-    }
-
-    .action{
+    .action {
       position: absolute;
       color: #fff;
-      width: 300px;
-      top: 470px;
+      width: 80vw;
+      top: 65vh;
       left: 50%;
       transform: translateX(-50%);
+
       .raise-size {
         position: absolute;
-        top: -60px;
+        top: -7vh;
         left: 50%;
-        margin-left: -100px;
+        margin-left: -26.4vw;
+
         i {
           padding: 2px;
           width: 24px;
@@ -475,19 +449,20 @@
           border-radius: 50%;
           color: #fff;
           border: 1px solid #fff;
-          background: rgba(0,0,0,.2);
+          background: rgba(0, 0, 0, .2);
           margin: 10px;
           vertical-align: middle;
         }
       }
-      .action-btn{
-        span{
+
+      .action-btn {
+        span {
           border-radius: 50%;
           width: 40px;
           height: 40px;
           padding: 2px;
           text-align: center;
-          margin:0 10px;
+          margin: 0 10px;
           line-height: 40px;
           border: 1px solid #fff;
           font-size: 14px;

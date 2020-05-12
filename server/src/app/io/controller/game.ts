@@ -17,8 +17,8 @@ class GameController extends BaseSocketController {
       // };
       // await this.gameRecordService.add(gameRecord);
       const roomInfo = await this.getRoomInfo();
-      console.log('players', roomInfo.players);
-      const sitDownPlayer = roomInfo.players.filter(p => p.counter > 0 && !!p.sit);
+      console.log('players', roomInfo.sit);
+      const sitDownPlayer = roomInfo.sit.filter(s => s.player && s.player.counter > 0).map(sit => sit.player);
 
       if (sitDownPlayer.length < 2) {
         throw 'player not enough';
