@@ -28,8 +28,10 @@
             <div class="type" v-show="sit.player.type">
               {{ sit.player.type }}
             </div>
-            <div class="hand-card" v-show="sit.player.handCard">
-              {{ sit.player.handCard }}
+            <div class="hand-card" v-show="sit.player.userId !== currPlayer.userId
+            && sit.player.handCard
+            && sit.player.handCard.length !== 0">
+              <cardList :cardList="mapCard(sit.player.handCard)"></cardList>
             </div>
           </div>
           <div class="cards" v-show="showHandCard(sit)">
@@ -39,10 +41,14 @@
             <div class="ready" v-show="handCard.length === 0">ready</div>
             <div class="card-style"></div>
           </div>
+          <div class="win" v-show="sit.player.income">
+<!--            <span>win!</span>-->
+            <span>{{`+${sit.player.income}`}}</span>
+          </div>
         </div>
       </div>
     </div>
-    <BuyIn :show-buy-in.sync="showBuyIn" @buyIn = 'buyIn'></BuyIn>
+    <BuyIn :showBuyIn.sync="showBuyIn" @buyIn = 'buyIn'></BuyIn>
   </div>
 </template>
 
@@ -53,6 +59,9 @@ import {ILinkNode} from '@/utils/Link';
 import ISit from '@/interface/ISit';
 import cardList from './cardList.vue';
 import BuyIn from '@/components/BuyIn.vue';
+import { PokerStyle } from '../utils/PokerStyle'
+import map from '../utils/map'
+
 
 @Component({
   components: {
@@ -65,6 +74,7 @@ export default class SitList extends Vue {
   @Prop() private currPlayer!: IPlayer;
   @Prop() private sitLink!: ILinkNode<ISit>;
   @Prop() private handCard!: string[];
+  @Prop() private winner!: IPlayer[][];
   @Prop() private isPlay!:boolean;
   private sitLinkNode: any = '';
   private showBuyIn = false;
@@ -85,9 +95,39 @@ export default class SitList extends Vue {
     return sit.player?.userId === this.currPlayer?.userId;
   }
 
+  private getPokeStyle() {
+
+  }
+
+  private mapCard(cards: string[]) {
+    return map(cards)
+  }
+
+  // private showWinner(sit:ISit) {
+  //   let isWinner = false;
+  //   for(let i = 0; i < this.winner.length; i++) {
+  //     if(!!this.winner[i].find((w:IPlayer) => w.userId === sit.player?.userId)) {
+  //       isWinner = true;
+  //       return isWinner;
+  //     }
+  //   }
+  //   return isWinner
+  // }
+  //
+  // private getIncome(sit:ISit) {
+  //   let income: number = 0;
+  //   for(let i = 0; i < this.winner.length; i++) {
+  //     const win = this.winner[i].find((w:IPlayer) => w.userId === sit.player?.userId);
+  //     if(!!win) {
+  //       income = Number(win.income);
+  //     }
+  //   }
+  //   return income
+  // }
+
   private sitDown(sit: ISit) {
     if (!sit.player && !this.isPlay) {
-      console.log('ccc', sit.position);
+      console.log('ccc2', this.currPlayer);
       if (this.currPlayer.counter <= 0) {
         this.showBuyIn = true;
         this.currSit = sit;
@@ -346,6 +386,28 @@ export default class SitList extends Vue {
             vertical-align: middle;
           }
         }
+        .win{
+          position: absolute;
+          z-index: 8;
+          left: 0;
+          top: 4vh;
+          font-size: 20px;
+          color: #ffd100;
+          font-family: fantasy;
+          font-weight: 600;
+          animation: fadeOut 2s forwards;
+          background-image: linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,0));
+        }
+      }
+    }
+    @-webkit-keyframes fadeOut /* Safari 与 Chrome */ {
+      from {
+        transform: translate3d(2px,0,0);
+        opacity: 1;
+      }
+      to {
+        transform: translate3d(10px,0,0);
+        opacity: 0;
       }
     }
   }

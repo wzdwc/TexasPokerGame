@@ -46,7 +46,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
     expect(game.status).to.equal(EGameStatus.GAME_ACTION);
     expect(game.pot).to.equal(3);
     expect(game.pot).to.equal(3);
-    expect(game.playerLink.getNode(1).node.actionSize).to.equal(1);
+    // expect(game.playerLink.getNode(1).node.actionSize).to.equal(1);
   });
 
   /**
@@ -232,7 +232,29 @@ describe('test/app/core/pokerGame.test.ts', () => {
     // console.log(game.winner[0][0], game.commonCard);
   });
 
-
+  it('player fold pre flop', async () => {
+    const game = new PokerGame({
+      smallBlind: 1,
+      users,
+      updateCommonCard: () => {
+        if (game.status < 6) {
+          game.startActionRound();
+          game.sendCard();
+        }
+      },
+      gameOverCallBack: () => {},
+    });
+    game.play();
+    // pre flop
+    game.action('fold');
+    // game over
+    // game.action('raise:10');
+    console.log(game.commonCard);
+    console.log(game.pot);
+    console.log(game.getPlayers());
+    console.log(game.winner);
+    // console.log(game.winner[0][0], game.commonCard);
+  });
   // flop
   // turn
   // river

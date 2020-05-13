@@ -14,4 +14,5 @@ export interface IPlayer {
   handCard?: string[];
   buyIn: number;
   status: number;
+  income?: number;
 }

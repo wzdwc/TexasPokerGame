@@ -1,6 +1,6 @@
 'use strict';
 import BaseSocketController from '../../../lib/baseSocketController';
-import { IRoomInfo } from '../../../interface/IGameRoom';
+import { IRoomInfo, ISit } from '../../../interface/IGameRoom';
 import { PokerGame } from '../../core/PokerGame';
 import { IPlayer } from '../../core/Player';
 
@@ -17,7 +17,7 @@ class GameController extends BaseSocketController {
       // };
       // await this.gameRecordService.add(gameRecord);
       const roomInfo = await this.getRoomInfo();
-      console.log('players', roomInfo.sit);
+      console.log('players===============sit', roomInfo.sit);
       const sitDownPlayer = roomInfo.sit.filter(s => s.player && s.player.counter > 0).map(sit => sit.player);
 
       if (sitDownPlayer.length < 2) {
@@ -67,10 +67,6 @@ class GameController extends BaseSocketController {
               console.log(roomInfo.players, '=============players');
               console.log(roomInfo.game.getPlayers());
               console.log(roomInfo.game.winner);
-              // new game
-              setTimeout(() => {
-               this.reStart();
-              }, 100000);
             }
             this.nsp.adapter.clients([ this.roomNumber ],
               (err: any, clients: any) => {
@@ -94,6 +90,10 @@ class GameController extends BaseSocketController {
                       },
                     });
                   }
+                  // new game
+                  setTimeout(() => {
+                    this.reStart();
+                  }, 3000);
                 }
               });
           },
@@ -106,8 +106,8 @@ class GameController extends BaseSocketController {
         roomInfo.players.forEach(p => {
           // console.log('game msg---------1');
           const player = roomInfo.game?.allPlayer.find(
-            player => player.socketId === p.socketId);
-          // console.log(player, 'game msg---------1');
+            player => player.userId === p.userId);
+          console.log(player, 'game msg---------1');
           const msg = this.ctx.helper.parseMsg('handCard', {
             handCard: player?.getHandCard(),
           }, { client: p.socketId });
@@ -124,9 +124,20 @@ class GameController extends BaseSocketController {
 
   async reStart() {
     const roomInfo: IRoomInfo = await this.getRoomInfo();
-    const player = roomInfo.players.shift();
-    if (player) {
-      roomInfo.players.push(player);
+    const sit = roomInfo.sit.shift() as ISit;
+    let dealer: IPlayer;
+    if (sit?.player) {
+      roomInfo.sit.push(sit);
+    } else {
+      // first player is null, find dealer
+      for (let i = 0; i < 9; i++) {
+        if (roomInfo.sit[i].player?.userId === roomInfo.game?.allPlayer[0].userId) {
+          dealer = roomInfo.sit[i].player as IPlayer;
+          roomInfo.sit[i].player = {} as IPlayer;
+          sit.player = dealer;
+          roomInfo.sit.push(sit);
+        }
+      }
     }
     roomInfo.game = null;
     // update player counter
@@ -135,7 +146,7 @@ class GameController extends BaseSocketController {
       p.reBuy = 0;
     });
     // new game
-    this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
+    this.nsp.adapter.clients([ this.roomNumber ], async (err: any, clients: any) => {
       // 广播信息
       this.nsp.to(this.roomNumber).emit('online', {
         clients,
@@ -143,8 +154,8 @@ class GameController extends BaseSocketController {
         target: 'participator',
         data: {},
       });
+      await this.playGame();
     });
-    await this.playGame();
   }
 
   async buyIn() {
@@ -235,7 +246,7 @@ class GameController extends BaseSocketController {
       });
     } catch (e) {
       console.log(e);
-    };
+    }
   }
 
   async action() {

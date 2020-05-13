@@ -31,7 +31,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
   .slide-bar-container {
-    background-color: #fff;
     .range-body{
       line-height: 10px;
     }
@@ -47,6 +46,7 @@
       &.horizontal{
         transform: rotateZ(-90deg) translate3d(-50%,0,0);
         transform-origin: center;
+        margin-left: -8px;
       }
     }
     input[type=range]:focus {

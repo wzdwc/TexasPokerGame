@@ -35,8 +35,8 @@ export default class App extends Vue {}
     margin: 10px;
     .input-name{
       display: inline-block;
-      width: 100px;
-      text-align: right;
+      width: 150px;
+      text-align: center;
     }
     .input-text{
       display: inline-block;

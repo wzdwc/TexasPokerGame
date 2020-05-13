@@ -45,7 +45,7 @@ export class PokerStyle implements IPokerStyle {
     let isFour = '0';
     let isFullHouse = '0';
     let isStraightFlush = '0';
-    let isFlush = [];
+    let isFlush: string[] = [];
     let isRoyalFlush = '0';
     let isThreeKind = '';
     let isTowPair = '';
@@ -120,7 +120,7 @@ export class PokerStyle implements IPokerStyle {
 
     // flush
     if (isFlush.length !== 0) {
-      this.pokerStyle[4] = isFlush;
+      this.pokerStyle[4] = isFlush.join('');
       return;
     }
 

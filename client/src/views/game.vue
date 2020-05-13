@@ -5,6 +5,7 @@
              @sit="sitDown"
              @buyIn="buyIn"
              :isPlay = 'isPlay'
+             :winner="winner"
              :hand-card="handCardString"></sitList>
     <common-card :cardListString="commonCardString"></common-card>
     <div class="game-body">
@@ -34,17 +35,32 @@
         <span @click="action('fold')">fold</span>
         <span @click="action('call')"
               v-show="showActionBtn('call')">call</span>
-        <span @click="isRaise = true" v-show="showActionBtn('raise')">raise</span>
+        <span @click="isRaise = true" v-show="showActionBtn('raise')">more</span>
         <span @click="action('allin')" v-show="!showActionBtn('raise')">allin</span>
       </div>
       <div class="raise-size">
         <div class="not-allin"
              v-show="showActionBtn('raise')">
-          <i @click="raise(Math.floor(pot / 3))">{{Math.floor(pot / 3)}}</i>
-          <i @click="raise(Math.floor(pot / 2))">{{Math.floor(pot / 2)}}</i>
+          <span v-show="prevSize > 0">
+            <i @click="raise(Math.floor(prevSize * 2))">{{Math.floor(prevSize * 2)}}</i>
+            <i @click="raise(Math.floor(prevSize * 3))">{{Math.floor(prevSize * 3)}}</i>
+          </span>
+          <span v-show="prevSize <= 0">
+            <i @click="raise(Math.floor(pot / 3))">{{Math.floor(pot / 3)}}</i>
+            <i @click="raise(Math.floor(pot / 2))">{{Math.floor(pot / 2)}}</i>
+          </span>
           <i @click="raise(pot)">{{pot}}</i>
           <i @click="raise(pot * 2)">{{2*pot}}</i>
         </div>
+      </div>
+      <div class="action-other-size" v-show="isRaise">
+        <div class="action-other-size-body">
+          <div class="size" v-show="currPlayer && raiseSize < currPlayer.counter">{{raiseSize}}</div>
+          <div class="size" v-show="currPlayer && raiseSize === currPlayer.counter">Allin</div>
+          <range :max="currPlayer && currPlayer.counter" :min="prevSize * 2" :is-horizontal="true" @change="getBuyInSize"></range>
+          <div class="btn" @click="addSize">ok</div>
+        </div>
+        <div class="shadow"></div>
       </div>
     </div>
     <div class="setting">
@@ -68,6 +84,8 @@
   import {ILinkNode, Link} from '@/utils/Link';
   import ISit from '../interface/ISit';
   import BuyIn from '../components/BuyIn.vue';
+  import range from '../components/range.vue';
+  import map from '../utils/map'
 
   export enum ECommand {
     CALL = 'call',
@@ -88,7 +106,8 @@
     components: {
       sitList,
       commonCard,
-      BuyIn
+      BuyIn,
+      range,
     },
   })
   export default class Game extends Vue {
@@ -108,10 +127,12 @@
     private showBuyIn = false;
     private showSetting = false;
     private sitLink: any = '';
+    private raiseSize:number = 0;
     private sitList: ISit[] = [];
 
     @Watch('players')
     private playerChange(players: IPlayer[]) {
+      console.log('player change-------')
       this.sitList = this.sitList.map((sit: ISit) => {
         const player = players.find(p => p.userId === sit.player?.userId);
         return Object.assign({}, {}, {player, position: sit.position}) as ISit;
@@ -149,7 +170,7 @@
 
     get commonCardString() {
       const commonCardFlag: string[][] = [[], [], [], [], []];
-      const commonCardMap = this.mapCard(this.commonCard);
+      const commonCardMap = map(this.commonCard);
       commonCardMap.forEach((card, key) => {
         commonCardFlag[key] = card;
       });
@@ -157,11 +178,11 @@
     }
 
     get handCardString() {
-      return this.mapCard(this.handCard);
+      return map(this.handCard);
     }
 
     private init() {
-      this.userInfo = {};
+      this.raiseSize = 0;
       this.joinMsg = '';
       this.handCard = [];
       this.commonCard = [];
@@ -182,6 +203,14 @@
       this.showBuyIn = false;
     }
 
+    private addSize() {
+      if (this.raiseSize === this.currPlayer?.counter) {
+        this.action('allin');
+      } else {
+        this.action(`raise:${this.raiseSize}`);
+      }
+    }
+
     private sitListMap() {
       let node = this.sitLink;
       const sit = [];
@@ -197,15 +226,15 @@
       this.emit('sitDown', {sitList: this.sitListMap()});
     }
 
-    private mapCard(cards: string []) {
-      const cardNumber = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
-      const color = ['♦', '♣', '♥', '♠'];
-      return cards?.map((c: string) => {
-        const cNumber = c.charCodeAt(0) - 97;
-        const cColor = Number(c[1]) - 1;
-        return [`${cardNumber[cNumber]}`, `${color[cColor]}`];
-      });
-    }
+    // private mapCard(cards: string []) {
+    //   const cardNumber = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
+    //   const color = ['♦', '♣', '♥', '♠'];
+    //   return cards?.map((c: string) => {
+    //     const cNumber = c.charCodeAt(0) - 97;
+    //     const cColor = Number(c[1]) - 1;
+    //     return [`${cardNumber[cNumber]}`, `${color[cColor]}`];
+    //   });
+    // }
 
     private showActionBtn(type: string) {
       // check
@@ -234,6 +263,10 @@
 
     private raise(size: number) {
       this.action(`raise:${size}`);
+    }
+
+    private getBuyInSize(size:number) {
+      this.raiseSize = size;
     }
 
     private action(command: string) {
@@ -265,7 +298,9 @@
           log('#receive,', msg);
           const data = msg.data;
           if (data.action === 'handCard') {
+            console.log('come in handCard =========', data)
             this.handCard = data.payload.handCard;
+            console.log('come in handCard =========', this.handCard)
           }
           if (data.action === 'userInfo') {
             this.userInfo = data.payload.userInfo;
@@ -311,6 +346,7 @@
           this.prevSize = msg.data.prevSize;
           this.isAction = !!(this.userInfo && this.userInfo.userId === msg.data.currPlayer.userId);
           console.log('gameInfo', msg.data);
+          console.log('handCard', this.handCard)
         }
 
         if (msg.action === 'gameOver') {
@@ -321,6 +357,8 @@
             this.players.forEach((p) => {
               if (winner.userId === p.userId) {
                 p.handCard = winner.handCard;
+                p.counter = winner.counter;
+                p.income = winner.income;
               }
             });
           });
@@ -347,6 +385,9 @@
 
     private async buyIn(size: number) {
       try {
+        if (this.currPlayer) {
+          this.currPlayer.counter += size;
+        }
         this.emit('buyIn', {
           buyInSize: size,
         });
@@ -467,6 +508,45 @@
           border: 1px solid #fff;
           font-size: 14px;
           display: inline-block;
+        }
+      }
+
+      .action-other-size{
+        background-color: rgba(0,0,0,0);
+        position: fixed;
+        width: 50vw;
+        height: 30vh;
+        right: -16px;
+        top: -35vh;
+        z-index: 9;
+        .shadow{
+          position: absolute;
+          top: -3vh;
+          width: 0;
+          height: 49vh;
+          left: 24vw;
+          z-index: 8;
+          overflow: hidden;
+          box-shadow: 0px 55px 104px 176px rgba(0, 0, 0, 0.5);
+        }
+        .action-other-size-body{
+          z-index: 9;
+          position: absolute;
+          width: 50vw;
+          height: 30vh;
+          .btn{
+            position: absolute;
+            top: 34vh;
+            left: 20vw;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background-color: rgba(0,0,0,0.4);
+            padding: 5px;
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+          }
         }
       }
     }

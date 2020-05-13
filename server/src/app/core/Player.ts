@@ -6,6 +6,7 @@ export interface IPlayer {
   nickName: string;
   account: string;
   socketId: string;
+  income?: number;
   reBuy: number;
 }
 
@@ -39,6 +40,7 @@ export class Player {
   type: string = EPlayerType.DEFAULT;
   evPot: number = Infinity;
   inPot: number = 0;
+  income: number = 0;
   pokeStyle: string = '';
 
   // commandRecord: Array<string> = [];
@@ -139,8 +141,9 @@ export class Player {
     this.actionCommand = '';
   }
 
-  income(size: number) {
+  setIncome(size: number) {
     console.log('size', size);
+    this.income = size;
     this.counter += size;
   }
 }

@@ -160,6 +160,7 @@ export class PokerGame {
         // pre flop big blind check and other player call
         console.log('this.currPlayer----------', this.currPlayer, nextPlayer, command);
         if (this.playerSize === 0
+          || this.playerSize === 1 && this.allInPlayers.length === 0
           || (nextPlayer.actionSize === size)
           || (this.commonCard.length === 0
             && (this.currPlayer.node.type === EPlayerType.BIG_BLIND
@@ -202,7 +203,9 @@ export class PokerGame {
       } else {
         throw 'currPlayer.next is null';
       }
-      return;
+      if (this.playerSize > 1) {
+        return;
+      }
     }
     // action has allin, sum the allin player ev_pot
     if (this.currActionAllinPlayer.length !== 0) {
@@ -434,11 +437,12 @@ export class PokerGame {
       }
       winnerList.forEach(winner => {
         const pot = winner.evPot === Infinity ? this.pot : winner.evPot;
-        winner.income((pot - prevEvPot) / winnerList.length);
+        winner.setIncome((pot - prevEvPot) / winnerList.length);
       });
     });
   }
   gameOver() {
+    console.log('game over------------------');
     // only one player,other fold
     this.getWinner();
     // todo counting
