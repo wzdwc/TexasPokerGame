@@ -1,10 +1,14 @@
 <template>
-  <div class="buy-in" v-show="showBuyIn">
-    <div class="shadow" @click="closeBuyIn"></div>
+  <div class="buy-in"
+       v-show="showBuyIn">
+    <div class="shadow"
+         @click="closeBuyIn"></div>
     <div class="buy-in-body">
       <div class="input-bd">
         <div class="input-name">buy in: {{buyInSize}}</div>
-        <range :max="1000" :min="200" @change="getBuyInSize"></range>
+        <range :max="max"
+               :min="min"
+               @change="getBuyInSize"></range>
       </div>
       <div class="btn"><span @click="buyIn">buy in</span></div>
     </div>
@@ -12,7 +16,7 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from 'vue-property-decorator';
+  import { Component, Prop, Vue } from 'vue-property-decorator';
   import range from '../components/range.vue';
 
   @Component({
@@ -22,26 +26,35 @@
   })
   export default class BuyIn extends Vue {
     @Prop() private showBuyIn!: boolean;
+    @Prop() private min!: number;
+    @Prop() private max!: number;
     private buyInSize: number = 0;
 
     private getBuyInSize(val: string) {
       this.buyInSize = Number(val);
     }
+
     private closeBuyIn() {
       this.$emit('update:showBuyIn', false);
     }
+
     private async buyIn() {
       this.closeBuyIn();
-      this.$emit('buyIn', this.buyInSize)
+      this.$emit('buyIn', this.buyInSize);
+    }
+    private mounted() {
+      this.buyInSize = this.min;
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
+<style scoped
+       lang="less">
   .buy-in {
     position: fixed;
     z-index: 99;
+
     .shadow {
       position: fixed;
       z-index: 9;

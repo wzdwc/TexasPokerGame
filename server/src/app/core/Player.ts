@@ -8,11 +8,12 @@ export interface IPlayer {
   socketId: string;
   income?: number;
   reBuy: number;
+  isSit: boolean;
 }
 
 export enum ECommand {
-  SMALL_BLIND = 'small_blind',
-  BIG_BLIND = 'big_blind',
+  SMALL_BLIND = 'sb',
+  BIG_BLIND = 'bb',
   STRADDLE = 'straddle',
   CALL = 'call',
   ALL_IN = 'allin',

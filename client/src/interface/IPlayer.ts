@@ -15,4 +15,5 @@ export interface IPlayer {
   buyIn: number;
   status: number;
   income?: number;
+  isSit: boolean;
 }

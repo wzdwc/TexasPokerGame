@@ -19,6 +19,7 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
   max-width: 640rem;
+  overflow: hidden;
   margin: auto;
 }
   *{

@@ -1,36 +1,27 @@
-2020-05-14 00:04:56,742 INFO 15925 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
-2020-05-14 00:04:56,742 INFO 15925 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
-2020-05-14 00:04:56,742 INFO 15925 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
-2020-05-14 00:09:06,858 INFO 16050 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
-2020-05-14 00:09:06,858 INFO 16050 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
-2020-05-14 00:09:06,858 INFO 16050 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
-2020-05-14 00:44:53,991 INFO 17109 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
-2020-05-14 00:44:53,991 INFO 17109 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
-2020-05-14 00:44:53,991 INFO 17109 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
-2020-05-14 00:49:13,469 INFO 17239 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
-2020-05-14 00:49:13,469 INFO 17239 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
-2020-05-14 00:49:13,469 INFO 17239 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
-2020-05-14 00:53:25,944 INFO 17353 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
-2020-05-14 00:53:25,944 INFO 17353 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
-2020-05-14 00:53:25,944 INFO 17353 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
-2020-05-14 00:56:35,738 INFO 17450 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
-2020-05-14 00:56:35,738 INFO 17450 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
-2020-05-14 00:56:35,738 INFO 17450 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
-2020-05-14 01:17:09,907 INFO 18100 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 11570095ms at 2020-05-14 04:30:00.002
-2020-05-14 01:17:09,908 INFO 18100 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 81770093ms at 2020-05-15 00:00:00.001
-2020-05-14 01:17:09,908 INFO 18100 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 81771092ms at 2020-05-15 00:00:01.000
-2020-05-14 01:17:09,403 INFO 18102 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
-2020-05-14 01:17:09,403 INFO 18102 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
-2020-05-14 01:17:09,403 INFO 18102 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
-2020-05-14 01:18:18,728 INFO 18164 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
-2020-05-14 01:18:18,728 INFO 18164 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
-2020-05-14 01:18:18,728 INFO 18164 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
-2020-05-14 01:18:28,678 INFO 18183 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
-2020-05-14 01:18:28,678 INFO 18183 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
-2020-05-14 01:18:28,678 INFO 18183 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
-2020-05-14 01:22:14,923 INFO 18341 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 11265080ms at 2020-05-14 04:30:00.003
-2020-05-14 01:22:14,925 INFO 18341 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 81465077ms at 2020-05-15 00:00:00.002
-2020-05-14 01:22:14,925 INFO 18341 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 81466075ms at 2020-05-15 00:00:01.000
-2020-05-14 01:22:14,422 INFO 18342 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
-2020-05-14 01:22:14,422 INFO 18342 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
-2020-05-14 01:22:14,422 INFO 18342 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2020-05-15 00:04:16,103 INFO 23179 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 15943899ms at 2020-05-15 04:30:00.002
+2020-05-15 00:04:16,104 INFO 23179 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 86143897ms at 2020-05-16 00:00:00.001
+2020-05-15 00:04:16,105 INFO 23179 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 86144896ms at 2020-05-16 00:00:01.001
+2020-05-15 00:04:15,445 INFO 23180 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2020-05-15 00:04:15,445 INFO 23180 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
+2020-05-15 00:04:15,445 INFO 23180 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2020-05-15 00:09:39,545 INFO 23365 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2020-05-15 00:09:39,545 INFO 23365 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
+2020-05-15 00:09:39,545 INFO 23365 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2020-05-15 00:09:40,342 INFO 23364 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 15619660ms at 2020-05-15 04:30:00.002
+2020-05-15 00:09:40,343 INFO 23364 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 85819658ms at 2020-05-16 00:00:00.001
+2020-05-15 00:09:40,345 INFO 23364 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 85820657ms at 2020-05-16 00:00:01.002
+2020-05-15 00:18:53,779 INFO 23637 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2020-05-15 00:18:53,779 INFO 23637 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
+2020-05-15 00:18:53,779 INFO 23637 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2020-05-15 00:26:05,327 INFO 23852 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2020-05-15 00:26:05,327 INFO 23852 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
+2020-05-15 00:26:05,327 INFO 23852 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2020-05-15 00:26:06,040 INFO 23848 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 14633962ms at 2020-05-15 04:30:00.002
+2020-05-15 00:26:06,041 INFO 23848 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 84833959ms at 2020-05-16 00:00:00.000
+2020-05-15 00:26:06,042 INFO 23848 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 84834958ms at 2020-05-16 00:00:01.000
+2020-05-15 00:36:29,185 INFO 24161 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2020-05-15 00:36:29,185 INFO 24161 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js
+2020-05-15 00:36:29,185 INFO 24161 [egg-schedule]: register schedule /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2020-05-15 00:36:30,008 INFO 24160 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 14009994ms at 2020-05-15 04:30:00.002
+2020-05-15 00:36:30,009 INFO 24160 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 84209992ms at 2020-05-16 00:00:00.001
+2020-05-15 00:36:30,010 INFO 24160 [Timer] /Users/jorky/code/TexasPokerGame/server/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 84210991ms at 2020-05-16 00:00:01.001

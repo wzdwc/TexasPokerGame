@@ -6,4 +6,4 @@ export default (cards: string []) => {
     const cColor = Number(c[1]) - 1;
     return [`${cardNumber[cNumber]}`, `${color[cColor]}`];
   });
-}
+};

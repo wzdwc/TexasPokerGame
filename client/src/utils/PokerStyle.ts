@@ -17,16 +17,56 @@ function sort(cards: string []): string[] {
 
 interface IPokerStyle {
   init(): void;
+
   isStraight(str?: string []): string;
+}
+
+enum PokerStyleEnum {
+  'ROYAL_FlUSH',
+  'STRAIGHT_FLUSH',
+  'FOUR_KIND',
+  'FULL_HOUSE',
+  'FLUSH',
+  'STRAIGHT',
+  'THREE_KIND',
+  'TWO_PAIR',
+  'PAIR',
+  'HIGH_CARD',
 }
 
 export class PokerStyle implements IPokerStyle {
   private readonly cards: string[] = [];
-  private flushObj: string [][] = [[], [], [], []];
+  private flushObj = {
+    ['1']: [] as string[],
+    ['2']: [] as string[],
+    ['3']: [] as string[],
+    ['4']: [] as string[],
+  };
   private straightArr: string[] = [];
-  private pokerStyle: string[] = [ '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ];
+  private styleName = [
+    'ROYAL_FlUSH',
+    'STRAIGHT_FLUSH',
+    'FOUR_KIND',
+    'FULL_HOUSE',
+    'FLUSH',
+    'STRAIGHT',
+    'THREE_KIND',
+    'TWO_PAIR',
+    'PAIR',
+    'HIGH_CARD'];
+  private pokerStyle: string[] = [
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0'];
   private numObj: Map<string, number> = new Map(
-    POKER_STR.split('').map((m) => [ m, 0 ]));
+    POKER_STR.split('').map((m) => [m, 0]));
 
   constructor(cards: string[]) {
     this.cards = sort(cards);
@@ -34,13 +74,16 @@ export class PokerStyle implements IPokerStyle {
   }
 
   public isStraight(str?: string []): string {
-    const straightStr = str && str.join('') || [ ...new Set(this.straightArr) ].join('');
+    const straightStr = str && str.join('') ||
+      [...new Set(this.straightArr)].join('');
     let first = -1;
     let second = -1;
     let three = -1;
-    function indexOf(str: string): number {
-      return POKER_STR.indexOf(str);
+
+    function indexOf(styleStr: string): number {
+      return POKER_STR.indexOf(styleStr);
     }
+
     if (straightStr.length === 5 && indexOf(straightStr) > -1) {
       return POKER_STR.charAt(indexOf(straightStr));
     }
@@ -70,6 +113,14 @@ export class PokerStyle implements IPokerStyle {
     return this.pokerStyle.join('');
   }
 
+  public getPokerStyleName() {
+    for (let i = 0; i < this.pokerStyle.length; i++) {
+      if (this.pokerStyle[i] !== '0') {
+        return this.styleName[i];
+      }
+    }
+  }
+
   public init() {
     let i = 0;
     const isTwo = [];
@@ -88,7 +139,7 @@ export class PokerStyle implements IPokerStyle {
       const color = this.cards[i][1];
       const num = this.cards[i][0];
       this.straightArr.push(this.cards[i][0]);
-      this.flushObj[Number(color)].push(num);
+      this.flushObj[color].push(num);
       let value = this.numObj.get(num) || 0;
       value++;
       this.numObj.set(num, value);
@@ -104,7 +155,7 @@ export class PokerStyle implements IPokerStyle {
     }
 
     // find two,three,four
-    for (const [ key, value ] of this.numObj) {
+    for (const [key, value] of this.numObj) {
       // high card
       if (value === 1) {
         highCard.unshift(key);
@@ -142,8 +193,10 @@ export class PokerStyle implements IPokerStyle {
     }
 
     // full house
-    if (isThree.length > 0 && isTwo.length > isThree.length || isThree.length === 2) {
-      const maxTwoCard = isThree.length === 2 ? isThree[1] : isThree[0] === isTwo[0] ? isTwo[1] : isTwo[0];
+    if (isThree.length > 0 && isTwo.length > isThree.length ||
+      isThree.length === 2) {
+      const maxTwoCard = isThree.length === 2 ? isThree[1] : isThree[0] ===
+      isTwo[0] ? isTwo[1] : isTwo[0];
       const maxThree = isThree[0];
       isFullHouse = maxThree + maxTwoCard;
       this.pokerStyle[3] = isFullHouse;
@@ -173,7 +226,9 @@ export class PokerStyle implements IPokerStyle {
     if (isTwo.length >= 2) {
       isTowPair = isTwo.join('');
       // third tow pair card big then high card
-      const highCardForTowPair = isTwo[3] && isTwo[3] > highCard[0] ? isTwo[3] : highCard[0];
+      const highCardForTowPair = isTwo[3] && isTwo[3] > highCard[0]
+        ? isTwo[3]
+        : highCard[0];
       isTowPair += highCardForTowPair;
       this.pokerStyle[7] = isTowPair;
       return;

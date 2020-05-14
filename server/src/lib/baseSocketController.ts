@@ -27,6 +27,7 @@ export default class BaseSocketController extends Controller {
 
   async updateGameInfo() {
     const roomInfo = await this.getRoomInfo();
+    console.log(roomInfo, 'roomInfo ===============================');
     this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
       if (roomInfo.game && roomInfo.game.status < 6) {
         roomInfo.players.forEach(p => {
@@ -34,18 +35,18 @@ export default class BaseSocketController extends Controller {
             roomInfo.game.allPlayer.find(player => player.userId === p.userId);
           p.counter = currPlayer && currPlayer.counter || 0;
         });
+        console.log(roomInfo.players, 'roomInfo.players ===============================');
         const gameInfo = {
-          players: roomInfo.game.allPlayer.map(p => {
-            const currPlayer = roomInfo.players.find(player => player.userId === p.userId);
-            p.counter = Number(currPlayer?.buyIn) - p.inPot;
+          players: roomInfo.players.map(p => {
+            const currPlayer = roomInfo.game?.allPlayer.find(player => player.userId === p.userId);
             return Object.assign({}, {
-              counter: p.counter,
-              actionSize: p.actionSize,
-              actionCommand: p.actionCommand,
+              counter: currPlayer?.counter || 0,
+              actionSize: currPlayer?.actionSize || 0,
+              actionCommand: currPlayer?.actionCommand || '',
               nickName: p.nickName,
-              type: p.type,
+              type: currPlayer?.type || '',
               userId: p.userId,
-              buyIn: currPlayer ? currPlayer.buyIn : 0,
+              buyIn: p.buyIn || 0,
             }, {});
           }),
           pot: roomInfo.game.pot,

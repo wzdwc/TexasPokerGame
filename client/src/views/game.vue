@@ -1,42 +1,47 @@
 <template>
   <div class="game-container container">
     <sitList :sitLink.sync='sitLink'
-             :curr-player="currPlayer"
+             :currPlayer="currPlayer"
+             :commonCard="commonCard"
              @sit="sitDown"
              @buyIn="buyIn"
-             :isPlay = 'isPlay'
+             :isPlay='isPlay'
              :winner="winner"
-             :hand-card="handCardString"></sitList>
+             :actionUserId = 'actionUserId'
+             :hand-card="handCard"></sitList>
     <common-card :cardListString="commonCardString"></common-card>
     <div class="game-body">
-<!--      <div class="game-player-info">-->
-<!--        &lt;!&ndash;        <div class="users"&ndash;&gt;-->
-<!--        &lt;!&ndash;             v-for="user in users">&ndash;&gt;-->
-<!--        &lt;!&ndash;          <span> {{user.nickName}}: {{user.counter}}</span>&ndash;&gt;-->
-<!--        &lt;!&ndash;          <span>buyIn: {{user.buyIn}}</span>&ndash;&gt;-->
-<!--        &lt;!&ndash;          <span v-show="user.actionSize > 0"> actionSize:{{user.actionSize}} </span>&ndash;&gt;-->
-<!--        &lt;!&ndash;          <span v-show="user.type"> type:{{user.type}} </span>&ndash;&gt;-->
-<!--        &lt;!&ndash;          <span v-show="gameOver && user.handCard">handCard: {{mapCard(user.handCard)}}</span>&ndash;&gt;-->
-<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--        <div class="join">-->
-<!--          {{joinMsg}}-->
-<!--        </div>-->
-<!--      </div>-->
+      <!--      <div class="game-player-info">-->
+      <!--        &lt;!&ndash;        <div class="users"&ndash;&gt;-->
+      <!--        &lt;!&ndash;             v-for="user in users">&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <span> {{user.nickName}}: {{user.counter}}</span>&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <span>buyIn: {{user.buyIn}}</span>&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <span v-show="user.actionSize > 0"> actionSize:{{user.actionSize}} </span>&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <span v-show="user.type"> type:{{user.type}} </span>&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <span v-show="gameOver && user.handCard">handCard: {{mapCard(user.handCard)}}</span>&ndash;&gt;-->
+      <!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+      <!--        <div class="join">-->
+      <!--          {{joinMsg}}-->
+      <!--        </div>-->
+      <!--      </div>-->
       <div class="pot">pot: {{pot}}</div>
       <!--      <div class="common-card">commonCard:{{commonCardString}}</div>-->
       <!--      <div class="hand-card">handCard:{{handCardString}}</div>-->
       <div class="btn play"
            v-show="isOwner && !isPlay"><span @click="play">play game</span></div>
     </div>
-    <div class="action" v-show="isAction">
+    <div class="action"
+         v-show="isAction">
       <div class="action-type action-btn">
           <span @click="action('check')"
                 v-show="showActionBtn('check')">check</span>
         <span @click="action('fold')">fold</span>
         <span @click="action('call')"
               v-show="showActionBtn('call')">call</span>
-        <span @click="isRaise = true" v-show="showActionBtn('raise')">more</span>
-        <span @click="action('allin')" v-show="!showActionBtn('raise')">allin</span>
+        <span @click="isRaise = true"
+              v-show="showActionBtn('raise')">more</span>
+        <span @click="action('allin')"
+              v-show="!showActionBtn('raise')">allin</span>
       </div>
       <div class="raise-size">
         <div class="not-allin"
@@ -53,46 +58,61 @@
           <i @click="raise(pot * 2)">{{2*pot}}</i>
         </div>
       </div>
-      <div class="action-other-size" v-show="isRaise">
+      <div class="action-other-size"
+           v-show="isRaise">
         <div class="action-other-size-body">
-          <div class="size" v-show="currPlayer && raiseSize < currPlayer.counter">{{raiseSize}}</div>
-          <div class="size" v-show="currPlayer && raiseSize === currPlayer.counter">Allin</div>
-          <range :max="currPlayer && currPlayer.counter" :min="prevSize * 2" :is-horizontal="true" @change="getBuyInSize"></range>
-          <div class="btn" @click="addSize">ok</div>
+          <div class="size"
+               v-show="currPlayer && raiseSize < currPlayer.counter">{{raiseSize}}
+          </div>
+          <div class="size"
+               v-show="currPlayer && raiseSize === currPlayer.counter">Allin
+          </div>
+          <range :max="currPlayer && currPlayer.counter"
+                 :min="prevSize * 2"
+                 :is-horizontal="true"
+                 @change="getBuyInSize"></range>
+          <div class="btn"
+               @click="addSize">ok
+          </div>
         </div>
         <div class="shadow"></div>
       </div>
     </div>
     <div class="setting">
-      <div class="iconfont icon-setting setting-btn" @click="showSetting = true"></div>
-      <div class="setting-body" :class="{show: showSetting}">
+      <div class="iconfont icon-setting setting-btn"
+           @click="showSetting = true"></div>
+      <div class="setting-body"
+           :class="{show: showSetting}">
         <i @click="showBuyInDialog()">buy in</i>
       </div>
     </div>
-    <BuyIn :showBuyIn.sync = 'showBuyIn' @buyIn = 'buyIn'></BuyIn>
+    <BuyIn :showBuyIn.sync='showBuyIn'
+           :min = '200'
+           :max ='1000'
+           @buyIn='buyIn'></BuyIn>
   </div>
 </template>
 
 <script lang="ts">
-  import {Vue, Watch} from 'vue-property-decorator';
+  import { Vue, Watch } from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import io from 'socket.io-client';
   import cookie from 'js-cookie';
   import sitList from '../components/SitList.vue';
   import commonCard from '../components/CommonCard.vue';
-  import {IPlayer} from '@/interface/IPlayer';
-  import {ILinkNode, Link} from '@/utils/Link';
+  import { IPlayer } from '@/interface/IPlayer';
+  import { ILinkNode, Link } from '@/utils/Link';
   import ISit from '../interface/ISit';
   import BuyIn from '../components/BuyIn.vue';
   import range from '../components/range.vue';
-  import map from '../utils/map'
+  import map from '../utils/map';
 
   export enum ECommand {
-    CALL = 'call',
+    CALL   = 'call',
     ALL_IN = 'allin',
-    RAISE = 'raise',
-    CHECK = 'check',
-    FOLD = 'fold',
+    RAISE  = 'raise',
+    CHECK  = 'check',
+    FOLD   = 'fold',
   }
 
   interface IMsg {
@@ -127,21 +147,23 @@
     private showBuyIn = false;
     private showSetting = false;
     private sitLink: any = '';
-    private raiseSize:number = 0;
+    private raiseSize: number = 0;
+    private gaming = false;
     private sitList: ISit[] = [];
+    private actionUserId = '';
 
     @Watch('players')
     private playerChange(players: IPlayer[]) {
-      console.log('player change-------')
+      console.log('player change-------');
       this.sitList = this.sitList.map((sit: ISit) => {
-        const player = players.find(p => p.userId === sit.player?.userId);
-        return Object.assign({}, {}, {player, position: sit.position}) as ISit;
+        const player = players.find((p) => p.userId === sit.player?.userId);
+        return Object.assign({}, {}, { player, position: sit.position }) as ISit;
       });
       this.initSitLink();
     }
 
     get isPlay() {
-      return this.pot !== 0 && this.currPlayer?.buyIn !== 0;
+      return this.gaming || this.pot !== 0;
     }
 
     get hasBuyIn() {
@@ -223,7 +245,7 @@
     }
 
     private sitDown() {
-      this.emit('sitDown', {sitList: this.sitListMap()});
+      this.emit('sitDown', { sitList: this.sitListMap() });
     }
 
     // private mapCard(cards: string []) {
@@ -242,9 +264,9 @@
         return this.prevSize <= 0
           || (this.commonCard.length === 0
             && this.players.length === 2
-            && this.currPlayer?.type === 'dealer'
+            && this.currPlayer?.type === 'd'
             && this.prevSize === 2)
-          || (this.currPlayer?.type === 'big_blind' && this.prevSize === 2 &&
+          || (this.currPlayer?.type === 'bb' && this.prevSize === 2 &&
             this.commonCard.length === 0);
       }
       // raise
@@ -255,7 +277,7 @@
       if ('call' === type) {
         return this.canActionSize > this.prevSize
           && this.prevSize > 0
-          && !(this.currPlayer?.type === 'big_blind' && this.prevSize === 2 &&
+          && !(this.currPlayer?.type === 'bb' && this.prevSize === 2 &&
             this.commonCard.length === 0);
       }
       return true;
@@ -265,12 +287,12 @@
       this.action(`raise:${size}`);
     }
 
-    private getBuyInSize(size:number) {
+    private getBuyInSize(size: number) {
       this.raiseSize = size;
     }
 
     private action(command: string) {
-      this.emit('action', {command});
+      this.emit('action', { command });
       this.isAction = false;
       this.isRaise = false;
     }
@@ -298,9 +320,9 @@
           log('#receive,', msg);
           const data = msg.data;
           if (data.action === 'handCard') {
-            console.log('come in handCard =========', data)
+            console.log('come in handCard =========', data);
             this.handCard = data.payload.handCard;
-            console.log('come in handCard =========', this.handCard)
+            console.log('come in handCard =========', this.handCard);
           }
           if (data.action === 'userInfo') {
             this.userInfo = data.payload.userInfo;
@@ -316,6 +338,7 @@
             this.prevSize = payload.data.prevSize;
             this.commonCard = payload.data.commonCard;
             console.log('msg.data.currPlayer.userId', msg.data);
+            this.actionUserId = payload.data.currPlayer.userId;
             this.isAction = !!(this.userInfo && this.userInfo.userId ===
               payload.data.currPlayer.userId);
           }
@@ -344,9 +367,10 @@
           this.players = msg.data.players;
           this.pot = msg.data.pot;
           this.prevSize = msg.data.prevSize;
+          this.actionUserId = msg.data.currPlayer.userId;
           this.isAction = !!(this.userInfo && this.userInfo.userId === msg.data.currPlayer.userId);
           console.log('gameInfo', msg.data);
-          console.log('handCard', this.handCard)
+          console.log('handCard', this.handCard);
         }
 
         if (msg.action === 'gameOver') {
@@ -385,7 +409,7 @@
 
     private async buyIn(size: number) {
       try {
-        if (this.currPlayer) {
+        if (this.currPlayer && !this.isPlay) {
           this.currPlayer.counter += size;
         }
         this.emit('buyIn', {
@@ -398,6 +422,7 @@
 
     private play() {
       if (this.players.length >= 2) {
+        this.gaming = true;
         this.emit('playGame');
       } else {
         console.log('no enough player');
@@ -464,7 +489,6 @@
     }
 
 
-
     .action {
       position: absolute;
       color: #fff;
@@ -511,15 +535,16 @@
         }
       }
 
-      .action-other-size{
-        background-color: rgba(0,0,0,0);
+      .action-other-size {
+        background-color: rgba(0, 0, 0, 0);
         position: fixed;
         width: 50vw;
         height: 30vh;
         right: -16px;
         top: -35vh;
-        z-index: 9;
-        .shadow{
+        z-index: 90;
+
+        .shadow {
           position: absolute;
           top: -3vh;
           width: 0;
@@ -529,18 +554,20 @@
           overflow: hidden;
           box-shadow: 0px 55px 104px 176px rgba(0, 0, 0, 0.5);
         }
-        .action-other-size-body{
+
+        .action-other-size-body {
           z-index: 9;
           position: absolute;
           width: 50vw;
           height: 30vh;
-          .btn{
+
+          .btn {
             position: absolute;
             top: 34vh;
             left: 20vw;
             border: 1px solid #fff;
             border-radius: 50%;
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(0, 0, 0, 0.4);
             padding: 5px;
             font-size: 12px;
             width: 20px;

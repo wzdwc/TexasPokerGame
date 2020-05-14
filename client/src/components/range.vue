@@ -1,14 +1,16 @@
 <template>
   <div class="slide-bar-container">
-<!--    <div class="value">{{raiseSize}}</div>-->
+    <!--    <div class="value">{{raiseSize}}</div>-->
     <div class="range-body">
-      <input type="range" v-model="range":class="{horizontal: !!isHorizontal}">
+      <input type="range"
+             v-model="range"
+             :class="{horizontal: !!isHorizontal}">
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
+  import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
   @Component
   export default class Range extends Vue {
@@ -18,40 +20,46 @@
     private range = 0;
 
     @Watch('range')
-    private raiseSize(val:string) {
+    private raiseSize(val: string) {
       const valNum = Number(val);
-      const size = Number(val) === 0 ?
-        this.min : Math.floor(valNum / 100 * (this.max - this.min)) + this.min;
-      console.log('size', size)
-      this.$emit('change', size)
+      const size = Number(val) === 0 ? this.min : Math.floor(valNum / 100 * (this.max - this.min)) +
+        this.min;
+      console.log('size', size);
+      this.$emit('change', size);
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
+<style scoped
+       lang="less">
   .slide-bar-container {
-    .range-body{
+    .range-body {
       line-height: 10px;
     }
-    .value{
+
+    .value {
       margin-bottom: 10px;
     }
+
     input[type=range] {
       -webkit-appearance: none;
       width: 200px;
       border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
       vertical-align: middle;
       display: inline-block;
-      &.horizontal{
-        transform: rotateZ(-90deg) translate3d(-50%,0,0);
+
+      &.horizontal {
+        transform: rotateZ(-90deg) translate3d(-50%, 0, 0);
         transform-origin: center;
         margin-left: -8px;
       }
     }
+
     input[type=range]:focus {
       outline: none;
     }
+
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
       height: 30px;
@@ -62,6 +70,7 @@
       border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
       box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
     }
+
     input[type=range]::-webkit-slider-runnable-track {
       height: 6px;
       border-radius: 10px; /*将轨道设为圆角的*/
