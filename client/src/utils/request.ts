@@ -2,6 +2,7 @@ import axios, {AxiosRequestConfig, Method} from 'axios';
 import cookie from 'js-cookie';
 
 const request = async ({method = 'post' as Method, url = '', body = {}, timeout = 8000}) => {
+  // const origin = 'http://www.jojgame.com:7001/node';
   const origin = 'http://192.168.0.110:7001/node';
   // const origin = 'http://172.22.72.70:7001/node';
   if (!url) {

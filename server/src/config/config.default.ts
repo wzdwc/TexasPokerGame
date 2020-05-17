@@ -39,10 +39,10 @@ export default (appInfo: EggAppInfo) => {
     credentials: true,
     origin(ctx: Context) {
       const origin: string = ctx.get('origin');
-      console.log(origin, 'orgin');
+      // console.log(origin, 'orgin');
       // 允许*域名访问
       if (origin.indexOf('') > -1) {
-        console.log('come in');
+        // console.log('come in');
         return origin;
       } else {
         return '*';
@@ -61,7 +61,6 @@ export default (appInfo: EggAppInfo) => {
 
   // 业务接口domain
   config.apiDomain = {
-    loanDomain: '*',
   };
 
   // jsonwebtoken 插件配置

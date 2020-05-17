@@ -7,3 +7,567 @@
 2020-05-15 00:09:52,221 ERROR 23365 [-/192.168.0.103/-/2ms GET /socket.io/?room=679262&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTQ2ODkyNCwiZXhwIjoxNTg5NDkwNTI0fQ.maDh-r4DCQnIryS7UdaLR2LyoePWcA609RQGqlTgQ6o&EIO=3&transport=websocket] room service tick null
 2020-05-15 00:10:08,483 ERROR 23365 [-/192.168.0.110/-/4ms GET /socket.io/?room=679262&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk0NjUzMDEsImV4cCI6MTU4OTQ4NjkwMX0.hqT4E36YF7qpokabPikaf-SsTNBCEH-UECG0FGi6ZLA&EIO=3&transport=websocket] room service tick null
 2020-05-15 00:11:41,719 ERROR 23365 [-/192.168.0.110/-/4ms GET /socket.io/?room=679262&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTQ2NTMzNCwiZXhwIjoxNTg5NDg2OTM0fQ.1SacTXidl_oznTv5FWlzdwa0JLkEV4hvmErQBuW5INY&EIO=3&transport=websocket] room service tick null
+2020-05-15 02:23:39,384 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 2398823ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 03:04:26,864 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 2407912ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 03:59:18,140 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 3271225ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 06:00:14,851 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 7217013ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 08:01:11,642 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 7216770ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 08:43:31,160 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 2499484ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 10:44:07,417 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 7216239ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 13:15:19,535 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 9052026ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 13:15:22,483 ERROR 24161 [-/192.168.0.110/-/120ms GET /socket.io/?room=830230&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTQ2NTMzNCwiZXhwIjoxNTg5NDg2OTM0fQ.1SacTXidl_oznTv5FWlzdwa0JLkEV4hvmErQBuW5INY&EIO=3&transport=websocket] room service tick null
+2020-05-15 13:15:22,584 ERROR 24161 [-/192.168.0.110/-/87ms GET /socket.io/?room=830230&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTQ2NTMzNCwiZXhwIjoxNTg5NDg2OTM0fQ.1SacTXidl_oznTv5FWlzdwa0JLkEV4hvmErQBuW5INY&EIO=3&transport=websocket] room service tick null
+2020-05-15 15:15:39,114 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 7218632ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 17:15:58,525 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 7219133ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 18:57:00,524 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 6040676ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 19:13:27,326 ERROR 24160 nodejs.unhandledExceptionError: ENOENT: no such file or directory, stat '/Users/jorky/code/TexasPokerGame/server/src/app.ts'
+    at Object.statSync (fs.js:932:3)
+    at DevelopmentEventSource._onFsWatchChange (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-watcher/lib/event-sources/development.js:82:16)
+    at FSWatcher.emit (events.js:311:20)
+    at FSEvent.FSWatcher._handle.onchange (internal/fs/watchers.js:135:12)
+errno: -2
+syscall: "stat"
+code: "ENOENT"
+path: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+name: "unhandledExceptionError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 19:13:44,808 ERROR 26444 [-/127.0.0.1/-/0ms GET /] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:160:17)
+    at Handshake.emit (events.js:311:20)
+    at Handshake._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/sequences/Sequence.js:124:8)
+    at Timer._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Timer.js:32:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+    --------------------
+    at Protocol._enqueue (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Connection.js:116:18)
+    at Pool.getConnection (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:12:10)
+    at Pool.ret [as getConnection] (/Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:56:34)
+    at Pool.query (/Users/jorky/code/TexasPokerGame/server/node_modules/mysql/lib/Pool.js:202:8)
+    at /Users/jorky/code/TexasPokerGame/server/node_modules/ali-rds/node_modules/pify/index.js:29:7
+    sql: select now() as currentTime;
+code: "PROTOCOL_SEQUENCE_TIMEOUT"
+fatal: true
+timeout: 10000
+name: "PROTOCOL_SEQUENCE_TIMEOUTError"
+pid: 26444
+hostname: 192.168.0.110
+
+2020-05-15 19:15:51,962 ERROR 26622 [-/192.168.0.110/-/19ms GET /socket.io/?room=830230&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTQ2NTMzNCwiZXhwIjoxNTg5NDg2OTM0fQ.1SacTXidl_oznTv5FWlzdwa0JLkEV4hvmErQBuW5INY&EIO=3&transport=websocket] room service tick null
+2020-05-15 19:15:52,009 ERROR 26622 [-/192.168.0.110/-/6ms GET /socket.io/?room=830230&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTQ2NTMzNCwiZXhwIjoxNTg5NDg2OTM0fQ.1SacTXidl_oznTv5FWlzdwa0JLkEV4hvmErQBuW5INY&EIO=3&transport=websocket] room service tick null
+2020-05-15 19:15:52,033 ERROR 26622 [-/192.168.0.110/-/13ms GET /socket.io/?room=830230&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTQ2NTMzNCwiZXhwIjoxNTg5NDg2OTM0fQ.1SacTXidl_oznTv5FWlzdwa0JLkEV4hvmErQBuW5INY&EIO=3&transport=websocket] room service tick null
+2020-05-15 20:22:33,957 ERROR 26621 nodejs.ClusterClientNoResponseError: client no response in 3843744ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 26621
+hostname: 192.168.0.110
+
+2020-05-15 23:47:19,046 ERROR 34537 [-/192.168.0.110/-/11ms GET /socket.io/?room=533137&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk1NTI0MzksImV4cCI6MTU4OTU3NDAzOX0.lI_rNnEGG_L3m-6sMwMzVU1tlC9gmDm6wAqgja0zlvI&EIO=3&transport=websocket] room service tick null
+2020-05-15 23:50:28,975 ERROR 34537 player not enough
+2020-05-15 23:52:30,583 ERROR 34537 player not enough
+2020-05-16 01:55:08,983 ERROR 34530 nodejs.ClusterClientNoResponseError: client no response in 7210817ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 34530
+hostname: 192.168.0.110
+
+2020-05-16 02:55:13,282 ERROR 34530 nodejs.ClusterClientNoResponseError: client no response in 3604291ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 34530
+hostname: 192.168.0.110
+
+2020-05-16 04:55:20,398 ERROR 34530 nodejs.ClusterClientNoResponseError: client no response in 7207017ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 34530
+hostname: 192.168.0.110
+
+2020-05-16 04:55:21,767 ERROR 34537 [-/192.168.0.110/-/57ms GET /socket.io/?room=988132&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk1NDE0NDUsImV4cCI6MTU4OTU2MzA0NX0.VcWtgIFA8Xy4BajnHS2WtYiW133TeE_CTmJja22T5Dw&EIO=3&transport=websocket] room service tick null
+2020-05-16 04:55:23,078 ERROR 34537 [-/192.168.0.110/-/3ms GET /socket.io/?room=988132&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTU1NzgwNCwiZXhwIjoxNTg5NTc5NDA0fQ.rYDMsA0P2g08_U52_mICkULajgtuLhrzWvH06VzGVYg&EIO=3&transport=websocket] room service tick null
+2020-05-16 06:55:40,434 ERROR 34530 nodejs.ClusterClientNoResponseError: client no response in 7218780ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 34530
+hostname: 192.168.0.110
+
+2020-05-16 15:31:06,131 ERROR 34530 nodejs.ClusterClientNoResponseError: client no response in 30923701ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 34530
+hostname: 192.168.0.110
+
+2020-05-16 15:31:14,905 ERROR 34537 [-/192.168.0.110/-/46ms GET /socket.io/?room=988132&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk1NTI0MzksImV4cCI6MTU4OTU3NDAzOX0.lI_rNnEGG_L3m-6sMwMzVU1tlC9gmDm6wAqgja0zlvI&EIO=3&transport=websocket] room service tick null
+2020-05-16 15:32:16,824 ERROR 35157 [-/192.168.0.110/-/13ms GET /socket.io/?room=988132&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTU1NzgwNCwiZXhwIjoxNTg5NTc5NDA0fQ.rYDMsA0P2g08_U52_mICkULajgtuLhrzWvH06VzGVYg&EIO=3&transport=websocket] room service tick null
+2020-05-16 15:32:17,432 ERROR 35157 [-/192.168.0.110/-/8ms GET /socket.io/?room=988132&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk1NTI0MzksImV4cCI6MTU4OTU3NDAzOX0.lI_rNnEGG_L3m-6sMwMzVU1tlC9gmDm6wAqgja0zlvI&EIO=3&transport=websocket] room service tick null
+2020-05-16 15:32:27,831 ERROR 35157 [-/192.168.0.110/-/12ms GET /socket.io/?room=988132&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTU1NzgwNCwiZXhwIjoxNTg5NTc5NDA0fQ.rYDMsA0P2g08_U52_mICkULajgtuLhrzWvH06VzGVYg&EIO=3&transport=websocket] room service tick null
+2020-05-16 15:32:30,714 ERROR 35157 [-/192.168.0.110/-/4ms GET /socket.io/?room=988132&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk1NTI0MzksImV4cCI6MTU4OTU3NDAzOX0.lI_rNnEGG_L3m-6sMwMzVU1tlC9gmDm6wAqgja0zlvI&EIO=3&transport=websocket] room service tick null
+2020-05-16 15:32:43,976 ERROR 35157 [-/192.168.0.110/-/4ms GET /socket.io/?room=988132&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTU1NzgwNCwiZXhwIjoxNTg5NTc5NDA0fQ.rYDMsA0P2g08_U52_mICkULajgtuLhrzWvH06VzGVYg&EIO=3&transport=websocket] room service tick null
+2020-05-16 15:44:46,900 ERROR 35157 player not enough
+2020-05-16 15:54:49,050 ERROR 36073 player not enough
+2020-05-16 15:56:22,521 ERROR 36129 nodejs.TypeError: Cannot read property 'userId' of undefined
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:75
+    at Array.find (<anonymous>)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:43
+    at Array.forEach (<anonymous>)
+    at GameController.playGame (/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:22:20)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:167:7
+
+pid: 36129
+hostname: 192.168.0.110
+
+2020-05-16 15:56:33,699 ERROR 36129 [-/192.168.0.102/-/11ms GET /socket.io/?room=103537&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-05-16 15:56:40,592 ERROR 36129 [-/192.168.0.102/-/4ms GET /socket.io/?room=103537&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-05-16 16:00:25,253 ERROR 36129 nodejs.TypeError: Cannot read property 'userId' of undefined
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:75
+    at Array.find (<anonymous>)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:43
+    at Array.forEach (<anonymous>)
+    at GameController.playGame (/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:22:20)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:167:7
+
+pid: 36129
+hostname: 192.168.0.110
+
+2020-05-16 16:02:49,184 ERROR 36129 nodejs.TypeError: Cannot read property 'userId' of undefined
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:75
+    at Array.find (<anonymous>)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:43
+    at Array.forEach (<anonymous>)
+    at GameController.playGame (/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:22:20)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:167:7
+
+pid: 36129
+hostname: 192.168.0.110
+
+2020-05-16 18:47:17,285 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 1336911ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 18:47:17,927 ERROR 36129 [-/192.168.0.110/-/6ms GET /socket.io/?room=103537&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk2MTU3NDUsImV4cCI6MTU4OTYzNzM0NX0.7ppMhFH6koGT-88S3K7UlnsXSTXOc-HGp7ufXP1yASs&EIO=3&transport=websocket] room service tick null
+2020-05-16 18:51:31,753 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 117775ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 18:53:19,619 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 87852ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 18:54:54,475 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 74851ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 18:57:45,241 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 78841ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 18:59:40,095 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 94842ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 19:05:41,657 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 121858ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 19:07:17,425 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 75749ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 19:14:23,332 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 405878ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 21:14:44,100 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 7200526ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 21:46:48,588 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 1924486ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 21:53:53,086 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 404494ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 22:13:31,493 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 1138387ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 00:10:20,844 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 6989347ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 00:23:44,652 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 763784ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 00:36:47,138 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 761964ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 02:37:25,091 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 7217933ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 03:00:07,033 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 1361923ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 04:25:55,455 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 5148408ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 04:25:57,452 ERROR 36129 [-/192.168.0.110/-/25ms GET /socket.io/?room=103537&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTYxNDM5MiwiZXhwIjoxNTg5NjM1OTkyfQ.1-2SrqaQfW6f0xmFHbRbs9nGlFHwer8_OyFsPOYSsSM&EIO=3&transport=websocket] room service tick null
+2020-05-17 07:44:02,405 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 11865792ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 09:44:39,894 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 7217339ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 13:44:54,336 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 14414387ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 14:52:21,246 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 4046906ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 14:53:24,371 ERROR 36129 [-/192.168.0.110/-/421ms GET /socket.io/?room=103537&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTYxNDM5MiwiZXhwIjoxNTg5NjM1OTkyfQ.1-2SrqaQfW6f0xmFHbRbs9nGlFHwer8_OyFsPOYSsSM&EIO=3&transport=websocket] room service tick null
+2020-05-17 14:53:29,916 ERROR 36129 [-/192.168.0.110/-/13ms GET /socket.io/?room=103537&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk2MTU3NDUsImV4cCI6MTU4OTYzNzM0NX0.7ppMhFH6koGT-88S3K7UlnsXSTXOc-HGp7ufXP1yASs&EIO=3&transport=websocket] room service tick null
+2020-05-17 14:54:13,601 ERROR 38093 [-/192.168.0.110/-/34ms GET /socket.io/?room=103537&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk2MTU3NDUsImV4cCI6MTU4OTYzNzM0NX0.7ppMhFH6koGT-88S3K7UlnsXSTXOc-HGp7ufXP1yASs&EIO=3&transport=websocket] room service tick null
+2020-05-17 14:54:49,676 ERROR 38093 [-/192.168.0.110/-/4ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk2MTU3NDUsImV4cCI6MTU4OTYzNzM0NX0.7ppMhFH6koGT-88S3K7UlnsXSTXOc-HGp7ufXP1yASs&EIO=3&transport=websocket] room service tick null
+2020-05-17 14:54:51,662 ERROR 38093 [-/192.168.0.110/-/18ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk2MTU3NDUsImV4cCI6MTU4OTYzNzM0NX0.7ppMhFH6koGT-88S3K7UlnsXSTXOc-HGp7ufXP1yASs&EIO=3&transport=websocket] room service tick null
+2020-05-17 14:54:52,782 ERROR 38093 [-/192.168.0.110/-/7ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk2MTU3NDUsImV4cCI6MTU4OTYzNzM0NX0.7ppMhFH6koGT-88S3K7UlnsXSTXOc-HGp7ufXP1yASs&EIO=3&transport=websocket] room service tick null
+2020-05-17 15:59:06,485 ERROR 38093 [-/192.168.0.110/-/5ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 15:59:06,491 ERROR 38093 [-/192.168.0.110/-/2ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 15:59:06,491 ERROR 38093 [-/192.168.0.110/-/2ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 15:59:06,497 ERROR 38093 [-/192.168.0.110/-/4ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 15:59:06,498 ERROR 38093 [-/192.168.0.110/-/5ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 15:59:06,498 ERROR 38093 [-/192.168.0.110/-/4ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 15:59:06,511 ERROR 38093 [-/192.168.0.110/-/3ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 15:59:06,531 ERROR 38093 [-/192.168.0.110/-/5ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:06:01,658 ERROR 38093 [-/192.168.0.110/-/3ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:16:20,535 ERROR 38093 [-/192.168.0.110/-/6ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk2OTg0NzMsImV4cCI6MTU4OTcyMDA3M30.OsUE0bSRJjyMmPCg4o3gO2kq3E6zyoeUwI-xOZBBLp4&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:16:22,324 ERROR 38093 [-/192.168.0.110/-/9ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:16:25,950 ERROR 38093 [-/192.168.0.110/-/2ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:16:27,908 ERROR 38093 [-/192.168.0.110/-/1ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk2OTg0NzMsImV4cCI6MTU4OTcyMDA3M30.OsUE0bSRJjyMmPCg4o3gO2kq3E6zyoeUwI-xOZBBLp4&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:17:46,032 ERROR 38093 [-/192.168.0.110/-/3ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:17:46,582 ERROR 38093 [-/192.168.0.110/-/6ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:17:46,582 ERROR 38093 [-/192.168.0.110/-/5ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:17:46,582 ERROR 38093 [-/192.168.0.110/-/5ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:17:46,631 ERROR 38093 [-/192.168.0.110/-/7ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:17:46,632 ERROR 38093 [-/192.168.0.110/-/4ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:17:46,733 ERROR 38093 [-/192.168.0.110/-/5ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:17:46,854 ERROR 38093 [-/192.168.0.110/-/12ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:17:47,010 ERROR 38093 [-/192.168.0.110/-/2ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:17:47,016 ERROR 38093 [-/192.168.0.110/-/3ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 16:18:16,707 ERROR 38093 [-/192.168.0.110/-/1ms GET /socket.io/?room=910834&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTY5ODUzNywiZXhwIjoxNTg5NzIwMTM3fQ.kRkFD0-ZFoAOhmS9_BWNSWzxLCQVtopJN16nhZZ-31w&EIO=3&transport=websocket] room service tick null
+2020-05-17 17:14:33,362 ERROR 38093 [-/192.168.0.102/-/21ms GET /socket.io/?room=103537&token=undefined&EIO=3&transport=websocket] room service tick null
+2020-05-17 17:50:38,975 ERROR 38093 [-/192.168.0.110/-/4ms GET /socket.io/?room=298211&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTcwNjE2NywiZXhwIjoxNTg5NzI3NzY3fQ.t7rBlTx3J18emhlX7Tyk6qv8oJNjvdRIf7yqpEHf-Nk&EIO=3&transport=websocket] room service tick null
+2020-05-17 17:50:40,361 ERROR 38093 [-/192.168.0.110/-/1ms GET /socket.io/?room=298211&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk2OTg0NzMsImV4cCI6MTU4OTcyMDA3M30.OsUE0bSRJjyMmPCg4o3gO2kq3E6zyoeUwI-xOZBBLp4&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:07:52,097 ERROR 38093 nodejs.TypeError: Cannot read property 'userId' of undefined
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:75
+    at Array.find (<anonymous>)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:43
+    at Array.forEach (<anonymous>)
+    at GameController.playGame (/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:22:20)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:167:7
+
+pid: 38093
+hostname: 192.168.0.110
+
+2020-05-17 18:09:52,783 ERROR 38093 nodejs.TypeError: Cannot read property 'userId' of undefined
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:75
+    at Array.find (<anonymous>)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:43
+    at Array.forEach (<anonymous>)
+    at GameController.playGame (/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:22:20)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:167:7
+
+pid: 38093
+hostname: 192.168.0.110
+
+2020-05-17 18:11:34,165 ERROR 38093 nodejs.TypeError: Cannot read property 'userId' of undefined
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:75
+    at Array.find (<anonymous>)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:27:43
+    at Array.forEach (<anonymous>)
+    at GameController.playGame (/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:22:20)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:167:7
+
+pid: 38093
+hostname: 192.168.0.110
+
+2020-05-17 18:15:22,384 ERROR 44187 nodejs.TypeError: Cannot read property 'userId' of undefined
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:28:75
+    at Array.find (<anonymous>)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:28:43
+    at Array.forEach (<anonymous>)
+    at GameController.playGame (/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:22:20)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts:168:7
+
+pid: 44187
+hostname: 192.168.0.110
+
+2020-05-17 18:54:09,527 ERROR 45122 [-/192.168.0.110/-/9ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTcxMDY5MiwiZXhwIjoxNTg5NzMyMjkyfQ.iT0CpXytHtYaalUj5MH0qs4I-yDroZvyZdm1bE5Mij4&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:54:10,425 ERROR 45122 [-/192.168.0.110/-/6ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:54:59,344 ERROR 45122 [-/192.168.0.110/-/3ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTcxMDY5MiwiZXhwIjoxNTg5NzMyMjkyfQ.iT0CpXytHtYaalUj5MH0qs4I-yDroZvyZdm1bE5Mij4&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:54:59,423 ERROR 45122 [-/192.168.0.110/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:09,889 ERROR 45122 [-/192.168.0.110/-/4ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTcxMDY5MiwiZXhwIjoxNTg5NzMyMjkyfQ.iT0CpXytHtYaalUj5MH0qs4I-yDroZvyZdm1bE5Mij4&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:10,712 ERROR 45122 [-/192.168.0.110/-/4ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:13,078 ERROR 45122 [-/192.168.0.110/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTcxMDY5MiwiZXhwIjoxNTg5NzMyMjkyfQ.iT0CpXytHtYaalUj5MH0qs4I-yDroZvyZdm1bE5Mij4&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:16,944 ERROR 45122 [-/192.168.0.110/-/3ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:22,975 ERROR 45122 [-/192.168.0.102/-/1ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:23,285 ERROR 45122 [-/192.168.0.102/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:23,288 ERROR 45122 [-/192.168.0.102/-/1ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:23,493 ERROR 45122 [-/192.168.0.102/-/3ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:23,609 ERROR 45122 [-/192.168.0.102/-/6ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:23,652 ERROR 45122 [-/192.168.0.102/-/1ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:23,692 ERROR 45122 [-/192.168.0.102/-/1ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:23,737 ERROR 45122 [-/192.168.0.102/-/6ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:24,105 ERROR 45122 [-/192.168.0.102/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:55:34,785 ERROR 45122 [-/192.168.0.110/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTcxMDY5MiwiZXhwIjoxNTg5NzMyMjkyfQ.iT0CpXytHtYaalUj5MH0qs4I-yDroZvyZdm1bE5Mij4&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:20,695 ERROR 45122 [-/192.168.0.110/-/1ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTcxMDY5MiwiZXhwIjoxNTg5NzMyMjkyfQ.iT0CpXytHtYaalUj5MH0qs4I-yDroZvyZdm1bE5Mij4&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:21,544 ERROR 45122 [-/192.168.0.110/-/4ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:21,630 ERROR 45122 [-/192.168.0.110/-/5ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:21,703 ERROR 45122 [-/192.168.0.110/-/13ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:21,766 ERROR 45122 [-/192.168.0.110/-/6ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:21,810 ERROR 45122 [-/192.168.0.110/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:21,843 ERROR 45122 [-/192.168.0.110/-/1ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:21,885 ERROR 45122 [-/192.168.0.110/-/7ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:21,997 ERROR 45122 [-/192.168.0.110/-/14ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:22,012 ERROR 45122 [-/192.168.0.110/-/8ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoiYyIsImFjY291bnQiOiJjYWkiLCJ1c2VySWQiOjF9LCJpYXQiOjE1ODk3MTA3MDYsImV4cCI6MTU4OTczMjMwNn0.qSZgV5KYUL3mY6lE_0rbj9HYqHV4600ljmwU_7a4UMc&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:56:23,512 ERROR 45122 [-/192.168.0.110/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTcxMDY5MiwiZXhwIjoxNTg5NzMyMjkyfQ.iT0CpXytHtYaalUj5MH0qs4I-yDroZvyZdm1bE5Mij4&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:58:17,487 ERROR 45520 [-/192.168.0.102/-/3ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:58:17,529 ERROR 45520 [-/192.168.0.102/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:58:17,566 ERROR 45520 [-/192.168.0.102/-/1ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:58:17,607 ERROR 45520 [-/192.168.0.102/-/4ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:58:17,643 ERROR 45520 [-/192.168.0.102/-/3ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:58:17,676 ERROR 45520 [-/192.168.0.102/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:58:17,715 ERROR 45520 [-/192.168.0.102/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:58:17,748 ERROR 45520 [-/192.168.0.102/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:58:17,786 ERROR 45520 [-/192.168.0.102/-/1ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 18:58:31,526 ERROR 45520 [-/192.168.0.102/-/2ms GET /socket.io/?room=864849&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcxMDI1OCwiZXhwIjoxNTg5NzMxODU4fQ.0kXbr6GqjukvB2bOLnnhxb_69FQJxKmfaOpwzL3J6-Q&EIO=3&transport=websocket] room service tick null
+2020-05-17 19:02:58,587 ERROR 45520 [-/192.168.0.110/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTcxMzM3NCwiZXhwIjoxNTg5NzM0OTc0fQ.csxlorfXLhm2qX0rO0FKJ55esy-6jWr0JXPmPoghfpE&EIO=3&transport=websocket] room service tick null
+2020-05-17 19:03:03,427 ERROR 45520 [-/192.168.0.110/-/15ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShMSIsImFjY291bnQiOiJjYWkxMSIsInVzZXJJZCI6M30sImlhdCI6MTU4OTcxMzM3NCwiZXhwIjoxNTg5NzM0OTc0fQ.csxlorfXLhm2qX0rO0FKJ55esy-6jWr0JXPmPoghfpE&EIO=3&transport=websocket] room service tick null
+2020-05-17 19:55:06,218 ERROR 47154 player: error action, overflow action size
+2020-05-17 19:55:16,126 ERROR 47154 player: error action, overflow action size
+2020-05-17 21:05:00,078 ERROR 48939 [-/192.168.0.110/-/3ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcyMDY5NiwiZXhwIjoxNTg5NzQyMjk2fQ.Rm7sXB7zuc_vwVXIfbrDCvkyF_TgMO9Ff9tnZ-lYxwE&EIO=3&transport=websocket] room service tick null
+2020-05-17 21:05:00,227 ERROR 48939 [-/192.168.0.110/-/2ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcyMDY5NiwiZXhwIjoxNTg5NzQyMjk2fQ.Rm7sXB7zuc_vwVXIfbrDCvkyF_TgMO9Ff9tnZ-lYxwE&EIO=3&transport=websocket] room service tick null
+2020-05-17 21:05:04,668 ERROR 48939 [-/192.168.0.110/-/17ms GET /socket.io/?room=654971&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5pY2tOYW1lIjoi6JShIiwiYWNjb3VudCI6ImNhaTExMSIsInVzZXJJZCI6Mn0sImlhdCI6MTU4OTcyMDY5NiwiZXhwIjoxNTg5NzQyMjk2fQ.Rm7sXB7zuc_vwVXIfbrDCvkyF_TgMO9Ff9tnZ-lYxwE&EIO=3&transport=websocket] room service tick null
+2020-05-17 21:16:18,010 ERROR 49446 player not enough
+2020-05-17 22:20:35,356 ERROR 49540 nodejs.ClusterClientNoResponseError: client no response in 3672653ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 49540
+hostname: 192.168.0.110
+
+2020-05-17 23:36:56,100 ERROR 49540 nodejs.ClusterClientNoResponseError: client no response in 655150ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 49540
+hostname: 192.168.0.110
+

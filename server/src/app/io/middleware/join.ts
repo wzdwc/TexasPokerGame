@@ -50,6 +50,7 @@ export default function join(): any {
         },
       };
       if (!hasRoom) {
+        // not in the room
         nsp.gameRooms.push(gameRoom);
         gameRoom.roomInfo = {
           sit: [],
@@ -58,8 +59,9 @@ export default function join(): any {
         };
         updatePlayer(room, gameRoom.roomInfo.players, 'players', nsp);
       } else {
+        // in the room
         gameRoom = nsp.gameRooms.find((r: IGameRoom) => r.number === room);
-        const findPlayer = gameRoom.roomInfo.players.find((p: IPlayer) => p.account === user.account);
+        const findPlayer = gameRoom.roomInfo.players.find((p: IPlayer) => p.userId === user.userId);
         if (!findPlayer) {
           // game ready
           gameRoom.roomInfo.players.push(player);
@@ -69,36 +71,40 @@ export default function join(): any {
           findPlayer.socketId = id;
           const gamePlayer = gameRoom.roomInfo.game?.allPlayer.find(p => user.userId === p.userId);
           if (gamePlayer) {
-            // get hand card
+            // in the game, get hand card
             const msg = ctx.helper.parseMsg('handCard', {
               handCard: gamePlayer.getHandCard(),
             }, { client: id });
             socket.emit(id, msg);
-            if (gameRoom.roomInfo && gameRoom.roomInfo.game) {
-              const roomInfo = gameRoom.roomInfo;
-              const gameInfo = {
-                players: gameRoom.roomInfo.game.allPlayer.map(p => Object.assign({}, {
-                  counter: p.counter,
-                  actionSize: p.actionSize,
+          }
+          if (gameRoom.roomInfo) {
+            const roomInfo = gameRoom.roomInfo;
+            const gameInfo = {
+              players: roomInfo.players.map(p => {
+                const currPlayer = roomInfo.game?.allPlayer.find(player => player.userId === p.userId);
+                console.log('currPlayer ========== ', currPlayer);
+                return Object.assign({}, {
+                  counter: currPlayer?.counter || p.counter,
+                  actionSize: currPlayer?.actionSize || 0,
+                  actionCommand: currPlayer?.actionCommand || '',
                   nickName: p.nickName,
-                  actionCommand: p.actionCommand,
-                  type: p.type,
+                  type: currPlayer?.type || '',
                   userId: p.userId,
-                }, {})),
-                commonCard: roomInfo.game?.commonCard,
-                pot: roomInfo.game?.pot,
-                prevSize: roomInfo.game?.prevSize,
-                currPlayer: {
-                  userId: roomInfo.game?.currPlayer.node.userId,
-                },
-              };
-              const game = ctx.helper.parseMsg('gameInfo', {
-                data: gameInfo,
-              }, { client: id });
-              socket.emit(id, game);
-            }
-          } else {
-            updatePlayer(room, gameRoom.roomInfo.players, 'players', nsp);
+                  status: p.status,
+                  buyIn: p.buyIn || 0,
+                }, {});
+              }),
+              commonCard: roomInfo.game?.commonCard || [],
+              pot: roomInfo.game?.pot || 0,
+              prevSize: roomInfo.game?.prevSize || 0,
+              currPlayer: {
+                userId: roomInfo.game?.currPlayer.node.userId,
+              },
+            };
+            const game = ctx.helper.parseMsg('gameInfo', {
+              data: gameInfo,
+            }, { client: id });
+            socket.emit(id, game);
           }
         }
         // get sitList

@@ -7,8 +7,11 @@ export interface IPlayer {
   account: string;
   socketId: string;
   income?: number;
+  type: string;
   reBuy: number;
-  isSit: boolean;
+  status: number;
+  actionSize: number;
+  actionCommand: string;
 }
 
 export enum ECommand {

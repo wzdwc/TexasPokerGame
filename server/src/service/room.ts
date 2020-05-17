@@ -23,7 +23,7 @@ export class RoomService extends BaseService {
     return !!roomNumber;
   }
 
-  async add(expires: number = 3600) {
+  async add(expires: number = 36000) {
     const number = Math.floor(Math.random() * (1000000 - 100000)) + 100000;
     const result = await this.mysql.insert('room', { room_number: number });
     const roomRedis = await this.redis.set(`room:${number}`, `${number}`, 'ex', expires);

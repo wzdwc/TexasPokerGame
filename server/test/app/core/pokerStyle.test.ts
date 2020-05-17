@@ -39,7 +39,7 @@ describe('test/app/core/pokerStyle.test.ts', () => {
     assert.strictEqual(pokerStyle.getPokerWeight() , '0000000caf00')
   });
   it('high card', async () => {
-    let pokerStyle: PokerStyle = new PokerStyle(['a1','i2', 'e3', 'b4', 'd1'])
+    let pokerStyle: PokerStyle = new PokerStyle(['a1','i2', 'e3', 'b4', 'd1', 'g2', 'm3'])
     assert.strictEqual(pokerStyle.getPokerWeight() , '000000000miged')
   });
 });

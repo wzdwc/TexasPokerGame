@@ -33,14 +33,13 @@ enum PokerStyleEnum {
   'PAIR',
   'HIGH_CARD',
 }
-
 export class PokerStyle implements IPokerStyle {
   private readonly cards: string[] = [];
-  private flushObj = {
-    ['1']: [] as string[],
-    ['2']: [] as string[],
-    ['3']: [] as string[],
-    ['4']: [] as string[],
+  private flushObj: { [key: string]: any } = {
+    1: [],
+    2: [],
+    3: [],
+    4: [],
   };
   private straightArr: string[] = [];
   private styleName = [

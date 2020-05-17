@@ -21,7 +21,11 @@ class GameController extends BaseSocketController {
       // calculate re buy in
       roomInfo.sit.forEach((s: ISit) => {
         if (s.player) {
-          const player = roomInfo.players.find(p => p.userId === s.player.userId);
+          if (s.player.counter === 0) {
+            delete s.player;
+          }
+          console.log('roomInfo.players===============', roomInfo.players);
+          const player = roomInfo.players.find(p => p.userId === s.player?.userId);
           if (player) {
             s.player.counter += Number(player.reBuy);
             console.log('cal reBuy ===============================', s.player, player.reBuy);
@@ -30,10 +34,7 @@ class GameController extends BaseSocketController {
           }
         }
       });
-      console.log('cal reBuy =============================== sit', roomInfo.sit);
-      const sitDownPlayer = roomInfo.sit.filter(s => s.player && s.player.counter > 0).map(sit => sit.player);
-      console.log('cal reBuy =========================================================', sitDownPlayer);
-
+      const sitDownPlayer: IPlayer[] = roomInfo.sit.filter(s => s.player && s.player.counter > 0).map(sit => sit.player);
       if (sitDownPlayer.length < 2) {
         throw 'player not enough';
       }
@@ -106,7 +107,7 @@ class GameController extends BaseSocketController {
                   // new game
                   setTimeout(() => {
                     this.reStart();
-                  }, 3000);
+                  }, 8000);
                 }
               });
           },
@@ -114,7 +115,7 @@ class GameController extends BaseSocketController {
         roomInfo.game.play();
         roomInfo.game.startActionRound();
         console.log('hand card', roomInfo.game.allPlayer);
-        // update counter, pot
+        // update counter, pot, status
         await this.updateGameInfo();
         roomInfo.players.forEach(p => {
           // console.log('game msg---------1');
@@ -139,21 +140,27 @@ class GameController extends BaseSocketController {
     const roomInfo: IRoomInfo = await this.getRoomInfo();
     const sit = roomInfo.sit.shift() as ISit;
     let dealer: IPlayer;
-    console.log('sit===================================================================11', sit);
     if (sit?.player) {
       roomInfo.sit.push(sit);
     } else {
       // first player is null, find dealer
-      for (let i = 0; i < 9; i++) {
-        if (roomInfo.sit[i].player?.userId === roomInfo.game?.allPlayer[0].userId) {
-          dealer = roomInfo.sit[i].player as IPlayer;
-          roomInfo.sit[i].player = {} as IPlayer;
+      for (let i = 0; i < 8; i++) {
+        if (roomInfo.sit[i].player && roomInfo.sit[i].player.userId === roomInfo.game?.allPlayer[0].userId) {
+          dealer = {
+            ...roomInfo.sit[i].player,
+          };
+          delete roomInfo.sit[i].player;
           sit.player = dealer;
-          roomInfo.sit.push(sit);
         }
       }
+      roomInfo.sit.push(sit);
     }
     roomInfo.game = null;
+    // init player status
+    roomInfo.players.forEach(p => {
+      p.status = 0;
+    });
+
     // new game
     this.nsp.adapter.clients([ this.roomNumber ], async (err: any, clients: any) => {
       // 广播信息
@@ -246,10 +253,10 @@ class GameController extends BaseSocketController {
       const roomInfo = await this.getRoomInfo();
       console.log('sitList===========', sitList);
       // update player isSit
-      roomInfo.players.forEach(p => {
-        const sit = sitList.find((s: ISit) => s.player?.userId === p.userId);
-        p.isSit = !!sit;
-      });
+      // roomInfo.players.forEach(p => {
+      //   const sit = sitList.find((s: ISit) => s.player?.userId === p.userId);
+      //   p.isSit = !!sit;
+      // });
       roomInfo.sit = sitList;
       this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
         // 广播信息
@@ -278,6 +285,17 @@ class GameController extends BaseSocketController {
       if (roomInfo.game && roomInfo.game.currPlayer.node.userId ===
         userInfo.userId) {
         roomInfo.game.action(payload.command);
+        const commandArr = payload.command.split(':');
+        const command = commandArr[0];
+        // fold change status: -1
+        if (command === 'fold') {
+          roomInfo.players.forEach(p => {
+            if (p.userId === userInfo.userId) {
+              p.status = -1;
+            }
+          });
+        }
+        console.log('fold ===============', roomInfo.players, roomInfo.game.allPlayer);
         // todo notice next player action
         await this.updateGameInfo();
         console.log('curr player', roomInfo.game.currPlayer.node);

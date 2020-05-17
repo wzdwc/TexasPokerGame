@@ -44,7 +44,7 @@
       transform-style: preserve-3d;
       opacity: 0;
       border-radius: 5px;
-      z-index: 8;
+      z-index: 0;
       i {
         background: url("../assets/poke.png");
         height: 60px;

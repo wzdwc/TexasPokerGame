@@ -145,7 +145,7 @@ export class PokerGame {
         size += this.currPlayer.node.actionSize;
 
         if ((size + this.currPlayer.node.actionSize) < this.prevSize * 2) {
-          throw 'incorrect action: raise';
+          throw `incorrect action: raise ========= action size: ${this.currPlayer.node.actionSize}, prevSize: ${this.prevSize}`;
         }
       }
       try {
@@ -159,8 +159,10 @@ export class PokerGame {
         // only one player ,one player fold,other player allin
         // pre flop big blind check and other player call
         console.log('this.currPlayer----------', this.currPlayer, nextPlayer, command);
+        console.log('this.currPlayer----------', this.playerSize);
+        console.log('this.currPlayer----------', this.allInPlayers);
         if (this.playerSize === 0
-          || this.playerSize === 1 && this.allInPlayers.length === 0
+          || this.playerSize === 1 && this.currActionAllinPlayer.length === 0
           || (nextPlayer.actionSize === size)
           || (this.commonCard.length === 0
             && (this.currPlayer.node.type === EPlayerType.BIG_BLIND
@@ -302,6 +304,7 @@ export class PokerGame {
   }
 
   setPlayer(users: IPlayer[]) {
+    console.log('init player ======================================================', users);
     users.forEach((u, position) => {
       const player = new Player({
         ...u,
@@ -355,10 +358,12 @@ export class PokerGame {
   }
 
   getWinner() {
-    if (this.allInPlayers.length === 0 && this.playerSize === 1) {
+    if (this.allInPlayers.length === 0 && this.playerSize === 1
+      || this.allInPlayers.length === 1 && this.playerSize === 0) {
       console.log('only one player');
+      const winner = this.allInPlayers[0] || this.currPlayer.node;
       this.status = EGameStatus.GAME_OVER;
-      this.winner.push([ this.currPlayer.node ]);
+      this.winner.push([ winner ]);
       return;
     }
     while (this.status !== EGameStatus.GAME_SHOWDOWN) {

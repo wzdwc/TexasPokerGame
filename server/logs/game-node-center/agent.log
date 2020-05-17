@@ -49,3 +49,633 @@
 2020-05-15 00:36:27,443 INFO 24160 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
 2020-05-15 00:36:27,444 INFO 24160 [egg-watcher:agent] watcher start success
 2020-05-15 00:36:27,455 INFO 24160 [egg:core] dump config after ready, 5ms
+2020-05-15 02:23:39,386 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 2398823ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 03:04:26,865 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 2407912ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 03:59:18,140 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 3271225ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 06:00:14,851 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 7217013ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 08:01:11,643 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 7216770ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 08:43:31,161 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 2499484ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 10:44:07,417 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 7216239ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 13:15:19,543 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 9052026ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 15:15:39,157 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 7218632ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 17:15:58,531 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 7219133ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 18:57:00,526 ERROR 24160 nodejs.ClusterClientNoResponseError: client no response in 6040676ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 19:13:27,637 WARN 24160 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/config/config.test.ts rename
+2020-05-15 19:13:27,327 ERROR 24160 nodejs.unhandledExceptionError: ENOENT: no such file or directory, stat '/Users/jorky/code/TexasPokerGame/server/src/app.ts'
+    at Object.statSync (fs.js:932:3)
+    at DevelopmentEventSource._onFsWatchChange (/Users/jorky/code/TexasPokerGame/server/node_modules/egg-watcher/lib/event-sources/development.js:82:16)
+    at FSWatcher.emit (events.js:311:20)
+    at FSEvent.FSWatcher._handle.onchange (internal/fs/watchers.js:135:12)
+errno: -2
+syscall: "stat"
+code: "ENOENT"
+path: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+name: "unhandledExceptionError"
+pid: 24160
+hostname: 192.168.0.110
+
+2020-05-15 19:13:27,343 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/leave.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,354 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,356 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,356 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/auth.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,357 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,358 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,358 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/nsp.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,359 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/helper/logTransport.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,362 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/helper","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,362 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/helper/parseMsg.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,362 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/public/README.md","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,364 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/public","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,364 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/middleware/elkLogger.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,373 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/middleware","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,373 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/middleware/notFound.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,373 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,392 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,411 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,411 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,414 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,414 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/PokerStyle.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,414 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/Player.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,414 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/Poker.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,414 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/extend/helper.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,416 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/extend","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,416 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/extend/context.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,416 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/controller/account.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,419 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/controller","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,419 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/controller/room.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,420 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/controller/user.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,420 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseService.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,422 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/lib","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,422 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,422 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseController.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,423 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/service/account.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,424 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/service","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,424 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/service/room.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,425 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/service/game.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,425 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/service/gameRecord.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,425 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/service/user.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,425 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/middleware","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,429 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,430 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/extend","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,430 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,430 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/router.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,430 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,431 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/controller","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,432 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/public","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,432 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/app/helper","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,432 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/config/config.local.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,433 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/config","stat":null,"remove":true,"isDirectory":true,"isFile":false}
+2020-05-15 19:13:27,434 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/config/plugin.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,434 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/config/config.prod.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,434 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/config/config.default.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:13:27,434 INFO 24160 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/src/config/config.test.ts","stat":null,"remove":true,"isDirectory":false,"isFile":false}
+2020-05-15 19:15:48,661 INFO 26621 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-15 19:15:48,670 INFO 26621 [egg:core] dump config after load, 5ms
+2020-05-15 19:15:48,722 INFO 26621 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-15 19:15:48,722 INFO 26621 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-15 19:15:48,723 INFO 26621 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-15 19:15:48,723 INFO 26621 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-15 19:15:48,723 INFO 26621 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-15 19:15:48,723 INFO 26621 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-15 19:15:48,724 INFO 26621 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-15 19:15:48,724 INFO 26621 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-15 19:15:48,724 INFO 26621 [egg-watcher:agent] watcher start success
+2020-05-15 19:15:48,737 INFO 26621 [egg:core] dump config after ready, 7ms
+2020-05-15 20:22:33,958 ERROR 26621 nodejs.ClusterClientNoResponseError: client no response in 3843744ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 26621
+hostname: 192.168.0.110
+
+2020-05-15 21:03:27,257 INFO 28347 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-15 21:03:27,267 INFO 28347 [egg:core] dump config after load, 5ms
+2020-05-15 21:03:27,307 INFO 28347 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/dist/app","/Users/jorky/code/TexasPokerGame/server/dist/lib","/Users/jorky/code/TexasPokerGame/server/dist/service","/Users/jorky/code/TexasPokerGame/server/dist/config","/Users/jorky/code/TexasPokerGame/server/dist/app.ts","/Users/jorky/code/TexasPokerGame/server/dist/agent.ts","/Users/jorky/code/TexasPokerGame/server/dist/interface.ts"]
+2020-05-15 21:03:27,307 INFO 28347 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/app"
+2020-05-15 21:03:27,307 INFO 28347 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/lib"
+2020-05-15 21:03:27,307 INFO 28347 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/service"
+2020-05-15 21:03:27,307 INFO 28347 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/config"
+2020-05-15 21:03:27,307 INFO 28347 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/app.ts"
+2020-05-15 21:03:27,308 INFO 28347 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/agent.ts"
+2020-05-15 21:03:27,308 INFO 28347 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/interface.ts"
+2020-05-15 21:03:27,308 INFO 28347 [egg-watcher:agent] watcher start success
+2020-05-15 21:03:27,330 INFO 28347 [egg:core] dump config after ready, 5ms
+2020-05-15 21:03:28,083 INFO 28347 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/dist/app/public","stat":{"dev":16777220,"mode":16877,"nlink":2,"uid":0,"gid":20,"rdev":0,"blksize":4096,"ino":8594331022,"size":64,"blocks":0,"atimeMs":1589547808071.3892,"mtimeMs":1589547808071.3892,"ctimeMs":1589547808071.3892,"birthtimeMs":1589547808071.3892,"atime":"2020-05-15T13:03:28.071Z","mtime":"2020-05-15T13:03:28.071Z","ctime":"2020-05-15T13:03:28.071Z","birthtime":"2020-05-15T13:03:28.071Z"},"remove":false,"isDirectory":true,"isFile":false}
+2020-05-15 21:04:24,625 INFO 28388 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-15 21:04:24,633 INFO 28388 [egg:core] dump config after load, 4ms
+2020-05-15 21:04:24,670 INFO 28388 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/dist/app","/Users/jorky/code/TexasPokerGame/server/dist/lib","/Users/jorky/code/TexasPokerGame/server/dist/service","/Users/jorky/code/TexasPokerGame/server/dist/config","/Users/jorky/code/TexasPokerGame/server/dist/app.ts","/Users/jorky/code/TexasPokerGame/server/dist/agent.ts","/Users/jorky/code/TexasPokerGame/server/dist/interface.ts"]
+2020-05-15 21:04:24,670 INFO 28388 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/app"
+2020-05-15 21:04:24,670 INFO 28388 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/lib"
+2020-05-15 21:04:24,670 INFO 28388 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/service"
+2020-05-15 21:04:24,670 INFO 28388 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/config"
+2020-05-15 21:04:24,670 INFO 28388 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/app.ts"
+2020-05-15 21:04:24,670 INFO 28388 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/agent.ts"
+2020-05-15 21:04:24,670 INFO 28388 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/dist/interface.ts"
+2020-05-15 21:04:24,671 INFO 28388 [egg-watcher:agent] watcher start success
+2020-05-15 21:04:24,682 INFO 28388 [egg:core] dump config after ready, 4ms
+2020-05-15 21:04:25,650 INFO 28388 [egg-watcher] Recieved a change event from eventSource: {"event":"rename","path":"/Users/jorky/code/TexasPokerGame/server/dist/app/public","stat":{"dev":16777220,"mode":16877,"nlink":2,"uid":0,"gid":20,"rdev":0,"blksize":4096,"ino":8594331161,"size":64,"blocks":0,"atimeMs":1589547865638.7087,"mtimeMs":1589547865638.7087,"ctimeMs":1589547865638.7087,"birthtimeMs":1589547865638.7087,"atime":"2020-05-15T13:04:25.639Z","mtime":"2020-05-15T13:04:25.639Z","ctime":"2020-05-15T13:04:25.639Z","birthtime":"2020-05-15T13:04:25.639Z"},"remove":false,"isDirectory":true,"isFile":false}
+2020-05-15 23:44:54,990 INFO 34530 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-15 23:44:55,033 INFO 34530 [egg:core] dump config after load, 14ms
+2020-05-15 23:44:55,141 INFO 34530 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-15 23:44:55,141 INFO 34530 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-15 23:44:55,141 INFO 34530 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-15 23:44:55,141 INFO 34530 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-15 23:44:55,141 INFO 34530 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-15 23:44:55,142 INFO 34530 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-15 23:44:55,142 INFO 34530 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-15 23:44:55,143 INFO 34530 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-15 23:44:55,143 INFO 34530 [egg-watcher:agent] watcher start success
+2020-05-15 23:44:55,411 INFO 34530 [egg:core] dump config after ready, 31ms
+2020-05-16 01:55:08,985 ERROR 34530 nodejs.ClusterClientNoResponseError: client no response in 7210817ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 34530
+hostname: 192.168.0.110
+
+2020-05-16 02:55:13,285 ERROR 34530 nodejs.ClusterClientNoResponseError: client no response in 3604291ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 34530
+hostname: 192.168.0.110
+
+2020-05-16 04:55:20,401 ERROR 34530 nodejs.ClusterClientNoResponseError: client no response in 7207017ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 34530
+hostname: 192.168.0.110
+
+2020-05-16 06:55:40,452 ERROR 34530 nodejs.ClusterClientNoResponseError: client no response in 7218780ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 34530
+hostname: 192.168.0.110
+
+2020-05-16 15:31:06,168 ERROR 34530 nodejs.ClusterClientNoResponseError: client no response in 30923701ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 34530
+hostname: 192.168.0.110
+
+2020-05-16 15:32:13,612 INFO 35156 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-16 15:32:13,621 INFO 35156 [egg:core] dump config after load, 6ms
+2020-05-16 15:32:13,666 INFO 35156 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-16 15:32:13,666 INFO 35156 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-16 15:32:13,667 INFO 35156 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-16 15:32:13,667 INFO 35156 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-16 15:32:13,667 INFO 35156 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-16 15:32:13,667 INFO 35156 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-16 15:32:13,668 INFO 35156 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-16 15:32:13,668 INFO 35156 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-16 15:32:13,668 INFO 35156 [egg-watcher:agent] watcher start success
+2020-05-16 15:32:13,691 INFO 35156 [egg:core] dump config after ready, 16ms
+2020-05-16 15:49:47,275 INFO 35156 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327929,"size":2563,"blocks":8,"atimeMs":1589541195830.3398,"mtimeMs":1589615387220.2153,"ctimeMs":1589615387220.2153,"birthtimeMs":1589515812962.4768,"atime":"2020-05-15T11:13:15.830Z","mtime":"2020-05-16T07:49:47.220Z","ctime":"2020-05-16T07:49:47.220Z","birthtime":"2020-05-15T04:10:12.962Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-16 15:49:47,282 INFO 35156 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10188,"blocks":24,"atimeMs":1589557493759.8174,"mtimeMs":1589615387216.1008,"ctimeMs":1589615387216.1008,"birthtimeMs":1589528855022.545,"atime":"2020-05-15T15:44:53.760Z","mtime":"2020-05-16T07:49:47.216Z","ctime":"2020-05-16T07:49:47.216Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-16 15:49:47,487 WARN 35156 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-16 15:51:03,990 INFO 35982 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-16 15:51:04,000 INFO 35982 [egg:core] dump config after load, 6ms
+2020-05-16 15:51:04,046 INFO 35982 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-16 15:51:04,046 INFO 35982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-16 15:51:04,046 INFO 35982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-16 15:51:04,046 INFO 35982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-16 15:51:04,046 INFO 35982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-16 15:51:04,046 INFO 35982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-16 15:51:04,047 INFO 35982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-16 15:51:04,047 INFO 35982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-16 15:51:04,047 INFO 35982 [egg-watcher:agent] watcher start success
+2020-05-16 15:51:04,065 INFO 35982 [egg:core] dump config after ready, 10ms
+2020-05-16 15:53:35,110 WARN 35982 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-16 15:53:34,900 INFO 35982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10197,"blocks":24,"atimeMs":1589615392043.0496,"mtimeMs":1589615614836.9934,"ctimeMs":1589615614836.9934,"birthtimeMs":1589528855022.545,"atime":"2020-05-16T07:49:52.043Z","mtime":"2020-05-16T07:53:34.837Z","ctime":"2020-05-16T07:53:34.837Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-16 15:55:07,745 INFO 35982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10188,"blocks":24,"atimeMs":1589615619693.6714,"mtimeMs":1589615707653.1045,"ctimeMs":1589615707653.1045,"birthtimeMs":1589528855022.545,"atime":"2020-05-16T07:53:39.694Z","mtime":"2020-05-16T07:55:07.653Z","ctime":"2020-05-16T07:55:07.653Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-16 15:55:07,951 WARN 35982 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-16 18:47:17,287 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 1336911ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 18:51:31,754 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 117775ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 18:53:19,619 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 87852ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 18:54:54,475 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 74851ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 18:57:45,241 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 78841ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 18:59:40,096 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 94842ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 19:05:41,658 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 121858ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 19:07:17,427 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 75749ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 19:14:23,333 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 405878ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 21:14:44,100 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 7200526ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 21:46:48,588 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 1924486ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 21:53:53,087 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 404494ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-16 22:13:31,493 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 1138387ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 00:10:20,844 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 6989347ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 00:23:44,653 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 763784ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 00:36:47,141 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 761964ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 02:37:25,097 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 7217933ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 03:00:07,033 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 1361923ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 04:25:55,457 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 5148408ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 07:44:02,543 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 11865792ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 09:44:39,895 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 7217339ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 13:44:54,336 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 14414387ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 14:52:21,246 ERROR 35982 nodejs.ClusterClientNoResponseError: client no response in 4046906ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 35982
+hostname: 192.168.0.110
+
+2020-05-17 14:53:50,739 INFO 38092 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-17 14:53:50,748 INFO 38092 [egg:core] dump config after load, 5ms
+2020-05-17 14:53:50,790 INFO 38092 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-17 14:53:50,790 INFO 38092 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-17 14:53:50,791 INFO 38092 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-17 14:53:50,791 INFO 38092 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-17 14:53:50,791 INFO 38092 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-17 14:53:50,791 INFO 38092 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-17 14:53:50,792 INFO 38092 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-17 14:53:50,792 INFO 38092 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-17 14:53:50,792 INFO 38092 [egg-watcher:agent] watcher start success
+2020-05-17 14:53:50,817 INFO 38092 [egg:core] dump config after ready, 16ms
+2020-05-17 18:14:35,299 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-17 18:14:35,073 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10265,"blocks":24,"atimeMs":1589615709990.2644,"mtimeMs":1589710474980.7756,"ctimeMs":1589710474980.7756,"birthtimeMs":1589528855022.545,"atime":"2020-05-16T07:55:09.990Z","mtime":"2020-05-17T10:14:34.981Z","ctime":"2020-05-17T10:14:34.981Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 18:16:08,457 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-17 18:16:08,251 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10266,"blocks":24,"atimeMs":1589710479329.0745,"mtimeMs":1589710568186.8708,"ctimeMs":1589710568186.8708,"birthtimeMs":1589528855022.545,"atime":"2020-05-17T10:14:39.329Z","mtime":"2020-05-17T10:16:08.187Z","ctime":"2020-05-17T10:16:08.187Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 18:24:04,822 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts change
+2020-05-17 18:24:04,615 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327904,"size":4459,"blocks":16,"atimeMs":1589541195813.9282,"mtimeMs":1589711044551.175,"ctimeMs":1589711044551.175,"birthtimeMs":1589520303118.0706,"atime":"2020-05-15T11:13:15.814Z","mtime":"2020-05-17T10:24:04.551Z","ctime":"2020-05-17T10:24:04.551Z","birthtime":"2020-05-15T05:25:03.118Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 18:39:43,400 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts change
+2020-05-17 18:39:43,197 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327904,"size":4511,"blocks":16,"atimeMs":1589711049218.1062,"mtimeMs":1589711983134.5464,"ctimeMs":1589711983134.5464,"birthtimeMs":1589520303118.0706,"atime":"2020-05-17T10:24:09.218Z","mtime":"2020-05-17T10:39:43.135Z","ctime":"2020-05-17T10:39:43.135Z","birthtime":"2020-05-15T05:25:03.118Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 18:39:43,199 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327929,"size":2528,"blocks":8,"atimeMs":1589615406779.6208,"mtimeMs":1589711983137.9758,"ctimeMs":1589711983137.9758,"birthtimeMs":1589515812962.4768,"atime":"2020-05-16T07:50:06.780Z","mtime":"2020-05-17T10:39:43.138Z","ctime":"2020-05-17T10:39:43.138Z","birthtime":"2020-05-15T04:10:12.962Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 18:44:40,948 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/core/Player.ts change
+2020-05-17 18:44:40,742 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327929,"size":2780,"blocks":8,"atimeMs":1589711985112.7449,"mtimeMs":1589712280680.3257,"ctimeMs":1589712280680.3257,"birthtimeMs":1589515812962.4768,"atime":"2020-05-17T10:39:45.113Z","mtime":"2020-05-17T10:44:40.680Z","ctime":"2020-05-17T10:44:40.680Z","birthtime":"2020-05-15T04:10:12.962Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 18:44:40,744 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/Player.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327898,"size":3685,"blocks":8,"atimeMs":1589541195805.672,"mtimeMs":1589712280677.3027,"ctimeMs":1589712280677.3027,"birthtimeMs":1589515812959.486,"atime":"2020-05-15T11:13:15.806Z","mtime":"2020-05-17T10:44:40.677Z","ctime":"2020-05-17T10:44:40.677Z","birthtime":"2020-05-15T04:10:12.959Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 18:45:18,740 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts change
+2020-05-17 18:45:18,535 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327929,"size":2737,"blocks":8,"atimeMs":1589712318468.8787,"mtimeMs":1589712318472.5432,"ctimeMs":1589712318472.5432,"birthtimeMs":1589515812962.4768,"atime":"2020-05-17T10:45:18.469Z","mtime":"2020-05-17T10:45:18.473Z","ctime":"2020-05-17T10:45:18.473Z","birthtime":"2020-05-15T04:10:12.962Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 18:57:52,924 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/service/room.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327933,"size":1035,"blocks":8,"atimeMs":1589541195832.9543,"mtimeMs":1589713072860.7642,"ctimeMs":1589713072860.7642,"birthtimeMs":1587342422451.9958,"atime":"2020-05-15T11:13:15.833Z","mtime":"2020-05-17T10:57:52.861Z","ctime":"2020-05-17T10:57:52.861Z","birthtime":"2020-04-20T00:27:02.452Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 18:57:53,129 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/service/room.ts change
+2020-05-17 19:15:05,441 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts change
+2020-05-17 19:15:05,236 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327896,"size":14204,"blocks":32,"atimeMs":1589541195808.082,"mtimeMs":1589714105174.2705,"ctimeMs":1589714105174.2705,"birthtimeMs":1589526525606.4243,"atime":"2020-05-15T11:13:15.808Z","mtime":"2020-05-17T11:15:05.174Z","ctime":"2020-05-17T11:15:05.174Z","birthtime":"2020-05-15T07:08:45.606Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 19:15:07,632 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327896,"size":14203,"blocks":32,"atimeMs":1589714107611.7632,"mtimeMs":1589714107620.7812,"ctimeMs":1589714107620.7812,"birthtimeMs":1589526525606.4243,"atime":"2020-05-17T11:15:07.612Z","mtime":"2020-05-17T11:15:07.621Z","ctime":"2020-05-17T11:15:07.621Z","birthtime":"2020-05-15T07:08:45.606Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 19:15:07,836 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts change
+2020-05-17 19:15:45,787 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327896,"size":14204,"blocks":32,"atimeMs":1589714120323.1472,"mtimeMs":1589714145726.301,"ctimeMs":1589714145726.301,"birthtimeMs":1589526525606.4243,"atime":"2020-05-17T11:15:20.323Z","mtime":"2020-05-17T11:15:45.726Z","ctime":"2020-05-17T11:15:45.726Z","birthtime":"2020-05-15T07:08:45.606Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 19:15:45,995 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts change
+2020-05-17 19:15:48,872 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327896,"size":14203,"blocks":32,"atimeMs":1589714148852.594,"mtimeMs":1589714148860.335,"ctimeMs":1589714148860.335,"birthtimeMs":1589526525606.4243,"atime":"2020-05-17T11:15:48.853Z","mtime":"2020-05-17T11:15:48.860Z","ctime":"2020-05-17T11:15:48.860Z","birthtime":"2020-05-15T07:08:45.606Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 19:15:49,076 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts change
+2020-05-17 19:16:39,689 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts change
+2020-05-17 19:16:39,471 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/PokerGame.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327896,"size":14289,"blocks":32,"atimeMs":1589714150996.5168,"mtimeMs":1589714199409.4216,"ctimeMs":1589714199409.4216,"birthtimeMs":1589526525606.4243,"atime":"2020-05-17T11:15:50.997Z","mtime":"2020-05-17T11:16:39.409Z","ctime":"2020-05-17T11:16:39.409Z","birthtime":"2020-05-15T07:08:45.606Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 19:43:00,735 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts change
+2020-05-17 19:43:00,525 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327904,"size":4372,"blocks":16,"atimeMs":1589711985112.985,"mtimeMs":1589715780460.6672,"ctimeMs":1589715780460.6672,"birthtimeMs":1589520303118.0706,"atime":"2020-05-17T10:39:45.113Z","mtime":"2020-05-17T11:43:00.461Z","ctime":"2020-05-17T11:43:00.461Z","birthtime":"2020-05-15T05:25:03.118Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 19:52:50,568 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts change
+2020-05-17 19:52:50,355 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327904,"size":4352,"blocks":16,"atimeMs":1589715784325.2249,"mtimeMs":1589716370293.1895,"ctimeMs":1589716370293.1895,"birthtimeMs":1589520303118.0706,"atime":"2020-05-17T11:43:04.325Z","mtime":"2020-05-17T11:52:50.293Z","ctime":"2020-05-17T11:52:50.293Z","birthtime":"2020-05-15T05:25:03.118Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 19:53:53,762 WARN 38092 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts change
+2020-05-17 19:53:53,559 INFO 38092 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327904,"size":4368,"blocks":16,"atimeMs":1589716372069.3079,"mtimeMs":1589716433496.522,"ctimeMs":1589716433496.522,"birthtimeMs":1589520303118.0706,"atime":"2020-05-17T11:52:52.069Z","mtime":"2020-05-17T11:53:53.497Z","ctime":"2020-05-17T11:53:53.497Z","birthtime":"2020-05-15T05:25:03.118Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 20:07:42,251 INFO 47283 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-17 20:07:42,260 INFO 47283 [egg:core] dump config after load, 6ms
+2020-05-17 20:07:42,302 INFO 47283 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-17 20:07:42,302 INFO 47283 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-17 20:07:42,302 INFO 47283 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-17 20:07:42,302 INFO 47283 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-17 20:07:42,302 INFO 47283 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-17 20:07:42,302 INFO 47283 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-17 20:07:42,303 INFO 47283 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-17 20:07:42,303 INFO 47283 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-17 20:07:42,303 INFO 47283 [egg-watcher:agent] watcher start success
+2020-05-17 20:07:42,332 INFO 47283 [egg:core] dump config after ready, 9ms
+2020-05-17 20:28:18,498 INFO 47882 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-17 20:28:18,507 INFO 47882 [egg:core] dump config after load, 5ms
+2020-05-17 20:28:18,551 INFO 47882 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-17 20:28:18,551 INFO 47882 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-17 20:28:18,551 INFO 47882 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-17 20:28:18,551 INFO 47882 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-17 20:28:18,551 INFO 47882 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-17 20:28:18,551 INFO 47882 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-17 20:28:18,552 INFO 47882 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-17 20:28:18,552 INFO 47882 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-17 20:28:18,552 INFO 47882 [egg-watcher:agent] watcher start success
+2020-05-17 20:28:18,572 INFO 47882 [egg:core] dump config after ready, 13ms
+2020-05-17 20:31:09,605 INFO 47982 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-17 20:31:09,613 INFO 47982 [egg:core] dump config after load, 4ms
+2020-05-17 20:31:09,661 INFO 47982 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-17 20:31:09,661 INFO 47982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-17 20:31:09,662 INFO 47982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-17 20:31:09,662 INFO 47982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-17 20:31:09,662 INFO 47982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-17 20:31:09,662 INFO 47982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-17 20:31:09,663 INFO 47982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-17 20:31:09,663 INFO 47982 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-17 20:31:09,663 INFO 47982 [egg-watcher:agent] watcher start success
+2020-05-17 20:31:09,674 INFO 47982 [egg:core] dump config after ready, 5ms
+2020-05-17 20:43:16,005 WARN 47982 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/core/Player.ts change
+2020-05-17 20:43:15,798 INFO 47982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10278,"blocks":24,"atimeMs":1589710572656.3794,"mtimeMs":1589719395724.5015,"ctimeMs":1589719395724.5015,"birthtimeMs":1589528855022.545,"atime":"2020-05-17T10:16:12.656Z","mtime":"2020-05-17T12:43:15.725Z","ctime":"2020-05-17T12:43:15.725Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 20:43:15,804 INFO 47982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327929,"size":2763,"blocks":8,"atimeMs":1589712324079.0269,"mtimeMs":1589719395732.0571,"ctimeMs":1589719395732.0571,"birthtimeMs":1589515812962.4768,"atime":"2020-05-17T10:45:24.079Z","mtime":"2020-05-17T12:43:15.732Z","ctime":"2020-05-17T12:43:15.732Z","birthtime":"2020-05-15T04:10:12.962Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 20:43:15,805 INFO 47982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/Player.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327898,"size":3686,"blocks":8,"atimeMs":1589712284770.6987,"mtimeMs":1589719395728.7354,"ctimeMs":1589719395728.7354,"birthtimeMs":1589515812959.486,"atime":"2020-05-17T10:44:44.771Z","mtime":"2020-05-17T12:43:15.729Z","ctime":"2020-05-17T12:43:15.729Z","birthtime":"2020-05-15T04:10:12.959Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 20:47:40,034 INFO 47982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10373,"blocks":24,"atimeMs":1589719397914.1074,"mtimeMs":1589719659971.5657,"ctimeMs":1589719659971.5657,"birthtimeMs":1589528855022.545,"atime":"2020-05-17T12:43:17.914Z","mtime":"2020-05-17T12:47:39.972Z","ctime":"2020-05-17T12:47:39.972Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 20:47:40,036 INFO 47982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/core/Player.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327898,"size":3685,"blocks":8,"atimeMs":1589719397398.835,"mtimeMs":1589719659975.0164,"ctimeMs":1589719659975.0164,"birthtimeMs":1589515812959.486,"atime":"2020-05-17T12:43:17.399Z","mtime":"2020-05-17T12:47:39.975Z","ctime":"2020-05-17T12:47:39.975Z","birthtime":"2020-05-15T04:10:12.959Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 20:47:40,237 WARN 47982 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/core/Player.ts change
+2020-05-17 20:47:44,990 INFO 47982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10374,"blocks":24,"atimeMs":1589719664967.8674,"mtimeMs":1589719664978.6572,"ctimeMs":1589719664978.6572,"birthtimeMs":1589528855022.545,"atime":"2020-05-17T12:47:44.968Z","mtime":"2020-05-17T12:47:44.979Z","ctime":"2020-05-17T12:47:44.979Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 20:47:45,193 WARN 47982 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-17 20:51:35,425 WARN 47982 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-17 20:51:35,221 INFO 47982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327929,"size":2812,"blocks":8,"atimeMs":1589719487709.7646,"mtimeMs":1589719895164.0957,"ctimeMs":1589719895164.0957,"birthtimeMs":1589515812962.4768,"atime":"2020-05-17T12:44:47.710Z","mtime":"2020-05-17T12:51:35.164Z","ctime":"2020-05-17T12:51:35.164Z","birthtime":"2020-05-15T04:10:12.962Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 20:51:35,222 INFO 47982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10382,"blocks":24,"atimeMs":1589719665368.305,"mtimeMs":1589719895160.6628,"ctimeMs":1589719895160.6628,"birthtimeMs":1589528855022.545,"atime":"2020-05-17T12:47:45.368Z","mtime":"2020-05-17T12:51:35.161Z","ctime":"2020-05-17T12:51:35.161Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 21:01:04,272 WARN 47982 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts change
+2020-05-17 21:01:04,065 INFO 47982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327929,"size":2817,"blocks":8,"atimeMs":1589719897351.5288,"mtimeMs":1589720464000.941,"ctimeMs":1589720464000.941,"birthtimeMs":1589515812962.4768,"atime":"2020-05-17T12:51:37.352Z","mtime":"2020-05-17T13:01:04.001Z","ctime":"2020-05-17T13:01:04.001Z","birthtime":"2020-05-15T04:10:12.962Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 21:01:27,508 WARN 47982 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts change
+2020-05-17 21:01:27,304 INFO 47982 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/middleware/join.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327904,"size":4405,"blocks":16,"atimeMs":1589716437370.7466,"mtimeMs":1589720487242.6553,"ctimeMs":1589720487242.6553,"birthtimeMs":1589520303118.0706,"atime":"2020-05-17T11:53:57.371Z","mtime":"2020-05-17T13:01:27.243Z","ctime":"2020-05-17T13:01:27.243Z","birthtime":"2020-05-15T05:25:03.118Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 21:15:40,513 INFO 49443 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-17 21:15:40,522 INFO 49443 [egg:core] dump config after load, 5ms
+2020-05-17 21:15:40,566 INFO 49443 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-17 21:15:40,566 INFO 49443 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-17 21:15:40,566 INFO 49443 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-17 21:15:40,567 INFO 49443 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-17 21:15:40,567 INFO 49443 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-17 21:15:40,567 INFO 49443 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-17 21:15:40,567 INFO 49443 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-17 21:15:40,567 INFO 49443 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-17 21:15:40,568 INFO 49443 [egg-watcher:agent] watcher start success
+2020-05-17 21:15:40,624 INFO 49443 [egg:core] dump config after ready, 40ms
+2020-05-17 21:18:01,258 INFO 49540 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-17 21:18:01,267 INFO 49540 [egg:core] dump config after load, 5ms
+2020-05-17 21:18:01,314 INFO 49540 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-17 21:18:01,314 INFO 49540 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-17 21:18:01,314 INFO 49540 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-17 21:18:01,315 INFO 49540 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-17 21:18:01,315 INFO 49540 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-17 21:18:01,315 INFO 49540 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-17 21:18:01,315 INFO 49540 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-17 21:18:01,315 INFO 49540 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-17 21:18:01,316 INFO 49540 [egg-watcher:agent] watcher start success
+2020-05-17 21:18:01,333 INFO 49540 [egg:core] dump config after ready, 6ms
+2020-05-17 22:20:35,356 ERROR 49540 nodejs.ClusterClientNoResponseError: client no response in 3672653ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 49540
+hostname: 192.168.0.110
+
+2020-05-17 22:26:23,905 WARN 49540 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-17 22:26:23,700 INFO 49540 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10726,"blocks":24,"atimeMs":1589719897351.728,"mtimeMs":1589725583636.6082,"ctimeMs":1589725583636.6082,"birthtimeMs":1589528855022.545,"atime":"2020-05-17T12:51:37.352Z","mtime":"2020-05-17T14:26:23.637Z","ctime":"2020-05-17T14:26:23.637Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 22:34:01,211 WARN 49540 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-17 22:34:01,005 INFO 49540 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10711,"blocks":24,"atimeMs":1589725588119.3076,"mtimeMs":1589726040934.4978,"ctimeMs":1589726040934.4978,"birthtimeMs":1589528855022.545,"atime":"2020-05-17T14:26:28.119Z","mtime":"2020-05-17T14:34:00.934Z","ctime":"2020-05-17T14:34:00.934Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 22:37:27,134 INFO 49540 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10800,"blocks":24,"atimeMs":1589726043065.0295,"mtimeMs":1589726247071.7102,"ctimeMs":1589726247071.7102,"birthtimeMs":1589528855022.545,"atime":"2020-05-17T14:34:03.065Z","mtime":"2020-05-17T14:37:27.072Z","ctime":"2020-05-17T14:37:27.072Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 22:37:27,340 WARN 49540 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-17 22:41:34,364 WARN 49540 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts change
+2020-05-17 22:41:34,162 INFO 49540 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327929,"size":2820,"blocks":8,"atimeMs":1589720487834.6802,"mtimeMs":1589726494097.0312,"ctimeMs":1589726494097.0312,"birthtimeMs":1589515812962.4768,"atime":"2020-05-17T13:01:27.835Z","mtime":"2020-05-17T14:41:34.097Z","ctime":"2020-05-17T14:41:34.097Z","birthtime":"2020-05-15T04:10:12.962Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 22:44:36,634 WARN 49540 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts change
+2020-05-17 22:44:36,430 INFO 49540 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/lib/baseSocketController.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327929,"size":2843,"blocks":8,"atimeMs":1589726571439.0894,"mtimeMs":1589726676367.1626,"ctimeMs":1589726676367.1626,"birthtimeMs":1589515812962.4768,"atime":"2020-05-17T14:42:51.439Z","mtime":"2020-05-17T14:44:36.367Z","ctime":"2020-05-17T14:44:36.367Z","birthtime":"2020-05-15T04:10:12.962Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 23:36:56,102 ERROR 49540 nodejs.ClusterClientNoResponseError: client no response in 655150ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout._onTimeout (/Users/jorky/code/TexasPokerGame/server/node_modules/cluster-client/lib/leader.js:77:23)
+    at listOnTimeout (internal/timers.js:549:17)
+    at processTimers (internal/timers.js:492:7)
+name: "ClusterClientNoResponseError"
+pid: 49540
+hostname: 192.168.0.110
+
+2020-05-17 23:42:27,634 INFO 49540 [egg-watcher] Recieved a change event from eventSource: {"event":"change","path":"/Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts","stat":{"dev":16777220,"mode":33188,"nlink":1,"uid":501,"gid":20,"rdev":0,"blksize":4096,"ino":8594327907,"size":10800,"blocks":24,"atimeMs":1589726251019.4075,"mtimeMs":1589730147570.25,"ctimeMs":1589730147570.25,"birthtimeMs":1589528855022.545,"atime":"2020-05-17T14:37:31.019Z","mtime":"2020-05-17T15:42:27.570Z","ctime":"2020-05-17T15:42:27.570Z","birthtime":"2020-05-15T07:47:35.023Z"},"remove":false,"isDirectory":false,"isFile":true}
+2020-05-17 23:42:27,839 WARN 49540 [agent:development] reload worker because /Users/jorky/code/TexasPokerGame/server/src/app/io/controller/game.ts change
+2020-05-18 00:11:12,424 INFO 52692 [egg:logger] init all loggers with options: {"dir":"/Users/jorky/code/TexasPokerGame/server/logs/game-node-center","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"app.log","coreLogName":"core.log","agentLogName":"agent.log","errorLogName":"error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"agent"}
+2020-05-18 00:11:12,437 INFO 52692 [egg:core] dump config after load, 8ms
+2020-05-18 00:11:12,495 INFO 52692 [egg-watcher] Start watching: ["/Users/jorky/code/TexasPokerGame/server/src/app","/Users/jorky/code/TexasPokerGame/server/src/lib","/Users/jorky/code/TexasPokerGame/server/src/service","/Users/jorky/code/TexasPokerGame/server/src/config","/Users/jorky/code/TexasPokerGame/server/src/app.ts","/Users/jorky/code/TexasPokerGame/server/src/agent.ts","/Users/jorky/code/TexasPokerGame/server/src/interface.ts"]
+2020-05-18 00:11:12,496 INFO 52692 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app"
+2020-05-18 00:11:12,497 INFO 52692 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/lib"
+2020-05-18 00:11:12,497 INFO 52692 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/service"
+2020-05-18 00:11:12,497 INFO 52692 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/config"
+2020-05-18 00:11:12,497 INFO 52692 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/app.ts"
+2020-05-18 00:11:12,497 INFO 52692 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/agent.ts"
+2020-05-18 00:11:12,497 INFO 52692 [egg-watcher] Start watching: "/Users/jorky/code/TexasPokerGame/server/src/interface.ts"
+2020-05-18 00:11:12,498 INFO 52692 [egg-watcher:agent] watcher start success
+2020-05-18 00:11:12,524 INFO 52692 [egg:core] dump config after ready, 6ms

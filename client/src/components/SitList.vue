@@ -13,14 +13,14 @@
         </div>
         <div class="sit-player"
              v-if="sit.player">
-          <div class="player">
+          <div class="player" :class="{fold: sit.player.status === -1}">
             <div class="user-name"
                  v-show="sit.player.nickName">
               {{ sit.player.nickName }}
             </div>
             <div class="icon iconfont icon-user-avatar"></div>
             <div class="counter" :class="{isAction: actionUserId === sit.player.userId}"
-                 v-show="sit.player.counter">
+                 v-show="sit.player.counter || sit.player.actionCommand === 'allin'">
               {{ sit.player.counter }}
             </div>
             <div class="action-size"
@@ -41,6 +41,11 @@
             && sit.player.handCard.length !== 0)">
               <cardList :cardList="mapCard(sit.player.handCard)"></cardList>
             </div>
+            <div class="card-style" v-show="!!!currPlayer || (sit.player.userId !== currPlayer.userId
+            && sit.player.handCard
+            && sit.player.handCard.length !== 0)">
+              {{PokeStyle(sit.player.handCard)}}
+            </div>
           </div>
           <div class="cards"
                v-show="showHandCard(sit)">
@@ -51,7 +56,7 @@
                  v-show="handCard && handCard.length === 0">ready
             </div>
             <div class="card-style"
-                 v-if="commonCard && commonCard.length > 0">{{PokeStyle}}
+                 v-if="commonCard && commonCard.length > 0">{{PokeStyle()}}
             </div>
           </div>
           <div class="win"
@@ -115,12 +120,15 @@
       return sit.player?.userId === this.currPlayer?.userId;
     }
 
-    get PokeStyle() {
+    private PokeStyle(cards: string[] | undefined = undefined) {
       if (this.commonCard.length === 0) {
         return '';
       }
       const commonCard = this.commonCard || [];
-      const handCard = this.handCard || [];
+      let handCard = this.handCard || [];
+      if (cards) {
+        handCard = cards;
+      }
       const card = [...handCard, ...commonCard];
       console.log(card, 'poke style =======================');
       const style = new PokerStyle(card);
@@ -131,34 +139,16 @@
       return this.mapCard(this.handCard);
     }
 
+    get hasSit() {
+      return !!this.sitList.find(s => s.player && s.player.userId === this.currPlayer?.userId)
+    }
+
     private mapCard(cards: string[]) {
       return map(cards);
     }
 
-    // private showWinner(sit:ISit) {
-    //   let isWinner = false;
-    //   for(let i = 0; i < this.winner.length; i++) {
-    //     if(!!this.winner[i].find((w:IPlayer) => w.userId === sit.player?.userId)) {
-    //       isWinner = true;
-    //       return isWinner;
-    //     }
-    //   }
-    //   return isWinner
-    // }
-    //
-    // private getIncome(sit:ISit) {
-    //   let income: number = 0;
-    //   for(let i = 0; i < this.winner.length; i++) {
-    //     const win = this.winner[i].find((w:IPlayer) => w.userId === sit.player?.userId);
-    //     if(!!win) {
-    //       income = Number(win.income);
-    //     }
-    //   }
-    //   return income
-    // }
-
     private sitDown(sit: ISit) {
-      if (!sit.player && !this.isPlay) {
+      if (!sit.player && (!this.isPlay || !this.hasSit)) {
         console.log('ccc2', this.currPlayer);
         if (this.currPlayer.counter <= 0) {
           this.showBuyIn = true;
@@ -296,6 +286,10 @@
             position: absolute;
           }
 
+          .card-style{
+            color: #fff;
+          }
+
           .type {
             background-color: #fff;
             color: #2b2b2b;
@@ -324,6 +318,13 @@
             top: 35 / 6.67vh;
             left: 40 / 3.75vw;
           }
+          &.fold{
+            opacity: 0.4;
+          }
+        }
+        .hand-card{
+          position: absolute;
+          top: 1vh;
         }
 
         &:nth-child(1) {
@@ -404,7 +405,10 @@
             padding-left: 1px;
             padding-right: 17px;
             text-align: right;
-            text-align: right;
+          }
+          .hand-card {
+            left: -3vh;
+            top: 0;
           }
         }
 
@@ -426,9 +430,10 @@
             position: absolute;
             color: #fff;
             font-size: 14px;
-            bottom: -44px;
+            bottom: -48px;
             width: 60 / 3.75vw;
             text-align: center;
+            font-weight: 700;
           }
         }
 
@@ -438,9 +443,9 @@
           left: 0;
           top: 4vh;
           font-size: 20px;
-          color: #ffd100;
+          color: rgba(255, 209, 0, 0.99);
           font-weight: 600;
-          animation: fadeOut 2s forwards;
+          animation: fadeOut 4s forwards;
           background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
         }
       }
@@ -456,7 +461,7 @@
         opacity: 1;
       }
       to {
-        transform: translate3d(2px, -10px, 0);
+        transform: translate3d(2px, -15px, 0);
         opacity: 0;
       }
     }

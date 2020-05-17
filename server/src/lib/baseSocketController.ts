@@ -32,8 +32,12 @@ export default class BaseSocketController extends Controller {
       if (roomInfo.game && roomInfo.game.status < 6) {
         roomInfo.players.forEach(p => {
           const currPlayer = roomInfo.game &&
-            roomInfo.game.allPlayer.find(player => player.userId === p.userId);
-          p.counter = currPlayer && currPlayer.counter || 0;
+            roomInfo.game.getPlayers().find(player => player.userId === p.userId);
+          p.counter = currPlayer?.counter || 0;
+          p.type = currPlayer?.type || '';
+          p.status = currPlayer ? 1 : p.status === -1 ? -1 : 0;
+          p.actionCommand = currPlayer && currPlayer.actionCommand || '';
+          p.actionSize = currPlayer && currPlayer.actionSize || 0;
         });
         console.log(roomInfo.players, 'roomInfo.players ===============================');
         const gameInfo = {
@@ -45,12 +49,14 @@ export default class BaseSocketController extends Controller {
               actionCommand: currPlayer?.actionCommand || '',
               nickName: p.nickName,
               type: currPlayer?.type || '',
+              status: p.status || 0,
               userId: p.userId,
               buyIn: p.buyIn || 0,
             }, {});
           }),
           pot: roomInfo.game.pot,
           prevSize: roomInfo.game.prevSize,
+          sitList: roomInfo.sit,
           currPlayer: {
             userId: roomInfo.game.currPlayer.node.userId,
           },

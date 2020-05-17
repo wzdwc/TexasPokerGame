@@ -13,6 +13,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
       socketId: '1',
       buyIn: 0,
       reBuy: 0,
+      actionSize: 0,
+      actionCommand: '',
+      status: 0,
+      type: '',
     },
     {
       userId: '2',
@@ -22,6 +26,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
       socketId: '2',
       buyIn: 0,
       reBuy: 0,
+      actionSize: 0,
+      actionCommand: '',
+      status: 0,
+      type: '',
     },
     // {
     //   userId: '3',
@@ -196,10 +204,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
     game.action('allin');
     // game over
     // game.action('raise:10');
-    console.log(game.commonCard);
-    console.log(game.pot);
-    console.log(game.getPlayers());
-    console.log(game.winner);
+    console.log('all player ------commonCard', game.commonCard);
+    console.log('all player ------pot', game.pot);
+    console.log('all player ------getPlayers', game.getPlayers());
+    console.log('all player ------winner', game.winner);
     // console.log(game.winner[0][0], game.commonCard);
   });
 
@@ -219,10 +227,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
     // pre flop
     game.action('raise:9');
     game.action('call');
-    game.action('raise: 9');
-    game.action('raise: 18');
-    game.action('raise: 200');
-    game.action('allin');
+    // game.action('raise: 9');
+    // game.action('raise: 18');
+    // game.action('raise: 200');
+    // game.action('allin');
     // game over
     // game.action('raise:10');
     console.log(game.commonCard);
@@ -266,6 +274,26 @@ describe('test/app/core/pokerGame.test.ts', () => {
    * game over
    */
   it('game over', async () => {
+    const game = new PokerGame({
+      smallBlind: 1,
+      users,
+      updateCommonCard: () => {
+        if (game.status < 6) {
+          game.startActionRound();
+          game.sendCard();
+        }
+      },
+      gameOverCallBack: () => {},
+    });
+    game.play();
+    game.action('raise:10');
+    game.action('allin');
+    game.action('fold');
+
+    console.log('game over----------- common', game.commonCard);
+    console.log(game.pot);
+    console.log(game.getPlayers());
+    console.log(game.winner);
     // only one player
       // last player, other player fold
 
