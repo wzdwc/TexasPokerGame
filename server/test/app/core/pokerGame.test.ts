@@ -90,12 +90,12 @@ describe('test/app/core/pokerGame.test.ts', () => {
     // game.action('allin');
     // game.action('fold');
     // game.action('allin');
-    console.log('cc');
-    // game.action('raise:10');
-    console.log(game.commonCard);
-    console.log(game.pot);
-    console.log(game.getPlayers());
-    console.log(game.winner);
+    // console.log('cc');
+    // // game.action('raise:10');
+    // console.log(game.commonCard);
+    // console.log(game.pot);
+    // console.log(game.getPlayers());
+    // console.log(game.winner);
     // console.log(game.winner[0][0], game.commonCard);
   });
 
@@ -117,10 +117,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
     game.action('check');
     game.action('check');
     // game.action('raise:10');
-    console.log(game.commonCard);
-    console.log(game.pot);
-    console.log(game.getPlayers());
-    console.log(game.winner);
+    // console.log(game.commonCard);
+    // console.log(game.pot);
+    // console.log(game.getPlayers());
+    // console.log(game.winner);
     // console.log(game.winner[0][0], game.commonCard);
   });
 
@@ -144,10 +144,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
     game.action('raise:90');
     game.action('fold');
     // game.action('raise:10');
-    console.log(game.commonCard);
-    console.log(game.pot);
-    console.log(game.getPlayers());
-    console.log(game.winner);
+    // console.log(game.commonCard);
+    // console.log(game.pot);
+    // console.log(game.getPlayers());
+    // console.log(game.winner);
     // console.log(game.winner[0][0], game.commonCard);
   });
 
@@ -178,10 +178,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
     game.action('call');
     // show down
     // game.action('raise:10');
-    console.log(game.commonCard);
-    console.log(game.pot);
-    console.log(game.getPlayers());
-    console.log(game.winner);
+    // console.log(game.commonCard);
+    // console.log(game.pot);
+    // console.log(game.getPlayers());
+    // console.log(game.winner);
     // console.log(game.winner[0][0], game.commonCard);
   });
 
@@ -204,10 +204,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
     game.action('allin');
     // game over
     // game.action('raise:10');
-    console.log('all player ------commonCard', game.commonCard);
-    console.log('all player ------pot', game.pot);
-    console.log('all player ------getPlayers', game.getPlayers());
-    console.log('all player ------winner', game.winner);
+    // console.log('all player ------commonCard', game.commonCard);
+    // console.log('all player ------pot', game.pot);
+    // console.log('all player ------getPlayers', game.getPlayers());
+    // console.log('all player ------winner', game.winner);
     // console.log(game.winner[0][0], game.commonCard);
   });
 
@@ -233,10 +233,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
     // game.action('allin');
     // game over
     // game.action('raise:10');
-    console.log(game.commonCard);
-    console.log(game.pot);
-    console.log(game.getPlayers());
-    console.log(game.winner);
+    // console.log(game.commonCard);
+    // console.log(game.pot);
+    // console.log(game.getPlayers());
+    // console.log(game.winner);
     // console.log(game.winner[0][0], game.commonCard);
   });
 
@@ -257,10 +257,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
     game.action('fold');
     // game over
     // game.action('raise:10');
-    console.log(game.commonCard);
-    console.log(game.pot);
-    console.log(game.getPlayers());
-    console.log(game.winner);
+    // console.log(game.commonCard);
+    // console.log(game.pot);
+    // console.log(game.getPlayers());
+    // console.log(game.winner);
     // console.log(game.winner[0][0], game.commonCard);
   });
   // flop
@@ -290,10 +290,10 @@ describe('test/app/core/pokerGame.test.ts', () => {
     game.action('allin');
     game.action('fold');
 
-    console.log('game over----------- common', game.commonCard);
-    console.log(game.pot);
-    console.log(game.getPlayers());
-    console.log(game.winner);
+    // console.log('game over----------- common', game.commonCard);
+    // console.log(game.pot);
+    // console.log(game.getPlayers());
+    // console.log(game.winner);
     // only one player
       // last player, other player fold
 

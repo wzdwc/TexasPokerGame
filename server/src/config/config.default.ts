@@ -60,8 +60,7 @@ export default (appInfo: EggAppInfo) => {
   };
 
   // 业务接口domain
-  config.apiDomain = {
-  };
+  config.apiDomain = {};
 
   // jsonwebtoken 插件配置
   config.jwt = {
@@ -105,7 +104,7 @@ export default (appInfo: EggAppInfo) => {
       // 用户名
       user: 'root',
       // 密码
-      password: '123456',
+      password: 'MygameTest5583598',
       // 数据库名
       database: 'poker',
     },

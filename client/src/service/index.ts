@@ -1,11 +1,11 @@
 import request from '../utils/request';
 
 export default {
-  register: (userName: string, password: string) => request({
+  register: (userAccount: string, password: string, nickName: string) => request({
     url: '/user/register',
-    body: { userName, password },
+    body: { userAccount, password, nickName },
   }),
-  login: (userAccount: string, password: string) => request({
+  login: (userAccount: string, password: string ) => request({
     url: '/user/login',
     body: { userAccount, password },
   }),

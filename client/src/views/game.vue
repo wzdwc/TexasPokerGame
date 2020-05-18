@@ -6,11 +6,16 @@
              @sit="sitDown"
              @buyIn="buyIn"
              :isPlay='isPlay'
+             :valueCards = 'valueCards'
              :winner="winner"
-             :actionUserId = 'actionUserId'
+             :actionUserId='actionUserId'
              :hand-card="handCard"></sitList>
-    <common-card :cardListString="commonCardString"></common-card>
-    <div class="winner-poke-style" v-show="gameOver">
+    <common-card
+      :commonCard="commonCard"
+      :valueCards = 'valueCards'
+    ></common-card>
+    <div class="winner-poke-style"
+         v-show="gameOver && winner[0][0].handCard.length > 0">
       {{PokeStyle(winner[0] && winner[0][0] && winner[0][0].handCard)}} WIN!!
     </div>
     <div class="game-body">
@@ -43,8 +48,8 @@
              @click="raise(size)"
              v-show="showActionSize(size)"
           > {{Math.floor(size * pot)}}</i>
-<!--          <i @click="raise(pot)">{{pot}}</i>-->
-<!--          <i @click="raise(pot * 2)">{{2*pot}}</i>-->
+          <!--          <i @click="raise(pot)">{{pot}}</i>-->
+          <!--          <i @click="raise(pot * 2)">{{2*pot}}</i>-->
         </div>
       </div>
       <div class="action-other-size"
@@ -64,7 +69,8 @@
                @click="addSize">ok
           </div>
         </div>
-        <div class="shadow" @click="isRaise = false"></div>
+        <div class="shadow"
+             @click="isRaise = false"></div>
       </div>
     </div>
     <div class="setting">
@@ -77,22 +83,23 @@
       </div>
     </div>
     <BuyIn :showBuyIn.sync='showBuyIn'
-           :min = '200'
-           :max ='1000'
+           :min='200'
+           :max='1000'
            @buyIn='buyIn'></BuyIn>
-    <toast :show="showMsg" :text="msg"></toast>
+    <toast :show="showMsg"
+           :text="msg"></toast>
   </div>
 </template>
 
 <script lang="ts">
-  import { Vue, Watch } from 'vue-property-decorator';
+  import {Vue, Watch} from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import io from 'socket.io-client';
   import cookie from 'js-cookie';
   import sitList from '../components/SitList.vue';
   import commonCard from '../components/CommonCard.vue';
-  import { IPlayer } from '@/interface/IPlayer';
-  import { ILinkNode, Link } from '@/utils/Link';
+  import {IPlayer} from '@/interface/IPlayer';
+  import {ILinkNode, Link} from '@/utils/Link';
   import ISit from '../interface/ISit';
   import BuyIn from '../components/BuyIn.vue';
   import range from '../components/range.vue';
@@ -101,11 +108,11 @@
   import {PokerStyle} from '@/utils/PokerStyle';
 
   export enum ECommand {
-    CALL   = 'call',
+    CALL = 'call',
     ALL_IN = 'allin',
-    RAISE  = 'raise',
-    CHECK  = 'check',
-    FOLD   = 'fold',
+    RAISE = 'raise',
+    CHECK = 'check',
+    FOLD = 'fold',
   }
 
   interface IMsg {
@@ -123,7 +130,7 @@
       commonCard,
       BuyIn,
       range,
-      toast
+      toast,
     },
   })
   export default class Game extends Vue {
@@ -146,7 +153,7 @@
     private raiseSize: number = 0;
     private gaming = false;
     private sitList: ISit[] = [];
-    private actionUserId = ''
+    private actionUserId = '';
     private showMsg = false;
     private msg = '';
     private raiseSizeMap = {
@@ -159,25 +166,21 @@
         oneThirdPot: 0.5,
         halfPot: 0.75,
         pot: 1,
-      }
-    }
+      },
+    };
 
     @Watch('players')
     private playerChange(players: IPlayer[]) {
       console.log('player change-------');
       this.sitList = this.sitList.map((sit: ISit) => {
         const player = players.find((p) => p.userId === sit.player?.userId);
-        return Object.assign({}, {}, { player, position: sit.position }) as ISit;
+        return Object.assign({}, {}, {player, position: sit.position}) as ISit;
       });
       this.initSitLink();
     }
 
     get isPlay() {
       return this.gaming || this.pot !== 0;
-    }
-
-    get hasBuyIn() {
-      return this.currPlayer?.buyIn !== 0;
     }
 
     get roomId() {
@@ -192,15 +195,25 @@
       return this.winner.length !== 0;
     }
 
+    get valueCards() {
+      if (this.gameOver && this.winner[0] && this.winner[0][0].handCard) {
+        const handCards = this.winner[0][0].handCard;
+        const style = new PokerStyle([...handCards, ...this.commonCard]);
+        return style.getPokerValueCard();
+      } else {
+        return [];
+      }
+    }
+
     get gamePlayers() {
       if (!this.isPlay) {
-        return []
+        return [];
       }
-      return this.sitList.filter(s => s.player && s.player.status === 1);
+      return this.sitList.filter((s) => s.player && s.player.status === 1);
     }
 
     get hasSit() {
-      return !!this.sitList.find(s => s.player && s.player.userId === this.currPlayer?.userId)
+      return !!this.sitList.find((s) => s.player && s.player.userId === this.currPlayer?.userId);
     }
 
     get currPlayer() {
@@ -221,11 +234,7 @@
     }
 
     get minActionSize() {
-      return this.prevSize === 0 ? GAME_BASE_SIZE * 2 : this.prevSize * 2
-    }
-
-    get handCardString() {
-      return map(this.handCard);
+      return this.prevSize <= 0 ? GAME_BASE_SIZE * 2 : this.prevSize * 2;
     }
 
     private init() {
@@ -245,8 +254,8 @@
       if (this.commonCard.length === 0 || !cards) {
         return '';
       }
-      const commonCard = this.commonCard || [];
-      const card = [...cards, ...commonCard];
+      const commonCards = this.commonCard || [];
+      const card = [...cards, ...commonCards];
       console.log(card, 'poke style =======================');
       const style = new PokerStyle(card);
       return style.getPokerStyleName();
@@ -257,15 +266,12 @@
       return this.currPlayer
         && this.currPlayer.counter > Math.floor(multiple * this.pot)
         && this.prevSize * 2 <= Math.floor(multiple * this.pot)
-           && GAME_BASE_SIZE * 2 <= Math.floor(multiple * this.pot);
+        && GAME_BASE_SIZE * 2 <= Math.floor(multiple * this.pot);
     }
 
     private otherSizeHandle() {
       this.isRaise = true;
       this.raiseSize = this.minActionSize;
-    }
-
-    private standUp() {
     }
 
     private showBuyInDialog() {
@@ -297,7 +303,7 @@
     }
 
     private sitDown() {
-      this.emit('sitDown', { sitList: this.sitListMap() });
+      this.emit('sitDown', {sitList: this.sitListMap()});
     }
 
     // private mapCard(cards: string []) {
@@ -333,8 +339,8 @@
             && this.gamePlayers.length === 2
             && this.currPlayer?.type === 'd'
             && this.prevSize === 2 * GAME_BASE_SIZE)
-          || (this.currPlayer?.type === 'bb' && this.prevSize === 2 * GAME_BASE_SIZE &&
-            this.commonCard.length === 0));
+            || (this.currPlayer?.type === 'bb' && this.prevSize === 2 * GAME_BASE_SIZE &&
+              this.commonCard.length === 0));
       }
       return true;
     }
@@ -349,7 +355,7 @@
     }
 
     private action(command: string) {
-      this.emit('action', { command });
+      this.emit('action', {command});
       this.isAction = false;
       this.isRaise = false;
     }
@@ -475,7 +481,7 @@
           buyInSize: size,
         });
         this.showMsg = true;
-        this.msg = this.hasSit ? `已补充买入 ${size}, 下局生效` : `已补充买入 ${size}`;
+        this.msg = this.hasSit ? `已补充买入 ${ size }, 下局生效` : `已补充买入 ${ size }`;
       } catch (e) {
         console.log(e);
       }
@@ -542,7 +548,7 @@
     background: url("../assets/bg.png");
     background-size: 100% 100%;
 
-    .winner-poke-style{
+    .winner-poke-style {
       position: absolute;
       top: 55vh;
       left: 50%;
@@ -551,6 +557,7 @@
       font-size: 14px;
       color: #fff;
     }
+
     .game-body {
       position: absolute;
       top: 38vh;
@@ -575,6 +582,7 @@
         width: 53vw;
         margin-left: -26.4vw;
         text-align: center;
+
         i {
           padding: 2px;
           width: 24px;

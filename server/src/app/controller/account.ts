@@ -30,6 +30,7 @@ export class Account extends BaseController {
   async register() {
     try {
       const { body } = this.getRequestBody();
+      console.log(body);
       const { userAccount, password, nickName } = body;
       const accountInfo: IAccountInfo = { userAccount, password, nickName };
       const result = await this.service.register(accountInfo);

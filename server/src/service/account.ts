@@ -43,9 +43,10 @@ export class AccountService extends BaseService implements IAccountService {
     return new Promise(async (resolve, reject) => {
       try {
         const hasUser = await this.checkHasUser(accountInfo.userAccount);
+        console.log('accountInfo', hasUser, accountInfo);
         if (!hasUser) {
           const result = await this.user.addUser(accountInfo);
-          if (result.affectedRow === 1) {
+          if (result.succeed) {
             resolve('user create successful');
           }
         } else {

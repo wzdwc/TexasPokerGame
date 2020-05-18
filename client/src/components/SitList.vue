@@ -39,7 +39,7 @@
                  v-show="!!!currPlayer || (sit.player.userId !== currPlayer.userId
             && sit.player.handCard
             && sit.player.handCard.length !== 0)">
-              <cardList :cardList="mapCard(sit.player.handCard)"></cardList>
+              <cardList :cardList="sit.player.handCard" :valueCards="valueCards"></cardList>
             </div>
             <div class="card-style" v-show="!!!currPlayer || (sit.player.userId !== currPlayer.userId
             && sit.player.handCard
@@ -50,7 +50,7 @@
           <div class="cards"
                v-show="showHandCard(sit)">
             <div class="hand-card">
-              <cardList :cardList="handCardString"></cardList>
+              <cardList :cardList="handCard" :valueCards="valueCards"></cardList>
             </div>
             <div class="ready"
                  v-show="handCard && handCard.length === 0">ready
@@ -76,13 +76,13 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-  import { IPlayer } from '@/interface/IPlayer';
-  import { ILinkNode } from '@/utils/Link';
+  import {Component, Prop, Watch, Vue} from 'vue-property-decorator';
+  import {IPlayer} from '@/interface/IPlayer';
+  import {ILinkNode} from '@/utils/Link';
   import ISit from '@/interface/ISit';
   import cardList from './cardList.vue';
   import BuyIn from '@/components/BuyIn.vue';
-  import { PokerStyle } from '@/utils/PokerStyle';
+  import {PokerStyle} from '@/utils/PokerStyle';
   import map from '../utils/map';
 
   @Component({
@@ -100,6 +100,8 @@
     @Prop() private winner!: IPlayer[][];
     @Prop() private isPlay!: boolean;
     @Prop() private actionUserId!: string;
+    @Prop() private valueCards!: string;
+
     private sitLinkNode: any = '';
     private showBuyIn = false;
     private currSit!: ISit;
@@ -120,7 +122,7 @@
       return sit.player?.userId === this.currPlayer?.userId;
     }
 
-    private PokeStyle(cards: string[] | undefined = undefined) {
+    private PokeStyle(cards: string[]) {
       if (this.commonCard.length === 0) {
         return '';
       }
@@ -140,7 +142,7 @@
     }
 
     get hasSit() {
-      return !!this.sitList.find(s => s.player && s.player.userId === this.currPlayer?.userId)
+      return !!this.sitList.find((s) => s.player && s.player.userId === this.currPlayer?.userId);
     }
 
     private mapCard(cards: string[]) {
@@ -234,6 +236,7 @@
       .sit {
         position: absolute;
         font-size: 12px;
+
         .default {
           i {
             width: 45 / 3.75vw;
@@ -270,6 +273,7 @@
             font-weight: 600;
             font-size: 12px;
             border-radius: 2px;
+
             &.isAction {
               box-shadow: 0px 0px 6px 4px;
             }
@@ -286,7 +290,7 @@
             position: absolute;
           }
 
-          .card-style{
+          .card-style {
             color: #fff;
           }
 
@@ -318,11 +322,13 @@
             top: 35 / 6.67vh;
             left: 40 / 3.75vw;
           }
-          &.fold{
+
+          &.fold {
             opacity: 0.4;
           }
         }
-        .hand-card{
+
+        .hand-card {
           position: absolute;
           top: 1vh;
         }
@@ -406,6 +412,7 @@
             padding-right: 17px;
             text-align: right;
           }
+
           .hand-card {
             left: -3vh;
             top: 0;

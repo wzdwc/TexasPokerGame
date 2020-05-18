@@ -41,6 +41,7 @@ export class PokerStyle implements IPokerStyle {
     3: [],
     4: [],
   };
+  private flushColor: string = '';
   private straightArr: string[] = [];
   private styleName = [
     'ROYAL_FlUSH',
@@ -73,24 +74,22 @@ export class PokerStyle implements IPokerStyle {
   }
 
   public isStraight(str?: string []): string {
-    const straightStr = str && str.join('') ||
-      [...new Set(this.straightArr)].join('');
+    const straightStr = str && str.join('') || [ ...new Set(this.straightArr) ].join('');
     let first = -1;
     let second = -1;
     let three = -1;
-
-    function indexOf(styleStr: string): number {
-      return POKER_STR.indexOf(styleStr);
+    function indexOf(str: string): number {
+      return POKER_STR.indexOf(str);
     }
-
     if (straightStr.length === 5 && indexOf(straightStr) > -1) {
-      return POKER_STR.charAt(indexOf(straightStr));
+      return POKER_STR.slice(indexOf(straightStr), indexOf(straightStr) + 5);
     }
     if (straightStr.length === 6) {
       first = indexOf(straightStr.slice(0, 5));
       second = indexOf(straightStr.slice(1, 6));
       if (Math.max(first, second) > -1) {
-        return POKER_STR.charAt(Math.max(first, second));
+        const max = Math.max(first, second);
+        return POKER_STR.slice(max, max + 5);
       }
     }
     if (straightStr.length === 7) {
@@ -98,12 +97,13 @@ export class PokerStyle implements IPokerStyle {
       second = indexOf(straightStr.slice(1, 6));
       three = indexOf(straightStr.slice(2, 7));
       if (Math.max(first, second, three) > -1) {
-        return POKER_STR.charAt(Math.max(first, second, three));
+        const max = Math.max(first, second, three);
+        return POKER_STR.slice(max, max + 5);
       }
     }
     // special straight "A2345",'m' -> A
     if (straightStr.indexOf('m') > -1 && straightStr.indexOf('abcd') > -1) {
-      return POKER_STR.charAt(12);
+      return 'mabcd';
     }
     return '0';
   }
@@ -126,7 +126,7 @@ export class PokerStyle implements IPokerStyle {
     const isThree = [];
     let isFour = '0';
     let isFullHouse = '0';
-    let isStraightFlush = '0';
+    // const isStraightFlush = '0';
     let isFlush: string[] = [];
     let isRoyalFlush = '0';
     let isThreeKind = '';
@@ -150,6 +150,7 @@ export class PokerStyle implements IPokerStyle {
       if (this.flushObj[f].length >= 5) {
         // flush is order,so flush[length - 1] is max flush card
         isFlush = this.flushObj[f];
+        this.flushColor = f;
       }
     }
 
@@ -174,13 +175,12 @@ export class PokerStyle implements IPokerStyle {
     }
     // straight flush
     if (isFlush.length !== 0 && this.isStraight(isFlush) !== '0') {
-      if (this.isStraight(isFlush) === 'i') {
-        isRoyalFlush = '1';
+      if (this.isStraight(isFlush) === 'ijklm') {
+        isRoyalFlush = 'ijklm';
         this.pokerStyle[0] = isRoyalFlush;
         return;
       }
-      isStraightFlush = this.isStraight(isFlush);
-      this.pokerStyle[1] = isStraightFlush;
+      this.pokerStyle[1] = this.isStraight(isFlush).split('').reverse().join('');
       return;
     }
 
@@ -204,6 +204,7 @@ export class PokerStyle implements IPokerStyle {
 
     // flush
     if (isFlush.length !== 0) {
+      isFlush.reverse().length = 5;
       this.pokerStyle[4] = isFlush.join('');
       return;
     }
@@ -242,5 +243,23 @@ export class PokerStyle implements IPokerStyle {
     // High card
     highCard.length = 5;
     this.pokerStyle[9] = highCard.join('');
+  }
+  public getPokerValueCard() {
+    let valueStyle = '';
+    let isFlush = false;
+    this.pokerStyle.forEach((style, key) => {
+      if (style !== '0') {
+        isFlush = key === 1 || key === 4;
+        valueStyle = style;
+      }
+    });
+    const cards = this.cards.filter(card => {
+      if (isFlush) {
+        return valueStyle.indexOf(card[0]) > -1 && card[1] === this.flushColor;
+      }
+      return valueStyle.indexOf(card[0]) > -1;
+    });
+    cards.reverse().length = 5;
+    return cards;
   }
 }

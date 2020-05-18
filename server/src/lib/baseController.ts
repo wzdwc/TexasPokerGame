@@ -15,6 +15,7 @@ export default class BaseController {
     // let params: IRequestBody;
     // params = this.ctx.request.body.params && JSON.parse(this.ctx.request.body.params) || {};
     // console.log(this.ctx.request.body, 'params');
+    console.log(this.ctx.request, 'request');
     return this.ctx.request;
   }
 

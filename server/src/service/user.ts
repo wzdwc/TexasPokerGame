@@ -13,19 +13,22 @@ export class UserService implements IUserService {
   mysql: any;
 
   async findById(uid: string): Promise<IUser> {
-    return await this.mysql.get('user', { id: uid });
+    const user = await this.mysql.get('user', { id: uid });
+    return user;
   }
 
   async findByAccount(account: string) {
-    return await this.mysql.get('user', { account });
+    const user = await this.mysql.get('user', { account });
+    return user;
   }
 
   async addUser(accountInfo: IAccountInfo): Promise<any> {
-    return await this.mysql.insert('user', {
+    const user = await this.mysql.insert('user', {
       account: accountInfo.userAccount,
       password: accountInfo.password,
       nick_name: accountInfo.nickName,
     });
+    return { succeed: user.affectedRows === 1 };
   }
 
 }

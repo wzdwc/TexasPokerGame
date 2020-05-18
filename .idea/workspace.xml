@@ -2,26 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/BuyIn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/BuyIn.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CommonCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommonCard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SitList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SitList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/range.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/range.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/interface/IPlayer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/interface/IPlayer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/cardList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/cardList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/toast.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/toast.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/service/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/service/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/map.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/map.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/appveyor.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/appveyor.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/ELKLog/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/ELKLog/error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/logs/ELKLog/error.log.2020-04-17" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/ELKLog/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/ELKLog/info.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/logs/ELKLog/info.log.2020-04-17" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/agent.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/agent.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/agent.log.2020-04-17" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/app.log.2020-04-17" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/core.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/core.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/core.log.2020-04-17" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/egg-schedule.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/egg-schedule.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/egg-schedule.log.2020-04-17" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/error.log.2020-04-17" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/controller/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/controller/account.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerStyle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/config.default.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.default.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/lib/baseController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/baseController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/service/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/account.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/service/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/test/app/core/pokerStyle.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/app/core/pokerStyle.test.ts" afterDir="false" />
     </list>
@@ -97,6 +108,7 @@
       <workItem from="1588166552136" duration="2062000" />
       <workItem from="1588168659920" duration="21070000" />
       <workItem from="1589475961634" duration="559000" />
+      <workItem from="1589732800789" duration="455000" />
     </task>
     <servers />
   </component>
@@ -108,6 +120,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1587141749678" />
+    <state x="403" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589732809846">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="403" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1589732809846" />
     <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1587206645912">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
