@@ -1,8 +1,9 @@
 'use strict';
 import BaseSocketController from '../../../lib/baseSocketController';
-import { IRoomInfo, ISit } from '../../../interface/IGameRoom';
-import { PokerGame } from '../../core/PokerGame';
-import { IPlayer } from '../../core/Player';
+import {IRoomInfo, ISit} from '../../../interface/IGameRoom';
+import {PokerGame} from '../../core/PokerGame';
+import {IPlayer} from '../../core/Player';
+import {ILinkNode, Link} from '../../../utils/Link';
 
 class GameController extends BaseSocketController {
 
@@ -18,27 +19,27 @@ class GameController extends BaseSocketController {
       // await this.gameRecordService.add(gameRecord);
       const roomInfo = await this.getRoomInfo();
       console.log('players===============sit11111111111', roomInfo.sit);
-      // calculate re buy in
-      roomInfo.sit.forEach((s: ISit) => {
-        if (s.player) {
-          if (s.player.counter === 0) {
-            delete s.player;
+      let sitDownPlayer: IPlayer[] = [];
+      if (roomInfo.sitLink) {
+        let currNode: ILinkNode<IPlayer> | null = roomInfo.sitLink;
+        const currPlayer = currNode.node;
+        sitDownPlayer.push(currNode.node);
+        while (currNode && currPlayer.userId !== currNode.next?.node.userId) {
+          const next: ILinkNode<IPlayer> | null = currNode.next;
+          if (next) {
+            sitDownPlayer.push(next.node);
           }
-          console.log('roomInfo.players===============', roomInfo.players);
-          const player = roomInfo.players.find(p => p.userId === s.player?.userId);
-          if (player) {
-            s.player.counter += Number(player.reBuy);
-            console.log('cal reBuy ===============================', s.player, player.reBuy);
-            player.reBuy = 0;
-            s.player.reBuy = 0;
-          }
+          currNode = next;
         }
-      });
-      const sitDownPlayer: IPlayer[] = roomInfo.sit.filter(s => s.player && s.player.counter > 0).map(sit => sit.player);
-      if (sitDownPlayer.length < 2) {
-        throw 'player not enough';
+      } else {
+        sitDownPlayer = roomInfo.sit.filter(s => s.player && s.player.counter > 0).map(sit => sit.player);
+        if (sitDownPlayer.length < 2) {
+          throw 'player not enough';
+        }
+        roomInfo.sitLink = new Link<IPlayer>(sitDownPlayer).link;
       }
-
+      console.log('sitDownPlayer===============sit11111111111', sitDownPlayer);
+      console.log('roomInfo.sitLink===============sit11111111111', roomInfo.sitLink);
       if (!roomInfo.game) {
         roomInfo.game = null;
         roomInfo.game = new PokerGame({
@@ -111,6 +112,21 @@ class GameController extends BaseSocketController {
                 }
               });
           },
+          autoActionCallBack: async (command, userId) => {
+            // fold change status: -1
+            if (command === 'fold') {
+              console.log('cccc', command, userId);
+              roomInfo.players.forEach(p => {
+                if (p.userId === userId) {
+                  p.status = -1;
+                }
+              });
+              console.log('roomInfo', roomInfo.players);
+            }
+            // todo notice next player action
+            await this.updateGameInfo();
+            console.log('auto Action');
+          },
         });
         roomInfo.game.play();
         roomInfo.game.startActionRound();
@@ -138,29 +154,39 @@ class GameController extends BaseSocketController {
 
   async reStart() {
     const roomInfo: IRoomInfo = await this.getRoomInfo();
-    const sit = roomInfo.sit.shift() as ISit;
-    let dealer: IPlayer;
-    if (sit?.player) {
-      roomInfo.sit.push(sit);
-    } else {
-      // first player is null, find dealer
-      for (let i = 0; i < 8; i++) {
-        if (roomInfo.sit[i].player && roomInfo.sit[i].player.userId === roomInfo.game?.allPlayer[0].userId) {
-          dealer = {
-            ...roomInfo.sit[i].player,
-          };
-          delete roomInfo.sit[i].player;
-          sit.player = dealer;
-        }
-      }
-      roomInfo.sit.push(sit);
-    }
+    const dealer = roomInfo.sitLink?.next?.node;
     roomInfo.game = null;
     // init player status
     roomInfo.players.forEach(p => {
       p.status = 0;
     });
+    console.log('sit =======', roomInfo.sit);
+    // calculate re buy in
+    roomInfo.sit.forEach((s: ISit) => {
+      if (s.player) {
+        if (s.player.counter === 0) {
+          delete s.player;
+        }
+        console.log('roomInfo.players===============', roomInfo.players);
+        const player = roomInfo.players.find(p => p.userId === s.player?.userId);
+        if (player) {
+          s.player.counter += Number(player.reBuy);
+          console.log('cal reBuy ===============================', s.player, player.reBuy);
+          player.reBuy = 0;
+          s.player.reBuy = 0;
+        }
+      }
+    });
 
+    // init sit link
+    const players = roomInfo.sit.filter(s => s.player && s.player.counter > 0).map(s => s.player) || [];
+    console.log(players, 'players===========');
+    let link: ILinkNode<IPlayer> | null = new Link<IPlayer>(players).link;
+    while (link?.node.userId !== dealer?.userId) {
+      link = link?.next || null;
+    }
+    roomInfo.sitLink = link;
+    console.log('dealer ===================', dealer, link);
     // new game
     this.nsp.adapter.clients([ this.roomNumber ], async (err: any, clients: any) => {
       // 广播信息

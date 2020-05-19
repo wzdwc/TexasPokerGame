@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="" />
+    <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CommonCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommonCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SitList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SitList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/cardList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/cardList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/service/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/service/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/map.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/map.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/core/Player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Player.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/config.default.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.default.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/interface/IGameRoom.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/interface/IGameRoom.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +94,7 @@
       <workItem from="1588166552136" duration="2062000" />
       <workItem from="1588168659920" duration="21070000" />
       <workItem from="1589475961634" duration="559000" />
-      <workItem from="1589732800789" duration="475000" />
+      <workItem from="1589732800789" duration="6958000" />
     </task>
     <servers />
   </component>
@@ -107,6 +127,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="378" y="207" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1587207727777" />
+    <state x="563" y="230" key="refactoring.ChangeSignatureDialog" timestamp="1589900590051">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="563" y="230" key="refactoring.ChangeSignatureDialog/0.0.1440.900@0.0.1440.900" timestamp="1589900590051" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1588773967204">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

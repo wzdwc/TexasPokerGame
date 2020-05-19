@@ -1,5 +1,6 @@
 import { PokerGame } from '../app/core/PokerGame';
 import { IPlayer } from '../app/core/Player';
+import { ILinkNode } from '../utils/Link';
 
 export interface IGameRoom {
   number: string;
@@ -15,4 +16,5 @@ export interface IRoomInfo {
   players: IPlayer[];
   sit: ISit[];
   game: PokerGame | null;
+  sitLink: ILinkNode<IPlayer> | null;
 }

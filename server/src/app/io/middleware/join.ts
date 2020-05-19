@@ -47,6 +47,7 @@ export default function join(): any {
           sit: [],
           players: [],
           game: null,
+          sitLink: null,
         },
       };
       if (!hasRoom) {
@@ -56,6 +57,7 @@ export default function join(): any {
           sit: [],
           players: [ player ],
           game: null,
+          sitLink: null,
         };
         updatePlayer(room, gameRoom.roomInfo.players, 'players', nsp);
       } else {

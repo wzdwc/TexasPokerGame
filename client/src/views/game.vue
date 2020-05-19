@@ -7,6 +7,7 @@
              @buyIn="buyIn"
              :isPlay='isPlay'
              :valueCards = 'valueCards'
+             :time = 'time'
              :winner="winner"
              :actionUserId='actionUserId'
              :hand-card="handCard"></sitList>
@@ -106,6 +107,7 @@
   import toast from '../components/toast.vue';
   import map from '../utils/map';
   import {PokerStyle} from '@/utils/PokerStyle';
+  import origin from '../utils/origin'
 
   export enum ECommand {
     CALL = 'call',
@@ -156,6 +158,8 @@
     private actionUserId = '';
     private showMsg = false;
     private msg = '';
+    private time = 30;
+    private timeSt = 0;
     private raiseSizeMap = {
       firsAction: {
         two: 2,
@@ -177,6 +181,21 @@
         return Object.assign({}, {}, {player, position: sit.position}) as ISit;
       });
       this.initSitLink();
+    }
+
+    @Watch('isPlay')
+    private isPlayChange(val: boolean) {
+      if (val) {
+        clearTimeout(this.timeSt);
+        this.doCountDown();
+      }
+    }
+
+    @Watch('actionUserId')
+    private actionUserIdChange() {
+      this.time = 30;
+      clearTimeout(this.timeSt);
+      this.doCountDown();
     }
 
     get isPlay() {
@@ -244,10 +263,22 @@
       this.commonCard = [];
       this.pot = 0;
       this.prevSize = 0;
+      this.time = 30;
       this.isAction = false;
       this.isRaise = false;
       this.winner = [];
       this.showBuyIn = false;
+    }
+
+    private doCountDown() {
+      if (this.time <= 0) {
+        clearTimeout(this.timeSt);
+        return;
+      }
+      this.timeSt = setTimeout(() => {
+        this.time--
+        this.doCountDown();
+      }, 1000);
     }
 
     private PokeStyle(cards: string[]) {
@@ -256,7 +287,6 @@
       }
       const commonCards = this.commonCard || [];
       const card = [...cards, ...commonCards];
-      console.log(card, 'poke style =======================');
       const style = new PokerStyle(card);
       return style.getPokerStyleName();
     }
@@ -355,6 +385,9 @@
     }
 
     private action(command: string) {
+      if (command === 'fold') {
+        clearTimeout(this.timeSt);
+      }
       this.emit('action', {command});
       this.isAction = false;
       this.isRaise = false;
@@ -363,10 +396,7 @@
     private socketInit() {
       const token = cookie.get('token');
       const log = console.log;
-      // const origin = 'http://172.22.72.70:7001';
-      const origin = 'http://192.168.0.110:7001';
-      // const origin = 'http://www.jojgame.com:7001';
-      this.socket = io(`${origin}/socket`, {
+      this.socket = io(`${origin.url}/socket`, {
         // 实际使用中可以在这里传递参数
         query: {
           room: this.roomId,
@@ -440,6 +470,8 @@
 
         if (msg.action === 'gameOver') {
           console.log('gameOver', msg.data);
+          clearTimeout(this.timeSt);
+          this.actionUserId = '0';
           this.winner = msg.data.winner;
           const allPlayers = msg.data.allPlayers;
           allPlayers.forEach((winner: IPlayer) => {

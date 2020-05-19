@@ -20,7 +20,6 @@
         <span @click="go">go</span>
       </div>
     </div>
-    <range :is-horizontal="false"></range>
   </div>
 </template>
 
@@ -28,13 +27,7 @@
   import { Vue } from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import service from '../service';
-  import range from '@/components/range.vue';
-
-  @Component({
-    components: {
-      range,
-    },
-  })
+  @Component
   export default class Home extends Vue {
     public roomNumber: string = '';
     private isJoin = false;

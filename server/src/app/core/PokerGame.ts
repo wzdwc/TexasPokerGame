@@ -12,6 +12,7 @@ interface IPokerGame {
   smallBlind: number;
   updateCommonCard: () => void;
   gameOverCallBack: () => void;
+  autoActionCallBack: (actionType: string, userId: string) => void;
 }
 
 export enum EGameStatus {
@@ -25,7 +26,7 @@ export enum EGameStatus {
   GAME_OVER,
 }
 
-const ACTION_TIME = 600000 * 1000;
+const ACTION_TIME = 30 * 1000;
 
 export class PokerGame {
   commonCard: string[] = [];
@@ -45,6 +46,7 @@ export class PokerGame {
   currActionAllinPlayer: Player[] = [];
   updateCommonCard: () => void;
   gameOverCallBack: () => void;
+  autoActionCallBack: (actionType: string, userId: string) => void;
   hasStraddle = false;
   winner: Player[][] = [];
 
@@ -52,17 +54,14 @@ export class PokerGame {
     this.smallBlind = config.smallBlind;
     this.updateCommonCard = config.updateCommonCard;
     this.gameOverCallBack = config.gameOverCallBack;
+    this.autoActionCallBack = config.autoActionCallBack;
     if (config.users.length < 2) {
-      throw 'player must be max than 2 ';
+      throw 'player Inadequate';
     }
     this.init(config.users);
   }
 
   init(users: IPlayer[]) {
-    if (this.playerSize < 2) {
-      throw 'player Inadequate';
-    }
-
     this.status = EGameStatus.GAME_READY;
     // init playerLink
     this.playerLink = this.setPlayer(users);
@@ -100,7 +99,10 @@ export class PokerGame {
 
   startActionRound() {
     this.actionTimeOut = setTimeout(async () => {
+      const userId = this.currPlayer.node.userId || '';
+      console.log('userId start', userId);
       this.action('fold');
+      this.autoActionCallBack('fold', userId);
     }, ACTION_TIME);
   }
 
@@ -167,7 +169,7 @@ export class PokerGame {
           || (this.commonCard.length === 0
             && (this.currPlayer.node.type === EPlayerType.BIG_BLIND
               || this.playerSize === 2 && this.currPlayer.node.type === EPlayerType.DEALER)
-            && command === ECommand.CHECK)) {
+            && (command === ECommand.CHECK || command === ECommand.FOLD))) {
           // console.log('ccc------', this.currPlayer, nextPlayer, command, this.playerSize);
           console.log('actionComplete');
           this.actionComplete();
@@ -177,11 +179,10 @@ export class PokerGame {
         // action time is 60s
         console.log('action auto');
         this.actionTimeOut = setTimeout(() => {
-          if (command === ECommand.CHECK || command === ECommand.FOLD) {
-            this.action('check');
-          } else {
-            this.action('fold');
-          }
+          const actionType = 'fold';
+          const userId = this.currPlayer.node.userId;
+          this.action(actionType);
+          this.autoActionCallBack(actionType, userId);
         }, ACTION_TIME);
       } catch (e) {
         throw 'action:' + e;
@@ -206,6 +207,12 @@ export class PokerGame {
         throw 'currPlayer.next is null';
       }
       if (this.playerSize > 1) {
+        this.actionTimeOut = setTimeout(() => {
+          const actionType = 'fold';
+          const userId = this.currPlayer.node.userId;
+          this.action(actionType);
+          this.autoActionCallBack(actionType, userId);
+        }, ACTION_TIME);
         return;
       }
     }

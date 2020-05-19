@@ -39,7 +39,7 @@ export default class BaseSocketController extends Controller {
           p.actionCommand = currPlayer && currPlayer.actionCommand || '';
           p.actionSize = currPlayer && currPlayer.actionSize || 0;
         });
-        console.log(roomInfo.players, 'roomInfo.players ===============================');
+        console.log(roomInfo.players, 'roomInfo.players ===============================333');
         const gameInfo = {
           players: roomInfo.players.map(p => {
             const currPlayer = roomInfo.game?.allPlayer.find(player => player.userId === p.userId);

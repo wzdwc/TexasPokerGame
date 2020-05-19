@@ -142,7 +142,9 @@ export class Player {
 
   clearActionSize() {
     this.actionSize = 0;
-    this.actionCommand = '';
+    if (this.actionCommand !== 'fold') {
+      this.actionCommand = '';
+    }
   }
 
   setIncome(size: number) {

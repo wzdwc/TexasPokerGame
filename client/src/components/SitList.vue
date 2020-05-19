@@ -14,12 +14,15 @@
         <div class="sit-player"
              v-if="sit.player">
           <div class="player" :class="{fold: sit.player.status === -1}">
+            <div class="count-down" v-show="actionUserId === sit.player.userId">{{time}}</div>
             <div class="user-name"
                  v-show="sit.player.nickName">
               {{ sit.player.nickName }}
             </div>
             <div class="icon iconfont icon-user-avatar"></div>
-            <div class="counter" :class="{isAction: actionUserId === sit.player.userId}"
+            <div class="counter"
+                 :class="{isAction: actionUserId === sit.player.userId,
+                  'close-time-out': time > 0 && time < 10 && actionUserId === sit.player.userId }"
                  v-show="sit.player.counter || sit.player.actionCommand === 'allin'">
               {{ sit.player.counter }}
             </div>
@@ -101,6 +104,7 @@
     @Prop() private isPlay!: boolean;
     @Prop() private actionUserId!: string;
     @Prop() private valueCards!: string;
+    @Prop({ default:30, type:Number }) private time!: number;
 
     private sitLinkNode: any = '';
     private showBuyIn = false;
@@ -132,7 +136,6 @@
         handCard = cards;
       }
       const card = [...handCard, ...commonCard];
-      console.log(card, 'poke style =======================');
       const style = new PokerStyle(card);
       return style.getPokerStyleName();
     }
@@ -266,16 +269,29 @@
           .user-name {
             color: #fff;
           }
-
+          .count-down{
+            height: 7vh;
+            line-height: 9vh;
+            width: 12vw;
+            position: absolute;
+            left: 0;
+            top: 14px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 20px;
+            background-image: linear-gradient(0deg, rgba(0,0,0,0.3), transparent);
+          }
           .counter {
             background-color: rgba(0, 0, 0, 0.6);
             color: #fff;
             font-weight: 600;
             font-size: 12px;
             border-radius: 2px;
-
             &.isAction {
               box-shadow: 0px 0px 6px 4px;
+            }
+            &.close-time-out{
+              animation: 300ms timeOut infinite;
             }
           }
 
@@ -470,6 +486,14 @@
       to {
         transform: translate3d(2px, -15px, 0);
         opacity: 0;
+      }
+    }
+    @-webkit-keyframes timeOut /* Safari 与 Chrome */ {
+      0% {
+        box-shadow: none;
+      }
+      100% {
+        box-shadow: 0px 0px 6px 4px;
       }
     }
   }
