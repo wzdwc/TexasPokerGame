@@ -13,30 +13,29 @@
   export default class Toast extends Vue {
     @Prop() private text!: string;
     @Prop({default: false, type: Boolean}) private show!: boolean;
-    @Prop({default: 1500, type: Number}) private timeOut!: number;
+    @Prop({default: 1000, type: Number}) private timeOut!: number;
 
-    private showValue = false;
     private Time: any;
 
-    @Watch('show')
-    private showChange(val: boolean) {
-      this.showValue = val;
-      if (val) {
+    get showValue() {
+      console.log('come in')
+      if (this.show) {
         this.close();
       }
+      return this.show;
+    }
+
+    set showValue(val) {
+      this.$emit('update:show', val);
     }
 
     private close() {
+      console.log('come in')
       clearTimeout(this.Time);
       this.Time = setTimeout(() => {
         this.showValue = false;
         this.$emit('close');
-      }, this.timeOut);
-    }
-
-    private created() {
-      this.showValue = this.show;
-      this.close();
+      }, this.timeOut || 0);
     }
   }
 </script>

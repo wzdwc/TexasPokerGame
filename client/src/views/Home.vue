@@ -8,15 +8,17 @@
            @click="joinRoom"> <span>join room</span>
       </div>
     </div>
-    <div class="room number" v-show="isJoin">
-      <div class="input-bd">
-        <div class="input-name">room number:</div>
-        <div class="input-text">
-          <input type="tel" maxlength="6"
-                 v-model="roomNumber"/>
+    <div class="room-number" v-show="isJoin">
+      <div class="room-input inline">
+        <div class="input-bd">
+          <div class="input-name iconfont icon-password"></div>
+          <div class="input-text">
+            <input type="tel" maxlength="6"
+                   v-model="roomNumber"/>
+          </div>
         </div>
       </div>
-      <div class="btn">
+      <div class="room-btn inline">
         <span @click="go">go</span>
       </div>
     </div>
@@ -50,12 +52,55 @@
     }
 
     private go() {
-      this.$router.replace({ name: 'game', params: { roomNumber: this.roomNumber } });
+      if (/^\d+$/.test(this.roomNumber)) {
+        this.$router.replace({ name: 'game', params: { roomNumber: this.roomNumber } });
+      }
     }
   }
 </script>
-<style lang="less">
+<style lang="less" scoped>
   .home-container {
-
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .room-btn{
+      flex: 1;
+      .btn{
+        width: 50vw;
+        margin:30px auto;
+      }
+    }
+    .room-number{
+      line-height: 40px;
+      text-align: center;
+      width: 100%;
+      .input-bd{
+        border: 1px solid #bababa;
+        border-radius: 4px;
+        input{
+          border-radius: 8px;
+        }
+      }
+      .room-btn{
+        height: 30px;
+        margin-top: 0;
+        span{
+          margin: 0;
+          line-height: 30px;
+          height: 30px;
+          font-size: 12px;
+          color: #fff;
+          background-color: #00976e;
+          border-radius: 8px;
+          padding: 0 20px;
+          display: block;
+        }
+      }
+      .inline{
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
   }
 </style>

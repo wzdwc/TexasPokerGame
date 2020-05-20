@@ -1,34 +1,38 @@
 <template>
     <div class="register-container container">
-        <div class="user-name input-bd">
-            <div class="input-name">userName:</div>
-            <div class="input-text">
-                <input type="text"
-                       v-model="userName"/>
-            </div>
+      <div class="register-body">
+        <div class="logo">J-POKER</div>
+        <div class="title">Create Account</div>
+        <div class="user-name">
+          <XInput v-model='form.userAccount'
+                  text="account"
+                  @focus="removeValid('userAccount')"
+                  :error="errorData.indexOf('userAccount') > -1"></XInput>
         </div>
-        <div class="user-name input-bd">
-          <div class="input-name">nickName:</div>
-          <div class="input-text">
-            <input type="text"
-                   v-model="nickName"/>
-          </div>
+        <div class="user-name">
+          <XInput v-model='form.nickName'
+                  text="nickName"
+                  @focus="removeValid('nickName')"
+                  :error="errorData.indexOf('nickName') > -1"></XInput>
         </div>
-        <div class="password input-bd">
-            <div class="input-name">password:</div>
-            <div class="input-text">
-                <input type="password"
-                       v-model="password"/>
-            </div>
+        <div class="password">
+          <XInput v-model='form.password'
+                  text="password"
+                  type="password"
+                  @focus="removeValid('password')"
+                  :error="errorData.indexOf('password') > -1"></XInput>
         </div>
-        <div class="re-password input-bd">
-            <div class="input-name">re-password:</div>
-            <div class="input-text">
-                <input type="password"
-                       v-model="rePassword"/>
-            </div>
+        <div class="confirm">
+          <XInput v-model='form.confirm'
+                  text="confirm"
+                  type="password"
+                  @focus="removeValid('confirm')"
+                  :error="errorData.indexOf('confirm') > -1"></XInput>
         </div>
-        <div class="s-btn btn"><span @click="register">submit</span></div>
+        <div class="register-btn">
+          <div class="s-btn btn"><span @click="register">submit</span></div>
+        </div>
+      </div>
       <toast :show="showMsg"
              :text="msg"></toast>
     </div>
@@ -38,36 +42,56 @@
   import service from '../service';
   import Component from 'vue-class-component';
   import toast from '../components/toast.vue';
+  import XInput from '../components/x-input.vue';
 
   @Component({
     components: {
       toast,
+      XInput,
     },
   })
   export default class Register extends Vue {
-    public userName: string = '';
-    public password: string = '';
-    private nickName: string = '';
-    public rePassword: string = '';
+    private form: any = {
+      userAccount: '',
+      nickName: '',
+      password: '',
+      confirm: '',
+    }
+    private errorData: string [] = [];
     private showMsg = false;
     private msg = '';
 
-    get valid() {
-      return this.password === this.rePassword;
+
+    private valid() {
+      const errorArr: string[] = [];
+      for (let formKey in this.form) {
+        if (this.form[formKey] === '') {
+          errorArr.push(formKey);
+        }
+      }
+      // confirm password
+      if (this.form.password !== this.form.confirm) {
+        errorArr.push('confirm');
+        errorArr.push('password');
+      }
+      this.errorData = errorArr;
+    }
+
+    private removeValid(validName: string) {
+      this.errorData = this.errorData.join(',').replace(validName, '').split(',');
     }
 
     private async register() {
       try {
-        if (!this.valid) {
-          console.log('Those password didn\'t match.')
-          return
+        this.valid();
+        if (this.errorData.join('') === '') {
+          const result = await service.register(this.form);
+          this.msg = 'sign successful';
+          this.showMsg = true;
+          setTimeout(() => {
+            this.$router.replace({name: 'login'});
+          }, 2000);
         }
-        const result = await service.register(this.userName, this.password, this.nickName);
-        this.msg = 'sign successful';
-        this.showMsg = true;
-        setTimeout(() => {
-          this.$router.replace({name: 'login'});
-        }, 2000);
       } catch (e) {
         this.msg = JSON.stringify(e);
         this.showMsg = true;
@@ -77,5 +101,24 @@
   }
 </script>
 <style lang="less">
+  .register-container{
+    padding: 20px;
+    margin: auto;
+    .logo{
+      text-align: left;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .title{
+      text-align: left;
+      margin-bottom: 5vh;
+    }
 
+    .register-btn{
+      width: 50vw;
+      float: right;
+      margin: auto;
+    }
+  }
 </style>

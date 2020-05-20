@@ -4,15 +4,18 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "dev": "vue-cli-service serve",
+    "dev": "cross-env NODE_ENV=develop vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@types/fastclick": "^1.0.29",
     "@types/js-cookie": "^2.2.6",
     "@types/socket.io-client": "^1.4.32",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "cross-env": "^7.0.2",
+    "fastclick": "^1.0.6",
     "js-cookie": "^2.2.1",
     "socket.io-client": "^2.3.0",
     "vconsole": "^3.3.4",

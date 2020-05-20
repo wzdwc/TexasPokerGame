@@ -1,9 +1,9 @@
 'use strict';
 import BaseSocketController from '../../../lib/baseSocketController';
-import {IRoomInfo, ISit} from '../../../interface/IGameRoom';
-import {PokerGame} from '../../core/PokerGame';
-import {IPlayer} from '../../core/Player';
-import {ILinkNode, Link} from '../../../utils/Link';
+import { IRoomInfo, ISit } from '../../../interface/IGameRoom';
+import { PokerGame } from '../../core/PokerGame';
+import { IPlayer } from '../../core/Player';
+import { ILinkNode, Link } from '../../../utils/Link';
 
 class GameController extends BaseSocketController {
 
@@ -32,14 +32,19 @@ class GameController extends BaseSocketController {
           currNode = next;
         }
       } else {
-        sitDownPlayer = roomInfo.sit.filter(s => s.player && s.player.counter > 0).map(sit => sit.player);
+        sitDownPlayer = roomInfo.sit.filter(
+          s => s.player && s.player.counter > 0).map(sit => sit.player);
         if (sitDownPlayer.length < 2) {
           throw 'player not enough';
         }
         roomInfo.sitLink = new Link<IPlayer>(sitDownPlayer).link;
       }
       console.log('sitDownPlayer===============sit11111111111', sitDownPlayer);
-      console.log('roomInfo.sitLink===============sit11111111111', roomInfo.sitLink);
+      console.log('roomInfo.sitLink===============sit11111111111',
+        roomInfo.sitLink);
+      if (sitDownPlayer.length < 2) {
+        throw 'player not enough';
+      }
       if (!roomInfo.game) {
         roomInfo.game = null;
         roomInfo.game = new PokerGame({
@@ -88,7 +93,12 @@ class GameController extends BaseSocketController {
                 if (roomInfo.game) {
                   // game over show winner
                   if (roomInfo.game.status === 7) {
-                    let winner: any = [[{ ...roomInfo.game.winner[0][0], handCard: [] }]];
+                    let winner: any = [
+                      [
+                        {
+                          ...roomInfo.game.winner[0][0],
+                          handCard: [],
+                        }]];
                     let allPlayers = winner[0];
                     // only player, other fold
                     if (roomInfo.game.getPlayers().length !== 1) {
@@ -153,51 +163,79 @@ class GameController extends BaseSocketController {
   }
 
   async reStart() {
-    const roomInfo: IRoomInfo = await this.getRoomInfo();
-    const dealer = roomInfo.sitLink?.next?.node;
-    roomInfo.game = null;
-    // init player status
-    roomInfo.players.forEach(p => {
-      p.status = 0;
-    });
-    console.log('sit =======', roomInfo.sit);
-    // calculate re buy in
-    roomInfo.sit.forEach((s: ISit) => {
-      if (s.player) {
-        if (s.player.counter === 0) {
-          delete s.player;
-        }
-        console.log('roomInfo.players===============', roomInfo.players);
-        const player = roomInfo.players.find(p => p.userId === s.player?.userId);
-        if (player) {
-          s.player.counter += Number(player.reBuy);
-          console.log('cal reBuy ===============================', s.player, player.reBuy);
-          player.reBuy = 0;
-          s.player.reBuy = 0;
-        }
-      }
-    });
-
-    // init sit link
-    const players = roomInfo.sit.filter(s => s.player && s.player.counter > 0).map(s => s.player) || [];
-    console.log(players, 'players===========');
-    let link: ILinkNode<IPlayer> | null = new Link<IPlayer>(players).link;
-    while (link?.node.userId !== dealer?.userId) {
-      link = link?.next || null;
-    }
-    roomInfo.sitLink = link;
-    console.log('dealer ===================', dealer, link);
-    // new game
-    this.nsp.adapter.clients([ this.roomNumber ], async (err: any, clients: any) => {
-      // 广播信息
-      this.nsp.to(this.roomNumber).emit('online', {
-        clients,
-        action: 'newGame',
-        target: 'participator',
-        data: {},
+    try {
+      const roomInfo: IRoomInfo = await this.getRoomInfo();
+      const dealer = roomInfo.sitLink?.next?.node;
+      roomInfo.game = null;
+      // init player status
+      roomInfo.players.forEach(p => {
+        p.status = 0;
       });
-      await this.playGame();
-    });
+      console.log('sit =======', roomInfo.sit);
+      // calculate re buy in
+      roomInfo.sit.forEach((s: ISit) => {
+        if (s.player) {
+          if (s.player.counter === 0) {
+            delete s.player;
+          } else {
+            console.log('roomInfo.players===============', roomInfo.players);
+            const player = roomInfo.players.find(
+              p => p.userId === s.player?.userId);
+            if (player) {
+              s.player.counter += Number(player.reBuy);
+              console.log('cal reBuy ===============================', s.player,
+                player.reBuy);
+              player.reBuy = 0;
+              s.player.reBuy = 0;
+            }
+          }
+        }
+      });
+      const players = roomInfo.sit.filter(s => s.player && s.player.counter > 0)
+        .map(s => s.player) || [];
+      if (players.length >= 2) {
+        // init sit link
+        console.log(players, 'players===========');
+        let link: ILinkNode<IPlayer> | null = new Link<IPlayer>(players).link;
+        while (link?.node.userId !== dealer?.userId) {
+          link = link?.next || null;
+        }
+        roomInfo.sitLink = link;
+        console.log('dealer ===================', dealer, link);
+        // new game
+        this.nsp.adapter.clients([ this.roomNumber ],
+          async (err: any, clients: any) => {
+            // 广播信息
+            this.nsp.to(this.roomNumber).emit('online', {
+              clients,
+              action: 'newGame',
+              target: 'participator',
+              data: {},
+            });
+            await this.playGame();
+          });
+      } else {
+        roomInfo.sitLink = null;
+        console.log('come in only one player');
+        // player not enough
+        // await this.updateGameInfo();
+        // new game
+        this.nsp.adapter.clients([ this.roomNumber ],
+          async (err: any, clients: any) => {
+            // 广播信息
+            this.nsp.to(this.roomNumber).emit('online', {
+              clients,
+              action: 'pause',
+              target: 'participator',
+              data: {
+                players: roomInfo.players,
+              },
+            });
+          });
+      }
+    } catch (e) {
+      console.log(e + 'restart ex');
+    }
   }
 
   async buyIn() {
@@ -212,10 +250,12 @@ class GameController extends BaseSocketController {
       const isGaming = !!roomInfo.game;
       if (player) {
         if (roomInfo.game) {
-          const inTheGame = roomInfo.game.allPlayer.find(p => p.userId === userInfo.userId);
+          const inTheGame = roomInfo.game.allPlayer.find(
+            p => p.userId === userInfo.userId);
           // player in the game, can't buy in
           if (inTheGame) {
             player.reBuy += Number(buyInSize);
+            player.buyIn += Number(buyInSize);
           }
         } else {
           player.buyIn += Number(buyInSize);
@@ -230,17 +270,18 @@ class GameController extends BaseSocketController {
         roomInfo.players.push(player);
       }
       if (!isGaming) {
-        this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
-          // 广播信息
-          this.nsp.to(this.roomNumber).emit('online', {
-            clients,
-            action: 'players',
-            target: 'participator',
-            data: {
-              players: roomInfo.players,
-            },
+        this.nsp.adapter.clients([ this.roomNumber ],
+          (err: any, clients: any) => {
+            // 广播信息
+            this.nsp.to(this.roomNumber).emit('online', {
+              clients,
+              action: 'players',
+              target: 'participator',
+              data: {
+                players: roomInfo.players,
+              },
+            });
           });
-        });
       }
     } catch (e) {
       console.log(e);
@@ -321,7 +362,8 @@ class GameController extends BaseSocketController {
             }
           });
         }
-        console.log('fold ===============', roomInfo.players, roomInfo.game.allPlayer);
+        console.log('fold ===============', roomInfo.players,
+          roomInfo.game.allPlayer);
         // todo notice next player action
         await this.updateGameInfo();
         console.log('curr player', roomInfo.game.currPlayer.node);

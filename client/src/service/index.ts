@@ -1,7 +1,7 @@
 import request from '../utils/request';
 
 export default {
-  register: (userAccount: string, password: string, nickName: string) => request({
+  register: ({ userAccount = '', password = '', nickName = '' }) => request({
     url: '/user/register',
     body: { userAccount, password, nickName },
   }),

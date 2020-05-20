@@ -21,6 +21,7 @@
     </div>
     <div class="game-body">
       <div class="pot">pot: {{pot}}</div>
+      <div class="roomId">No.:{{roomId}}</div>
       <div class="btn play"
            v-show="isOwner && !isPlay"><span @click="play">play game</span></div>
     </div>
@@ -80,15 +81,16 @@
       <div class="setting-body"
            :class="{show: showSetting}">
         <i @click="showBuyInDialog()">buy in</i>
-        <i></i>
+        <i @click="showCounterRecord">counter record</i>
       </div>
     </div>
     <BuyIn :showBuyIn.sync='showBuyIn'
            :min='200'
            :max='1000'
            @buyIn='buyIn'></BuyIn>
-    <toast :show="showMsg"
+    <toast :show.sync="showMsg"
            :text="msg"></toast>
+    <record :players="players" v-model="showRecord"></record>
   </div>
 </template>
 
@@ -105,6 +107,7 @@
   import BuyIn from '../components/BuyIn.vue';
   import range from '../components/range.vue';
   import toast from '../components/toast.vue';
+  import record from '../components/record.vue';
   import map from '../utils/map';
   import {PokerStyle} from '@/utils/PokerStyle';
   import origin from '../utils/origin'
@@ -133,6 +136,7 @@
       BuyIn,
       range,
       toast,
+      record
     },
   })
   export default class Game extends Vue {
@@ -160,6 +164,7 @@
     private msg = '';
     private time = 30;
     private timeSt = 0;
+    private showRecord = false;
     private raiseSizeMap = {
       firsAction: {
         two: 2,
@@ -177,7 +182,7 @@
     private playerChange(players: IPlayer[]) {
       console.log('player change-------');
       this.sitList = this.sitList.map((sit: ISit) => {
-        const player = players.find((p) => p.userId === sit.player?.userId);
+        const player = players.find((p) => sit.player && p.userId === sit.player.userId && sit.player.counter > 0);
         return Object.assign({}, {}, {player, position: sit.position}) as ISit;
       });
       this.initSitLink();
@@ -268,6 +273,12 @@
       this.isRaise = false;
       this.winner = [];
       this.showBuyIn = false;
+      this.initSitLink();
+    }
+
+    private showCounterRecord() {
+      this.showRecord = true;
+      this.showSetting = false;
     }
 
     private doCountDown() {
@@ -488,6 +499,12 @@
         if (msg.action === 'newGame') {
           this.init();
         }
+
+        if (msg.action === 'pause') {
+          this.players = msg.data.players;
+          this.gaming = false;
+          this.init();
+        }
       });
 
       // 系统事件
@@ -509,11 +526,12 @@
         if (this.currPlayer && (!this.isPlay || !this.hasSit)) {
           this.currPlayer.counter += size;
         }
+        console.log('come in buyIn ==================', size)
+        this.showMsg = true;
+        this.msg = this.hasSit && this.isPlay ? `已补充买入 ${ size }, 下局生效` : `已补充买入 ${ size }`;
         this.emit('buyIn', {
           buyInSize: size,
         });
-        this.showMsg = true;
-        this.msg = this.hasSit ? `已补充买入 ${ size }, 下局生效` : `已补充买入 ${ size }`;
       } catch (e) {
         console.log(e);
       }
@@ -577,7 +595,7 @@
 <style lang="less"
        scoped>
   .game-container {
-    background: url("../assets/bg.png");
+    background: radial-gradient(#00bf86, #006a55);
     background-size: 100% 100%;
 
     .winner-poke-style {
@@ -596,6 +614,10 @@
       left: 50%;
       transform: translate3d(-50%, -50%, 0);
       z-index: 0;
+      .roomId{
+        margin-top: 10px;
+        font-size: 14px;
+      }
     }
 
 
@@ -728,6 +750,7 @@
           font-size: 12px;
           color: #fff;
           background: rgba(0, 0, 0, 0.6);
+          margin: 1px 0;
         }
 
         &.show {

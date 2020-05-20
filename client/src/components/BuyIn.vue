@@ -72,7 +72,6 @@
       top: 50%;
       margin: -100px -150px;
       width: 300px;
-      height: 150px;
       border-radius: 12px;
       box-sizing: border-box;
       background: #fff;
@@ -83,6 +82,13 @@
       input {
         width: 100px;
       }
+    }
+    .input-name{
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    .btn{
+      margin-top: 20px;
     }
   }
 

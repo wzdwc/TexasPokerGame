@@ -165,7 +165,7 @@
           if (sitNode) {
             const next = sitNode.next;
             if (sitNode.node.player?.nickName === this.currPlayer?.nickName) {
-              sitNode.node.player = null;
+              delete sitNode.node.player;
             }
             sitNode = next as ILinkNode<ISit>;
           }
