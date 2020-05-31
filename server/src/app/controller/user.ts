@@ -20,12 +20,10 @@ export class UserController extends BaseController {
   @post('/')
   async index() {
     try {
-      const token: string = this.ctx.get('Authorization') || '';
-      const userInfo = await this.jwt.verify(token);
-      const user = this.user.findByAccount(userInfo.userAccount);
-      this.success(user);
+      const state = this.ctx.state;
+      console.log(state, 'state');
+      this.success(state.user.user);
     } catch (e) {
-      console.log(e);
       this.fail('server error');
     }
   }

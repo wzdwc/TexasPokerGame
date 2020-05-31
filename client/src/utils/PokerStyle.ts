@@ -78,8 +78,8 @@ export class PokerStyle implements IPokerStyle {
     let first = -1;
     let second = -1;
     let three = -1;
-    function indexOf(str: string): number {
-      return POKER_STR.indexOf(str);
+    function indexOf(pokeString: string): number {
+      return POKER_STR.indexOf(pokeString);
     }
     if (straightStr.length === 5 && indexOf(straightStr) > -1) {
       return POKER_STR.slice(indexOf(straightStr), indexOf(straightStr) + 5);
@@ -253,7 +253,7 @@ export class PokerStyle implements IPokerStyle {
         valueStyle = style;
       }
     });
-    const cards = this.cards.filter(card => {
+    const cards = this.cards.filter((card) => {
       if (isFlush) {
         return valueStyle.indexOf(card[0]) > -1 && card[1] === this.flushColor;
       }

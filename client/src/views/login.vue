@@ -44,9 +44,9 @@
         const result = await service.login(this.userAccount, this.password);
         const { token } = result.data;
         cookie.set('token', token, {expires: 1});
-        this.$router.replace({name: 'home'});
+        await this.$router.push({name: 'home'});
       } catch (e) {
-        console.log(e);
+        this.$plugin.toast('Wrong password or account.');
       }
     }
   }

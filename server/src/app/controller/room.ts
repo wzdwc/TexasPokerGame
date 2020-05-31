@@ -32,7 +32,7 @@ export class RoomController extends BaseController {
       const result = await this.roomService.findByRoomNumber(body.roomNumber);
       this.success({ hasRoom: result });
     } catch (e) {
-      this.fail('create room error');
+      this.fail('invalid room');
       console.log(e);
     }
   }

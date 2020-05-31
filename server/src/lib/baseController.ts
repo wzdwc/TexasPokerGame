@@ -1,5 +1,4 @@
 import { inject, Context } from 'midway';
-// import { IRequestBody } from '../interface/IRequestBody';
 import { IResult, ResultCode } from '../interface/IResult';
 
 export default class BaseController {
@@ -37,7 +36,7 @@ export default class BaseController {
    */
   public fail(message: string) {
     const result: IResult = {
-      code: ResultCode.FAILD,
+      code: ResultCode.FAIL,
       data: {},
       message,
     };

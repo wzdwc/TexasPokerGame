@@ -1,7 +1,8 @@
 <template>
   <div class="record-container"
        v-show="show">
-    <div class="shadow" @click="show = false"></div>
+    <div class="shadow"
+         @click="show = false"></div>
     <div class="body">
       <div class="title">record</div>
       <ul>
@@ -28,8 +29,7 @@
   import { IPlayer } from '@/interface/IPlayer';
 
   @Component({
-    components: {
-    },
+    components: {},
   })
   export default class Record extends Vue {
     @Prop() private value!: boolean;
@@ -37,11 +37,10 @@
 
     get show() {
       return this.value;
-    };
-    set show(val) {
-      this.$emit('input', val)
     }
-    private mounted() {
+
+    set show(val) {
+      this.$emit('input', val);
     }
   }
 </script>
@@ -57,8 +56,10 @@
     position: absolute;
     left: 0;
     top: 0;
-    .shadow{
-      background: rgba(0,0,0,0.3);
+    z-index: 9999;
+
+    .shadow {
+      background: rgba(0, 0, 0, 0.3);
       left: 0;
       top: 0;
       right: 0;
@@ -66,21 +67,25 @@
       position: fixed;
       z-index: 1;
     }
-    .body{
+
+    .body {
       position: relative;
       z-index: 9;
     }
-    .title{
+
+    .title {
       color: #fff;
       text-align: left;
       line-height: 30px;
       padding: 5px 10px;
       border-bottom: 1px solid #fff;
     }
-    ul{
-      li{
+
+    ul {
+      li {
         display: flex;
-        i{
+
+        i {
           flex: 1;
           padding: 5px 10px;
           font-size: 16px;

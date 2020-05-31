@@ -6,15 +6,16 @@
              @sit="sitDown"
              @buyIn="buyIn"
              :isPlay='isPlay'
-             :valueCards = 'valueCards'
-             :time = 'time'
+             :valueCards='valueCards'
+             :time='time'
              :winner="winner"
              :actionUserId='actionUserId'
              :hand-card="handCard"></sitList>
     <common-card
       :commonCard="commonCard"
-      :valueCards = 'valueCards'
+      :valueCards='valueCards'
     ></common-card>
+    <notice :message-list="messageList"></notice>
     <div class="winner-poke-style"
          v-show="gameOver && winner[0][0].handCard.length > 0">
       {{PokeStyle(winner[0] && winner[0][0] && winner[0][0].handCard)}} WIN!!
@@ -90,40 +91,45 @@
            @buyIn='buyIn'></BuyIn>
     <toast :show.sync="showMsg"
            :text="msg"></toast>
-    <record :players="players" v-model="showRecord"></record>
+    <record :players="players"
+            v-model="showRecord"></record>
+    <sendMsg @send = 'sendMsgHandle'></sendMsg>
   </div>
 </template>
 
 <script lang="ts">
-  import {Vue, Watch} from 'vue-property-decorator';
+  import { Vue, Watch } from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import io from 'socket.io-client';
   import cookie from 'js-cookie';
   import sitList from '../components/SitList.vue';
   import commonCard from '../components/CommonCard.vue';
-  import {IPlayer} from '@/interface/IPlayer';
-  import {ILinkNode, Link} from '@/utils/Link';
+  import { IPlayer } from '@/interface/IPlayer';
+  import { ILinkNode, Link } from '@/utils/Link';
   import ISit from '../interface/ISit';
   import BuyIn from '../components/BuyIn.vue';
   import range from '../components/range.vue';
   import toast from '../components/toast.vue';
   import record from '../components/record.vue';
+  import notice from '../components/notice.vue';
+  import sendMsg from '../components/sendMsg.vue';
   import map from '../utils/map';
-  import {PokerStyle} from '@/utils/PokerStyle';
-  import origin from '../utils/origin'
+  import { PokerStyle } from '@/utils/PokerStyle';
+  import origin from '../utils/origin';
 
   export enum ECommand {
-    CALL = 'call',
+    CALL   = 'call',
     ALL_IN = 'allin',
-    RAISE = 'raise',
-    CHECK = 'check',
-    FOLD = 'fold',
+    RAISE  = 'raise',
+    CHECK  = 'check',
+    FOLD   = 'fold',
   }
 
   interface IMsg {
     action: string;
     clients: string[];
     target: string;
+    message?: any;
     data: any;
   }
 
@@ -136,7 +142,9 @@
       BuyIn,
       range,
       toast,
-      record
+      record,
+      notice,
+      sendMsg,
     },
   })
   export default class Game extends Vue {
@@ -149,8 +157,9 @@
     private handCard = [];
     private commonCard = [];
     private pot = 0;
+    private slidePots = [];
     private prevSize = 0;
-    private isAction = false;
+    // private isAction = false;
     private isRaise = false;
     private winner: IPlayer [][] = [];
     private showBuyIn = false;
@@ -164,6 +173,7 @@
     private msg = '';
     private time = 30;
     private timeSt = 0;
+    private messageList: any[] = [];
     private showRecord = false;
     private raiseSizeMap = {
       firsAction: {
@@ -182,8 +192,9 @@
     private playerChange(players: IPlayer[]) {
       console.log('player change-------');
       this.sitList = this.sitList.map((sit: ISit) => {
-        const player = players.find((p) => sit.player && p.userId === sit.player.userId && sit.player.counter > 0);
-        return Object.assign({}, {}, {player, position: sit.position}) as ISit;
+        const player = players.find(
+          (p) => sit.player && p.userId === sit.player.userId && sit.player.counter > 0);
+        return Object.assign({}, {}, { player, position: sit.position }) as ISit;
       });
       this.initSitLink();
     }
@@ -217,6 +228,11 @@
 
     get gameOver() {
       return this.winner.length !== 0;
+    }
+
+    get isAction() {
+      return !!(this.userInfo
+        && this.userInfo.userId === this.actionUserId)
     }
 
     get valueCards() {
@@ -269,11 +285,16 @@
       this.pot = 0;
       this.prevSize = 0;
       this.time = 30;
-      this.isAction = false;
+      // this.isAction = false;
       this.isRaise = false;
       this.winner = [];
       this.showBuyIn = false;
       this.initSitLink();
+    }
+
+    private sendMsgHandle(msgInfo: string) {
+      const msg = `${this.userInfo.nickName}:${msgInfo}`;
+      this.emit('broadcast', { msg });
     }
 
     private showCounterRecord() {
@@ -287,7 +308,7 @@
         return;
       }
       this.timeSt = setTimeout(() => {
-        this.time--
+        this.time--;
         this.doCountDown();
       }, 1000);
     }
@@ -344,7 +365,7 @@
     }
 
     private sitDown() {
-      this.emit('sitDown', {sitList: this.sitListMap()});
+      this.emit('sitDown', { sitList: this.sitListMap() });
     }
 
     // private mapCard(cards: string []) {
@@ -399,8 +420,8 @@
       if (command === 'fold') {
         clearTimeout(this.timeSt);
       }
-      this.emit('action', {command});
-      this.isAction = false;
+      this.emit('action', { command });
+      // this.isAction = false;
       this.isRaise = false;
     }
 
@@ -444,8 +465,16 @@
             this.commonCard = payload.data.commonCard;
             console.log('msg.data.currPlayer.userId', msg.data);
             this.actionUserId = payload.data.currPlayer.userId;
-            this.isAction = !!(this.userInfo && this.userInfo.userId ===
-              payload.data.currPlayer.userId);
+            // this.isAction = !!(this.userInfo
+            //   && this.userInfo.userId === payload.data.currPlayer.userId);
+          }
+
+          // room time out
+          if (data.action === 'deny') {
+            this.$plugin.toast('room is close');
+            setTimeout(() => {
+              this.$router.replace({ name: 'home' });
+            }, 1000);
           }
         });
       });
@@ -464,8 +493,9 @@
         if (msg.action === 'players') {
           this.players = msg.data.players;
         }
-        if (msg.action === 'commonCard') {
+        if (msg.action === 'actionComplete') {
           this.commonCard = msg.data.commonCard;
+          this.slidePots = msg.data.slidePots;
           console.log('players', msg.data);
         }
         if (msg.action === 'gameInfo') {
@@ -473,7 +503,7 @@
           this.pot = msg.data.pot || 0;
           this.prevSize = msg.data.prevSize;
           this.actionUserId = msg.data.currPlayer.userId;
-          this.isAction = !!(this.userInfo && this.userInfo.userId === msg.data.currPlayer.userId);
+          // this.isAction = !!(this.userInfo && this.userInfo.userId === msg.data.currPlayer.userId);
           this.sitList = msg.data.sitList;
           console.log('gameInfo', msg.data);
           console.log('handCard', this.handCard);
@@ -484,6 +514,7 @@
           clearTimeout(this.timeSt);
           this.actionUserId = '0';
           this.winner = msg.data.winner;
+          this.commonCard = msg.data.commonCard;
           const allPlayers = msg.data.allPlayers;
           allPlayers.forEach((winner: IPlayer) => {
             this.players.forEach((p) => {
@@ -502,8 +533,17 @@
 
         if (msg.action === 'pause') {
           this.players = msg.data.players;
+          this.sitList = msg.data.sitList;
+          console.log('players', this.players);
           this.gaming = false;
           this.init();
+        }
+
+        if (msg.action === 'broadcast') {
+          this.messageList.push({
+            message: msg.message.msg || '',
+            top: Math.random() * 50 + 10,
+          });
         }
       });
 
@@ -526,9 +566,10 @@
         if (this.currPlayer && (!this.isPlay || !this.hasSit)) {
           this.currPlayer.counter += size;
         }
-        console.log('come in buyIn ==================', size)
+        console.log('come in buyIn ==================', size);
         this.showMsg = true;
-        this.msg = this.hasSit && this.isPlay ? `已补充买入 ${ size }, 下局生效` : `已补充买入 ${ size }`;
+        this.msg = this.hasSit && this.isPlay
+          ? `已补充买入 ${size},下局生效` : `已补充买入 ${size}`;
         this.emit('buyIn', {
           buyInSize: size,
         });
@@ -597,7 +638,9 @@
   .game-container {
     background: radial-gradient(#00bf86, #006a55);
     background-size: 100% 100%;
-
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
     .winner-poke-style {
       position: absolute;
       top: 55vh;
@@ -614,7 +657,8 @@
       left: 50%;
       transform: translate3d(-50%, -50%, 0);
       z-index: 0;
-      .roomId{
+
+      .roomId {
         margin-top: 10px;
         font-size: 14px;
       }

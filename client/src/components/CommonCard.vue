@@ -1,13 +1,14 @@
 <template>
   <div class="container">
     <div class="common-card-container">
-      <cardList :card-list="commonCardMap" :value-cards="valueCards"></cardList>
+      <cardList :card-list="commonCardMap"
+                :value-cards="valueCards"></cardList>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from 'vue-property-decorator';
+  import { Component, Prop, Vue } from 'vue-property-decorator';
   import cardList from './cardList.vue';
 
   @Component({
@@ -18,22 +19,24 @@
   export default class CommonCard extends Vue {
     @Prop() private commonCard: any;
     @Prop() private valueCards!: string[];
+
     get commonCardMap() {
       const arr = [];
-      for(let i = 0; i < 5; i++) {
-        if(this.commonCard[i]) {
-          arr.push(this.commonCard[i])
+      for (let i = 0; i < 5; i++) {
+        if (this.commonCard[i]) {
+          arr.push(this.commonCard[i]);
         } else {
-          arr.push('')
+          arr.push('');
         }
       }
-      return arr
+      return arr;
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
+<style scoped
+       lang="less">
   .common-card-container {
     position: absolute;
     top: 50vh;

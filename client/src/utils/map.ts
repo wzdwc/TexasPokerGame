@@ -14,5 +14,5 @@ const mapCard = (card: string) => {
   const cNumber = card.charCodeAt(0) - 97;
   const cColor = Number(card[1]) - 1;
   return [`${cardNumber[cNumber]}`, `${color[cColor]}`];
-}
-export { mapCard }
+};
+export { mapCard };

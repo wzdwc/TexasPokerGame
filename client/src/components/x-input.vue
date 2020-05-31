@@ -8,14 +8,16 @@
                @focus="onFocus"
                @blur="focus = false"
                v-model="changeValue"/>
-        <i class="iconfont icon-close close" v-show="value !== ''" @click="clear"></i>
+        <i class="iconfont icon-close close"
+           v-show="value !== ''"
+           @click="clear"></i>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from 'vue-property-decorator';
+  import { Component, Prop, Vue } from 'vue-property-decorator';
 
   @Component
   export default class XInput extends Vue {
@@ -41,7 +43,7 @@
 
     private onFocus() {
       this.focus = true;
-      this.$emit('focus')
+      this.$emit('focus');
     }
   }
 </script>
@@ -50,7 +52,7 @@
 <style scoped
        lang="less">
   .input-container {
-    .input-name{
+    .input-name {
       top: 12px;
       left: 10px;
       text-align: left;
@@ -62,13 +64,15 @@
       z-index: 0;
       background-color: #fff;
     }
-    .input-text{
+
+    .input-text {
       position: relative;
       display: block;
       padding: 2px;
       box-sizing: border-box;
       z-index: 1;
-      input{
+
+      input {
         width: 80vw;
         height: 20px;
         padding: 5px 10px;
@@ -78,7 +82,8 @@
         background: transparent;
       }
     }
-    .input-bd{
+
+    .input-bd {
       margin: 4vw 0;
       border: 1px solid #bababa;
       border-radius: 4px;
@@ -87,24 +92,30 @@
       box-sizing: border-box;
       position: relative;
     }
-    .move{
-      .input-name{
+
+    .move {
+      .input-name {
         transform: translate3d(-10px, -22px, 0px) scale(0.8);
       }
     }
-    .focus{
+
+    .focus {
       border: 1px solid #00976e;
-      .input-name{
+
+      .input-name {
         color: #00976e;
       }
     }
-    .error{
+
+    .error {
       border: 1px solid #e8050a;
-      .input-name{
+
+      .input-name {
         color: #e8050a;
       }
     }
-    .close{
+
+    .close {
       position: absolute;
       display: inline-block;
       width: 30px;

@@ -1,5 +1,5 @@
 {
-  "name": "game-node-center",
+  "name": "poke-game-server",
   "version": "1.0.0",
   "description": "node服务中心",
   "private": true,

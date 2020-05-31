@@ -1,19 +1,24 @@
 <template>
   <div class="home-container container">
-    <div class="room-btn" v-show="showBtn">
+    <div class="room-btn"
+         v-show="showBtn">
       <div class="create-room btn"
            @click="createRoom"><span>create room</span>
       </div>
       <div class="btn"
-           @click="joinRoom"> <span>join room</span>
+           @click="joinRoom"><span>join room</span>
       </div>
     </div>
-    <div class="room-number" v-show="isJoin">
+    <div class="room-number"
+         v-show="isJoin">
       <div class="room-input inline">
-        <div class="input-bd">
+        <div class="input-bd"
+             :class="{error: isError}">
           <div class="input-name iconfont icon-password"></div>
           <div class="input-text">
-            <input type="tel" maxlength="6"
+            <input type="tel"
+                   maxlength="6"
+                   @focus="isError = false"
                    v-model="roomNumber"/>
           </div>
         </div>
@@ -29,11 +34,13 @@
   import { Vue } from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import service from '../service';
+
   @Component
   export default class Home extends Vue {
     public roomNumber: string = '';
     private isJoin = false;
     private showBtn = true;
+    private isError = false;
 
     private async createRoom() {
       try {
@@ -51,41 +58,65 @@
       this.showBtn = false;
     }
 
-    private go() {
-      if (/^\d+$/.test(this.roomNumber)) {
-        this.$router.replace({ name: 'game', params: { roomNumber: this.roomNumber } });
+    private async go() {
+      if (!/^\d+$/.test(this.roomNumber)) {
+        this.isError = true;
+        return;
+      }
+      try {
+        const { data } = await service.findRoom(this.roomNumber);
+        if (data.hasRoom) {
+          this.$router.replace({ name: 'game', params: { roomNumber: this.roomNumber } });
+        } else {
+          this.$plugin.toast('can\'t find the room');
+          console.log('can\'t find the room');
+        }
+      } catch (e) {
+        this.$plugin.toast('can\'t find the room');
       }
     }
   }
 </script>
-<style lang="less" scoped>
+<style lang="less"
+       scoped>
   .home-container {
     height: 100vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    .room-btn{
+
+    .room-btn {
       flex: 1;
-      .btn{
+
+      .btn {
         width: 50vw;
-        margin:30px auto;
+        margin: 30px auto;
       }
     }
-    .room-number{
+
+    .room-number {
       line-height: 40px;
       text-align: center;
       width: 100%;
-      .input-bd{
+
+      .input-bd {
         border: 1px solid #bababa;
         border-radius: 4px;
-        input{
+
+        input {
           border-radius: 8px;
         }
       }
-      .room-btn{
+
+      .error {
+        border: 1px solid #e8050a;
+      }
+
+      .room-btn {
         height: 30px;
         margin-top: 0;
-        span{
+
+        span {
           margin: 0;
           line-height: 30px;
           height: 30px;
@@ -97,7 +128,8 @@
           display: block;
         }
       }
-      .inline{
+
+      .inline {
         display: inline-block;
         vertical-align: middle;
       }

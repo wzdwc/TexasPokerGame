@@ -9,9 +9,17 @@ export default {
     url: '/user/login',
     body: { userAccount, password },
   }),
+  checkLogin: () => request({
+    url: '/user',
+    body: {},
+  }),
   createRoom: () => request({
     url: '/game/room',
     body: { },
+  }),
+  findRoom: (roomNumber: string) => request({
+    url: '/game/room/find',
+    body: { roomNumber },
   }),
   buyIn: (buyInSize: number) => request({
     url: '/game/buyIn',

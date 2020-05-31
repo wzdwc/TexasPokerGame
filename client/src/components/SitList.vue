@@ -13,8 +13,11 @@
         </div>
         <div class="sit-player"
              v-if="sit.player">
-          <div class="player" :class="{fold: sit.player.status === -1}">
-            <div class="count-down" v-show="actionUserId === sit.player.userId">{{time}}</div>
+          <div class="player"
+               :class="{fold: sit.player.status === -1}">
+            <div class="count-down"
+                 v-show="actionUserId === sit.player.userId">{{time}}
+            </div>
             <div class="user-name"
                  v-show="sit.player.nickName">
               {{ sit.player.nickName }}
@@ -42,9 +45,11 @@
                  v-show="!!!currPlayer || (sit.player.userId !== currPlayer.userId
             && sit.player.handCard
             && sit.player.handCard.length !== 0)">
-              <cardList :cardList="sit.player.handCard" :valueCards="valueCards"></cardList>
+              <cardList :cardList="sit.player.handCard"
+                        :valueCards="valueCards"></cardList>
             </div>
-            <div class="card-style" v-show="!!!currPlayer || (sit.player.userId !== currPlayer.userId
+            <div class="card-style"
+                 v-show="!!!currPlayer || (sit.player.userId !== currPlayer.userId
             && sit.player.handCard
             && sit.player.handCard.length !== 0)">
               {{PokeStyle(sit.player.handCard)}}
@@ -53,7 +58,8 @@
           <div class="cards"
                v-show="showHandCard(sit)">
             <div class="hand-card">
-              <cardList :cardList="handCard" :valueCards="valueCards"></cardList>
+              <cardList :cardList="handCard"
+                        :valueCards="valueCards"></cardList>
             </div>
             <div class="ready"
                  v-show="handCard && handCard.length === 0">ready
@@ -69,7 +75,6 @@
           </div>
         </div>
       </div>
-      `
     </div>
     <BuyIn :showBuyIn.sync="showBuyIn"
            :min="200"
@@ -79,13 +84,13 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Watch, Vue} from 'vue-property-decorator';
-  import {IPlayer} from '@/interface/IPlayer';
-  import {ILinkNode} from '@/utils/Link';
+  import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+  import { IPlayer } from '@/interface/IPlayer';
+  import { ILinkNode } from '@/utils/Link';
   import ISit from '@/interface/ISit';
   import cardList from './cardList.vue';
   import BuyIn from '@/components/BuyIn.vue';
-  import {PokerStyle} from '@/utils/PokerStyle';
+  import { PokerStyle } from '@/utils/PokerStyle';
   import map from '../utils/map';
 
   @Component({
@@ -104,7 +109,7 @@
     @Prop() private isPlay!: boolean;
     @Prop() private actionUserId!: string;
     @Prop() private valueCards!: string;
-    @Prop({ default:30, type:Number }) private time!: number;
+    @Prop({ default: 30, type: Number }) private time!: number;
 
     private sitLinkNode: any = '';
     private showBuyIn = false;
@@ -269,7 +274,8 @@
           .user-name {
             color: #fff;
           }
-          .count-down{
+
+          .count-down {
             height: 7vh;
             line-height: 9vh;
             width: 12vw;
@@ -279,18 +285,21 @@
             color: #fff;
             font-weight: 700;
             font-size: 20px;
-            background-image: linear-gradient(0deg, rgba(0,0,0,0.3), transparent);
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), transparent);
           }
+
           .counter {
             background-color: rgba(0, 0, 0, 0.6);
             color: #fff;
             font-weight: 600;
             font-size: 12px;
             border-radius: 2px;
+
             &.isAction {
               box-shadow: 0px 0px 6px 4px;
             }
-            &.close-time-out{
+
+            &.close-time-out {
               animation: 300ms timeOut infinite;
             }
           }

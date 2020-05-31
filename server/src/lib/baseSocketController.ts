@@ -33,7 +33,7 @@ export default class BaseSocketController extends Controller {
         roomInfo.players.forEach(p => {
           const currPlayer = roomInfo.game &&
             roomInfo.game.getPlayers().find(player => player.userId === p.userId);
-          p.counter = currPlayer?.counter || 0;
+          p.counter = currPlayer?.counter || p.counter;
           p.type = currPlayer?.type || '';
           p.status = currPlayer ? 1 : p.status === -1 ? -1 : 0;
           p.actionCommand = currPlayer && currPlayer.actionCommand || '';
@@ -44,7 +44,7 @@ export default class BaseSocketController extends Controller {
           players: roomInfo.players.map(p => {
             const currPlayer = roomInfo.game?.allPlayer.find(player => player.userId === p.userId);
             return Object.assign({}, {
-              counter: currPlayer?.counter || 0,
+              counter: currPlayer?.counter || p.counter,
               actionSize: currPlayer?.actionSize || 0,
               actionCommand: currPlayer?.actionCommand || '',
               nickName: p.nickName,

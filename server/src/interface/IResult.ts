@@ -1,7 +1,7 @@
 export enum ResultCode {
   SUCCESS = '000000',
-  FAILD = '100000',
-  UNAUTH = '999999',
+  FAIL = '100000',
+  ONT_AUTH = '999999',
 }
 
 export interface IResult {

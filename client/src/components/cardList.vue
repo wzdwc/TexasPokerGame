@@ -6,8 +6,10 @@
       v-bind:class="{ show: show, turn: show && card !== '' }"
     >
       <i></i>
-      <span class="card-bg red" :class="{ black : isBlack(map(card)[1])}">
-        <div class="shadow" v-show="shadow(card)"></div>
+      <span class="card-bg red"
+            :class="{ black : isBlack(map(card)[1])}">
+        <div class="shadow"
+             v-show="shadow(card)"></div>
         <b class="number">{{ map(card)[0] }}</b>
         <b class="color">{{ map(card)[1] }}</b>
         <b class="color big">{{ map(card)[1] }}</b>
@@ -17,13 +19,13 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from 'vue-property-decorator';
-  import { mapCard } from '@/utils/map'
+  import { Component, Prop, Vue } from 'vue-property-decorator';
+  import { mapCard } from '@/utils/map';
 
   @Component
   export default class Card extends Vue {
     @Prop() private cardList: any;
-    @Prop({default: [], type: Array }) private valueCards!: string;
+    @Prop({ default: [], type: Array }) private valueCards!: string;
 
     get show() {
       return this.cardList[0].length !== 0;
@@ -34,18 +36,21 @@
     }
 
     private map(card: string) {
-      return mapCard(card)
+      return mapCard(card);
     }
 
     private shadow(card: string) {
-      if (this.valueCards.length === 0) return false
-      return this.valueCards.indexOf(card) < 0
+      if (this.valueCards.length === 0) {
+        return false;
+      }
+      return this.valueCards.indexOf(card) < 0;
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
+<style scoped
+       lang="less">
   .card-container {
     .card {
       height: 60px;
@@ -57,6 +62,7 @@
       opacity: 0;
       border-radius: 5px;
       z-index: 0;
+
       i {
         background: url("../assets/poke.png");
         height: 60px;
@@ -87,6 +93,7 @@
         flex-direction: column;
         transform-style: preserve-3d;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
         .shadow {
           width: 40px;
           height: 60px;
@@ -95,7 +102,7 @@
           border-radius: 5px;
           position: absolute;
           z-index: 1;
-          background: rgba(0,0,0,0.4);
+          background: rgba(0, 0, 0, 0.4);
         }
 
         &.red {
@@ -121,10 +128,11 @@
           top: -2px;
           font-size: 20px;
           line-height: 60px;
-          &.big{
+
+          &.big {
             left: 15px;
             font-size: 35px;
-            top:12px;
+            top: 12px;
           }
         }
       }
