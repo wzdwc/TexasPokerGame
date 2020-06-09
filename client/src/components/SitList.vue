@@ -77,7 +77,7 @@
       </div>
     </div>
     <BuyIn :showBuyIn.sync="showBuyIn"
-           :min="200"
+           :min="0"
            :max="1000"
            @buyIn='buyIn'></BuyIn>
   </div>
@@ -123,8 +123,8 @@
     private buyIn(size: number) {
       console.log('ccc');
       this.showBuyIn = false;
-      this.$emit('buyIn', size);
-      this.sitDown(this.currSit);
+      this.$emit('buyIn', Number(size));
+      // this.sitDown(this.currSit);
     }
 
     private showHandCard(sit: ISit) {
@@ -159,7 +159,6 @@
 
     private sitDown(sit: ISit) {
       if (!sit.player && (!this.isPlay || !this.hasSit)) {
-        console.log('ccc2', this.currPlayer);
         if (this.currPlayer.counter <= 0) {
           this.showBuyIn = true;
           this.currSit = sit;

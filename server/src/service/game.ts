@@ -11,9 +11,28 @@ export class GameService implements IGameService {
   mysql: any;
 
   async add(game: IGame) {
-    return await this.mysql.insert('game', {
-      ...game,
+    console.log('this.mysql', this.mysql);
+    const gameInfo = await this.mysql.insert('game', {
+      room_id: game.roomId,
+      status: game.status,
+      common_card: game.commonCard,
+      pot: game.pot,
+      winners: game.winners,
     });
+    console.log(gameInfo);
+    return { succeed: gameInfo.affectedRows === 1, id: gameInfo.insertId };
+  }
+
+  async update(game: IGame) {
+    const gameInfo = await this.mysql.update('game', {
+      id: game.id,
+      status: game.status,
+      common_card: game.commonCard,
+      pot: game.pot,
+      winners: game.winners,
+    });
+    console.log(gameInfo);
+    return { succeed: gameInfo.affectedRows === 1 };
   }
 
   async findById(gid: number): Promise<IGame> {

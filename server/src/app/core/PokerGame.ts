@@ -175,7 +175,8 @@ export class PokerGame {
             && (command === ECommand.CHECK || command === ECommand.FOLD)));
 
         if (this.playerSize === 0
-          || this.playerSize === 1 && this.currActionAllinPlayer.length === 0
+          || (this.playerSize === 1 && this.currActionAllinPlayer.length === 0)
+          || (this.commonCard.length !== 0 && nextPlayer.actionSize === this.smallBlind * 2 && nextPlayer.actionSize === size)
           || (nextPlayer.actionSize === this.prevSize
             && (nextPlayer.actionSize === size || command === ECommand.FOLD)
           && this.prevSize !== this.smallBlind * 2 && this.prevSize !== 0)

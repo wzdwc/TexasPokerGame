@@ -17,4 +17,5 @@ export interface IRoomInfo {
   sit: ISit[];
   game: PokerGame | null;
   sitLink: ILinkNode<IPlayer> | null;
+  gameId?: number;
 }

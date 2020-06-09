@@ -1,23 +1,18 @@
 'use strict';
 import BaseSocketController from '../../../lib/baseSocketController';
 import { IRoomInfo, ISit } from '../../../interface/IGameRoom';
-import { PokerGame } from '../../core/PokerGame';
+import { EGameStatus, PokerGame } from '../../core/PokerGame';
 import { IPlayer } from '../../core/Player';
 import { ILinkNode, Link } from '../../../utils/Link';
+import { IGame } from '../../../interface/IGame';
+import { ICommandRecord } from '../../../interface/ICommandRecord';
 
 class GameController extends BaseSocketController {
 
   async playGame() {
     try {
-      // const gameRecord: IGameRecord = {
-      //   game_id: 0,
-      //   user_id: 0,
-      //   buy_in: 200,
-      //   hand_cards: '',
-      //   room_number: room,
-      // };
-      // await this.gameRecordService.add(gameRecord);
       const roomInfo = await this.getRoomInfo();
+      const gameService = await this.app.applicationContext.getAsync('GameService');
       console.log('players===============sit11111111111', roomInfo.sit);
       let sitDownPlayer: IPlayer[] = [];
       if (roomInfo.sitLink) {
@@ -79,7 +74,7 @@ class GameController extends BaseSocketController {
               }
             }
           },
-          gameOverCallBack: () => {
+          gameOverCallBack: async () => {
             if (roomInfo.game) {
               // game over
               roomInfo.game.allPlayer.forEach(gamePlayer => {
@@ -135,6 +130,18 @@ class GameController extends BaseSocketController {
                   }, 10000);
                 }
               });
+            // update game info
+            const gameRecord: IGame = {
+              id: roomInfo.gameId,
+              pot: roomInfo.game?.pot || 0,
+              commonCard: roomInfo.game?.commonCard.join(',') || '',
+              winners: JSON.stringify(roomInfo.game?.winner).replace(' ', ''),
+              status: 2,
+            };
+            const result = await gameService.update(gameRecord);
+            if (!result.succeed) {
+              throw 'update game error';
+            }
           },
           autoActionCallBack: async (command, userId) => {
             // fold change status: -1
@@ -159,6 +166,7 @@ class GameController extends BaseSocketController {
             console.log('auto Action');
           },
         });
+
         roomInfo.game.play();
         roomInfo.game.startActionRound();
         console.log('hand card', roomInfo.game.allPlayer);
@@ -175,6 +183,19 @@ class GameController extends BaseSocketController {
           console.log(msg, 'game msg---------', p.socketId);
           this.nsp.emit(p.socketId, msg);
         });
+        // add game record
+        const gameRecord: IGame = {
+          roomId: this.roomNumber,
+          pot: 0,
+          commonCard: '',
+          status: 0,
+        };
+        const result = await gameService.add(gameRecord);
+        if (result.succeed) {
+          roomInfo.gameId = result.id;
+        } else {
+          throw 'game add error';
+        }
       } else {
         throw 'game already paling';
       }
@@ -377,6 +398,7 @@ class GameController extends BaseSocketController {
         userInfo);
       if (roomInfo.game && roomInfo.game.currPlayer.node.userId ===
         userInfo.userId) {
+        const currPlayer = roomInfo.game.currPlayer.node;
         roomInfo.game.action(payload.command);
         const commandArr = payload.command.split(':');
         const command = commandArr[0];
@@ -393,6 +415,32 @@ class GameController extends BaseSocketController {
         // todo notice next player action
         await this.updateGameInfo();
         console.log('curr player', roomInfo.game.currPlayer.node);
+        // add game record
+        let status = 0;
+        const commonCard = roomInfo.game.commonCard;
+        if (commonCard.length === 3) {
+          status = EGameStatus.GAME_FLOP;
+        }
+        if (commonCard.length === 4) {
+          status = EGameStatus.GAME_TURN;
+        }
+        if (commonCard.length === 5) {
+          status = EGameStatus.GAME_RIVER;
+        }
+        if (commonCard.length === 6) {
+          status = EGameStatus.GAME_SHOWDOWN;
+        }
+        const commandRecord: ICommandRecord = {
+          roomId: this.roomNumber,
+          userId: userInfo.userId,
+          type: currPlayer.type,
+          gameStatus: status,
+          command: payload.command,
+          gameId: roomInfo.gameId || 0,
+          counter: currPlayer.counter,
+        };
+        const commandRecordService = await this.app.applicationContext.getAsync('CommandRecordService');
+        await commandRecordService.add(commandRecord);
       } else {
         throw 'action flow incorrect';
       }

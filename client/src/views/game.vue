@@ -26,56 +26,16 @@
       <div class="btn play"
            v-show="isOwner && !isPlay"><span @click="play">play game</span></div>
     </div>
-    <div class="action"
-         v-show="isAction">
-      <div class="action-type action-btn">
-          <span @click="action('check')"
-                v-show="showActionBtn('check')">check</span>
-        <span @click="action('fold')">fold</span>
-        <span @click="action('call')"
-              v-show="showActionBtn('call')">call</span>
-        <span @click="otherSizeHandle()"
-              v-show="showActionBtn('raise')">more</span>
-        <span @click="action('allin')"
-              v-show="!showActionBtn('raise')">allin</span>
-      </div>
-      <div class="raise-size">
-        <div class="not-allin"
-             v-show="showActionBtn('raise')">
-          <i v-for="size in raiseSizeMap.firsAction"
-             @click="raise(size)"
-             v-show="commonCard.length === 0 && pot === 3">
-            {{Math.floor(size * prevSize)}}
-          </i>
-          <i v-for="size in raiseSizeMap.other"
-             @click="raise(size)"
-             v-show="showActionSize(size)"
-          > {{Math.floor(size * pot)}}</i>
-          <!--          <i @click="raise(pot)">{{pot}}</i>-->
-          <!--          <i @click="raise(pot * 2)">{{2*pot}}</i>-->
-        </div>
-      </div>
-      <div class="action-other-size"
-           v-if="isRaise">
-        <div class="action-other-size-body">
-          <div class="size"
-               v-show="currPlayer && raiseSize < currPlayer.counter">{{raiseSize}}
-          </div>
-          <div class="size"
-               v-show="currPlayer && raiseSize === currPlayer.counter">Allin
-          </div>
-          <range :max="currPlayer && currPlayer.counter"
-                 :min="minActionSize"
-                 :is-horizontal="true"
-                 @change="getBuyInSize"></range>
-          <div class="btn"
-               @click="addSize">ok
-          </div>
-        </div>
-        <div class="shadow"
-             @click="isRaise = false"></div>
-      </div>
-    </div>
+    <actionDialog :base-size="baseSize"
+            :curr-player="currPlayer"
+            :is-action="isAction"
+            :is-pre-flop="commonCard.length === 0"
+            :min-action-size="minActionSize"
+            :is-two-player="gamePlayers.length === 2"
+            :pot="pot"
+            :prev-size="prevSize"
+            @action = 'action'
+    ></actionDialog>
     <div class="setting">
       <div class="iconfont icon-setting setting-btn"
            @click="showSetting = true"></div>
@@ -86,7 +46,7 @@
       </div>
     </div>
     <BuyIn :showBuyIn.sync='showBuyIn'
-           :min='200'
+           :min='0'
            :max='1000'
            @buyIn='buyIn'></BuyIn>
     <toast :show.sync="showMsg"
@@ -113,6 +73,7 @@
   import record from '../components/record.vue';
   import notice from '../components/notice.vue';
   import sendMsg from '../components/sendMsg.vue';
+  import actionDialog from '../components/Action.vue';
   import map from '../utils/map';
   import { PokerStyle } from '@/utils/PokerStyle';
   import origin from '../utils/origin';
@@ -144,6 +105,7 @@
       toast,
       record,
       notice,
+      actionDialog,
       sendMsg,
     },
   })
@@ -159,34 +121,20 @@
     private pot = 0;
     private slidePots = [];
     private prevSize = 0;
-    // private isAction = false;
-    private isRaise = false;
     private winner: IPlayer [][] = [];
     private showBuyIn = false;
     private showSetting = false;
     private sitLink: any = '';
-    private raiseSize: number = 0;
     private gaming = false;
     private sitList: ISit[] = [];
     private actionUserId = '';
     private showMsg = false;
+    private baseSize = GAME_BASE_SIZE;
     private msg = '';
     private time = 30;
     private timeSt = 0;
     private messageList: any[] = [];
     private showRecord = false;
-    private raiseSizeMap = {
-      firsAction: {
-        two: 2,
-        three: 3,
-        four: 4,
-      },
-      other: {
-        oneThirdPot: 0.5,
-        halfPot: 0.75,
-        pot: 1,
-      },
-    };
 
     @Watch('players')
     private playerChange(players: IPlayer[]) {
@@ -232,7 +180,7 @@
 
     get isAction() {
       return !!(this.userInfo
-        && this.userInfo.userId === this.actionUserId)
+        && this.userInfo.userId === this.actionUserId);
     }
 
     get valueCards() {
@@ -260,10 +208,6 @@
       return this.players.find((u: IPlayer) => this.userInfo.userId === u.userId);
     }
 
-    get canActionSize() {
-      return Number(this.currPlayer && this.currPlayer.counter + this.currPlayer.actionSize);
-    }
-
     get commonCardString() {
       const commonCardFlag: string[][] = [[], [], [], [], []];
       const commonCardMap = map(this.commonCard);
@@ -278,15 +222,12 @@
     }
 
     private init() {
-      this.raiseSize = 0;
       this.joinMsg = '';
       this.handCard = [];
       this.commonCard = [];
       this.pot = 0;
       this.prevSize = 0;
       this.time = 30;
-      // this.isAction = false;
-      this.isRaise = false;
       this.winner = [];
       this.showBuyIn = false;
       this.initSitLink();
@@ -323,34 +264,9 @@
       return style.getPokerStyleName();
     }
 
-    private showActionSize(multiple: number) {
-      // big then double pre-size and small then counter
-      return this.currPlayer
-        && this.currPlayer.counter > Math.floor(multiple * this.pot)
-        && this.prevSize * 2 <= Math.floor(multiple * this.pot)
-        && GAME_BASE_SIZE * 2 <= Math.floor(multiple * this.pot);
-    }
-
-    private otherSizeHandle() {
-      this.isRaise = true;
-      this.raiseSize = this.minActionSize;
-    }
-
     private showBuyInDialog() {
       this.showBuyIn = true;
       this.showSetting = false;
-    }
-
-    private closeBuyIn() {
-      this.showBuyIn = false;
-    }
-
-    private addSize() {
-      if (this.raiseSize === this.currPlayer?.counter) {
-        this.action('allin');
-      } else {
-        this.action(`raise:${this.raiseSize}`);
-      }
     }
 
     private sitListMap() {
@@ -368,61 +284,13 @@
       this.emit('sitDown', { sitList: this.sitListMap() });
     }
 
-    // private mapCard(cards: string []) {
-    //   const cardNumber = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
-    //   const color = ['♦', '♣', '♥', '♠'];
-    //   return cards?.map((c: string) => {
-    //     const cNumber = c.charCodeAt(0) - 97;
-    //     const cColor = Number(c[1]) - 1;
-    //     return [`${cardNumber[cNumber]}`, `${color[cColor]}`];
-    //   });
-    // }
-
-    private showActionBtn(type: string) {
-      // check
-      if ('check' === type) {
-        return this.prevSize <= 0
-          || (this.commonCard.length === 0
-            && this.gamePlayers.length === 2
-            && this.currPlayer?.type === 'd'
-            && this.prevSize === 2)
-          || (this.currPlayer?.type === 'bb' && this.prevSize === 2 &&
-            this.commonCard.length === 0);
-      }
-      // raise
-      if ('raise' === type) {
-        return this.canActionSize > this.prevSize * 2;
-      }
-      // call
-      if ('call' === type) {
-        return this.canActionSize > this.prevSize
-          && this.prevSize > 0
-          && !((this.commonCard.length === 0
-            && this.gamePlayers.length === 2
-            && this.currPlayer?.type === 'd'
-            && this.prevSize === 2 * GAME_BASE_SIZE)
-            || (this.currPlayer?.type === 'bb' && this.prevSize === 2 * GAME_BASE_SIZE &&
-              this.commonCard.length === 0));
-      }
-      return true;
-    }
-
-    private raise(size: number) {
-      const realSize = size === 0 ? this.prevSize * 2 : size * this.pot;
-      this.action(`raise:${Math.floor(realSize)}`);
-    }
-
-    private getBuyInSize(size: number) {
-      this.raiseSize = size;
-    }
-
     private action(command: string) {
       if (command === 'fold') {
         clearTimeout(this.timeSt);
       }
       this.emit('action', { command });
       // this.isAction = false;
-      this.isRaise = false;
+      // this.isRaise = false;
     }
 
     private socketInit() {
@@ -562,10 +430,15 @@
     }
 
     private async buyIn(size: number) {
+      if (size <= 0) {
+        this.$plugin.toast('buy in size too small');
+        return;
+      }
+
       try {
-        if (this.currPlayer && (!this.isPlay || !this.hasSit)) {
-          this.currPlayer.counter += size;
-        }
+        // if (this.currPlayer && (!this.isPlay || !this.hasSit)) {
+        //   this.currPlayer.counter += size;
+        // }
         console.log('come in buyIn ==================', size);
         this.showMsg = true;
         this.msg = this.hasSit && this.isPlay
@@ -661,98 +534,6 @@
       .roomId {
         margin-top: 10px;
         font-size: 14px;
-      }
-    }
-
-
-    .action {
-      position: absolute;
-      color: #fff;
-      width: 80vw;
-      top: 65vh;
-      left: 50%;
-      transform: translateX(-50%);
-
-      .raise-size {
-        position: absolute;
-        top: -7vh;
-        left: 50%;
-        width: 53vw;
-        margin-left: -26.4vw;
-        text-align: center;
-
-        i {
-          padding: 2px;
-          width: 24px;
-          height: 24px;
-          display: inline-block;
-          font-style: normal;
-          font-size: 10px;
-          line-height: 24px;
-          border-radius: 50%;
-          color: #fff;
-          border: 1px solid #fff;
-          background: rgba(0, 0, 0, .2);
-          margin: 10px;
-          vertical-align: middle;
-        }
-      }
-
-      .action-btn {
-        span {
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          padding: 2px;
-          text-align: center;
-          margin: 0 10px;
-          line-height: 40px;
-          border: 1px solid #fff;
-          font-size: 14px;
-          display: inline-block;
-        }
-      }
-
-      .action-other-size {
-        background-color: rgba(0, 0, 0, 0);
-        position: fixed;
-        width: 50vw;
-        height: 30vh;
-        right: -16px;
-        top: -35vh;
-        z-index: 90;
-
-        .shadow {
-          position: absolute;
-          top: -30vh;
-          width: 99vw;
-          height: 100vh;
-          right: -5vw;
-          z-index: 8;
-          overflow: hidden;
-          background: linear-gradient(-70deg, black, transparent);
-        }
-
-        .action-other-size-body {
-          z-index: 9;
-          position: absolute;
-          width: 50vw;
-          height: 30vh;
-
-          .btn {
-            position: absolute;
-            top: 34vh;
-            left: 20vw;
-            border: 1px solid #fff;
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.4);
-            padding: 5px;
-            font-size: 12px;
-            width: 20px;
-            height: 20px;
-            line-height: 20px;
-          }
-        }
       }
     }
 

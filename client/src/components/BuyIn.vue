@@ -5,9 +5,10 @@
          @click="closeBuyIn"></div>
     <div class="buy-in-body">
       <div class="input-bd">
-        <div class="input-name">buy in: {{buyInSize}}</div>
+        <div class="input-name"><span>buy in: </span><input type="number" v-model="buyInSize"></div>
         <range :max="max"
                :min="min"
+               v-model="buyInSize"
                @change="getBuyInSize"></range>
       </div>
       <div class="btn"><span @click="buyIn">buy in</span></div>
@@ -16,7 +17,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator';
+  import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
   import range from '../components/range.vue';
 
   @Component({
@@ -29,6 +30,11 @@
     @Prop() private min!: number;
     @Prop() private max!: number;
     private buyInSize: number = 0;
+
+    @Watch('buyInSize')
+    private wBuyInSize(val: number) {
+      this.buyInSize = val > this.max ? this.max : val < this.min ? this.min : val;
+    }
 
     private getBuyInSize(val: string) {
       this.buyInSize = Number(val);
@@ -86,6 +92,11 @@
     .input-name{
       margin-bottom: 15px;
       font-size: 20px;
+      text-align: center;
+      input{
+        width: 50px;
+        font-size: 20px;
+      }
     }
     .btn{
       margin-top: 20px;

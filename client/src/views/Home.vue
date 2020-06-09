@@ -47,7 +47,7 @@
         const result = await service.createRoom();
         const { roomNumber } = result.data;
         console.log(result);
-        this.$router.replace({ name: 'game', params: { roomNumber, isOwner: '1' } });
+        this.$router.push({ name: 'game', params: { roomNumber, isOwner: '1' } });
       } catch (e) {
         console.log(e);
       }
@@ -66,7 +66,7 @@
       try {
         const { data } = await service.findRoom(this.roomNumber);
         if (data.hasRoom) {
-          this.$router.replace({ name: 'game', params: { roomNumber: this.roomNumber } });
+          this.$router.push({ name: 'game', params: { roomNumber: this.roomNumber } });
         } else {
           this.$plugin.toast('can\'t find the room');
           console.log('can\'t find the room');

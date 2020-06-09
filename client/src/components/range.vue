@@ -4,6 +4,7 @@
     <div class="range-body">
       <input type="range"
              v-model="range"
+
              :class="{horizontal: !!isHorizontal}">
     </div>
   </div>
@@ -16,17 +17,35 @@
   export default class Range extends Vue {
     @Prop({ type: Number, default: 1000 }) private max!: number;
     @Prop({ type: Number, default: 100 }) private min!: number;
+    @Prop() private value!: any;
     @Prop({ type: Boolean, default: false }) private isHorizontal!: boolean;
-    private range = 0;
+    // private range = 0;
+    private rangeRound = (this.max - this.min) / 100
 
-    @Watch('range')
-    private raiseSize(val: string) {
+    get range() {
+      const valNum = Number(this.value);
+      const size = valNum >= this.max ? this.max / this.rangeRound :
+        valNum < this.min ? 0 : (valNum - this.min) / this.rangeRound;
+      return size;
+    }
+
+    set range(val) {
       const valNum = Number(val);
       const size = Number(val) === 0 ? this.min : Math.floor(valNum / 100 * (this.max - this.min)) +
         this.min;
       console.log('size', size);
       this.$emit('change', size);
+      this.$emit('input', size);
     }
+
+    // @Watch('range')
+    // private raiseSize(val: string) {
+    //   const valNum = Number(val);
+    //   const size = Number(val) === 0 ? this.min : Math.floor(valNum / 100 * (this.max - this.min)) +
+    //     this.min;
+    //   console.log('size', size);
+    //   this.$emit('change', size);
+    // }
   }
 </script>
 
