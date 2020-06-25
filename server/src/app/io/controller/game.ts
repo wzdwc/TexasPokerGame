@@ -6,13 +6,14 @@ import { IPlayer } from '../../core/Player';
 import { ILinkNode, Link } from '../../../utils/Link';
 import { IGame } from '../../../interface/IGame';
 import { ICommandRecord } from '../../../interface/ICommandRecord';
+import { IPlayerDTO } from '../../../interface/IPlayer';
 
 class GameController extends BaseSocketController {
-
   async playGame() {
     try {
       const roomInfo = await this.getRoomInfo();
       const gameService = await this.app.applicationContext.getAsync('GameService');
+      const playerRecordService = await this.app.applicationContext.getAsync('PlayerRecordService');
       console.log('players===============sit11111111111', roomInfo.sit);
       let sitDownPlayer: IPlayer[] = [];
       if (roomInfo.sitLink) {
@@ -40,10 +41,12 @@ class GameController extends BaseSocketController {
       if (sitDownPlayer.length < 2) {
         throw 'player not enough';
       }
+      console.log('roomConfig-------------------', roomInfo.config);
       if (!roomInfo.game) {
         roomInfo.game = null;
         roomInfo.game = new PokerGame({
           users: sitDownPlayer,
+          isShort: roomInfo.config.isShort,
           smallBlind: 1,
           actionRoundComplete: () => {
             let slidePots: number [] = [];
@@ -136,7 +139,7 @@ class GameController extends BaseSocketController {
               pot: roomInfo.game?.pot || 0,
               commonCard: roomInfo.game?.commonCard.join(',') || '',
               winners: JSON.stringify(roomInfo.game?.winner).replace(' ', ''),
-              status: 2,
+              status: roomInfo.game?.gameOverType || 0,
             };
             const result = await gameService.update(gameRecord);
             if (!result.succeed) {
@@ -172,20 +175,26 @@ class GameController extends BaseSocketController {
         console.log('hand card', roomInfo.game.allPlayer);
         // update counter, pot, status
         await this.updateGameInfo();
-        roomInfo.players.forEach(p => {
-          // console.log('game msg---------1');
+        for (const p of roomInfo.players) {
           const player = roomInfo.game?.allPlayer.find(
             player => player.userId === p.userId);
-          console.log(player, 'game msg---------1');
           const msg = this.ctx.helper.parseMsg('handCard', {
             handCard: player?.getHandCard(),
           }, { client: p.socketId });
-          console.log(msg, 'game msg---------', p.socketId);
           this.nsp.emit(p.socketId, msg);
-        });
+          const playerRecord: IPlayerDTO = {
+            roomNumber: this.roomNumber,
+            gameId: roomInfo.gameId || 0,
+            userId: player?.userId || '',
+            buyIn: p.buyIn,
+            counter: p.counter,
+            handCard: player?.getHandCard().join(',') || '',
+          };
+          await playerRecordService.add(playerRecord);
+        }
         // add game record
         const gameRecord: IGame = {
-          roomId: this.roomNumber,
+          roomNumber: this.roomNumber,
           pot: 0,
           commonCard: '',
           status: 0,
@@ -196,6 +205,34 @@ class GameController extends BaseSocketController {
         } else {
           throw 'game add error';
         }
+        // add game BB SB action record
+        const BB = roomInfo.game.BBPlayer;
+        const SB = roomInfo.game.SBPlayer;
+        const BBCommandRecord: ICommandRecord = {
+          roomNumber: this.roomNumber,
+          userId: BB.userId,
+          type: BB.type,
+          gameStatus: 0,
+          pot: 3,
+          commonCard: '',
+          command: 'bb:2',
+          gameId: result.id,
+          counter: BB.counter,
+        };
+        const SBCommandRecord: ICommandRecord = {
+          roomNumber: this.roomNumber,
+          userId: SB.userId,
+          type: SB.type,
+          gameStatus: 0,
+          pot: 1,
+          commonCard: '',
+          command: 'sb:1',
+          gameId: result.id,
+          counter: SB.counter,
+        };
+        const commandRecordService = await this.app.applicationContext.getAsync('CommandRecordService');
+        await commandRecordService.add(SBCommandRecord);
+        await commandRecordService.add(BBCommandRecord);
       } else {
         throw 'game already paling';
       }
@@ -221,22 +258,25 @@ class GameController extends BaseSocketController {
       // calculate re buy in
       roomInfo.sit.forEach((s: ISit) => {
         if (s.player) {
-          if (s.player.counter === 0) {
-            delete s.player;
-          } else {
-            console.log('roomInfo.players===============', roomInfo.players);
-            const player = roomInfo.players.find(
-              p => p.userId === s.player?.userId);
-            if (player) {
-              s.player.counter += Number(player.reBuy);
-              console.log('cal reBuy ===============================', s.player,
-                player.reBuy);
-              player.reBuy = 0;
-              s.player.reBuy = 0;
-            }
+          const player = roomInfo.players.find(
+            p => p.userId === s.player?.userId);
+          if (player) {
+            s.player.counter += Number(player.reBuy);
+            console.log('cal reBuy ===============================', s.player,
+              player.reBuy);
+            player.reBuy = 0;
+            s.player.reBuy = 0;
           }
         }
       });
+
+      // clear counter not enough player
+      roomInfo.sit.forEach((s: ISit) => {
+        if (s.player && s.player.counter === 0) {
+          delete s.player;
+        }
+      });
+
       const players = roomInfo.sit.filter(s => s.player && s.player.counter > 0)
         .map(s => s.player) || [];
       let link: ILinkNode<IPlayer> | null = new Link<IPlayer>(players).link;
@@ -289,6 +329,7 @@ class GameController extends BaseSocketController {
       const roomInfo: IRoomInfo = await this.getRoomInfo();
       const { payload } = this.ctx.args[0] || {};
       const { buyInSize } = payload;
+      // find current player
       const player = roomInfo.players.find(
         (p: IPlayer) => p.userId === userInfo.userId);
       console.log(userInfo, 'userInfo------', player);
@@ -431,10 +472,12 @@ class GameController extends BaseSocketController {
           status = EGameStatus.GAME_SHOWDOWN;
         }
         const commandRecord: ICommandRecord = {
-          roomId: this.roomNumber,
+          roomNumber: this.roomNumber,
           userId: userInfo.userId,
           type: currPlayer.type,
           gameStatus: status,
+          pot: roomInfo.game?.pot || 0,
+          commonCard: roomInfo.game?.commonCard.join(',') || '',
           command: payload.command,
           gameId: roomInfo.gameId || 0,
           counter: currPlayer.counter,

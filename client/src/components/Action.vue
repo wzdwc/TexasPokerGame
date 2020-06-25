@@ -110,11 +110,13 @@ import { IPlayer } from '@/interface/IPlayer';
   }
 
   private action(command: string) {
-    this.actioned = true;
-    console.log('command:', command)
-    this.$emit('action', command);
-    // this.isAction = false;
-    this.isRaise = false;
+    if (!this.actioned) {
+      this.actioned = true;
+      this.$emit('action', command);
+      // this.isAction = false;
+      this.isRaise = false;
+      this.actioned = false;
+    }
   }
 
   private showActionSize(multiple: number) {

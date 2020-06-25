@@ -60,4 +60,10 @@ describe('test/app/core/pokerStyle.test.ts', () => {
     console.log('getPokerValueCard', pokerStyle.getPokerValueCard())
     assert.strictEqual(pokerStyle.getPokerWeight() , '000000000miged')
   });
+  it('compare card', async () => {
+    let pokerStyle: PokerStyle = new PokerStyle(['k2','g3','i2','h4','j3', 'm1', 'l1'], true)
+    let pokerStyle2: PokerStyle = new PokerStyle(['k2','g3','i2','h4','j3','h1', 'h2'], true)
+    console.log('getPokerValueCard', pokerStyle.getPokerValueCard())
+    assert.strictEqual(pokerStyle.getPokerWeight() , pokerStyle2.getPokerWeight())
+  });
 });

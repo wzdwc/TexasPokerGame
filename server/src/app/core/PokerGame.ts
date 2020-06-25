@@ -1,7 +1,7 @@
 /**
  * Created by jorky on 2020/2/23.
  */
-import { Poker } from './Poker';
+import { IPoker, Poker } from './Poker';
 import { ECommand, EPlayerType, IPlayer, Player } from './Player';
 import { PokerStyle } from './PokerStyle';
 import { ILinkNode, Link } from '../../utils/Link';
@@ -10,9 +10,15 @@ import Timeout = NodeJS.Timeout;
 interface IPokerGame {
   users: IPlayer[];
   smallBlind: number;
+  isShort: boolean;
   actionRoundComplete: () => void;
   gameOverCallBack: () => void;
   autoActionCallBack: (actionType: string, userId: string) => void;
+}
+
+export enum EGameOverType {
+  GAME_SHOWDOWN = 1,
+  GAME_OVER = 2,
 }
 
 export enum EGameStatus {
@@ -33,10 +39,14 @@ export class PokerGame {
   fireCards: string[] = [];
   playerLink: Link<Player>;
   allPlayer: Player[] = [];
-  poker = new Poker();
+  SBPlayer: Player;
+  BBPlayer: Player;
+  poker: IPoker;
+  isShort: boolean;
   pot: number;
   slidePots: number [] = [];
   status: EGameStatus;
+  gameOverType: EGameOverType;
   currPlayer: ILinkNode<Player>;
   smallBlind: number;
   playerSize: number;
@@ -56,6 +66,9 @@ export class PokerGame {
     this.actionRoundComplete = config.actionRoundComplete;
     this.gameOverCallBack = config.gameOverCallBack;
     this.autoActionCallBack = config.autoActionCallBack;
+    console.log(config.isShort, 'poker--------------');
+    this.isShort = config.isShort;
+    this.poker = new Poker(this.isShort);
     if (config.users.length < 2) {
       throw 'player Inadequate';
     }
@@ -76,16 +89,14 @@ export class PokerGame {
   getBlind() {
     // sb blind
     const SBPlayerNode = this.playerLink.getNode(1);
-    const SBPlayer = SBPlayerNode.node;
+    this.SBPlayer = SBPlayerNode.node;
     if (SBPlayerNode.next) {
       // big blind
       const BBPlayerNode: ILinkNode<Player> = SBPlayerNode.next;
-      const BBPlayer = BBPlayerNode.node;
-      SBPlayer.action(`sb:${this.smallBlind}`);
-      BBPlayer.action(`bb:${this.smallBlind * 2}`);
+      this.BBPlayer = BBPlayerNode.node;
+      this.SBPlayer.action(`sb:${this.smallBlind}`);
+      this.BBPlayer.action(`bb:${this.smallBlind * 2}`);
       this.prevSize = this.smallBlind * 2;
-      // add counter to pot
-      // this.pots.push(this.smallBlind * 3);
       this.pot = this.smallBlind * 3;
       // todo straddle
     } else {
@@ -417,6 +428,7 @@ export class PokerGame {
     if (this.allInPlayers.length === 0 && this.playerSize === 1
       || this.allInPlayers.length === 1 && this.playerSize === 0) {
       console.log('only one player');
+      this.gameOverType = EGameOverType.GAME_OVER;
       const winner = this.allInPlayers[0] || this.currPlayer.node;
       this.status = EGameStatus.GAME_OVER;
       this.winner.push([ winner ]);
@@ -427,6 +439,7 @@ export class PokerGame {
       this.setSate();
     }
     this.status = EGameStatus.GAME_OVER;
+    this.gameOverType = EGameOverType.GAME_SHOWDOWN;
 
     this.getPlayerPokeStyle();
 
@@ -448,7 +461,7 @@ export class PokerGame {
 
   getPlayerPokeStyle() {
     this.allPlayer.map(p => {
-      p.pokeStyle = new PokerStyle([ ...p.getHandCard(), ...this.commonCard ]).getPokerWeight();
+      p.pokeStyle = new PokerStyle([ ...p.getHandCard(), ...this.commonCard ], this.isShort).getPokerWeight();
       return p;
     });
   }
@@ -465,7 +478,7 @@ export class PokerGame {
     const maxPlayer = lastPlayers.reduce((acc, cur) => {
       return this.compareCard(acc, cur) === 1 ? acc : cur;
     });
-    // has many winner ,equal max player
+    // has many winner equal max player
     lastPlayers.forEach(p => {
       if (this.compareCard(p, maxPlayer) === 0) {
         _maxPlayers.push(p);

@@ -92,6 +92,7 @@
   import BuyIn from '@/components/BuyIn.vue';
   import { PokerStyle } from '@/utils/PokerStyle';
   import map from '../utils/map';
+  import {IRoom} from '@/interface/IRoom';
 
   @Component({
     components: {
@@ -107,6 +108,7 @@
     @Prop() private handCard!: string[];
     @Prop() private winner!: IPlayer[][];
     @Prop() private isPlay!: boolean;
+    @Prop() private roomConfig!: IRoom;
     @Prop() private actionUserId!: string;
     @Prop() private valueCards!: string;
     @Prop({ default: 30, type: Number }) private time!: number;
@@ -141,7 +143,7 @@
         handCard = cards;
       }
       const card = [...handCard, ...commonCard];
-      const style = new PokerStyle(card);
+      const style = new PokerStyle(card, this.roomConfig.isShort);
       return style.getPokerStyleName();
     }
 

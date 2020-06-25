@@ -26,7 +26,7 @@ export class UserService implements IUserService {
     const user = await this.mysql.insert('user', {
       account: accountInfo.userAccount,
       password: accountInfo.password,
-      nick_name: accountInfo.nickName,
+      nickName: accountInfo.nickName,
     });
     return { succeed: user.affectedRows === 1 };
   }

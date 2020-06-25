@@ -15,17 +15,30 @@ export class CommandRecord implements ICommandRecordService {
 
   async add(commandRecord: ICommandRecord) {
     return await this.mysql.insert('command_record', {
-      room_id: commandRecord.roomId,
-      game_id: commandRecord.gameId,
-      command: commandRecord.command,
-      type: commandRecord.type,
-      user_id: commandRecord.userId,
-      counter: commandRecord.counter,
-      game_status: commandRecord.gameStatus,
+      ...commandRecord,
     });
   }
 
   async findById(gid: number): Promise<ICommandRecord> {
     return await this.mysql.get('game_record', { id: gid });
+  }
+
+  async findByRoomNumber(roomNumber: number): Promise<ICommandRecord []> {
+    const result = await this.mysql.query('SELECT\n' +
+      '\tcounter,\n' +
+      '\tcommand,\n' +
+      '\tnickName,\n' +
+      '\ttype,\n' +
+      '\tgameStatus,\n' +
+      '\tcommonCard,\n' +
+      '\tpot,\n' +
+      '\tgameId\n' +
+      'FROM\n' +
+      '\tcommand_record\n' +
+      'INNER JOIN USER ON `user`.id = command_record.userId\n' +
+      'WHERE\n' +
+      '\tcommand_record.roomNumber = ?', roomNumber);
+    console.log(result, '=============command');
+    return JSON.parse(JSON.stringify(result));
   }
 }

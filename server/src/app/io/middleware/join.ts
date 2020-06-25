@@ -23,8 +23,9 @@ export default function join(): any {
     const app = ctx.app as any;
     const nsp = app.io.of('/socket');
     const query = socket.handshake.query;
-    const { room, token } = query;
+    const { room, token, roomConfig } = query;
     console.log('socket-----join', id);
+    console.log('roomConfig-----roomConfig', JSON.parse(roomConfig));
     // room缓存信息是否存在
     if (!nsp.gameRooms) {
       nsp.gameRooms = [];
@@ -48,6 +49,10 @@ export default function join(): any {
           players: [],
           game: null,
           sitLink: null,
+          config: JSON.parse(roomConfig) || {
+            isShort: false,
+            smallBlind: 1,
+          },
         },
       };
       if (!hasRoom) {
@@ -58,6 +63,10 @@ export default function join(): any {
           players: [ player ],
           game: null,
           sitLink: null,
+          config: JSON.parse(roomConfig) || {
+            isShort: false,
+            smallBlind: 1,
+          },
         };
         updatePlayer(room, gameRoom.roomInfo.players, 'players', nsp);
       } else {

@@ -12,10 +12,17 @@ export interface ISit {
   position: number;
 }
 
+export interface IRoomConfig {
+  isShort: boolean;
+  smallBlind: number;
+  time?: number;
+}
+
 export interface IRoomInfo {
   players: IPlayer[];
   sit: ISit[];
   game: PokerGame | null;
   sitLink: ILinkNode<IPlayer> | null;
   gameId?: number;
+  config: IRoomConfig;
 }

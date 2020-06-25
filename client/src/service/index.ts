@@ -13,9 +13,9 @@ export default {
     url: '/user',
     body: {},
   }),
-  createRoom: () => request({
+  createRoom: (isShort: boolean, smallBlind: number, time: number) => request({
     url: '/game/room',
-    body: { },
+    body: { isShort, smallBlind, time },
   }),
   findRoom: (roomNumber: string) => request({
     url: '/game/room/find',
@@ -24,5 +24,9 @@ export default {
   buyIn: (buyInSize: number) => request({
     url: '/game/buyIn',
     body: { buyInSize },
+  }),
+  recordList: (roomNumber: string) => request({
+    url: '/game/record/find',
+    body: { roomNumber },
   }),
 };

@@ -1,7 +1,7 @@
 
 export interface IGame {
   id?: number;
-  roomId?: string;
+  roomNumber?: string;
   pot: number;
   status: number;
   commonCard: string;
@@ -10,6 +10,7 @@ export interface IGame {
 
 export interface IGameService {
   findById(gid: number): Promise<IGame>;
+  findByRoomNumber(roomNumber: number): Promise<IGame []>;
   add(game: IGame): Promise<any>;
   update(game: IGame): Promise<any>;
 }

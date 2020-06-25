@@ -2,11 +2,28 @@
   <div class="home-container container">
     <div class="room-btn"
          v-show="showBtn">
+      <div class="input-bd">
+        <div class="input-name">smallBlind:</div>
+        <div class="input-text">
+          <input type="tel"
+                 v-model="smallBlind"/>
+        </div>
+      </div>
+      <div class="input-bd">
+        <div class="input-name">isShort:</div>
+        <div class="input-text">
+          <input type="checkbox"
+                 v-model="isShort"/>
+        </div>
+      </div>
       <div class="create-room btn"
            @click="createRoom"><span>create room</span>
       </div>
       <div class="btn"
            @click="joinRoom"><span>join room</span>
+      </div>
+      <div class="btn"
+           @click="getRecord"><span>test record</span>
       </div>
     </div>
     <div class="room-number"
@@ -34,6 +51,7 @@
   import { Vue } from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import service from '../service';
+  import cookie from 'js-cookie';
 
   @Component
   export default class Home extends Vue {
@@ -41,12 +59,18 @@
     private isJoin = false;
     private showBtn = true;
     private isError = false;
+    private isShort = false;
+    private smallBlind = 1;
 
     private async createRoom() {
       try {
-        const result = await service.createRoom();
+        const result = await service.createRoom(this.isShort, this.smallBlind, 0);
         const { roomNumber } = result.data;
-        console.log(result);
+        const roomConfig = {
+          isShort: this.isShort,
+          smallBlind: this.smallBlind,
+        }
+        cookie.set('roomConfig', roomConfig, {expires: 1});
         this.$router.push({ name: 'game', params: { roomNumber, isOwner: '1' } });
       } catch (e) {
         console.log(e);
@@ -65,12 +89,25 @@
       }
       try {
         const { data } = await service.findRoom(this.roomNumber);
-        if (data.hasRoom) {
+        if (data) {
+          const roomConfig ={
+            ...data
+          }
+          cookie.set('roomConfig', roomConfig, {expires: 1});
           this.$router.push({ name: 'game', params: { roomNumber: this.roomNumber } });
         } else {
           this.$plugin.toast('can\'t find the room');
           console.log('can\'t find the room');
         }
+      } catch (e) {
+        this.$plugin.toast('can\'t find the room');
+      }
+    }
+
+    private async getRecord() {
+      try {
+        const { data } = await service.recordList('170432');
+        console.log(data);
       } catch (e) {
         this.$plugin.toast('can\'t find the room');
       }

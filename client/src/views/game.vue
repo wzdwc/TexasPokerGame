@@ -7,6 +7,7 @@
              @buyIn="buyIn"
              :isPlay='isPlay'
              :valueCards='valueCards'
+             :roomConfig = 'roomConfig'
              :time='time'
              :winner="winner"
              :actionUserId='actionUserId'
@@ -77,6 +78,7 @@
   import map from '../utils/map';
   import { PokerStyle } from '@/utils/PokerStyle';
   import origin from '../utils/origin';
+  import { IRoom } from '@/interface/IRoom';
 
   export enum ECommand {
     CALL   = 'call',
@@ -133,6 +135,10 @@
     private msg = '';
     private time = 30;
     private timeSt = 0;
+    private roomConfig: IRoom = {
+      isShort: false,
+      smallBlind: 1
+    };
     private messageList: any[] = [];
     private showRecord = false;
 
@@ -186,7 +192,7 @@
     get valueCards() {
       if (this.gameOver && this.winner[0] && this.winner[0][0].handCard) {
         const handCards = this.winner[0][0].handCard;
-        const style = new PokerStyle([...handCards, ...this.commonCard]);
+        const style = new PokerStyle([...handCards, ...this.commonCard], this.roomConfig.isShort);
         return style.getPokerValueCard();
       } else {
         return [];
@@ -260,7 +266,7 @@
       }
       const commonCards = this.commonCard || [];
       const card = [...cards, ...commonCards];
-      const style = new PokerStyle(card);
+      const style = new PokerStyle(card, this.roomConfig.isShort);
       return style.getPokerStyleName();
     }
 
@@ -295,12 +301,16 @@
 
     private socketInit() {
       const token = cookie.get('token');
+      const roomConfig = cookie.get('roomConfig') || '';
       const log = console.log;
+      this.roomConfig = JSON.parse(roomConfig);
+      console.log(JSON.parse(roomConfig), 'roomConfig');
       this.socket = io(`${origin.url}/socket`, {
         // 实际使用中可以在这里传递参数
         query: {
           room: this.roomId,
           token,
+          roomConfig: roomConfig,
         },
         transports: ['websocket'],
       });

@@ -17,7 +17,8 @@ export class RoomController extends BaseController {
   @post('/')
   async index() {
     try {
-      const result = await this.roomService.add();
+      const { body } = this.getRequestBody();
+      const result = await this.roomService.add(body.isShort, body.smallBlind);
       this.success(result);
     } catch (e) {
       this.fail('create room error');
@@ -29,8 +30,8 @@ export class RoomController extends BaseController {
   async find() {
     try {
       const { body } = this.getRequestBody();
-      const result = await this.roomService.findByRoomNumber(body.roomNumber);
-      this.success({ hasRoom: result });
+      const result = await this.roomService.findRoomNumber(body.roomNumber);
+      this.success({ ...result });
     } catch (e) {
       this.fail('invalid room');
       console.log(e);

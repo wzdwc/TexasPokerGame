@@ -1,11 +1,15 @@
 export interface IRoom {
-  roomNumber: string;
+  roomNumber?: string;
+  isShort: boolean;
+  time?: number;
+  smallBlind: number;
 }
 
 export interface IRoomService {
   findById(uid: string): Promise<IRoom>;
+  findRoomNumber(roomNumber: number): Promise<IRoom>;
   findByRoomNumber(roomNumber: number): Promise<boolean>;
-  add(): Promise<any>;
+  add(isShort: boolean, smallBlind: number, time?: number): Promise<any>;
   // join(roomNumber: string, userName: string): void;
   // leave(roomNumber: string, message: string): void;
 }

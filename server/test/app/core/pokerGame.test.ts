@@ -212,6 +212,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
     const game = new PokerGame({
       smallBlind: 1,
       users,
+      isShort: false,
       actionRoundComplete: () => {
         if (game.status < 6) {
           game.startActionRound();

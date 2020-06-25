@@ -29,13 +29,15 @@ export class PokerStyle implements IPokerStyle {
     4: [] as string[],
   };
   flushColor: string = '';
+  isShort: boolean;
   straightArr: string[] = [];
   pokerStyle: string[] = [ '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ];
   numObj: Map<string, number> = new Map(
     POKER_STR.split('').map(m => [ m, 0 ]));
 
-  constructor(cards: string[]) {
+  constructor(cards: string[], isShort= false) {
     this.cards = sort(cards);
+    this.isShort = isShort;
     this.init();
   }
 
@@ -115,33 +117,63 @@ export class PokerStyle implements IPokerStyle {
       const maxTwoCard = isThree.length === 2 ? isThree[1] : isThree[0] === isTwo[0] ? isTwo[1] : isTwo[0];
       const maxThree = isThree[0];
       isFullHouse = maxThree + maxTwoCard;
-      this.pokerStyle[3] = isFullHouse;
+      if (this.isShort) {
+        this.pokerStyle[4] = isFullHouse;
+      } else {
+        this.pokerStyle[3] = isFullHouse;
+      }
       return;
     }
 
     // flush
     if (isFlush.length !== 0) {
       isFlush.reverse().length = 5;
-      this.pokerStyle[4] = isFlush.join('');
+      if (this.isShort) {
+        this.pokerStyle[3] = isFlush.join('');
+      } else {
+        this.pokerStyle[4] = isFlush.join('');
+      }
       return;
     }
 
-    // straight
-    if (this.isStraight() !== '0') {
-      this.pokerStyle[5] = `${this.isStraight()}`;
-      return;
+    console.log('come in -------', isThree);
+
+    if (this.isShort) {
+      // three of kind
+      if (isThree.length > 0) {
+        isThreeKind = isThree.join('');
+        isThreeKind += highCard[0] + highCard[1];
+        this.pokerStyle[5] = isThreeKind;
+        return;
+      }
+
+      // straight
+      if (this.isStraight() !== '0') {
+        this.pokerStyle[6] = `${this.isStraight()}`;
+        return;
+      }
+
+    } else {
+      // straight
+      if (this.isStraight() !== '0') {
+        this.pokerStyle[5] = `${this.isStraight()}`;
+        return;
+      }
+
+      // three of kind
+      if (isThree.length > 0) {
+        isThreeKind = isThree.join('');
+        isThreeKind += highCard[0] + highCard[1];
+        this.pokerStyle[6] = isThreeKind;
+        return;
+      }
     }
 
-    // three of kind
-    if (isThree.length > 0) {
-      isThreeKind = isThree.join('');
-      isThreeKind += highCard[0] + highCard[1];
-      this.pokerStyle[6] = isThreeKind;
-      return;
-    }
     // tow pair
     if (isTwo.length >= 2) {
-      isTowPair = isTwo.join('');
+      const towPair = isTwo;
+      towPair.length = 2;
+      isTowPair = towPair.join('');
       // third tow pair card big then high card
       const highCardForTowPair = isTwo[3] && isTwo[3] > highCard[0] ? isTwo[3] : highCard[0];
       isTowPair += highCardForTowPair;
@@ -189,8 +221,12 @@ export class PokerStyle implements IPokerStyle {
       }
     }
     // special straight "A2345",'m' -> A
-    if (straightStr.indexOf('m') > -1 && straightStr.indexOf('abcd') > -1) {
-      return 'mabcd';
+    if (!this.isShort && straightStr.indexOf('m') > -1 && straightStr.indexOf('abcd') > -1) {
+      return 'abcdm';
+    }
+    // special straight "A2345",'m' -> A
+    if (this.isShort && straightStr.indexOf('m') > -1 && straightStr.indexOf('efgh') > -1) {
+      return 'efghm';
     }
     return '0';
   }
