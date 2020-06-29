@@ -1,9 +1,8 @@
-import BaseService from '../lib/baseService';
 import { Context, inject, provide, plugin } from 'midway';
-import { IRoom } from '../interface/IRoom';
+import { IRoom, IRoomService } from '../interface/IRoom';
 
 @provide('RoomService')
-export class RoomService extends BaseService {
+export default class RoomService implements IRoomService {
 
   @inject()
   ctx: Context;

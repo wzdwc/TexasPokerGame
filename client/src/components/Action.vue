@@ -3,9 +3,9 @@
     <div class="action"
          v-show="isAction">
       <div class="action-type action-btn">
-          <span @click="action('check')"
-                v-show="showActionBtn('check')">check</span>
         <span @click="action('fold')">fold</span>
+        <span @click="action('check')"
+                v-show="showActionBtn('check')">check</span>
         <span @click="action('call')"
               v-show="showActionBtn('call')">call</span>
         <span @click="otherSizeHandle()"

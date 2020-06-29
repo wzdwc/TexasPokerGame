@@ -1,6 +1,6 @@
 import { Context, inject, controller, post, provide, plugin } from 'midway';
 import BaseController from '../../lib/baseController';
-import { IUserService } from '../../interface/IUserService';
+import { IUserService } from '../../interface/service/IUserService';
 
 @provide()
 @controller('/node/user')

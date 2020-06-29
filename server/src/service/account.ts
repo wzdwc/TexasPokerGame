@@ -1,9 +1,9 @@
 import BaseService from '../lib/baseService';
 import { Context, inject, provide, plugin, config } from 'midway';
 import { IAccountInfo } from '../interface/IAccountInfo';
-import { IAccountService } from '../interface/IAccountService';
+import { IAccountService } from '../interface/service/IAccountService';
 import { ILoginResult } from '../interface/ILoginResult';
-import { IUserService } from '../interface/IUserService';
+import { IUserService } from '../interface/service/IUserService';
 import { IUser } from '../interface/IUser';
 
 @provide('AccountService')

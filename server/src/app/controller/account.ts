@@ -1,6 +1,6 @@
 import BaseController from '../../lib/baseController';
 import { controller, inject, post, provide } from 'midway';
-import { IAccountService } from '../../interface/IAccountService';
+import { IAccountService } from '../../interface/service/IAccountService';
 import { IAccountInfo } from '../../interface/IAccountInfo';
 
 @provide()

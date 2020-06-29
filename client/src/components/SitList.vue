@@ -125,8 +125,9 @@
     private buyIn(size: number) {
       console.log('ccc');
       this.showBuyIn = false;
+      this.currPlayer.counter += size;
       this.$emit('buyIn', Number(size));
-      // this.sitDown(this.currSit);
+      this.sitDown(this.currSit);
     }
 
     private showHandCard(sit: ISit) {

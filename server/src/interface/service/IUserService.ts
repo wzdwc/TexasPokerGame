@@ -1,5 +1,5 @@
-import { IAccountInfo } from './IAccountInfo';
-import { IUser } from './IUser';
+import { IAccountInfo } from '../IAccountInfo';
+import { IUser } from '../IUser';
 
 export interface IUserService {
   findById(uid: string): Promise<IUser>;

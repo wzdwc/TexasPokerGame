@@ -3,10 +3,10 @@ import { Context } from 'midway';
 
 export default () => {
   const config: PowerPartial<EggAppConfig> = {};
-  // 业务接口domain
+  // business domain
   config.apiDomain = {
   };
-  // CORS 跨域处理
+  // CORS
   config.cors = {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
     credentials: true,

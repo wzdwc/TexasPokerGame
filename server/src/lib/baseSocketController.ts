@@ -13,62 +13,70 @@ export default class BaseSocketController extends Controller {
   public jwt: any = this.app.jwt;
   public message = this.ctx.args[0] || {};
 
-  async getUserInfo() {
+  protected async getUserInfo() {
     const { token } = this.query;
     const user: IPlayer = this.jwt.verify(token) && this.jwt.verify(token).user;
     return user;
   }
 
-  async getRoomInfo(): Promise<IRoomInfo> {
+  protected async getRoomInfo(): Promise<IRoomInfo> {
     const { room } = this.query;
     const roomInfo = this.gameRooms.find((gr: IGameRoom) => gr.number === room);
     return roomInfo.roomInfo;
   }
 
-  async updateGameInfo() {
+  protected adapter(type: string, actionName: string, data: any) {
+    return new Promise(resolve => {
+      this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
+        this.nsp.to(this.roomNumber).emit(type, {
+          clients,
+          action: actionName,
+          target: 'participator',
+          data,
+        });
+        resolve();
+      });
+    });
+  }
+
+  protected async updateGameInfo() {
     const roomInfo = await this.getRoomInfo();
     console.log(roomInfo, 'roomInfo ===============================');
-    this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
-      if (roomInfo.game && roomInfo.game.status < 6 || (roomInfo.game?.status === 6 && roomInfo.game.playerSize === 1)) {
-        roomInfo.players.forEach(p => {
-          const currPlayer = roomInfo.game &&
-            roomInfo.game.getPlayers().find(player => player.userId === p.userId);
-          p.counter = currPlayer?.counter || p.counter;
-          p.type = currPlayer?.type || '';
-          p.status = currPlayer ? 1 : p.status === -1 ? -1 : 0;
-          p.actionCommand = currPlayer && currPlayer.actionCommand || '';
-          p.actionSize = currPlayer && currPlayer.actionSize || 0;
-        });
-        console.log(roomInfo.players, 'roomInfo.players ===============================333');
-        const gameInfo = {
-          players: roomInfo.players.map(p => {
-            const currPlayer = roomInfo.game?.allPlayer.find(player => player.userId === p.userId);
-            return Object.assign({}, {
-              counter: currPlayer?.counter || p.counter,
-              actionSize: currPlayer?.actionSize || 0,
-              actionCommand: currPlayer?.actionCommand || '',
-              nickName: p.nickName,
-              type: currPlayer?.type || '',
-              status: p.status || 0,
-              userId: p.userId,
-              buyIn: p.buyIn || 0,
-            }, {});
-          }),
-          pot: roomInfo.game.pot,
-          prevSize: roomInfo.game.prevSize,
-          sitList: roomInfo.sit,
-          currPlayer: {
-            userId: roomInfo.game.currPlayer.node.userId,
-          },
-        };
-        // 广播信息
-        this.nsp.to(this.roomNumber).emit('online', {
-          clients,
-          action: 'gameInfo',
-          target: 'participator',
-          data: gameInfo,
-        });
-      }
-    });
+    if (roomInfo.game && roomInfo.game.status < 6 || (roomInfo.game?.status === 6 && roomInfo.game.playerSize === 1)) {
+      roomInfo.players.forEach(p => {
+        const currPlayer = roomInfo.game &&
+          roomInfo.game.getPlayers().find(player => player.userId === p.userId);
+        p.counter = currPlayer?.counter || p.counter;
+        p.type = currPlayer?.type || '';
+        p.status = currPlayer ? 1 : p.status === -1 ? -1 : 0;
+        p.actionCommand = currPlayer && currPlayer.actionCommand || '';
+        p.actionSize = currPlayer && currPlayer.actionSize || 0;
+      });
+      console.log(roomInfo.players,
+        'roomInfo.players ===============================333');
+      const gameInfo = {
+        players: roomInfo.players.map(p => {
+          const currPlayer = roomInfo.game?.allPlayer.find(
+            player => player.userId === p.userId);
+          return Object.assign({}, {
+            counter: currPlayer?.counter || p.counter,
+            actionSize: currPlayer?.actionSize || 0,
+            actionCommand: currPlayer?.actionCommand || '',
+            nickName: p.nickName,
+            type: currPlayer?.type || '',
+            status: p.status || 0,
+            userId: p.userId,
+            buyIn: p.buyIn || 0,
+          }, {});
+        }),
+        pot: roomInfo.game.pot,
+        prevSize: roomInfo.game.prevSize,
+        sitList: roomInfo.sit,
+        currPlayer: {
+          userId: roomInfo.game.currPlayer.node.userId,
+        },
+      };
+      await this.adapter('online', 'gameInfo', gameInfo);
+    }
   }
 }

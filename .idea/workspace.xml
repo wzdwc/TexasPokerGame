@@ -2,32 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/interface/IRoom.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Action.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Action.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/BuyIn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/BuyIn.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SitList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SitList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/range.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/range.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/service/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/service/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/controller/room.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/controller/room.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/Poker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Poker.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/server/src.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/controller/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/controller/account.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/controller/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/controller/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/core/Player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Player.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerStyle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/extend/context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/extend/context.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/interface/ICommandRecord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/interface/ICommandRecord.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/interface/IGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/interface/IGame.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/interface/IGameRecord.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/interface/IGameRoom.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/interface/IGameRoom.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/middleware/elkLogger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/middleware/elkLogger.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/middleware/notFound.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/middleware/notFound.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/config.default.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.default.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/config.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/config.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/interface/IAccountService.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/interface/IRoom.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/interface/IRoom.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/interface/IUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/interface/IUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/interface/IUserService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/service/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/account.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/service/commandRecord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/commandRecord.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/service/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/game.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/service/gameRecord.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/service/room.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/room.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/service/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" afterDir="false" />
@@ -66,7 +60,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedtslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/src/service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/interface" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -83,6 +77,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/interface" />
       <recent name="$PROJECT_DIR$/server/src/service" />
       <recent name="$PROJECT_DIR$/client/src/utils" />
       <recent name="$PROJECT_DIR$/client/src/assets" />
@@ -108,7 +103,7 @@
       <workItem from="1589475961634" duration="559000" />
       <workItem from="1589732800789" duration="13203000" />
       <workItem from="1590767628109" duration="39193000" />
-      <workItem from="1593066389745" duration="5258000" />
+      <workItem from="1593066389745" duration="10749000" />
     </task>
     <servers />
   </component>
@@ -128,19 +123,22 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1587206645912" />
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1593070402308">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1593348545499">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1593070402308" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.828@0.23.1440.828" timestamp="1593348545499" />
     <state x="221" y="89" key="SettingsEditor" timestamp="1588864041632">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1588864041632" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590853061364">
-      <screen x="0" y="23" width="1440" height="823" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1593358666478">
+      <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1590851703228" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1593351376798" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.823@0.23.1440.823" timestamp="1590853061364" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.827@0.23.1440.827" timestamp="1593358666478" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.828@0.23.1440.828" timestamp="1593348545500" />
     <state x="513" y="145" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590828749947">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

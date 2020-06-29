@@ -1,6 +1,6 @@
 import { Context, inject, provide, plugin } from 'midway';
 import { IUser } from '../interface/IUser';
-import { IUserService } from '../interface/IUserService';
+import { IUserService } from '../interface/service/IUserService';
 import { IAccountInfo } from '../interface/IAccountInfo';
 
 @provide('UserService')

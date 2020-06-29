@@ -1,15 +1,15 @@
 import { Context, EggAppConfig } from 'egg';
 
 /**
- * elk 日志拦截中间件
- * @description 接口请求拦截，进行日志上报,根据config的环境配置，设置日志收集，prod默认开启
- * @param {EggAppConfig["elkLogger"]} options config 配置项 elkLogger
+ * elk
+ * @description request intercept,log report,prod default open
+ * @param {EggAppConfig["elkLogger"]} options config elkLogger
  * @returns {any}
  */
 export default function elkLogger(options: EggAppConfig['elkLogger']): any {
   return async (ctx: Context, next: () => Promise<any>) => {
     const { match, enable } = options;
-    // 是否符合配置规则
+    // match
     if (match(ctx) && enable) {
       ctx.setLogCollection('fetchStart', Date.now());
       ctx.setLogCollection('url', ctx.url);

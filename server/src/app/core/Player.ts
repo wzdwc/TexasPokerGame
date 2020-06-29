@@ -45,9 +45,8 @@ export class Player {
   evPot: number = Infinity;
   inPot: number = 0;
   income: number = 0;
-  pokeStyle: string = '';
+  pokerStyle: string = '';
 
-  // commandRecord: Array<string> = [];
   constructor(config: IPlayer) {
     this.counter = config.counter;
     this.position = config.position || 0;
@@ -75,8 +74,8 @@ export class Player {
 
   /**
    * player action
-   * @param {string} commandString
-   * @param {number} prevSize
+   * @param {string} commandString - player action command string
+   * @param {number} prevSize - prev player action size
    * @example action('command:raise:10')
    */
   action(commandString: string, prevSize: number = 0) {
@@ -88,7 +87,7 @@ export class Player {
       && (prevSize > (this.counter + this.actionSize) || raiseSize > this.counter)) {
       throw 'player: error action, overflow action size';
     } else {
-      this.actionCommand = (command === 'sb' || command === 'bb') ? '' : command;
+      this.actionCommand = (command === ECommand.SMALL_BLIND || command === ECommand.BIG_BLIND) ? '' : command;
     }
 
     // BLIND
@@ -122,7 +121,8 @@ export class Player {
 
     if (command === ECommand.CALL) {
       console.log('player: call----------------', prevSize, this.actionSize);
-      size = prevSize - this.actionSize;
+      const actionSize = this.actionSize >= 0 ? this.actionSize : 0;
+      size = prevSize - actionSize;
     }
 
     if (command === ECommand.CHECK) {

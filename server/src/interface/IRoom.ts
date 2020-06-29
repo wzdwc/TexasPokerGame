@@ -7,8 +7,8 @@ export interface IRoom {
 
 export interface IRoomService {
   findById(uid: string): Promise<IRoom>;
-  findRoomNumber(roomNumber: number): Promise<IRoom>;
-  findByRoomNumber(roomNumber: number): Promise<boolean>;
+  findRoomNumber(roomNumber: string): Promise<IRoom>;
+  findByRoomNumber(roomNumber: string): Promise<boolean>;
   add(isShort: boolean, smallBlind: number, time?: number): Promise<any>;
   // join(roomNumber: string, userName: string): void;
   // leave(roomNumber: string, message: string): void;
