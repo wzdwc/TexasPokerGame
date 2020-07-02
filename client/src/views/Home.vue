@@ -2,22 +2,29 @@
   <div class="home-container container">
     <div class="room-btn"
          v-show="showBtn">
-      <div class="input-bd">
-        <div class="input-name">smallBlind:</div>
-        <div class="input-text">
-          <input type="tel"
-                 v-model="smallBlind"/>
-        </div>
-      </div>
-      <div class="input-bd">
-        <div class="input-name">isShort:</div>
-        <div class="input-text">
-          <input type="checkbox"
-                 v-model="isShort"/>
+      <div class="room-config" v-show="showRoomConfig">
+        <div class="room-config-shadow" @click="showRoomConfig = false"></div>
+        <div class="room-config-body">
+          <h1> room config</h1>
+          <div class="input-bd">
+            <div class="input-name">smallBlind:</div>
+            <div class="input-text">
+              <input type="tel"
+                     v-model="smallBlind"/>
+            </div>
+          </div>
+          <div class="input-bd">
+            <div class="input-name">isShort:</div>
+            <div class="input-text">
+              <input type="checkbox"
+                     v-model="isShort"/>
+            </div>
+          </div>
+          <div class="btn"  @click="createRoom"><span>create</span></div>
         </div>
       </div>
       <div class="create-room btn"
-           @click="createRoom"><span>create room</span>
+          @click="showRoomConfig = true" ><span>create room</span>
       </div>
       <div class="btn"
            @click="joinRoom"><span>join room</span>
@@ -53,7 +60,10 @@
   import service from '../service';
   import cookie from 'js-cookie';
 
-  @Component
+  @Component({
+    components: {
+    },
+  })
   export default class Home extends Vue {
     public roomNumber: string = '';
     private isJoin = false;
@@ -61,6 +71,7 @@
     private isError = false;
     private isShort = false;
     private smallBlind = 1;
+    private showRoomConfig = false;
 
     private async createRoom() {
       try {
@@ -106,7 +117,7 @@
 
     private async getRecord() {
       try {
-        const { data } = await service.recordList('170432');
+        const { data } = await service.recordList('622832');
         console.log(data);
       } catch (e) {
         this.$plugin.toast('can\'t find the room');
@@ -121,6 +132,63 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    .room-config{
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      .room-config-shadow{
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 9;
+        background-color: rgba(0,0,0,.3);
+      }
+      .room-config-body{
+        position: absolute;
+        background-color: #fff;
+        border-radius: 8px;
+        left: 50%;
+        top: 50%;
+        z-index: 99;
+        width: 230px;
+        min-height: 200px;
+        transform: translate3d(-50%, -50%, 0);
+        h1{
+          font-size: 16px;
+          text-align: center;
+          line-height: 40px;
+        }
+        .input-bd{
+          display: flex;
+          .input-name{
+            width: 20vw;
+            text-align: right;
+          }
+          .input-text{
+            margin-left: 8px;
+            line-height: 30px;
+            input{
+              width: 10vw;
+              min-width: 10vw;
+              display: inline-block;
+              text-align: center;
+              vertical-align: middle;
+              border-bottom: 1px solid #bababa;
+              &[type=checkbox]{
+                width: 4vw;
+                height: 4vw;
+                min-width: auto;
+                min-height: auto;
+              }
+            }
+          }
+        }
+      }
+    }
 
     .room-btn {
       flex: 1;
@@ -135,20 +203,16 @@
       line-height: 40px;
       text-align: center;
       width: 100%;
-
+      .error {
+        border: 1px solid #e8050a;
+      }
       .input-bd {
         border: 1px solid #bababa;
         border-radius: 4px;
-
         input {
           border-radius: 8px;
         }
       }
-
-      .error {
-        border: 1px solid #e8050a;
-      }
-
       .room-btn {
         height: 30px;
         margin-top: 0;

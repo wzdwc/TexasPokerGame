@@ -51,18 +51,23 @@
         <div class="shadow"
              @click="isRaise = false"></div>
       </div>
+      <iAudio :play="playClick" type="click"></iAudio>
+      <iAudio :play="playFold" type="fold"></iAudio>
+      <iAudio :play="playRaise" type="raise"></iAudio>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import range from './range.vue';
+import iAudio from './audio.vue';
 import { IPlayer } from '@/interface/IPlayer';
 
 @Component({
   components: {
     range,
+    iAudio,
   },
 })export default class Action extends Vue {
   @Prop() private isAction: boolean = false;
@@ -77,6 +82,9 @@ import { IPlayer } from '@/interface/IPlayer';
   private isRaise = false;
   private raiseSize: number = 0;
   private actioned = false;
+  private playClick = false;
+  private playRaise = false;
+  private playFold = false;
   private raiseSizeMap = {
     firsAction: {
       two: 2,
@@ -93,6 +101,9 @@ import { IPlayer } from '@/interface/IPlayer';
   @Watch('isAction')
   private wAction(val: boolean) {
     this.actioned = !val;
+    this.playClick = false;
+    this.playRaise = false;
+    this.playFold = false;
   }
 
   @Watch('raiseSize')
@@ -110,6 +121,12 @@ import { IPlayer } from '@/interface/IPlayer';
   }
 
   private action(command: string) {
+    if (command.indexOf('raise') > -1 || command === 'allin' || command === 'call' ) {
+      this.playRaise = true;
+    }
+    if (command === 'fold' || command === 'check') {
+      this.playFold = true;
+    }
     if (!this.actioned) {
       this.actioned = true;
       this.$emit('action', command);

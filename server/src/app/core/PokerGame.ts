@@ -53,7 +53,7 @@ const ACTION_TIME = 30 * 1000;
 export class PokerGame {
   private playerLink: Link<Player>;
   private poker: IPoker;
-  private prevPot: number = 0;
+  prevPot: number = 0;
   private actionTimeOut: Timeout;
   private currActionAllinPlayer: Player[] = [];
   // It's a short poker game
@@ -371,12 +371,11 @@ export class PokerGame {
       }
       if (command === ECommand.RAISE) {
         // counter not enough raise
-        if ((size + this.currPlayer.node.actionSize) < this.prevSize * 2) {
+        if (size < this.prevSize * 2) {
           throw `incorrect action: raise ========= action size: ${this.currPlayer.node.actionSize}, prevSize: ${this.prevSize}`;
         }
-        this.pot += size;
-        // 3 bet
-        size += this.currPlayer.node.actionSize;
+        const prevActionSize = this.currPlayer.node.actionSize >= 0 ? this.currPlayer.node.actionSize : 0;
+        this.pot += (size - prevActionSize);
       }
       try {
         clearTimeout(this.actionTimeOut);
@@ -429,8 +428,9 @@ export class PokerGame {
       let currAllinPlayerPot = 0;
       this.currActionAllinPlayer.forEach(allinPlayer => {
         this.allPlayer.forEach(p => {
-          if (p.actionSize < allinPlayer.actionSize) {
-            currAllinPlayerPot += p.actionSize;
+          const actionSize = p.actionSize > 0 ? p.actionSize : 0;
+          if (actionSize < allinPlayer.actionSize) {
+            currAllinPlayerPot += actionSize;
           } else {
             currAllinPlayerPot += allinPlayer.actionSize;
           }
@@ -461,9 +461,7 @@ export class PokerGame {
     this.setSate();
     console.log(this.playerSize, 'playerS-------3', this.playerLink);
     if (this.status === EGameStatus.GAME_SHOWDOWN || this.playerSize <= 1) {
-      setTimeout(() => {
-        this.gameOver();
-      }, 300);
+      this.gameOver();
     }
     this.actionRoundComplete();
   }

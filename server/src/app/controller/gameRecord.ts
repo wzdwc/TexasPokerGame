@@ -11,8 +11,7 @@ import { EGameOverType } from '../core/PokerGame';
 interface IFindGameRecord {
   gameId: number;
   winners: string;
-  handCard: string;
-  gameInfo: ICommandRecord [];
+  commandList: ICommandRecord [];
 }
 
 @provide()
@@ -31,15 +30,14 @@ export class GameRecordController extends BaseController {
   @inject('CommandRecordService')
   commandService: ICommandRecordService;
 
-  @post('/find')
+  @post('/find/commandRecord')
   async find() {
     try {
       const { body } = this.getRequestBody();
       const state = this.ctx.state;
-      const playerList = await this.playerService.findByRoomNumber(body.roomNumber);
-      const commandList = await this.commandService.findByRoomNumber(body.roomNumber);
+      const commandList = await this.commandService.findByRoomNumber(body.gameId);
       const gameList = await this.gameService.findByRoomNumber(body.roomNumber);
-      const result: IFindGameRecord [] = [];
+      let result: IFindGameRecord;
       console.log(state, 'user');
       gameList.forEach(g => {
         if (g.status === EGameOverType.GAME_OVER) {
@@ -47,15 +45,17 @@ export class GameRecordController extends BaseController {
           delete winner.handCard;
           g.winners = JSON.stringify([[ winner ]]);
         }
-        const dateItem: IFindGameRecord = {
-          gameId: g.id || 0,
-          winners: JSON.parse(g.winners || ''),
-          handCard: playerList.find(p => state.user.user.userId !== p.userId)?.handCard || '',
-          gameInfo: commandList.filter(c => c.gameId === g.id) || [],
-        };
-        result.push(dateItem);
       });
-
+      commandList.forEach(c => {
+        if (c.userId !== state.user.user.userId) {
+          c.handCard = '';
+        }
+      });
+      result = {
+        commandList,
+        winners: gameList.find(g => g.id === body.gameId)?.winners || '',
+        gameId: body.gameId,
+      };
       this.success({
         result,
       });
@@ -65,11 +65,14 @@ export class GameRecordController extends BaseController {
     }
   }
 
-  @post('/')
+  @post('/find/gameRecord')
   async index() {
     try {
+      const { body } = this.getRequestBody();
+      const gameList = await this.gameService.findByRoomNumber(body.roomNumber);
+      const result = gameList.map(g => Object.assign({}, {}, { gameId: g.id }));
       this.success({
-        test: '1111',
+        result,
       });
     } catch (e) {
       this.fail('create room error');

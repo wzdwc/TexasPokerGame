@@ -19,7 +19,6 @@ export default (appInfo: EggAppInfo) => {
         const reg = /.*/;
         return reg.test(ctx.url);
       },
-      // 是否启用
       enable: true,
     },
   };
@@ -39,7 +38,7 @@ export default (appInfo: EggAppInfo) => {
     origin(ctx: Context) {
       const origin: string = ctx.get('origin');
       // console.log(origin, 'orgin');
-      // 允许*域名访问
+      // access origin
       if (origin.indexOf('') > -1) {
         // console.log('come in');
         return origin;
@@ -97,13 +96,13 @@ export default (appInfo: EggAppInfo) => {
     client: {
       // host
       host: '47.104.172.100',
-      // 端口号
+      // pot
       port: '3306',
-      // 用户名
+      // userName
       user: 'root',
-      // 密码
-      password: 'MygameTest',
-      // 数据库名
+      // password
+      password: 'gameTest2020.',
+      // database name
       database: 'poker',
     },
     app: true,

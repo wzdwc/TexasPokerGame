@@ -14,30 +14,32 @@ export class CommandRecord implements ICommandRecordService {
   mysql: any;
 
   async add(commandRecord: ICommandRecord) {
-    return await this.mysql.insert('command_record', {
+    const result = await this.mysql.insert('command_record', {
       ...commandRecord,
     });
+    return { succeed: result.affectedRows === 1 };
   }
 
   async findById(gid: number): Promise<ICommandRecord> {
     return await this.mysql.get('game_record', { id: gid });
   }
 
-  async findByRoomNumber(roomNumber: number): Promise<ICommandRecord []> {
+  async findByRoomNumber(gameId: number): Promise<ICommandRecord []> {
     const result = await this.mysql.query('SELECT\n' +
-      '\tcounter,\n' +
+      '\tcommand_record.counter,\n' +
+      '\tcommand_record.gameStatus,\n' +
       '\tcommand,\n' +
-      '\tnickName,\n' +
+      '\thandCard,\n' +
       '\ttype,\n' +
-      '\tgameStatus,\n' +
       '\tcommonCard,\n' +
       '\tpot,\n' +
-      '\tgameId\n' +
+      '\tcommand_record.userId,\n' +
+      '\t`user`.nickName\n' +
       'FROM\n' +
       '\tcommand_record\n' +
-      'INNER JOIN USER ON `user`.id = command_record.userId\n' +
-      'WHERE\n' +
-      '\tcommand_record.roomNumber = ?', roomNumber);
+      'INNER JOIN `user` ON `user`.id = command_record.userId\n' +
+      'INNER JOIN `player` ON `player`.userId = command_record.userId\n' +
+      '\tcommand_record.gameId = ? and player.gameId = ?', [ gameId, gameId ]);
     console.log(result, '=============command');
     return JSON.parse(JSON.stringify(result));
   }

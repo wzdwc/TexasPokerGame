@@ -7,16 +7,12 @@
       <div class="title">record</div>
       <ul>
         <li>
-          <i>nickName</i>
-          <i>buy in</i>
-          <i>counter</i>
-          <i>income</i>
+          <i>player</i>
+          <i>commonCard</i>
+          <i>pot</i>
         </li>
         <li v-for="player in players">
-          <i>{{player.nickName}}</i>
-          <i>{{player.buyIn}}</i>
-          <i>{{player.counter}}</i>
-          <i>{{player.counter - player.buyIn}}</i>
+          <Player :currPlayer = 'player'></Player>
         </li>
       </ul>
     </div>
@@ -27,9 +23,12 @@
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator';
   import { IPlayer } from '@/interface/IPlayer';
+  import Player from './player.vue'
 
   @Component({
-    components: {},
+    components: {
+      Player
+    },
   })
   export default class Record extends Vue {
     @Prop() private value!: boolean;

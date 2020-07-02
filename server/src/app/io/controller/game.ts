@@ -175,8 +175,6 @@ class GameController extends BaseSocketController {
         console.log('hand card', roomInfo.game.allPlayer);
         // update counter, pot, status
         await this.updateGameInfo();
-        await this.sendHandCard(roomInfo);
-
         // add game record
         const gameRecord: IGame = {
           roomNumber: this.roomNumber,
@@ -190,6 +188,7 @@ class GameController extends BaseSocketController {
         } else {
           throw 'game add error';
         }
+        await this.sendHandCard(roomInfo);
         // add game BB SB action record
         const BB = roomInfo.game.BBPlayer;
         const SB = roomInfo.game.SBPlayer;
@@ -391,25 +390,8 @@ class GameController extends BaseSocketController {
       if (roomInfo.game && roomInfo.game.currPlayer.node.userId ===
         userInfo.userId) {
         const currPlayer = roomInfo.game.currPlayer.node;
-        roomInfo.game.action(payload.command);
-        const commandArr = payload.command.split(':');
-        const command = commandArr[0];
-        // fold change status: -1
-        if (command === 'fold') {
-          roomInfo.players.forEach(p => {
-            if (p.userId === userInfo.userId) {
-              p.status = -1;
-            }
-          });
-        }
-        console.log('fold ===============', roomInfo.players,
-          roomInfo.game.allPlayer);
-        // todo notice next player action
-        await this.updateGameInfo();
-        console.log('curr player', roomInfo.game.currPlayer.node);
-        // add game record
-        let status = 0;
         const commonCard = roomInfo.game.commonCard;
+        let status = 0;
         if (commonCard.length === 3) {
           status = EGameStatus.GAME_FLOP;
         }
@@ -427,12 +409,31 @@ class GameController extends BaseSocketController {
           userId: userInfo.userId,
           type: currPlayer.type,
           gameStatus: status,
-          pot: roomInfo.game?.pot || 0,
+          pot: 0,
           commonCard: roomInfo.game?.commonCard.join(',') || '',
           command: payload.command,
           gameId: roomInfo.gameId || 0,
           counter: currPlayer.counter,
         };
+        roomInfo.game.action(payload.command);
+        const commandArr = payload.command.split(':');
+        const command = commandArr[0];
+        // fold change status: -1
+        if (command === 'fold') {
+          roomInfo.players.forEach(p => {
+            if (p.userId === userInfo.userId) {
+              p.status = -1;
+            }
+          });
+        }
+        console.log('fold ===============', roomInfo.players,
+          roomInfo.game.allPlayer);
+        // todo notice next player action
+        await this.updateGameInfo();
+        console.log('curr player', roomInfo.game.currPlayer.node);
+        // add game record
+        commandRecord.pot = roomInfo.game?.pot || 0;
+        commandRecord.counter = currPlayer.counter;
         const commandRecordService = await this.app.applicationContext.getAsync('CommandRecordService');
         await commandRecordService.add(commandRecord);
       } else {

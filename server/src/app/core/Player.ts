@@ -108,8 +108,10 @@ export class Player {
     // player raise,get the raise size
     if (command === ECommand.RAISE) {
       // raise must double to prevSize
-      if ((raiseSize + this.actionSize) >= prevSize * 2) {
-        size = raiseSize;
+      if (raiseSize >= prevSize * 2) {
+        console.log('player: RAISE----------------', prevSize, this.actionSize);
+        const actionSize = this.actionSize >= 0 ? this.actionSize : 0;
+        size = raiseSize - actionSize;
       } else {
         throw 'player: error action: raise size too small';
       }
@@ -137,6 +139,11 @@ export class Player {
       this.inPot += size;
     }
     this.actionSize += size;
+    if (command === ECommand.RAISE) {
+      this.actionSize = raiseSize;
+    } else if (command === ECommand.CALL) {
+      this.actionSize = prevSize;
+    }
     return size;
   }
 

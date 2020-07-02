@@ -5,27 +5,22 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Action.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Action.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SitList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SitList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/gameRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/gameRecord.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/player.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/player.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/interface/IRoom.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/interface/IRoom.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/service/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/service/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/server/src.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/controller/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/controller/account.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/controller/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/controller/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/controller/gameRecord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/controller/gameRecord.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/core/Player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Player.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/extend/context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/extend/context.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/middleware/elkLogger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/middleware/elkLogger.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/middleware/notFound.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/middleware/notFound.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/config/config.default.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.default.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/config/config.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.prod.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/config/config.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/interface/IAccountService.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/interface/IRoom.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/interface/IRoom.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/interface/IUserService.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/service/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/account.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/service/room.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/room.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/service/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/interface/ICommandRecord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/interface/ICommandRecord.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/service/commandRecord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/commandRecord.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/test/app/core/pokerStyle.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/app/core/pokerStyle.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +98,8 @@
       <workItem from="1589475961634" duration="559000" />
       <workItem from="1589732800789" duration="13203000" />
       <workItem from="1590767628109" duration="39193000" />
-      <workItem from="1593066389745" duration="10749000" />
+      <workItem from="1593066389745" duration="11136000" />
+      <workItem from="1593700616662" duration="3687000" />
     </task>
     <servers />
   </component>

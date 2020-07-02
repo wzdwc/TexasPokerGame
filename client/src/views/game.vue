@@ -55,6 +55,7 @@
     <record :players="players"
             v-model="showRecord"></record>
     <sendMsg @send = 'sendMsgHandle'></sendMsg>
+    <iAudio :play="playIncome" type="income"></iAudio>
   </div>
 </template>
 
@@ -73,6 +74,7 @@
   import toast from '../components/toast.vue';
   import record from '../components/record.vue';
   import notice from '../components/notice.vue';
+  import iAudio from '../components/audio.vue';
   import sendMsg from '../components/sendMsg.vue';
   import actionDialog from '../components/Action.vue';
   import map from '../utils/map';
@@ -107,6 +109,7 @@
       toast,
       record,
       notice,
+      iAudio,
       actionDialog,
       sendMsg,
     },
@@ -132,6 +135,7 @@
     private actionUserId = '';
     private showMsg = false;
     private baseSize = GAME_BASE_SIZE;
+    private playIncome = false;
     private msg = '';
     private time = 30;
     private timeSt = 0;
@@ -185,8 +189,7 @@
     }
 
     get isAction() {
-      return !!(this.userInfo
-        && this.userInfo.userId === this.actionUserId);
+      return this.userInfo && this.userInfo.userId === this.actionUserId;
     }
 
     get valueCards() {
@@ -403,6 +406,11 @@
               }
             });
           });
+          // income music
+          this.playIncome = true;
+          setTimeout(() => {
+            this.playIncome = false;
+          }, 1000)
         }
 
         if (msg.action === 'newGame') {
@@ -446,9 +454,6 @@
       }
 
       try {
-        // if (this.currPlayer && (!this.isPlay || !this.hasSit)) {
-        //   this.currPlayer.counter += size;
-        // }
         console.log('come in buyIn ==================', size);
         this.showMsg = true;
         this.msg = this.hasSit && this.isPlay
