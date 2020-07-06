@@ -53,7 +53,7 @@ const ACTION_TIME = 30 * 1000;
 export class PokerGame {
   private playerLink: Link<Player>;
   private poker: IPoker;
-  prevPot: number = 0;
+  private prevPot: number = 0;
   private actionTimeOut: Timeout;
   private currActionAllinPlayer: Player[] = [];
   // It's a short poker game
@@ -341,6 +341,7 @@ export class PokerGame {
       const command = commands[0];
       let size = Number(commands[1]);
       if (command === ECommand.ALL_IN) {
+        console.log('counter', this.currPlayer.node.counter);
         // Counting player action size, if player's counter less than prevSize then use prevSize
         size = this.currPlayer.node.counter > this.prevSize ?
           this.currPlayer.node.counter : this.prevSize;
@@ -381,6 +382,9 @@ export class PokerGame {
         clearTimeout(this.actionTimeOut);
         this.currPlayer.node.action(commandString, this.prevSize);
         const nextPlayer = this.currPlayer.next.node;
+        console.log(command, (nextPlayer.actionSize === this.prevSize
+          && (nextPlayer.actionSize === this.currPlayer.node.actionSize || command === ECommand.FOLD)
+          && this.prevSize !== this.smallBlind * 2 && this.prevSize !== 0), 'tst', size, nextPlayer.actionSize, this.prevSize);
         // all check actionSize === -1
         // all player allin
         // only 2 player, curr player fold, next player alrecommand add errorady action
@@ -389,9 +393,10 @@ export class PokerGame {
         // pre flop big blind fold and other player call
         if (this.playerSize === 0
           || (this.playerSize === 1 && this.currActionAllinPlayer.length === 0)
-          || (this.commonCard.length !== 0 && nextPlayer.actionSize === this.smallBlind * 2 && nextPlayer.actionSize === size)
+          || (this.commonCard.length !== 0 && nextPlayer.actionSize === this.smallBlind * 2
+            && nextPlayer.actionSize === size && size === this.prevSize)
           || (nextPlayer.actionSize === this.prevSize
-            && (nextPlayer.actionSize === size || command === ECommand.FOLD)
+            && (this.prevSize === this.currPlayer.node.actionSize || command === ECommand.FOLD)
           && this.prevSize !== this.smallBlind * 2 && this.prevSize !== 0)
           || (this.commonCard.length === 0
             && (nextPlayer.actionSize === this.smallBlind * 2 && this.prevSize === nextPlayer.actionSize)
@@ -403,6 +408,7 @@ export class PokerGame {
           return;
         }
         this.prevSize = command === ECommand.FOLD ? this.prevSize : size;
+        console.log('preSize', this.prevSize);
         this.currPlayer = this.currPlayer.next;
         // action time out, auto action fold
         this.actionTimeOut = setTimeout(() => {
@@ -461,7 +467,9 @@ export class PokerGame {
     this.setSate();
     console.log(this.playerSize, 'playerS-------3', this.playerLink);
     if (this.status === EGameStatus.GAME_SHOWDOWN || this.playerSize <= 1) {
-      this.gameOver();
+      setTimeout(() => {
+        this.gameOver();
+      }, 300);
     }
     this.actionRoundComplete();
   }

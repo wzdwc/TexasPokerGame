@@ -22,11 +22,13 @@
 
     get commonCardMap() {
       const arr = [];
-      for (let i = 0; i < 5; i++) {
-        if (this.commonCard[i]) {
-          arr.push(this.commonCard[i]);
-        } else {
-          arr.push('');
+      if (this.commonCard.length !== 0) {
+        for (let i = 0; i < 5; i++) {
+          if (this.commonCard[i]) {
+            arr.push(this.commonCard[i]);
+          } else {
+            arr.push('');
+          }
         }
       }
       return arr;

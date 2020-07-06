@@ -27,6 +27,7 @@
       <div class="btn play"
            v-show="isOwner && !isPlay"><span @click="play">play game</span></div>
     </div>
+    <div class="game-record iconfont icon-record" @click="getRecord(0)"></div>
     <actionDialog :base-size="baseSize"
             :curr-player="currPlayer"
             :is-action="isAction"
@@ -56,6 +57,11 @@
             v-model="showRecord"></record>
     <sendMsg @send = 'sendMsgHandle'></sendMsg>
     <iAudio :play="playIncome" type="income"></iAudio>
+    <gameRecord v-model="showCommandRecord"
+                :game-list="gameList"
+                @getRecord = "getRecord"
+                :curr-game-index="currGameIndex"
+                :command-list="commandRecordList"></gameRecord>
   </div>
 </template>
 
@@ -77,10 +83,12 @@
   import iAudio from '../components/audio.vue';
   import sendMsg from '../components/sendMsg.vue';
   import actionDialog from '../components/Action.vue';
-  import map from '../utils/map';
   import { PokerStyle } from '@/utils/PokerStyle';
   import origin from '../utils/origin';
   import { IRoom } from '@/interface/IRoom';
+  import service from '../service';
+  import gameRecord from '@/components/gameRecord.vue';
+  import {IGameRecord} from '@/interface/IGameRecord';
 
   export enum ECommand {
     CALL   = 'call',
@@ -108,6 +116,7 @@
       range,
       toast,
       record,
+      gameRecord,
       notice,
       iAudio,
       actionDialog,
@@ -139,6 +148,10 @@
     private msg = '';
     private time = 30;
     private timeSt = 0;
+    private commandRecordList = [];
+    private showCommandRecord = false;
+    private gameList: IGameRecord [] = [];
+    private currGameIndex = 0;
     private roomConfig: IRoom = {
       isShort: false,
       smallBlind: 1
@@ -215,15 +228,6 @@
 
     get currPlayer() {
       return this.players.find((u: IPlayer) => this.userInfo.userId === u.userId);
-    }
-
-    get commonCardString() {
-      const commonCardFlag: string[][] = [[], [], [], [], []];
-      const commonCardMap = map(this.commonCard);
-      commonCardMap.forEach((card, key) => {
-        commonCardFlag[key] = card;
-      });
-      return commonCardFlag;
     }
 
     get minActionSize() {
@@ -508,6 +512,32 @@
       this.sitLink = link;
     }
 
+    private async getRecord(index: number) {
+      try {
+        console.log('ccc');
+        let gameId = 0;
+        if (!index) {
+          const result = await service.gameRecordList(this.roomId);
+          this.gameList = Object.values(result.data);
+          console.log(this.gameList)
+          gameId = this.gameList[this.gameList.length - 1].gameId;
+          this.currGameIndex = this.gameList.length;
+          console.log('ccc len', this.gameList.length);
+        } else {
+          this.currGameIndex = index;
+          gameId = this.gameList[index - 1].gameId;
+        }
+        console.log(gameId, 'ccc11');
+        const { data } = await service.commandRecordList(this.roomId, gameId);
+        this.commandRecordList = data.commandList;
+        this.showCommandRecord = true;
+        console.log(data);
+      } catch (e) {
+        console.log(e);
+        this.$plugin.toast('can\'t find the room');
+      }
+    }
+
     private created() {
       try {
         this.socketInit();
@@ -597,6 +627,13 @@
           transform: translate3d(0, 0, 0);
         }
       }
+    }
+    .game-record{
+      position: absolute;
+      right: 10px;
+      top: 7px;
+      font-size: 36px;
+      color: #fff;
     }
   }
 </style>

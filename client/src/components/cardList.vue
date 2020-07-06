@@ -25,10 +25,10 @@
   @Component
   export default class Card extends Vue {
     @Prop() private cardList: any;
-    @Prop({ default: [], type: Array }) private valueCards!: string;
+    @Prop({ default: () => [], type: Array }) private valueCards!: string[];
 
     get show() {
-      return this.cardList[0].length !== 0;
+      return this.cardList.length !== 0;
     }
 
     private isBlack(type: string) {
@@ -40,7 +40,7 @@
     }
 
     private shadow(card: string) {
-      if (this.valueCards.length === 0) {
+      if (this.valueCards.length === 0 || card === '') {
         return false;
       }
       return this.valueCards.indexOf(card) < 0;

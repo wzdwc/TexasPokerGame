@@ -38,8 +38,8 @@ export class CommandRecord implements ICommandRecordService {
       'FROM\n' +
       '\tcommand_record\n' +
       'INNER JOIN `user` ON `user`.id = command_record.userId\n' +
-      'INNER JOIN `player` ON `player`.userId = command_record.userId\n' +
-      '\tcommand_record.gameId = ? and player.gameId = ?', [ gameId, gameId ]);
+      'INNER JOIN player ON player.userId = command_record.userId\n' +
+      '\twhere command_record.gameId = ? and player.gameId = ?', [ gameId, gameId ]);
     console.log(result, '=============command');
     return JSON.parse(JSON.stringify(result));
   }

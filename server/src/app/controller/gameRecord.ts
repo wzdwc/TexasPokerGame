@@ -57,7 +57,7 @@ export class GameRecordController extends BaseController {
         gameId: body.gameId,
       };
       this.success({
-        result,
+        ...result,
       });
     } catch (e) {
       this.fail('invalid game record');
@@ -72,7 +72,7 @@ export class GameRecordController extends BaseController {
       const gameList = await this.gameService.findByRoomNumber(body.roomNumber);
       const result = gameList.map(g => Object.assign({}, {}, { gameId: g.id }));
       this.success({
-        result,
+        ...result,
       });
     } catch (e) {
       this.fail('create room error');

@@ -7,7 +7,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
   const users: IPlayer[] = [
     {
       userId: '1',
-      counter: 496,
+      counter: 511,
       nickName: '1',
       account: '1',
       socketId: '1',
@@ -20,7 +20,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
     },
     {
       userId: '2',
-      counter: 548,
+      counter: 427,
       nickName: '2',
       account: '2',
       socketId: '2',
@@ -33,7 +33,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
     },
     {
       userId: '3',
-      counter: 398,
+      counter: 730,
       nickName: '3',
       account: '3',
       socketId: '3',
@@ -46,7 +46,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
     },
     {
       userId: '4',
-      counter: 356,
+      counter: 744,
       nickName: '4',
       account: '4',
       socketId: '4',
@@ -57,19 +57,19 @@ describe('test/app/core/pokerGame.test.ts', () => {
       status: 0,
       type: '',
     },
-    {
-      userId: '5',
-      counter: 802,
-      nickName: '5',
-      account: '5',
-      socketId: '5',
-      buyIn: 0,
-      reBuy: 0,
-      actionSize: 0,
-      actionCommand: '',
-      status: 0,
-      type: '',
-    },
+    // {
+    //   userId: '5',
+    //   counter: 802,
+    //   nickName: '5',
+    //   account: '5',
+    //   socketId: '5',
+    //   buyIn: 0,
+    //   reBuy: 0,
+    //   actionSize: 0,
+    //   actionCommand: '',
+    //   status: 0,
+    //   type: '',
+    // },
   ];
 
   /**
@@ -243,27 +243,38 @@ describe('test/app/core/pokerGame.test.ts', () => {
     game.action('raise:6'); // co
     game.action('call'); // D
     game.action('call'); // sb
+    game.action('call'); // sb
+    game.action('check'); // bb
+    game.action('raise:12'); // d
+    game.action('call'); // bb
+    game.action('call'); // bb
+
     // game.action('call'); // bb
     game.action('fold'); // sb
-    game.action('fold'); // bb
-    console.log(game.pot, 'pot1');
+    game.action('check'); // bb
+    game.action('check'); // bb
+    game.action('raise:30'); // bb
+    game.action('raise:90'); // bb
+    game.action('fold'); // sb
+    game.action('raise:180'); // bb
+    game.action('raise:360'); // bb
+    game.action('allin'); // bb
+    game.action('allin'); // bb
+    // game.action('fold'); // bb
+    // console.log(game.pot, 'pot1');
 
     // game.action('check'); // bb
-    game.action('raise:10'); // d
-    game.action('fold'); // sb
+    // game.action('fold'); // sb
     // game.action('fold'); // bb
-    game.action('call'); // bb
     // game.action('check'); // bb
-    game.action('raise:30'); // bb
-    console.log(game.pot, 'pot');
-    game.action('call'); // bb
-    console.log(game.prevPot, 'prevPot');
-    game.action('check'); // bb
-    game.action('allin'); // bb
+    // game.action('raise:30'); // bb
+    // console.log(game.pot, 'pot');
+    // game.action('call'); // bb
+    // game.action('check'); // bb
     // game.action('allin'); // bb
-    game.action('fold'); // bb
+    // game.action('allin'); // bb
+    // game.action('fold'); // bb
     console.log(game.winner);
-    console.log(game.prevPot);
     console.log(game.pot, 'pot2');
     // // console.log('curr----------------------------3', game.currPlayer);
     // game.action('check'); // BB 200

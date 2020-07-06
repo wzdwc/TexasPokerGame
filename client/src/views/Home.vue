@@ -30,7 +30,7 @@
            @click="joinRoom"><span>join room</span>
       </div>
       <div class="btn"
-           @click="getRecord"><span>test record</span>
+           @click="getRecord(0)"><span>test record</span>
       </div>
     </div>
     <div class="room-number"
@@ -51,17 +51,25 @@
         <span @click="go">go</span>
       </div>
     </div>
+    <gameRecord v-model="showRecord"
+                :game-list="gameList"
+                :curr-game-index="currGameIndex"
+                @getRecord = "getRecord"
+                :command-list="commandList"></gameRecord>
   </div>
 </template>
 
 <script lang="ts">
   import { Vue } from 'vue-property-decorator';
   import Component from 'vue-class-component';
+  import gameRecord from '@/components/gameRecord.vue';
   import service from '../service';
   import cookie from 'js-cookie';
+  import {IGameRecord} from '@/interface/IGameRecord'
 
   @Component({
     components: {
+      gameRecord
     },
   })
   export default class Home extends Vue {
@@ -72,6 +80,10 @@
     private isShort = false;
     private smallBlind = 1;
     private showRoomConfig = false;
+    private showRecord = false;
+    private commandList = [];
+    private currGameIndex = 0;
+    private gameList: IGameRecord [] = [];
 
     private async createRoom() {
       try {
@@ -115,11 +127,28 @@
       }
     }
 
-    private async getRecord() {
+    private async getRecord(index: number) {
       try {
-        const { data } = await service.recordList('622832');
+        console.log('ccc');
+        let gameId = 0;
+        if (!index) {
+          const result = await service.gameRecordList('889008');
+          this.gameList = Object.values(result.data);
+          console.log(this.gameList)
+          gameId = this.gameList[this.gameList.length - 1].gameId;
+          this.currGameIndex = this.gameList.length;
+          console.log('ccc len', this.gameList.length);
+        } else {
+          this.currGameIndex = index;
+        }
+        console.log(gameId, 'ccc11');
+        gameId = this.gameList[index].gameId;
+        const { data } = await service.commandRecordList('889008', gameId);
+        this.commandList = data.commandList;
+        this.showRecord = true;
         console.log(data);
       } catch (e) {
+        console.log(e);
         this.$plugin.toast('can\'t find the room');
       }
     }

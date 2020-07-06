@@ -25,8 +25,12 @@ export default {
     url: '/game/buyIn',
     body: { buyInSize },
   }),
-  recordList: (roomNumber: string) => request({
-    url: '/game/record/find',
+  commandRecordList: (roomNumber: string, gameId: number) => request({
+    url: '/game/record/find/commandRecord',
+    body: { roomNumber, gameId },
+  }),
+  gameRecordList: (roomNumber: string) => request({
+    url: '/game/record/find/gameRecord',
     body: { roomNumber },
   }),
 };

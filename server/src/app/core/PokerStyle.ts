@@ -222,11 +222,11 @@ export class PokerStyle implements IPokerStyle {
     }
     // special straight "A2345",'m' -> A
     if (!this.isShort && straightStr.indexOf('m') > -1 && straightStr.indexOf('abcd') > -1) {
-      return 'abcdm';
+      return 'abcd';
     }
     // special straight "A2345",'m' -> A
     if (this.isShort && straightStr.indexOf('m') > -1 && straightStr.indexOf('efgh') > -1) {
-      return 'efghm';
+      return 'efgh';
     }
     return '0';
   }

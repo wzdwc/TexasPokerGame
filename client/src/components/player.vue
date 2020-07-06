@@ -1,44 +1,38 @@
 <template>
   <div class="sit-container">
     <div class="sit-player"
-         v-if="sit.player">
+         v-if="player" :class="{ small: isSmall }">
       <div class="player"
-           :class="{fold: sit.player.status === -1}">
-        <div class="count-down"
-             v-show="actionUserId === sit.player.userId">{{time}}
-        </div>
+           :class="{fold: player.status === -1}">
         <div class="user-name"
-             v-show="sit.player.nickName">
-          {{ sit.player.nickName }}
+             v-show="player.nickName">
+          {{ player.nickName }}
         </div>
         <div class="icon iconfont icon-user-avatar"></div>
         <div class="counter"
-             v-show="sit.player.counter || sit.player.actionCommand === 'allin'">
-          {{ sit.player.counter }}
+             v-show="player.counter || player.command === 'allin'">
+          {{ player.counter }}
         </div>
         <div class="action-size"
-             v-show="sit.player.actionSize > 0">
-          {{ sit.player.actionSize }}
+             v-show="player.actionSize > 0">
+          {{ player.actionSize }}
         </div>
         <div class="action-command"
-             v-show="sit.player.actionCommand">
-          {{ sit.player.actionCommand }}
+             v-show="player.command">
+          {{ player.command }}
         </div>
         <div class="type"
-             v-show="sit.player.type">
-          {{ sit.player.type }}
+             v-show="player.type">
+          {{ player.type }}
         </div>
         <div class="hand-card"
-             v-show="!!!currPlayer || (sit.player.userId !== currPlayer.userId
-            && sit.player.handCard
-            && sit.player.handCard.length !== 0)">
-          <cardList :cardList="sit.player.handCard"></cardList>
+             v-show="player.handCard !== ''">
+
+          <cardList :cardList="player.handCard.split(',')"></cardList>
         </div>
         <div class="card-style"
-             v-show="!!!currPlayer || (sit.player.userId !== currPlayer.userId
-            && sit.player.handCard
-            && sit.player.handCard.length !== 0)">
-          {{PokeStyle(sit.player.handCard)}}
+             v-show="player.handCard !== '' && player.commonCard !== ''">
+          {{PokeStyle(player.handCard, player.commonCard)}}
         </div>
       </div>
     </div>
@@ -47,29 +41,25 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import ISit from '@/interface/ISit';
-import { IPlayer } from '@/interface/IPlayer';
+import cardList from './cardList.vue'
 import { PokerStyle } from '@/utils/PokerStyle';
 
-@Component
-export default class Sit extends Vue {
-  @Prop() private sit!: ISit;
-  @Prop() private actionUserId!: string;
-  @Prop() private currPlayer!: IPlayer;
-  @Prop() private commonCard!: string[];
-  @Prop() private handCard!: string[];
-  @Prop({ default: 30, type: Number }) private time!: number;
+@Component({
+  components: {
+    cardList,
+  },
+})
+export default class Player extends Vue {
+  @Prop() private player!: any;
+  @Prop() private isSmall!: boolean;
 
-  private PokeStyle(cards: string[]) {
-    if (this.commonCard.length === 0) {
+  private PokeStyle(cards: string, commonCard: string) {
+    if (commonCard === '' || cards === '') {
       return '';
     }
-    const commonCard = this.commonCard || [];
-    let handCard = this.handCard || [];
-    if (cards) {
-      handCard = cards;
-    }
-    const card = [...handCard, ...commonCard];
+    const commonCardArr = commonCard.split(',');
+    const cardsArr = cards.split(',');
+    const card = [...cardsArr, ...commonCardArr];
     const style = new PokerStyle(card);
     return style.getPokerStyleName();
   }
@@ -79,9 +69,13 @@ export default class Sit extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
   .sit-container {
+    .small{
+      transform: scale(0.9);
+    }
     .player {
       position: relative;
-
+      font-size: 14px;
+      width: 50 / 3.75vw;
       .icon {
         width: 45 / 3.75vw;
         height: 45 / 3.75vw;
@@ -170,6 +164,12 @@ export default class Sit extends Vue {
 
       &.fold {
         opacity: 0.4;
+      }
+      .hand-card{
+        position: absolute;
+        left: 0;
+        top: 2vh;
+        transform: scale(0.7);
       }
     }
   }
