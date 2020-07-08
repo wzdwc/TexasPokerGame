@@ -62,7 +62,7 @@
 <script lang="ts">
   import { Vue } from 'vue-property-decorator';
   import Component from 'vue-class-component';
-  import gameRecord from '@/components/gameRecord.vue';
+  import gameRecord from '@/components/GameRecord.vue';
   import service from '../service';
   import cookie from 'js-cookie';
   import {IGameRecord} from '@/interface/IGameRecord'

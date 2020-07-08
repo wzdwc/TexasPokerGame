@@ -22,5 +22,21 @@ export default () => {
       }
     },
   };
+  config.mysql = {
+    client: {
+      // host
+      host: '47.104.172.100',
+      // pot
+      port: '3306',
+      // userName
+      user: 'root',
+      // password
+      password: 'gameTest2020.',
+      // database name
+      database: 'poker',
+    },
+    app: true,
+    agent: false,
+  };
   return config;
 };

@@ -62,6 +62,7 @@
                 @getRecord = "getRecord"
                 :curr-game-index="currGameIndex"
                 :command-list="commandRecordList"></gameRecord>
+    <Emoji></Emoji>
   </div>
 </template>
 
@@ -76,18 +77,18 @@
   import { ILinkNode, Link } from '@/utils/Link';
   import ISit from '../interface/ISit';
   import BuyIn from '../components/BuyIn.vue';
-  import range from '../components/range.vue';
-  import toast from '../components/toast.vue';
-  import record from '../components/record.vue';
-  import notice from '../components/notice.vue';
+  import range from '../components/Range.vue';
+  import toast from '../components/Toast.vue';
+  import record from '../components/Record.vue';
+  import notice from '../components/Notice.vue';
   import iAudio from '../components/audio.vue';
-  import sendMsg from '../components/sendMsg.vue';
+  import sendMsg from '../components/SendMsg.vue';
   import actionDialog from '../components/Action.vue';
   import { PokerStyle } from '@/utils/PokerStyle';
   import origin from '../utils/origin';
   import { IRoom } from '@/interface/IRoom';
   import service from '../service';
-  import gameRecord from '@/components/gameRecord.vue';
+  import gameRecord from '@/components/GameRecord.vue';
   import {IGameRecord} from '@/interface/IGameRecord';
 
   export enum ECommand {
@@ -142,6 +143,7 @@
     private gaming = false;
     private sitList: ISit[] = [];
     private actionUserId = '';
+    private showAllin = false;
     private showMsg = false;
     private baseSize = GAME_BASE_SIZE;
     private playIncome = false;
@@ -300,6 +302,12 @@
     private action(command: string) {
       if (command === 'fold') {
         clearTimeout(this.timeSt);
+      }
+      if (command === 'allin') {
+        this.showAllin = true;
+        setTimeout(() => {
+          this.showAllin = false;
+        }, 3000)
       }
       this.emit('action', { command });
       // this.isAction = false;

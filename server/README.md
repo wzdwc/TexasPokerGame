@@ -1,58 +1,106 @@
-# poke-game-center
+poke-game-center
+================
+> pokeGame server，base on TypeScript,midway,node,mysql,redis 
 
-pokeGame服务中心
+### Setup
+See: [egg document][eggjs], [midway document][midway]。
 
-## 快速入门
-详细文档，参见 [egg 文档][eggjs], [midway 文档][midway]。
+- Redis for game room
+```
+// config.default
+  config.redis = {
+    client: {
+      port: 6379,
+      host: '127.0.0.1',
+      password: '123456',
+      db: 0,
+    },
+  };
 
-### 安装 启动
+```
+- DataBase
+> Mysql
+```
+// config.default
+  config.mysql = {
+    client: {
+      // mysql host
+      host: '',
+      // pot
+      port: '3306',
+      // userName
+      user: 'root',
+      // password
+      password: '',
+      // database name
+      database: 'poker',
+    },
+    app: true,
+    agent: false,
+  };
 
+
+```
+- Install
 ```bash
 $ yarn
 $ yarn dev
 $ open http://localhost:7001/
 ```
 
-### 部署
+### Deploy
 
 ```bash
 $ npm start
 $ npm stop
 ```
 
-### 单元测试
+### Test
 ```
 yarn test
 
 ```
-- 具体参见 [midway 文档 - 单元测试](https://eggjs.org/zh-cn/core/unittest)。
+- See [midway document - test](https://eggjs.org/zh-cn/core/unittest)。
 
-### 目录结构
+### Project structure
 ```
 ├─dist
 ├─logs
-│  ├─ELKLog   //上报kibana日志系统log
+│  ├─ELKLog   // report log
 |  |  ├─info.log
 |  |  └─error.log
-│  └─node-loan-center   // 系统日志
+│  └─node-loan-center   // system log
 ├─node_modules
-├─src         //开发目录
+├─src
 │  ├─app
-│  │  ├─controller
+│  │  ├─controller     // http controller
+│  │  ├─core           // poker core code
+|  |  |  ├─Player.ts     // game player class
+|  |  |  ├─Poker.ts      // poker class, get random poker cards
+|  |  |  ├─PokerGame.ts   // poker game Class
+│  │  │  └─PokerStyle.ts   // Contrast poker style and all TexasPoker style
 │  │  ├─extend
 │  │  ├─helper
-│  │  ├─middleware
-│  │  └─public  // 静态目录
-│  ├─config    // 配置文件目录，包含test，prod，local等config文件
-│  ├─interface  // ts接口目录
-│  ├─lib       // 工具类目录，如基类
-│  └─service   
-└─test  // 单元测试用例目录
+│  │  ├─io
+│  │  │  ├─controller      // socket.io controller
+│  │  │  └─middleware      //do auth, join, leave middleware
+│  │  ├─middleware        // http middleware
+│  │  └─public           // client
+│  ├─config              // system base config
+│  ├─interface
+│  │  └─service
+│  ├─lib
+│  ├─service             // http service
+│  └─utils               // some tools
+└─test  // test case
     └─app
         └─controller
 
 ```
-  
+
 [midway]: https://midwayjs.org
 [git-rules]: https://confluence.sui.work/pages/viewpage.action?pageId=51120607
 [eggjs]: https://eggjs.org/zh-cn/
+
+## License
+The MIT License (MIT)

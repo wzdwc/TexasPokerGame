@@ -2,22 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/poker.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/less/base.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/less/base.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Action.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Action.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CommonCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommonCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/audio.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/audio.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/cardList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/cardList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/gameRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/gameRecord.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/player.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/player.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/service/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/service/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/server/src.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/controller/gameRecord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/controller/gameRecord.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/comand_record.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/game.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/game_record.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/room.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/user.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/service/commandRecord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/commandRecord.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/config.default.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.default.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/config.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.prod.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +51,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedtslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/interface" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/server" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -69,10 +68,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server" />
+      <recent name="$PROJECT_DIR$/database" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/client/src/interface" />
       <recent name="$PROJECT_DIR$/server/src/service" />
-      <recent name="$PROJECT_DIR$/client/src/utils" />
-      <recent name="$PROJECT_DIR$/client/src/assets" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -97,6 +97,7 @@
       <workItem from="1590767628109" duration="39193000" />
       <workItem from="1593066389745" duration="11136000" />
       <workItem from="1593700616662" duration="8522000" />
+      <workItem from="1594050477603" duration="547000" />
     </task>
     <servers />
   </component>

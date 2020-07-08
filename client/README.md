@@ -1,17 +1,11 @@
-# poke-game-front-ts
-
-## Project setup
-
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
+poke-game-front-ts
+=====================
+## Setup
 
 ```
-yarn run serve
+yarn
+yarn serve
 ```
-
 ### Compiles and minifies for production
 
 ```
@@ -24,12 +18,22 @@ yarn run build
 yarn run test
 ```
 
-### Lints and fixes files
+## Project structure
+```
+├─public  // html
+└─src
+    ├─assets
+    │  ├─less
+    │  └─mp3
+    ├─components
+    ├─interface
+    ├─plugins
+    ├─router
+    ├─service     // api
+    ├─store
+    ├─utils
+    └─views
 
 ```
-yarn run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## License
+The MIT License (MIT)

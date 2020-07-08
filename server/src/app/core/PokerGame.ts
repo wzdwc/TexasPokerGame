@@ -574,9 +574,15 @@ export class PokerGame {
       if (key !== 0) {
         prevEvPot = this.winner[key - 1][0].evPot;
       }
-      winnerList.forEach(winner => {
+      winnerList.forEach((winner, index) => {
         const pot = winner.evPot === Infinity ? this.pot : winner.evPot;
-        winner.setIncome((pot - prevEvPot) / winnerList.length);
+        const leftPot = pot - prevEvPot;
+        const isDivide = leftPot % winnerList.length;
+        let income = leftPot / winnerList.length;
+        if (index === 0 && winnerList.length > 1 && isDivide > 0) {
+          income = ((leftPot - isDivide) / winnerList.length) + isDivide;
+        }
+        winner.setIncome(income);
       });
     });
   }
