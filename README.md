@@ -17,7 +17,7 @@ Detail: [client-readme](https://github.com/wzdwc/TexasPokerGame/tree/master/clie
 └─server
 ```
 ## Demo
-See: [demo](www.jojgame.com)
+See: [demo](http://www.jojgame.com)
 
 ## License
 The MIT License (MIT)
