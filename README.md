@@ -10,10 +10,12 @@ Detail: [server-readme](https://github.com/wzdwc/TexasPokerGame/tree/master/serv
 
 Detail: [client-readme](https://github.com/wzdwc/TexasPokerGame/tree/master/client)
 ## Project structure
+```
 ├─client
 ├─database
 │  └─poker.sql
 └─server
+```
 ## Demo
 See: [demo](www.jojgame.com)
 
