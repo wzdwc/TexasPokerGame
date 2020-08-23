@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import cardList from './cardList.vue'
+import cardList from './CardList.vue';
 import { PokerStyle } from '@/utils/PokerStyle';
 
 @Component({

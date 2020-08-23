@@ -88,7 +88,7 @@
   import { IPlayer } from '@/interface/IPlayer';
   import { ILinkNode } from '@/utils/Link';
   import ISit from '@/interface/ISit';
-  import cardList from './cardList.vue';
+  import cardList from './CardList.vue';
   import BuyIn from '@/components/BuyIn.vue';
   import { PokerStyle } from '@/utils/PokerStyle';
   import map from '../utils/map';

@@ -18,7 +18,7 @@
 
 <script lang="ts">
   import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-  import range from '../components/range.vue';
+  import range from './Range.vue';
 
   @Component({
     components: {

@@ -6,11 +6,11 @@
       <div class="title">record</div>
       <div class="record-context">
       <ul class = 'td'>
-        <lo>
+        <div class="lo">
           <span class="player">player</span>
           <i>commonCard</i>
           <span class="pot">pot</span>
-        </lo>
+        </div>
       </ul>
       <ul class="record-box">
         <li v-for="player in commandList">
@@ -41,14 +41,14 @@
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator';
   import { IPlayer } from '@/interface/IPlayer';
-  import Player from './player.vue'
-  import cardList from '@/components/cardList.vue';
+  import Player from './Player.vue';
+  import CardList from '@/components/CardList.vue';
   import { IGameRecord } from '@/interface/IGameRecord';
 
   @Component({
     components: {
-      cardList,
-      Player
+      CardList,
+      Player,
     },
   })
   export default class Record extends Vue {
@@ -62,16 +62,19 @@
     get show() {
       return this.value;
     }
-
+    set show(val) {
+      this.$emit('input', val);
+    }
     get maxIndex() {
       return this.gameList.length;
     }
 
     private getRecord(type: number) {
       const index = this.currGameIndex + type;
-      if (index > this.maxIndex || index <= 0) return
-      console.log(index, 'index', index - 1)
-      this.$emit('getRecord', index)
+      if (index > this.maxIndex || index <= 0) {
+        return;
+      }
+      this.$emit('getRecord', index);
     }
     private commonCardMap(commonCard: string) {
       const commonCardArr = commonCard.split(',');
@@ -84,10 +87,6 @@
         }
       }
       return arr;
-    }
-
-    set show(val) {
-      this.$emit('input', val);
     }
   }
 </script>
@@ -170,7 +169,7 @@
       .player{
         width: 16vw;
       }
-      lo {
+      .lo {
         display: flex;
         i {
           flex: 1;

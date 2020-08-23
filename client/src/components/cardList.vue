@@ -128,7 +128,7 @@
           top: -2px;
           font-size: 20px;
           line-height: 60px;
-
+          font-family: Arial;
           &.big {
             left: 15px;
             font-size: 35px;

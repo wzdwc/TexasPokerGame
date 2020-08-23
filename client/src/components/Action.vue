@@ -60,8 +60,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import range from './range.vue';
-import iAudio from './audio.vue';
+import range from './Range.vue';
+import iAudio from './Audio.vue';
 import { IPlayer } from '@/interface/IPlayer';
 
 @Component({
@@ -108,7 +108,9 @@ import { IPlayer } from '@/interface/IPlayer';
 
   @Watch('raiseSize')
   private wRaiseSize(val: number) {
-    this.raiseSize = val > this.currPlayer.counter ? this.currPlayer.counter : val < this.minActionSize ? this.minActionSize : val;
+    this.raiseSize = val > this.currPlayer.counter ? this.currPlayer.counter : val < this.minActionSize
+      ? this.minActionSize
+      : val;
   }
 
   get canActionSize() {

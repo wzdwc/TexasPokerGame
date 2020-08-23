@@ -62,7 +62,6 @@
                 @getRecord = "getRecord"
                 :curr-game-index="currGameIndex"
                 :command-list="commandRecordList"></gameRecord>
-    <Emoji></Emoji>
   </div>
 </template>
 
@@ -77,11 +76,10 @@
   import { ILinkNode, Link } from '@/utils/Link';
   import ISit from '../interface/ISit';
   import BuyIn from '../components/BuyIn.vue';
-  import range from '../components/Range.vue';
   import toast from '../components/Toast.vue';
   import record from '../components/Record.vue';
   import notice from '../components/Notice.vue';
-  import iAudio from '../components/audio.vue';
+  import iAudio from '../components/Audio.vue';
   import sendMsg from '../components/SendMsg.vue';
   import actionDialog from '../components/Action.vue';
   import { PokerStyle } from '@/utils/PokerStyle';
@@ -114,7 +112,6 @@
       sitList,
       commonCard,
       BuyIn,
-      range,
       toast,
       record,
       gameRecord,
@@ -156,7 +153,7 @@
     private currGameIndex = 0;
     private roomConfig: IRoom = {
       isShort: false,
-      smallBlind: 1
+      smallBlind: 1,
     };
     private messageList: any[] = [];
     private showRecord = false;
@@ -307,7 +304,7 @@
         this.showAllin = true;
         setTimeout(() => {
           this.showAllin = false;
-        }, 3000)
+        }, 3000);
       }
       this.emit('action', { command });
       // this.isAction = false;
@@ -325,7 +322,7 @@
         query: {
           room: this.roomId,
           token,
-          roomConfig: roomConfig,
+          roomConfig,
         },
         transports: ['websocket'],
       });
@@ -422,7 +419,7 @@
           this.playIncome = true;
           setTimeout(() => {
             this.playIncome = false;
-          }, 1000)
+          }, 1000);
         }
 
         if (msg.action === 'newGame') {
@@ -522,12 +519,10 @@
 
     private async getRecord(index: number) {
       try {
-        console.log('ccc');
         let gameId = 0;
         if (!index) {
           const result = await service.gameRecordList(this.roomId);
           this.gameList = Object.values(result.data);
-          console.log(this.gameList)
           gameId = this.gameList[this.gameList.length - 1].gameId;
           this.currGameIndex = this.gameList.length;
           console.log('ccc len', this.gameList.length);

@@ -135,7 +135,7 @@ class GameController extends BaseSocketController {
                 // new game
                 setTimeout(() => {
                   this.reStart();
-                }, 10000);
+                }, 5000);
               }
             }
             // update game info

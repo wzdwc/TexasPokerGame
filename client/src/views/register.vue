@@ -39,8 +39,8 @@
   import { Vue } from 'vue-property-decorator';
   import service from '../service';
   import Component from 'vue-class-component';
-  import toast from '../components/toast.vue';
-  import XInput from '../components/x-input.vue';
+  import toast from '../components/Toast.vue';
+  import XInput from '../components/XInput.vue';
 
   @Component({
     components: {

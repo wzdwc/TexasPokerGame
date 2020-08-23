@@ -3,7 +3,7 @@
     <!--    <div class="value">{{raiseSize}}</div>-->
     <div class="range-body">
       <input type="range"
-             v-model="range"
+             v-model="rangeSize"
 
              :class="{horizontal: !!isHorizontal}">
     </div>
@@ -19,17 +19,16 @@
     @Prop({ type: Number, default: 100 }) private min!: number;
     @Prop() private value!: any;
     @Prop({ type: Boolean, default: false }) private isHorizontal!: boolean;
-    // private range = 0;
-    private rangeRound = (this.max - this.min) / 100
+    private rangeRound = (this.max - this.min) / 100;
 
-    get range() {
+    get rangeSize() {
       const valNum = Number(this.value);
       const size = valNum >= this.max ? this.max / this.rangeRound :
         valNum < this.min ? 0 : (valNum - this.min) / this.rangeRound;
       return size;
     }
 
-    set range(val) {
+    set rangeSize(val) {
       const valNum = Number(val);
       const size = Number(val) === 0 ? this.min : Math.floor(valNum / 100 * (this.max - this.min)) +
         this.min;

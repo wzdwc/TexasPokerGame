@@ -65,11 +65,11 @@
   import gameRecord from '@/components/GameRecord.vue';
   import service from '../service';
   import cookie from 'js-cookie';
-  import {IGameRecord} from '@/interface/IGameRecord'
+  import {IGameRecord} from '@/interface/IGameRecord';
 
   @Component({
     components: {
-      gameRecord
+      gameRecord,
     },
   })
   export default class Home extends Vue {
@@ -92,7 +92,7 @@
         const roomConfig = {
           isShort: this.isShort,
           smallBlind: this.smallBlind,
-        }
+        };
         cookie.set('roomConfig', roomConfig, {expires: 1});
         this.$router.push({ name: 'game', params: { roomNumber, isOwner: '1' } });
       } catch (e) {
@@ -113,9 +113,9 @@
       try {
         const { data } = await service.findRoom(this.roomNumber);
         if (data) {
-          const roomConfig ={
-            ...data
-          }
+          const roomConfig = {
+            ...data,
+          };
           cookie.set('roomConfig', roomConfig, {expires: 1});
           this.$router.push({ name: 'game', params: { roomNumber: this.roomNumber } });
         } else {
@@ -134,7 +134,6 @@
         if (!index) {
           const result = await service.gameRecordList('889008');
           this.gameList = Object.values(result.data);
-          console.log(this.gameList)
           gameId = this.gameList[this.gameList.length - 1].gameId;
           this.currGameIndex = this.gameList.length;
           console.log('ccc len', this.gameList.length);

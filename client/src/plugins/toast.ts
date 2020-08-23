@@ -1,5 +1,5 @@
 import Vue, { PluginObject } from 'vue';
-import Toast from '../components/toast.vue';
+import Toast from '../components/Toast.vue';
 
 export interface IOptions {
   text?: string;

@@ -250,8 +250,6 @@ export class PokerStyle implements IPokerStyle {
       }
       return;
     }
-    console.log('come in -------', isThree)
-
     if (this.isShort) {
       // three of kind
       if (isThree.length > 0) {
