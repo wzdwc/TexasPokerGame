@@ -19,12 +19,13 @@ Detail: [client-readme](https://github.com/wzdwc/TexasPokerGame/tree/master/clie
 ## Demo
 See: [demo](http://www.jojgame.com)
 
-Sign up:![img](https://github.com/wzdwc/TexasPokerGame/blob/master/gif/demo1.gif)
 
-Sign in:![img](https://github.com/wzdwc/TexasPokerGame/blob/master/gif/demo2.gif)
+![img](https://github.com/wzdwc/TexasPokerGame/blob/master/gif/demo1.gif)
 
-Create room:![img](https://github.com/wzdwc/TexasPokerGame/blob/master/gif/demo3.gif)
+![img](https://github.com/wzdwc/TexasPokerGame/blob/master/gif/demo2.gif)
 
-Play game:![img](https://github.com/wzdwc/TexasPokerGame/blob/master/gif/demo4.gif)
+![img](https://github.com/wzdwc/TexasPokerGame/blob/master/gif/demo3.gif)
+
+![img](https://github.com/wzdwc/TexasPokerGame/blob/master/gif/demo4.gif)
 ## License
 The MIT License (MIT)
