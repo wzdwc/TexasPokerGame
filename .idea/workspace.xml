@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:bk" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/assets/poke.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/interface/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/logs/ELKLog/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/ELKLog/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/logs/ELKLog/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/ELKLog/info.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/agent.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/agent.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/core.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/core.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/egg-schedule.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/egg-schedule.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/logs/game-node-center/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/game-node-center/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/Player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Player.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/app/core/pokerGame.test.ts" afterDir="false" />
-    </list>
+    <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,13 +34,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="Vue" />
+        <option value="Less File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="bk" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -45,14 +59,14 @@
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedtslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -63,12 +77,19 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/server/node_modules/tslint" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.tslint" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/src/assets" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/server" />
+      <recent name="$PROJECT_DIR$/database" />
+      <recent name="$PROJECT_DIR$/client/src/interface" />
+      <recent name="$PROJECT_DIR$/server/src/service" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -87,41 +108,72 @@
       <workItem from="1588119564722" duration="238000" />
       <workItem from="1588166446649" duration="17000" />
       <workItem from="1588166552136" duration="2062000" />
-      <workItem from="1588168659920" duration="8749000" />
+      <workItem from="1588168659920" duration="21070000" />
+      <workItem from="1589475961634" duration="559000" />
+      <workItem from="1589732800789" duration="13203000" />
+      <workItem from="1590767628109" duration="39193000" />
+      <workItem from="1593066389745" duration="11136000" />
+      <workItem from="1593700616662" duration="8522000" />
+      <workItem from="1594050477603" duration="547000" />
+      <workItem from="1594228393975" duration="3051000" />
+      <workItem from="1598164265688" duration="598000" />
+      <workItem from="1598166189685" duration="679000" />
+      <workItem from="1598174892065" duration="407000" />
+      <workItem from="1599396370958" duration="518000" />
+      <workItem from="1599739988741" duration="1817000" />
+      <workItem from="1599904748126" duration="799000" />
+      <workItem from="1599912369521" duration="681000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="bk" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587141749678">
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1593348545499">
+      <screen x="0" y="23" width="1440" height="828" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1593070402308" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.828@0.23.1440.828" timestamp="1593348545499" />
+    <state x="100" y="100" width="1240" height="702" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599912309818">
+      <screen x="0" y="23" width="1440" height="832" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1593351376798" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.827@0.23.1440.827" timestamp="1593358666478" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.828@0.23.1440.828" timestamp="1599741084335" />
+    <state x="100" y="100" width="1240" height="702" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.832@0.23.1440.832" timestamp="1599912309818" />
+    <state x="378" y="207" width="683" height="490" key="find.popup" timestamp="1593070201850">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1587141749678" />
-    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1587206645912">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="378" y="207" width="683" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1593070201850" />
+    <state x="450" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599740214397">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
-    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1587206645912" />
-    <state x="221" y="89" key="SettingsEditor" timestamp="1588168578146">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1588168578146" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587480585643">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1587480585643" />
-    <state x="378" y="207" width="683" height="486" key="find.popup" timestamp="1587207727777">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="378" y="207" width="683" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1587207727777" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1587141886851">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1587141886851" />
-    <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1587138649507">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900@0.0.1440.900" timestamp="1587138649507" />
+    <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900@0.0.1440.900" timestamp="1591504016729" />
+    <state x="450" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.828@0.23.1440.828" timestamp="1599740214397" />
   </component>
 </project>

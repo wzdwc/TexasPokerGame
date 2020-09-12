@@ -28,13 +28,16 @@ export class PokerStyle implements IPokerStyle {
     3: [] as string[],
     4: [] as string[],
   };
+  flushColor: string = '';
+  isShort: boolean;
   straightArr: string[] = [];
   pokerStyle: string[] = [ '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ];
   numObj: Map<string, number> = new Map(
     POKER_STR.split('').map(m => [ m, 0 ]));
 
-  constructor(cards: string[]) {
+  constructor(cards: string[], isShort= false) {
     this.cards = sort(cards);
+    this.isShort = isShort;
     this.init();
   }
 
@@ -44,8 +47,8 @@ export class PokerStyle implements IPokerStyle {
     const isThree = [];
     let isFour = '0';
     let isFullHouse = '0';
-    let isStraightFlush = '0';
-    let isFlush = [];
+    // const isStraightFlush = '0';
+    let isFlush: string[] = [];
     let isRoyalFlush = '0';
     let isThreeKind = '';
     let isTowPair = '';
@@ -68,6 +71,7 @@ export class PokerStyle implements IPokerStyle {
       if (this.flushObj[f].length >= 5) {
         // flush is order,so flush[length - 1] is max flush card
         isFlush = this.flushObj[f];
+        this.flushColor = f;
       }
     }
 
@@ -92,13 +96,12 @@ export class PokerStyle implements IPokerStyle {
     }
     // straight flush
     if (isFlush.length !== 0 && this.isStraight(isFlush) !== '0') {
-      if (this.isStraight(isFlush) === 'i') {
-        isRoyalFlush = '1';
+      if (this.isStraight(isFlush) === 'ijklm') {
+        isRoyalFlush = 'ijklm';
         this.pokerStyle[0] = isRoyalFlush;
         return;
       }
-      isStraightFlush = this.isStraight(isFlush);
-      this.pokerStyle[1] = isStraightFlush;
+      this.pokerStyle[1] = this.isStraight(isFlush).split('').reverse().join('');
       return;
     }
 
@@ -114,32 +117,63 @@ export class PokerStyle implements IPokerStyle {
       const maxTwoCard = isThree.length === 2 ? isThree[1] : isThree[0] === isTwo[0] ? isTwo[1] : isTwo[0];
       const maxThree = isThree[0];
       isFullHouse = maxThree + maxTwoCard;
-      this.pokerStyle[3] = isFullHouse;
+      if (this.isShort) {
+        this.pokerStyle[4] = isFullHouse;
+      } else {
+        this.pokerStyle[3] = isFullHouse;
+      }
       return;
     }
 
     // flush
     if (isFlush.length !== 0) {
-      this.pokerStyle[4] = isFlush;
+      isFlush.reverse().length = 5;
+      if (this.isShort) {
+        this.pokerStyle[3] = isFlush.join('');
+      } else {
+        this.pokerStyle[4] = isFlush.join('');
+      }
       return;
     }
 
-    // straight
-    if (this.isStraight() !== '0') {
-      this.pokerStyle[5] = `${this.isStraight()}`;
-      return;
+    console.log('come in -------', isThree);
+
+    if (this.isShort) {
+      // three of kind
+      if (isThree.length > 0) {
+        isThreeKind = isThree.join('');
+        isThreeKind += highCard[0] + highCard[1];
+        this.pokerStyle[5] = isThreeKind;
+        return;
+      }
+
+      // straight
+      if (this.isStraight() !== '0') {
+        this.pokerStyle[6] = `${this.isStraight()}`;
+        return;
+      }
+
+    } else {
+      // straight
+      if (this.isStraight() !== '0') {
+        this.pokerStyle[5] = `${this.isStraight()}`;
+        return;
+      }
+
+      // three of kind
+      if (isThree.length > 0) {
+        isThreeKind = isThree.join('');
+        isThreeKind += highCard[0] + highCard[1];
+        this.pokerStyle[6] = isThreeKind;
+        return;
+      }
     }
 
-    // three of kind
-    if (isThree.length > 0) {
-      isThreeKind = isThree.join('');
-      isThreeKind += highCard[0] + highCard[1];
-      this.pokerStyle[6] = isThreeKind;
-      return;
-    }
     // tow pair
     if (isTwo.length >= 2) {
-      isTowPair = isTwo.join('');
+      const towPair = isTwo;
+      towPair.length = 2;
+      isTowPair = towPair.join('');
       // third tow pair card big then high card
       const highCardForTowPair = isTwo[3] && isTwo[3] > highCard[0] ? isTwo[3] : highCard[0];
       isTowPair += highCardForTowPair;
@@ -167,13 +201,14 @@ export class PokerStyle implements IPokerStyle {
       return POKER_STR.indexOf(str);
     }
     if (straightStr.length === 5 && indexOf(straightStr) > -1) {
-      return POKER_STR.charAt(indexOf(straightStr));
+      return POKER_STR.slice(indexOf(straightStr), indexOf(straightStr) + 5);
     }
     if (straightStr.length === 6) {
       first = indexOf(straightStr.slice(0, 5));
       second = indexOf(straightStr.slice(1, 6));
       if (Math.max(first, second) > -1) {
-        return POKER_STR.charAt(Math.max(first, second));
+        const max = Math.max(first, second);
+        return POKER_STR.slice(max, max + 5);
       }
     }
     if (straightStr.length === 7) {
@@ -181,17 +216,41 @@ export class PokerStyle implements IPokerStyle {
       second = indexOf(straightStr.slice(1, 6));
       three = indexOf(straightStr.slice(2, 7));
       if (Math.max(first, second, three) > -1) {
-        return POKER_STR.charAt(Math.max(first, second, three));
+        const max = Math.max(first, second, three);
+        return POKER_STR.slice(max, max + 5);
       }
     }
     // special straight "A2345",'m' -> A
-    if (straightStr.indexOf('m') > -1 && straightStr.indexOf('abcd') > -1) {
-      return POKER_STR.charAt(12);
+    if (!this.isShort && straightStr.indexOf('m') > -1 && straightStr.indexOf('abcd') > -1) {
+      return 'abcd';
+    }
+    // special straight "A2345",'m' -> A
+    if (this.isShort && straightStr.indexOf('m') > -1 && straightStr.indexOf('efgh') > -1) {
+      return 'efgh';
     }
     return '0';
   }
 
   getPokerWeight() {
     return this.pokerStyle.join('');
+  }
+
+  getPokerValueCard() {
+    let valueStyle = '';
+    let isFlush = false;
+    this.pokerStyle.forEach((style, key) => {
+      if (style !== '0') {
+        isFlush = key === 1 || key === 4;
+        valueStyle = style;
+      }
+    });
+    const cards = this.cards.filter(card => {
+      if (isFlush) {
+        return valueStyle.indexOf(card[0]) > -1 && card[1] === this.flushColor;
+      }
+      return valueStyle.indexOf(card[0]) > -1;
+    });
+    cards.reverse().length = 5;
+    return cards;
   }
 }

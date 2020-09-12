@@ -11,13 +11,15 @@ export interface IPoker {
  */
 export class Poker implements IPoker {
   private pokers: string [] = [];
+  private readonly isShort: boolean;
 
-  constructor() {
+  constructor(isShort = false) {
+    this.isShort = isShort;
     this.init();
   }
 
   init(): void {
-    const size = [
+    let size = [
       'a',
       'b',
       'c',
@@ -31,6 +33,18 @@ export class Poker implements IPoker {
       'k',
       'l',
       'm' ];
+    if (this.isShort) {
+      size = [
+        'e',
+        'f',
+        'g',
+        'h',
+        'i',
+        'j',
+        'k',
+        'l',
+        'm' ];
+    }
     const color = [ 1, 2, 3, 4 ];
     for (const i of size) {
       for (const j of color) {

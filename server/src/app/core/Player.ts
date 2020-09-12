@@ -6,13 +6,17 @@ export interface IPlayer {
   nickName: string;
   account: string;
   socketId: string;
-  sit?: boolean;
+  income?: number;
+  type: string;
   reBuy: number;
+  status: number;
+  actionSize: number;
+  actionCommand: string;
 }
 
 export enum ECommand {
-  SMALL_BLIND = 'small_blind',
-  BIG_BLIND = 'big_blind',
+  SMALL_BLIND = 'sb',
+  BIG_BLIND = 'bb',
   STRADDLE = 'straddle',
   CALL = 'call',
   ALL_IN = 'allin',
@@ -22,7 +26,7 @@ export enum ECommand {
 }
 
 export enum EPlayerType {
-  DEFAULT = 'default',
+  DEFAULT = '',
   DEALER = 'd',
   BIG_BLIND = 'bb',
   SMALL_BLIND = 'sb',
@@ -40,9 +44,9 @@ export class Player {
   type: string = EPlayerType.DEFAULT;
   evPot: number = Infinity;
   inPot: number = 0;
-  pokeStyle: string = '';
+  income: number = 0;
+  pokerStyle: string = '';
 
-  // commandRecord: Array<string> = [];
   constructor(config: IPlayer) {
     this.counter = config.counter;
     this.position = config.position || 0;
@@ -70,8 +74,8 @@ export class Player {
 
   /**
    * player action
-   * @param {string} commandString
-   * @param {number} prevSize
+   * @param {string} commandString - player action command string
+   * @param {number} prevSize - prev player action size
    * @example action('command:raise:10')
    */
   action(commandString: string, prevSize: number = 0) {
@@ -83,7 +87,7 @@ export class Player {
       && (prevSize > (this.counter + this.actionSize) || raiseSize > this.counter)) {
       throw 'player: error action, overflow action size';
     } else {
-      this.actionCommand = command;
+      this.actionCommand = (command === ECommand.SMALL_BLIND || command === ECommand.BIG_BLIND) ? '' : command;
     }
 
     // BLIND
@@ -104,8 +108,10 @@ export class Player {
     // player raise,get the raise size
     if (command === ECommand.RAISE) {
       // raise must double to prevSize
-      if ((raiseSize + this.actionSize) >= prevSize * 2) {
-        size = raiseSize;
+      if (raiseSize >= prevSize * 2) {
+        console.log('player: RAISE----------------', prevSize, this.actionSize);
+        const actionSize = this.actionSize >= 0 ? this.actionSize : 0;
+        size = raiseSize - actionSize;
       } else {
         throw 'player: error action: raise size too small';
       }
@@ -117,7 +123,8 @@ export class Player {
 
     if (command === ECommand.CALL) {
       console.log('player: call----------------', prevSize, this.actionSize);
-      size = prevSize - this.actionSize;
+      const actionSize = this.actionSize >= 0 ? this.actionSize : 0;
+      size = prevSize - actionSize;
     }
 
     if (command === ECommand.CHECK) {
@@ -132,15 +139,24 @@ export class Player {
       this.inPot += size;
     }
     this.actionSize += size;
+    if (command === ECommand.RAISE) {
+      this.actionSize = raiseSize;
+    } else if (command === ECommand.CALL) {
+      this.actionSize = prevSize;
+    }
     return size;
   }
 
   clearActionSize() {
     this.actionSize = 0;
+    if (this.actionCommand !== 'fold') {
+      this.actionCommand = '';
+    }
   }
 
-  income(size: number) {
+  setIncome(size: number) {
     console.log('size', size);
+    this.income = size;
     this.counter += size;
   }
 }

@@ -1,7 +1,7 @@
 import { Context } from 'egg';
 
 /**
- * 404状态处理
+ * 404
  * @returns {any}
  */
 export default function notFound(): any {
@@ -12,7 +12,7 @@ export default function notFound(): any {
         ctx.body = {
           code: '404',
           data: {},
-          msg: '页面坐火箭去了',
+          msg: 'page not found',
         };
       } else {
         ctx.body = '<h1>Page Not Found</h1>';

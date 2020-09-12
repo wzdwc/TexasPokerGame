@@ -1,20 +1,36 @@
 import request from '../utils/request';
 
 export default {
-  register: (userName: string, password: string) => request({
+  register: ({ userAccount = '', password = '', nickName = '' }) => request({
     url: '/user/register',
-    body: { userName, password },
+    body: { userAccount, password, nickName },
   }),
-  login: (userAccount: string, password: string) => request({
+  login: (userAccount: string, password: string ) => request({
     url: '/user/login',
     body: { userAccount, password },
   }),
-  createRoom: () => request({
+  checkLogin: () => request({
+    url: '/user',
+    body: {},
+  }),
+  createRoom: (isShort: boolean, smallBlind: number, time: number) => request({
     url: '/game/room',
-    body: { },
+    body: { isShort, smallBlind, time },
+  }),
+  findRoom: (roomNumber: string) => request({
+    url: '/game/room/find',
+    body: { roomNumber },
   }),
   buyIn: (buyInSize: number) => request({
     url: '/game/buyIn',
     body: { buyInSize },
+  }),
+  commandRecordList: (roomNumber: string, gameId: number) => request({
+    url: '/game/record/find/commandRecord',
+    body: { roomNumber, gameId },
+  }),
+  gameRecordList: (roomNumber: string) => request({
+    url: '/game/record/find/gameRecord',
+    body: { roomNumber },
   }),
 };

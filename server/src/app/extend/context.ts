@@ -4,7 +4,7 @@ const LOG_COLLECTION = Symbol('Context#logCollection');
 export default {
   context: this,
   /**
-   * 获取收集的日志信息
+   * Get log
    * @returns {any}
    */
   getLogs(this: Context) {
@@ -15,7 +15,7 @@ export default {
     return result;
   },
   /**
-   * 收集日志信息
+   * Collect log info
    * @param {string} key
    * @param {string} value
    */

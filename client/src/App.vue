@@ -11,12 +11,16 @@ export default class App extends Vue {}
 </script>
 
 <style lang="less">
+@import "assets/less/base";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  max-width: 640rem;
+  overflow: hidden;
+  margin: auto;
 }
   *{
     padding: 0;
@@ -30,18 +34,20 @@ export default class App extends Vue {}
   .input-bd{
     line-height: 30px;
     margin: 10px;
+    font-size: 0;
     .input-name{
       display: inline-block;
-      width: 100px;
-      text-align: right;
+      min-width: 10vw;
+      font-size: 14px;
+      vertical-align: middle;
     }
     .input-text{
       display: inline-block;
-      padding-left: 10px;
+      font-size: 14px;
+      vertical-align: middle;
       input{
-        height: 30px;
-        width: 180px;
-        padding:0 5px;
+        min-height: 30px;
+        min-width: 40vw;
       }
     }
   }
@@ -49,15 +55,16 @@ export default class App extends Vue {}
     margin-top: 15px;
     span{
       color: #fff;
-      background-color: #6796ff;
+      background-color: #00976e;
       border-radius: 8px;
       padding: 5px 20px;
-      display: inline-block;
+      display: block;
       margin: 10px;
     }
     b{
       display: inline-block;
       border: aliceblue;
+      font-size: 12px;
       border-radius: 8px;
       padding: 5px 20px;
       margin-left: 10px;

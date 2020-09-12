@@ -1,9 +1,8 @@
 import axios, {AxiosRequestConfig, Method} from 'axios';
 import cookie from 'js-cookie';
+import origin from '@/utils/origin';
 
 const request = async ({method = 'post' as Method, url = '', body = {}, timeout = 8000}) => {
-  const origin = 'http://192.168.0.101:7001/node';
-  // const origin = 'http://172.22.72.70:7001/node';
   if (!url) {
     return Promise.reject('Request url is null!');
   }
@@ -11,7 +10,8 @@ const request = async ({method = 'post' as Method, url = '', body = {}, timeout 
   const headers = {
     Authorization: `Bearer ${token}`,
   };
-  url = `${origin}${url}`;
+  console.log('url', origin.url);
+  url = `${origin.url}/node${url}`;
   const option: AxiosRequestConfig = {
     url,
     method,

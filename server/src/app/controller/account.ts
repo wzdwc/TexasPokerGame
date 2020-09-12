@@ -1,6 +1,6 @@
 import BaseController from '../../lib/baseController';
 import { controller, inject, post, provide } from 'midway';
-import { IAccountService } from '../../interface/IAccountService';
+import { IAccountService } from '../../interface/service/IAccountService';
 import { IAccountInfo } from '../../interface/IAccountInfo';
 
 @provide()
@@ -30,6 +30,7 @@ export class Account extends BaseController {
   async register() {
     try {
       const { body } = this.getRequestBody();
+      console.log(body);
       const { userAccount, password, nickName } = body;
       const accountInfo: IAccountInfo = { userAccount, password, nickName };
       const result = await this.service.register(accountInfo);

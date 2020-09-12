@@ -1,9 +1,9 @@
 import BaseService from '../lib/baseService';
 import { Context, inject, provide, plugin, config } from 'midway';
 import { IAccountInfo } from '../interface/IAccountInfo';
-import { IAccountService } from '../interface/IAccountService';
+import { IAccountService } from '../interface/service/IAccountService';
 import { ILoginResult } from '../interface/ILoginResult';
-import { IUserService } from '../interface/IUserService';
+import { IUserService } from '../interface/service/IUserService';
 import { IUser } from '../interface/IUser';
 
 @provide('AccountService')
@@ -43,9 +43,10 @@ export class AccountService extends BaseService implements IAccountService {
     return new Promise(async (resolve, reject) => {
       try {
         const hasUser = await this.checkHasUser(accountInfo.userAccount);
+        console.log('accountInfo', hasUser, accountInfo);
         if (!hasUser) {
           const result = await this.user.addUser(accountInfo);
-          if (result.affectedRow === 1) {
+          if (result.succeed) {
             resolve('user create successful');
           }
         } else {
@@ -72,10 +73,10 @@ export class AccountService extends BaseService implements IAccountService {
   }
 
   private async getToken(userAccount: string) {
-    const { nick_name, account, id } = await this.user.findByAccount(userAccount);
+    const { nickName, account, id } = await this.user.findByAccount(userAccount);
     const token = this.jwt.sign({
           user: {
-           nickName: nick_name,
+           nickName,
            account,
            userId: id,
           },
