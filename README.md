@@ -19,5 +19,12 @@ Detail: [client-readme](https://github.com/wzdwc/TexasPokerGame/tree/master/clie
 ## Demo
 See: [demo](http://www.jojgame.com)
 
+Sign up:![avatar](https://github.com/wzdwc/TexasPokerGame/gif/demo1.gif)
+
+Sign in:![avatar](https://github.com/wzdwc/TexasPokerGame/gif/demo2.gif)
+
+Create room:![avatar](https://github.com/wzdwc/TexasPokerGame/gif/demo3.gif)
+
+Play game:![avatar](https://github.com/wzdwc/TexasPokerGame/gif/demo4.gif)
 ## License
 The MIT License (MIT)

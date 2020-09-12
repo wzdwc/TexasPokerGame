@@ -101,7 +101,7 @@ export default (appInfo: EggAppInfo) => {
       // userName
       user: 'root',
       // password
-      password: '',
+      password: 'gameTest2020.',
       // database name
       database: 'poker',
     },

@@ -21,26 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/less/base.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/less/base.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Action.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Action.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/BuyIn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/BuyIn.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CommonCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommonCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SitList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SitList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/cardList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/cardList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/gameRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/gameRecord.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/player.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/player.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/range.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/range.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/x-input.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/interface/IGameRecord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/interface/IGameRecord.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/plugins/toast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/plugins/toast.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/service/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/service/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/server/src.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/config/config.default.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.default.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,6 +73,9 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/database" />
@@ -125,6 +109,11 @@
       <workItem from="1594050477603" duration="547000" />
       <workItem from="1594228393975" duration="3051000" />
       <workItem from="1598164265688" duration="598000" />
+      <workItem from="1598166189685" duration="679000" />
+      <workItem from="1598174892065" duration="407000" />
+      <workItem from="1599396370958" duration="518000" />
+      <workItem from="1599739988741" duration="1817000" />
+      <workItem from="1599904748126" duration="799000" />
     </task>
     <servers />
   </component>
@@ -144,53 +133,26 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589991416321">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1589991416321" />
-    <state x="403" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589732809846">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="403" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1589732809846" />
-    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1587206645912">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1587206645912" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1593348545499">
       <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1593070402308" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.828@0.23.1440.828" timestamp="1593348545499" />
-    <state x="221" y="89" key="SettingsEditor" timestamp="1588864041632">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1588864041632" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1593358666478">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state x="100" y="100" width="1240" height="702" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599912309818">
+      <screen x="0" y="23" width="1440" height="832" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1593351376798" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.823@0.23.1440.823" timestamp="1590853061364" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.827@0.23.1440.827" timestamp="1593358666478" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.828@0.23.1440.828" timestamp="1593348545500" />
-    <state x="513" y="145" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590828749947">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="513" y="145" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1590828749947" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.828@0.23.1440.828" timestamp="1599741084335" />
+    <state x="100" y="100" width="1240" height="702" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.832@0.23.1440.832" timestamp="1599912309818" />
     <state x="378" y="207" width="683" height="490" key="find.popup" timestamp="1593070201850">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="378" y="207" width="683" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1593070201850" />
-    <state x="563" y="230" key="refactoring.ChangeSignatureDialog" timestamp="1589900590051">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="563" y="230" key="refactoring.ChangeSignatureDialog/0.0.1440.900@0.0.1440.900" timestamp="1589900590051" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1588773967204">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1588773967204" />
-    <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1591504016729">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="450" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599740214397">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900@0.0.1440.900" timestamp="1591504016729" />
+    <state x="450" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.828@0.23.1440.828" timestamp="1599740214397" />
   </component>
 </project>
