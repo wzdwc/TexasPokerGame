@@ -26,29 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Action.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Action.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/BuyIn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/BuyIn.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SitList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SitList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/audio.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Audio.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/cardList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CardList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/gameRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GameRecord.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/notice.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Notice.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/player.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Player.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/range.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Range.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/record.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Record.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/sendMsg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SendMsg.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/toast.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Toast.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/map.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/map.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/server/src.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

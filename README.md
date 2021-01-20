@@ -18,7 +18,7 @@ Detail: [client-readme](https://github.com/wzdwc/TexasPokerGame/tree/master/clie
 ```
 ## Demo
 See: [demo](http://www.jojgame.com)
-
+![img](https://github.com/wzdwc/TexasPokerGame/blob/master/gif/qrCode.jpg)
 
 ![img](https://github.com/wzdwc/TexasPokerGame/blob/master/gif/demo1.gif)
 
