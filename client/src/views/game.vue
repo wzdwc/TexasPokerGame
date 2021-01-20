@@ -44,12 +44,13 @@
       <div class="setting-body"
            :class="{show: showSetting}">
         <i @click="showBuyInDialog()">buy in</i>
+        <i @click="standUp()">stand Up</i>
         <i @click="showCounterRecord">counter record</i>
       </div>
     </div>
     <BuyIn :showBuyIn.sync='showBuyIn'
            :min='0'
-           :max='1000'
+           :max='baseSize * 1000'
            @buyIn='buyIn'></BuyIn>
     <toast :show.sync="showMsg"
            :text="msg"></toast>
@@ -106,6 +107,7 @@
   }
 
   const GAME_BASE_SIZE = 1;
+  const ACTION_TIME = 60;
 
   @Component({
     components: {
@@ -142,10 +144,9 @@
     private actionUserId = '';
     private showAllin = false;
     private showMsg = false;
-    private baseSize = GAME_BASE_SIZE;
     private playIncome = false;
     private msg = '';
-    private time = 30;
+    private time = ACTION_TIME;
     private timeSt = 0;
     private commandRecordList = [];
     private showCommandRecord = false;
@@ -179,7 +180,7 @@
 
     @Watch('actionUserId')
     private actionUserIdChange() {
-      this.time = 30;
+      this.time = ACTION_TIME;
       clearTimeout(this.timeSt);
       this.doCountDown();
     }
@@ -230,7 +231,11 @@
     }
 
     get minActionSize() {
-      return this.prevSize <= 0 ? GAME_BASE_SIZE * 2 : this.prevSize * 2;
+      return this.prevSize <= 0 ? this.baseSize * 2 : this.prevSize * 2;
+    }
+
+    get baseSize() {
+      return this.roomConfig.smallBlind || GAME_BASE_SIZE;
     }
 
     private init() {
@@ -239,7 +244,7 @@
       this.commonCard = [];
       this.pot = 0;
       this.prevSize = 0;
-      this.time = 30;
+      this.time = ACTION_TIME;
       this.winner = [];
       this.showBuyIn = false;
       this.initSitLink();
@@ -391,6 +396,7 @@
         if (msg.action === 'gameInfo') {
           this.players = msg.data.players;
           this.pot = msg.data.pot || 0;
+          this.roomConfig.smallBlind = msg.data.smallBlind;
           this.prevSize = msg.data.prevSize;
           this.actionUserId = msg.data.currPlayer.userId;
           // this.isAction = !!(this.userInfo && this.userInfo.userId === msg.data.currPlayer.userId);
@@ -473,6 +479,10 @@
       } catch (e) {
         console.log(e);
       }
+    }
+    private standUp() {
+      this.emit('standUp');
+      this.showSetting = false;
     }
 
     private play() {

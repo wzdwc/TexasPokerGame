@@ -78,7 +78,7 @@
     </div>
     <BuyIn :showBuyIn.sync="showBuyIn"
            :min="0"
-           :max="1000"
+           :max="roomConfig.smallBlind * 1000"
            @buyIn='buyIn'></BuyIn>
   </div>
 </template>
@@ -123,9 +123,8 @@
     }
 
     private buyIn(size: number) {
-      console.log('ccc');
       this.showBuyIn = false;
-      this.currPlayer.counter += size;
+      this.currPlayer.counter += Number(size);
       this.$emit('buyIn', Number(size));
       this.sitDown(this.currSit);
     }

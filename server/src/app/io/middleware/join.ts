@@ -111,6 +111,7 @@ export default function join(): any {
               currPlayer: {
                 userId: roomInfo.game?.currPlayer.node.userId,
               },
+              smallBlind: roomInfo.config.smallBlind,
             };
             const game = ctx.helper.parseMsg('gameInfo', {
               data: gameInfo,

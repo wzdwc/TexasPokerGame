@@ -76,7 +76,7 @@ class GameController extends BaseSocketController {
         roomInfo.game = new PokerGame({
           users: sitDownPlayer,
           isShort: roomInfo.config.isShort,
-          smallBlind: 1,
+          smallBlind: roomInfo.config.smallBlind,
           actionRoundComplete: async () => {
             let slidePots: number [] = [];
             if (roomInfo.game) {
@@ -197,9 +197,9 @@ class GameController extends BaseSocketController {
           userId: BB.userId,
           type: BB.type,
           gameStatus: 0,
-          pot: 3,
+          pot: roomInfo.config.smallBlind * 3,
           commonCard: '',
-          command: 'bb:2',
+          command: `bb:${roomInfo.config.smallBlind * 2}`,
           gameId: result.id,
           counter: BB.counter,
         };
@@ -208,9 +208,9 @@ class GameController extends BaseSocketController {
           userId: SB.userId,
           type: SB.type,
           gameStatus: 0,
-          pot: 1,
+          pot: roomInfo.config.smallBlind,
           commonCard: '',
-          command: 'sb:1',
+          command: `sb:${roomInfo.config.smallBlind}`,
           gameId: result.id,
           counter: SB.counter,
         };
@@ -370,6 +370,7 @@ class GameController extends BaseSocketController {
       const { payload } = this.message;
       const sitList = payload.sitList;
       const roomInfo = await this.getRoomInfo();
+      console.log('sitList=============', sitList);
       roomInfo.sit = sitList;
       await this.adapter('online', 'sitList', {
         sitList,
@@ -378,7 +379,24 @@ class GameController extends BaseSocketController {
       console.log(e);
     }
   }
-
+  async standUp() {
+    try {
+      console.log('come in');
+      const userInfo: IPlayer = await this.getUserInfo();
+      const roomInfo = await this.getRoomInfo();
+      roomInfo.sit.forEach((s: ISit) => {
+        if (s.player && s.player.userId === userInfo.userId) {
+          delete s.player;
+        }
+      });
+      const sitList = roomInfo.sit;
+      await this.adapter('online', 'sitList', {
+        sitList,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
   async action() {
     try {
       const { payload } = this.message;

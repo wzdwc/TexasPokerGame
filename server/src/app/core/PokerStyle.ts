@@ -137,36 +137,17 @@ export class PokerStyle implements IPokerStyle {
     }
 
     console.log('come in -------', isThree);
-
-    if (this.isShort) {
-      // three of kind
-      if (isThree.length > 0) {
-        isThreeKind = isThree.join('');
-        isThreeKind += highCard[0] + highCard[1];
-        this.pokerStyle[5] = isThreeKind;
-        return;
-      }
-
-      // straight
-      if (this.isStraight() !== '0') {
-        this.pokerStyle[6] = `${this.isStraight()}`;
-        return;
-      }
-
-    } else {
-      // straight
-      if (this.isStraight() !== '0') {
-        this.pokerStyle[5] = `${this.isStraight()}`;
-        return;
-      }
-
-      // three of kind
-      if (isThree.length > 0) {
-        isThreeKind = isThree.join('');
-        isThreeKind += highCard[0] + highCard[1];
-        this.pokerStyle[6] = isThreeKind;
-        return;
-      }
+    // straight
+    if (this.isStraight() !== '0') {
+      this.pokerStyle[5] = `${this.isStraight()}`;
+      return;
+    }
+    // three of kind
+    if (isThree.length > 0) {
+      isThreeKind = isThree.join('');
+      isThreeKind += highCard[0] + highCard[1];
+      this.pokerStyle[6] = isThreeKind;
+      return;
     }
 
     // tow pair
@@ -240,7 +221,7 @@ export class PokerStyle implements IPokerStyle {
     let isFlush = false;
     this.pokerStyle.forEach((style, key) => {
       if (style !== '0') {
-        isFlush = key === 1 || key === 4;
+        isFlush = key === 1 || this.isShort ? key === 3 : key === 4;
         valueStyle = style;
       }
     });

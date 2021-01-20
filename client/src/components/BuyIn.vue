@@ -94,7 +94,7 @@
       font-size: 20px;
       text-align: center;
       input{
-        width: 50px;
+        width: 70px;
         font-size: 20px;
       }
     }

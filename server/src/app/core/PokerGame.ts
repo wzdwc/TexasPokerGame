@@ -45,7 +45,7 @@ export enum EGameStatus {
  * Action time
  * @type {number}
  */
-const ACTION_TIME = 30 * 1000;
+const ACTION_TIME = 60 * 1000;
 
 /**
  * Class representing a poker game
@@ -387,12 +387,15 @@ export class PokerGame {
           && this.prevSize !== this.smallBlind * 2 && this.prevSize !== 0), 'tst', size, nextPlayer.actionSize, this.prevSize);
         // all check actionSize === -1
         // all player allin
-        // only 2 player, curr player fold, next player alrecommand add errorady action
-        // only one player ,one player fold,other player allin
+        // only 2 player, curr player fold, next player already action
+        // only one player,one player fold,other player allin
         // pre flop big blind check and other player call
         // pre flop big blind fold and other player call
         if (this.playerSize === 0
-          || (this.playerSize === 1 && this.currActionAllinPlayer.length === 0)
+          || (this.playerSize === 1
+            && (this.currActionAllinPlayer.length === 0
+              || (command === ECommand.ALL_IN
+              && this.currPlayer.node.actionSize < this.prevSize)))
           || (this.commonCard.length !== 0 && nextPlayer.actionSize === this.smallBlind * 2
             && nextPlayer.actionSize === size && size === this.prevSize)
           || (nextPlayer.actionSize === this.prevSize
@@ -571,18 +574,24 @@ export class PokerGame {
   counting() {
     let prevEvPot = 0;
     this.winner.forEach((winnerList, key) => {
-      if (key !== 0) {
-        prevEvPot = this.winner[key - 1][0].evPot;
-      }
+      winnerList.sort((prev, next) => prev.inPot - next.inPot);
+      let roundPotCount = 0;
       winnerList.forEach((winner, index) => {
-        const pot = winner.evPot === Infinity ? this.pot : winner.evPot;
+        const pot = winner.evPot >= this.pot ? this.pot : winner.evPot;
         const leftPot = pot - prevEvPot;
-        const isDivide = leftPot % winnerList.length;
-        let income = leftPot / winnerList.length;
-        if (index === 0 && winnerList.length > 1 && isDivide > 0) {
-          income = ((leftPot - isDivide) / winnerList.length) + isDivide;
+        let income = leftPot / (winnerList.length - index);
+        if (index === winnerList.length - 1) {
+          // not only one winner
+          if (index !== 0) {
+            income = pot - roundPotCount;
+          }
+          winner.setIncome(income);
+          prevEvPot = winner.evPot;
+        } else {
+          roundPotCount += income;
+          winner.setIncome(income);
         }
-        winner.setIncome(income);
+        console.log('winner----------', winnerList, roundPotCount, pot, leftPot);
       });
     });
   }

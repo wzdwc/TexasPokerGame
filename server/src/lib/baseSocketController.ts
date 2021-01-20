@@ -75,6 +75,7 @@ export default class BaseSocketController extends Controller {
         currPlayer: {
           userId: roomInfo.game.currPlayer.node.userId,
         },
+        smallBlind: roomInfo.config.smallBlind,
       };
       await this.adapter('online', 'gameInfo', gameInfo);
     }

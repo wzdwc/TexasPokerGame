@@ -40,8 +40,8 @@ enum ShortPokerStyleEnum {
   'FOUR_KIND',
   'FLUSH',
   'FULL_HOUSE',
-  'THREE_KIND',
   'STRAIGHT',
+  'THREE_KIND',
   'TWO_PAIR',
   'PAIR',
   'HIGH_CARD',
@@ -93,8 +93,8 @@ export class PokerStyle implements IPokerStyle {
         'FOUR_KIND',
         'FLUSH',
         'FULL_HOUSE',
-        'THREE_KIND',
         'STRAIGHT',
+        'THREE_KIND',
         'TWO_PAIR',
         'PAIR',
         'HIGH_CARD',
@@ -250,35 +250,19 @@ export class PokerStyle implements IPokerStyle {
       }
       return;
     }
-    if (this.isShort) {
-      // three of kind
-      if (isThree.length > 0) {
-        isThreeKind = isThree.join('');
-        isThreeKind += highCard[0] + highCard[1];
-        this.pokerStyle[5] = isThreeKind;
-        return;
-      }
 
-      // straight
-      if (this.isStraight() !== '0') {
-        this.pokerStyle[6] = `${this.isStraight()}`;
-        return;
-      }
+    // straight
+    if (this.isStraight() !== '0') {
+      this.pokerStyle[5] = `${this.isStraight()}`;
+      return;
+    }
 
-    } else {
-      // straight
-      if (this.isStraight() !== '0') {
-        this.pokerStyle[5] = `${this.isStraight()}`;
-        return;
-      }
-
-      // three of kind
-      if (isThree.length > 0) {
-        isThreeKind = isThree.join('');
-        isThreeKind += highCard[0] + highCard[1];
-        this.pokerStyle[6] = isThreeKind;
-        return;
-      }
+    // three of kind
+    if (isThree.length > 0) {
+      isThreeKind = isThree.join('');
+      isThreeKind += highCard[0] + highCard[1];
+      this.pokerStyle[6] = isThreeKind;
+      return;
     }
 
     // tow pair

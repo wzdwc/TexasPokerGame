@@ -11,8 +11,12 @@
         <div class="shadow"
              v-show="shadow(card)"></div>
         <b class="number">{{ map(card)[0] }}</b>
-        <b class="color">{{ map(card)[1] }}</b>
-        <b class="color big">{{ map(card)[1] }}</b>
+        <b class="color">
+          <cardStyle size="small" :type="map(card)[1]"></cardStyle>
+        </b>
+        <b class="color big">
+          <cardStyle size="big" :type="map(card)[1]"></cardStyle>
+        </b>
       </span>
     </div>
   </div>
@@ -21,8 +25,13 @@
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator';
   import { mapCard } from '@/utils/map';
+  import cardStyle from '@/components/CardStyle.vue';
 
-  @Component
+  @Component({
+    components: {
+      cardStyle,
+    },
+  })
   export default class Card extends Vue {
     @Prop() private cardList: any;
     @Prop({ default: () => [], type: Array }) private valueCards!: string[];
@@ -32,7 +41,7 @@
     }
 
     private isBlack(type: string) {
-      return type === '♠' || type === '♣';
+      return type === 's' || type === 'c';
     }
 
     private map(card: string) {

@@ -40,7 +40,7 @@
                v-show="currPlayer && raiseSize === currPlayer.counter">Allin
           </div>
           <range :max="currPlayer && currPlayer.counter"
-                 :min="minActionSize"
+                 :min="0"
                  :is-horizontal="true"
                  v-model="raiseSize"
                  @change="getActionSize"></range>
@@ -108,9 +108,7 @@ import { IPlayer } from '@/interface/IPlayer';
 
   @Watch('raiseSize')
   private wRaiseSize(val: number) {
-    this.raiseSize = val > this.currPlayer.counter ? this.currPlayer.counter : val < this.minActionSize
-      ? this.minActionSize
-      : val;
+    this.raiseSize = val > this.currPlayer.counter ? this.currPlayer.counter : val;
   }
 
   get canActionSize() {
@@ -152,7 +150,11 @@ import { IPlayer } from '@/interface/IPlayer';
   }
 
   private getActionSize(size: number) {
-    this.raiseSize = size;
+    if (size > this.minActionSize) {
+      this.raiseSize = size;
+    } else {
+      this.$plugin.toast('raise size too small');
+    }
   }
 
   private addSize() {
@@ -170,8 +172,8 @@ import { IPlayer } from '@/interface/IPlayer';
         || (this.isPreFlop
           && this.isTwoPlayer
           && this.currPlayer?.type === 'd'
-          && this.prevSize === 2)
-        || (this.currPlayer?.type === 'bb' && this.prevSize === 2 &&
+          && this.prevSize === this.baseSize * 2)
+        || (this.currPlayer?.type === 'bb' && this.prevSize === this.baseSize * 2 &&
           this.isPreFlop);
     }
     // raise

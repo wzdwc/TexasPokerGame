@@ -4,7 +4,6 @@
     <div class="range-body">
       <input type="range"
              v-model="rangeSize"
-
              :class="{horizontal: !!isHorizontal}">
     </div>
   </div>
