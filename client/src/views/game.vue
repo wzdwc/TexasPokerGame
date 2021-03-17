@@ -50,13 +50,13 @@
     </div>
     <BuyIn :showBuyIn.sync='showBuyIn'
            :min='0'
-           :max='baseSize * 1000'
+           :max='baseSize * 2000'
            @buyIn='buyIn'></BuyIn>
     <toast :show.sync="showMsg"
            :text="msg"></toast>
     <record :players="players"
             v-model="showRecord"></record>
-    <sendMsg @send = 'sendMsgHandle'></sendMsg>
+    <sendMsg @send = 'sendMsgHandle' :msg-list="msgListReverse"></sendMsg>
     <iAudio :play="playIncome" type="income"></iAudio>
     <gameRecord v-model="showCommandRecord"
                 :game-list="gameList"
@@ -183,6 +183,11 @@
       this.time = ACTION_TIME;
       clearTimeout(this.timeSt);
       this.doCountDown();
+    }
+
+    get msgListReverse() {
+      const msg = JSON.parse(JSON.stringify(this.messageList));
+      return msg.reverse();
     }
 
     get isPlay() {
@@ -481,6 +486,11 @@
       }
     }
     private standUp() {
+      // player in the game
+      if (this.currPlayer && this.currPlayer.status === 1) {
+        this.$plugin.toast('sorry, please fold you hand!');
+        return;
+      }
       this.emit('standUp');
       this.showSetting = false;
     }

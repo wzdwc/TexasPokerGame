@@ -77,6 +77,7 @@ export default class BaseSocketController extends Controller {
         },
         smallBlind: roomInfo.config.smallBlind,
       };
+      console.log('gameInfo ==========', gameInfo);
       await this.adapter('online', 'gameInfo', gameInfo);
     }
   }

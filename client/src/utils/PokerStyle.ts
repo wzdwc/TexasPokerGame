@@ -268,10 +268,11 @@ export class PokerStyle implements IPokerStyle {
     // tow pair
     if (isTwo.length >= 2) {
       const towPair = isTwo;
+      const threeTowPair = towPair[2] || '';
       towPair.length = 2;
       isTowPair = towPair.join('');
       // third tow pair card big then high card
-      const highCardForTowPair = isTwo[3] && isTwo[3] > highCard[0] ? isTwo[3] : highCard[0];
+      const highCardForTowPair = threeTowPair > highCard[0] ? threeTowPair : highCard[0];
       isTowPair += highCardForTowPair;
       this.pokerStyle[7] = isTowPair;
       return;

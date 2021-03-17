@@ -391,21 +391,7 @@ export class PokerGame {
         // only one player,one player fold,other player allin
         // pre flop big blind check and other player call
         // pre flop big blind fold and other player call
-        if (this.playerSize === 0
-          || (this.playerSize === 1
-            && (this.currActionAllinPlayer.length === 0
-              || (command === ECommand.ALL_IN
-              && this.currPlayer.node.actionSize < this.prevSize)))
-          || (this.commonCard.length !== 0 && nextPlayer.actionSize === this.smallBlind * 2
-            && nextPlayer.actionSize === size && size === this.prevSize)
-          || (nextPlayer.actionSize === this.prevSize
-            && (this.prevSize === this.currPlayer.node.actionSize || command === ECommand.FOLD)
-          && this.prevSize !== this.smallBlind * 2 && this.prevSize !== 0)
-          || (this.commonCard.length === 0
-            && (nextPlayer.actionSize === this.smallBlind * 2 && this.prevSize === nextPlayer.actionSize)
-            && (this.currPlayer.node.type === EPlayerType.BIG_BLIND
-              || (this.allPlayer.length === 2 && this.currPlayer.node.type === EPlayerType.DEALER))
-            && (command === ECommand.CHECK || command === ECommand.FOLD))) {
+        if (this.isActionComplete(command, nextPlayer, size)) {
           console.log('actionComplete');
           this.actionComplete();
           return;
@@ -426,6 +412,35 @@ export class PokerGame {
     } else {
       throw 'incorrect action flow';
     }
+  }
+
+  private isActionComplete(command: any, nextPlayer: Player, size: number) {
+    if (this.playerSize === 0) {
+      return true;
+    }
+    if (this.playerSize === 1
+      && (this.currActionAllinPlayer.length === 0
+        || (command === ECommand.ALL_IN
+          && this.currPlayer.node.actionSize < this.prevSize))) {
+      return true;
+    }
+    if (this.commonCard.length !== 0 && nextPlayer.actionSize === this.smallBlind * 2
+      && nextPlayer.actionSize === size && size === this.prevSize) {
+      return true;
+    }
+    if (nextPlayer.actionSize === this.prevSize
+      && (this.prevSize === this.currPlayer.node.actionSize || command === ECommand.FOLD)
+      && this.prevSize !== this.smallBlind * 2 && this.prevSize !== 0) {
+      return true;
+    }
+    if (this.commonCard.length === 0
+      && (nextPlayer.actionSize === this.smallBlind * 2 && this.prevSize === nextPlayer.actionSize)
+      && (this.currPlayer.node.type === EPlayerType.BIG_BLIND
+        || (this.allPlayer.length === 2 && this.currPlayer.node.type === EPlayerType.DEALER))
+      && (command === ECommand.CHECK || command === ECommand.FOLD)) {
+      return true;
+    }
+    return false;
   }
 
   /**
@@ -579,7 +594,7 @@ export class PokerGame {
       winnerList.forEach((winner, index) => {
         const pot = winner.evPot >= this.pot ? this.pot : winner.evPot;
         const leftPot = pot - prevEvPot;
-        let income = leftPot / (winnerList.length - index);
+        let income = Math.floor(leftPot / (winnerList.length - index));
         if (index === winnerList.length - 1) {
           // not only one winner
           if (index !== 0) {

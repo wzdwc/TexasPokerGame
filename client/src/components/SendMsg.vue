@@ -1,23 +1,33 @@
 <template>
   <div class="send-msg-container">
+    <msgList :msgList ='msgList' :show="showMsgList"></msgList>
     <div class="send-msg-body">
-      <div class="msg-name iconfont icon-msg"></div>
+      <div class="msg-name iconfont icon-msg" @click="showMsgList = !showMsgList"></div>
       <div class="msg-input">
         <input type="text"
+               @keyup.13="send"
                v-model='msg'>
       </div>
       <div class="msg-btn btn"
-           @click="send"><span>send</span></div>
+           @click="send" ><span>send</span></div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
   import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+  import msgList from '@/components/msgList.vue';
 
-  @Component
+  @Component({
+    components: {
+      msgList,
+    },
+  })
   export default class SendMsg extends Vue {
     private msg: string = '';
+    private showMsgList: boolean = false;
+    @Prop({ type: Number, default: 1000 }) private max!: number;
+    @Prop() private msgList!: string[];
 
     private send() {
       if (this.msg !== '') {

@@ -26,8 +26,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Action.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Action.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SendMsg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SendMsg.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SitList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SitList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/interface/IMsgList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/interface/IMsgList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/PokerStyle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerStyle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/test/app/core/pokerStyle.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/app/core/pokerStyle.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +48,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue" />
         <option value="Less File" />
         <option value="TypeScript File" />
         <option value="Vue Single File Component" />
+        <option value="Vue" />
       </list>
     </option>
   </component>
@@ -69,7 +80,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedtslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/interface" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -86,10 +97,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/interface" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/database" />
-      <recent name="$PROJECT_DIR$/client/src/interface" />
       <recent name="$PROJECT_DIR$/server/src/service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -194,9 +205,10 @@
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state x="385" y="197" key="run.anything.popup/0.23.1440.823@0.23.1440.823" timestamp="1605708588099" />
-    <state x="385" y="174" width="670" height="676" key="search.everywhere.popup" timestamp="1600510032147">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state x="385" y="173" width="670" height="672" key="search.everywhere.popup" timestamp="1615119618414">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
+    <state x="385" y="173" width="670" height="672" key="search.everywhere.popup/0.23.1440.822@0.23.1440.822" timestamp="1615119618414" />
     <state x="385" y="174" width="670" height="676" key="search.everywhere.popup/0.23.1440.827@0.23.1440.827" timestamp="1600510032147" />
     <state x="450" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1600495902702">
       <screen x="0" y="23" width="1440" height="829" />

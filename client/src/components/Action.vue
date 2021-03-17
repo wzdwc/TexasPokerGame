@@ -16,15 +16,10 @@
       <div class="raise-size">
         <div class="not-allin"
              v-show="showActionBtn('raise')">
-          <i v-for="size in raiseSizeMap.firsAction"
-             @click="raise(size)"
-             v-show="isPreFlop && pot === 3">
-            {{Math.floor(size * prevSize)}}
-          </i>
-          <i v-for="size in raiseSizeMap.other"
+          <i v-for="size in raiseSizeMap"
              @click="raise(size)"
              v-show="showActionSize(size)"
-          > {{Math.floor(size * pot)}}</i>
+          > {{Math.floor(size)}}</i>
           <!--          <i @click="raise(pot)">{{pot}}</i>-->
           <!--          <i @click="raise(pot * 2)">{{2*pot}}</i>-->
         </div>
@@ -85,18 +80,18 @@ import { IPlayer } from '@/interface/IPlayer';
   private playClick = false;
   private playRaise = false;
   private playFold = false;
-  private raiseSizeMap = {
-    firsAction: {
-      two: 2,
-      three: 3,
-      four: 4,
-    },
-    other: {
-      oneThirdPot: 0.5,
-      halfPot: 0.75,
-      pot: 1,
-    },
-  };
+  // private raiseSizeMap = {
+  //   firsAction: {
+  //     two: 2,
+  //     three: 3,
+  //     four: 4,
+  //   },
+  //   other: {
+  //     oneThirdPot: 0.5,
+  //     halfPot: 0.75,
+  //     pot: 1,
+  //   },
+  // };
 
   @Watch('isAction')
   private wAction(val: boolean) {
@@ -111,13 +106,20 @@ import { IPlayer } from '@/interface/IPlayer';
     this.raiseSize = val > this.currPlayer.counter ? this.currPlayer.counter : val;
   }
 
+  get raiseSizeMap() {
+    let size = this.pot > this.baseSize * 4 ? this.pot : this.baseSize * 2;
+    if (this.prevSize > 1) {
+      size = this.prevSize * 4;
+    }
+    return size === this.baseSize * 2 ? [ size, 2 * size, 3 * size ] : [ 0.5 * size, 0.75 * size, size ];
+  }
+
   get canActionSize() {
     return Number(this.currPlayer && this.currPlayer.counter + this.currPlayer.actionSize);
   }
 
   private raise(size: number) {
-    const realSize = size === 0 ? this.prevSize * 3 : size * this.pot;
-    this.action(`raise:${Math.floor(realSize)}`);
+    this.action(`raise:${Math.floor(size)}`);
   }
 
   private action(command: string) {
@@ -137,9 +139,8 @@ import { IPlayer } from '@/interface/IPlayer';
   }
 
   private showActionSize(multiple: number) {
-    // big then double pre-size and small then counter
     return this.currPlayer
-      && this.currPlayer.counter > Math.floor(multiple * this.pot)
+      && this.currPlayer.counter > Math.floor(multiple)
       && this.prevSize * 2 <= Math.floor(multiple * this.pot)
       && this.baseSize * 2 <= Math.floor(multiple * this.pot);
   }

@@ -243,12 +243,15 @@ class GameController extends BaseSocketController {
         p.status = 0;
       });
       console.log('sit =======', roomInfo.sit);
+      console.log('roomInfo =======', roomInfo);
       // calculate re buy in
       roomInfo.sit.forEach((s: ISit) => {
         if (s.player) {
           const player = roomInfo.players.find(
             p => p.userId === s.player?.userId);
           if (player) {
+            // new player
+            s.player.counter = player.counter;
             s.player.counter += Number(player.reBuy);
             console.log('cal reBuy ===============================', s.player,
               player.reBuy);
@@ -317,7 +320,9 @@ class GameController extends BaseSocketController {
             player.buyIn += Number(buyInSize);
             player.counter += Number(buyInSize);
           }
+          console.log('user in the game------', player);
         } else {
+          console.log('user not in the game------', player);
           player.buyIn += Number(buyInSize);
           player.counter += Number(buyInSize);
         }
@@ -334,6 +339,7 @@ class GameController extends BaseSocketController {
         await this.adapter('online', 'players', {
           players: roomInfo.players,
         });
+        console.log('ont in the game', player);
       }
     } catch (e) {
       console.log(e);
