@@ -432,7 +432,11 @@ export class PokerGame {
     if (this.playerSize === 1
       && (this.currActionAllinPlayer.length === 0
         || (command === ECommand.ALL_IN
+<<<<<<< HEAD
           && this.prevSize <= nextPlayer.actionSize
+=======
+          && this.currPlayer.node.actionSize < nextPlayer.actionSize
+>>>>>>> 36eadbe76514757b8d5a5d3ebfff5cb1c7cb87e0
           && this.currPlayer.node.actionSize < this.prevSize))) {
       return true;
     }
