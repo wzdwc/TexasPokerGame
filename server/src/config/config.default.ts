@@ -95,13 +95,13 @@ export default (appInfo: EggAppInfo) => {
   config.mysql = {
     client: {
       // host
-      host: '47.104.172.100',
+      host: '127.0.0.1',
       // pot
       port: '3306',
       // userName
       user: 'root',
       // password
-      password: 'gameTest2020.',
+      password: '',
       // database name
       database: 'poker',
     },
