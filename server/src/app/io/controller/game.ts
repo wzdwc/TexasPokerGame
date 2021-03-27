@@ -244,19 +244,20 @@ class GameController extends BaseSocketController {
       });
       console.log('sit =======', roomInfo.sit);
       console.log('roomInfo =======', roomInfo);
-      // calculate re buy in
       roomInfo.sit.forEach((s: ISit) => {
         if (s.player) {
           const player = roomInfo.players.find(
             p => p.userId === s.player?.userId);
           if (player) {
-            // new player
+            // calculate re buy in
             s.player.counter = player.counter;
             s.player.counter += Number(player.reBuy);
             console.log('cal reBuy ===============================', s.player,
               player.reBuy);
             player.reBuy = 0;
             s.player.reBuy = 0;
+            // init player delay count
+            player.delayCount = 3;
           }
         }
       });
@@ -403,6 +404,27 @@ class GameController extends BaseSocketController {
       console.log(e);
     }
   }
+
+  async delayTime() {
+    try {
+      const { payload } = this.message;
+      const userInfo: IPlayer = await this.getUserInfo();
+      const roomInfo = await this.getRoomInfo();
+      console.log('delayTime：', payload.command);
+      console.log('delayTime：', roomInfo.game && roomInfo.game.currPlayer.node,
+        userInfo);
+      if (roomInfo.game
+        && roomInfo.game.currPlayer.node.userId === userInfo.userId) {
+        roomInfo.game.delayActionTime();
+        console.log('delayTime：', roomInfo.game && roomInfo.game.currPlayer.node,
+          userInfo);
+        await this.adapter('online', 'delayTime', {});
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   async action() {
     try {
       const { payload } = this.message;

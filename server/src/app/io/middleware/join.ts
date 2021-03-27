@@ -40,6 +40,7 @@ export default function join(): any {
         socketId: id,
         counter: 0,
         buyIn: 0,
+        delayCount: 3,
         reBuy: 0,
       };
       let gameRoom: IGameRoom = {

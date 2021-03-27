@@ -45,7 +45,7 @@ export enum EGameStatus {
  * Action time
  * @type {number}
  */
-const ACTION_TIME = 60 * 1000;
+const ACTION_TIME = 30 * 1000;
 
 /**
  * Class representing a poker game
@@ -54,6 +54,7 @@ export class PokerGame {
   private playerLink: Link<Player>;
   private poker: IPoker;
   private prevPot: number = 0;
+  private actionTimeDelayCount: number = 0;
   private actionTimeOut: Timeout;
   private currActionAllinPlayer: Player[] = [];
   // It's a short poker game
@@ -322,13 +323,22 @@ export class PokerGame {
   /**
    * Start next action round
    */
-  startActionRound() {
+  startActionRound(time= ACTION_TIME) {
     this.actionTimeOut = setTimeout(async () => {
+      console.log('come in delay round --------2', this.actionTimeDelayCount);
+      // delay action time
+      if (this.actionTimeDelayCount > 0) {
+        console.log('come in delay round --------2', this.actionTimeDelayCount);
+        this.actionTimeDelayCount --;
+        clearTimeout(this.actionTimeOut);
+        this.startActionRound(60 * 1000);
+        return ;
+      }
       const userId = this.currPlayer.node.userId || '';
       console.log('userId start', userId);
       this.action('fold');
       this.autoActionCallBack('fold', userId);
-    }, ACTION_TIME);
+    }, time);
   }
 
   /**
@@ -400,12 +410,13 @@ export class PokerGame {
         console.log('preSize', this.prevSize);
         this.currPlayer = this.currPlayer.next;
         // action time out, auto action fold
-        this.actionTimeOut = setTimeout(() => {
-          const actionType = 'fold';
-          const userId = this.currPlayer.node.userId;
-          this.action(actionType);
-          this.autoActionCallBack(actionType, userId);
-        }, ACTION_TIME);
+        this.startActionRound();
+        // this.actionTimeOut = setTimeout(() => {
+        //   const actionType = 'fold';
+        //   const userId = this.currPlayer.node.userId;
+        //   this.action(actionType);
+        //   this.autoActionCallBack(actionType, userId);
+        // }, ACTION_TIME);
       } catch (e) {
         throw 'action:' + e;
       }
@@ -421,6 +432,7 @@ export class PokerGame {
     if (this.playerSize === 1
       && (this.currActionAllinPlayer.length === 0
         || (command === ECommand.ALL_IN
+          && this.prevSize <= nextPlayer.actionSize
           && this.currPlayer.node.actionSize < this.prevSize))) {
       return true;
     }
@@ -622,5 +634,14 @@ export class PokerGame {
     this.counting();
     this.initPlayer();
     this.gameOverCallBack();
+  }
+
+  public delayActionTime() {
+    if (this.currPlayer.node.delayCount > 0) {
+      this.currPlayer.node.delayCount --;
+      this.actionTimeDelayCount ++;
+      console.log('come in delay round --------', this.actionTimeDelayCount);
+    }
+    console.log('come in delay round --------', this.actionTimeDelayCount);
   }
 }

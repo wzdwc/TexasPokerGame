@@ -50,6 +50,7 @@ export default class BaseSocketController extends Controller {
         p.type = currPlayer?.type || '';
         p.status = currPlayer ? 1 : p.status === -1 ? -1 : 0;
         p.actionCommand = currPlayer && currPlayer.actionCommand || '';
+        p.delayCount = currPlayer && currPlayer.delayCount || 0;
         p.actionSize = currPlayer && currPlayer.actionSize || 0;
       });
       console.log(roomInfo.players,
@@ -67,6 +68,7 @@ export default class BaseSocketController extends Controller {
             status: p.status || 0,
             userId: p.userId,
             buyIn: p.buyIn || 0,
+            delayCount: currPlayer?.delayCount || 0,
           }, {});
         }),
         pot: roomInfo.game.pot,

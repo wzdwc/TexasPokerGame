@@ -10,10 +10,11 @@ export interface IPlayer {
   actionSize: number;
   actionCommand: string;
   type: string;
-  userId?: number;
+  userId?: string;
   handCard?: string[];
   buyIn: number;
   status: number;
   income?: number;
   isSit: boolean;
+  delayCount: number;
 }

@@ -93,6 +93,7 @@
           isShort: this.isShort,
           smallBlind: this.smallBlind,
         };
+        localStorage.setItem('roomConfig', JSON.stringify(roomConfig))
         cookie.set('roomConfig', roomConfig, {expires: 1});
         this.$router.push({ name: 'game', params: { roomNumber, isOwner: '1' } });
       } catch (e) {

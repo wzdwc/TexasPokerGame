@@ -6,5 +6,5 @@ yarn-error.log
 test/unit/coverage
 run/
 logs/
-confing.prod.ts
 npm-debug.*
+/server/src/config/

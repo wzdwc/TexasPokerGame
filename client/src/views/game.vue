@@ -8,7 +8,8 @@
              :isPlay='isPlay'
              :valueCards='valueCards'
              :roomConfig = 'roomConfig'
-             :time='time'
+             @delay="delay"
+             :time.sync='time'
              :winner="winner"
              :actionUserId='actionUserId'
              :hand-card="handCard"></sitList>
@@ -107,7 +108,7 @@
   }
 
   const GAME_BASE_SIZE = 1;
-  const ACTION_TIME = 60;
+  const ACTION_TIME = 30;
 
   @Component({
     components: {
@@ -306,6 +307,11 @@
       this.emit('sitDown', { sitList: this.sitListMap() });
     }
 
+    private delay() {
+      console.log('delay')
+      this.emit('delayTime');
+    }
+
     private action(command: string) {
       if (command === 'fold') {
         clearTimeout(this.timeSt);
@@ -322,8 +328,8 @@
     }
 
     private socketInit() {
-      const token = cookie.get('token');
-      const roomConfig = cookie.get('roomConfig') || '';
+      const token = cookie.get('token') || localStorage.getItem('token') || '';
+      const roomConfig = cookie.get('roomConfig') || localStorage.getItem('roomConfig') || '';
       const log = console.log;
       this.roomConfig = JSON.parse(roomConfig);
       console.log(JSON.parse(roomConfig), 'roomConfig');
@@ -445,6 +451,12 @@
           this.init();
         }
 
+        if (msg.action === 'delayTime') {
+          if (this.currPlayer?.userId !== this.actionUserId) {
+            this.time += 60;
+          }
+        }
+
         if (msg.action === 'broadcast') {
           this.messageList.push({
             message: msg.message.msg || '',
@@ -455,14 +467,18 @@
 
       // 系统事件
       this.socket.on('disconnect', (msg: IMsg) => {
+        this.$plugin.toast('room is disconnect');
+        this.socketInit()
         log('#disconnect', msg);
       });
 
       this.socket.on('disconnecting', () => {
+        this.$plugin.toast('room is disconnecting');
         log('#disconnecting');
       });
 
       this.socket.on('error', () => {
+        this.$plugin.toast('room is error');
         log('#error');
       });
     }

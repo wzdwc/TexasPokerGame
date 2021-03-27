@@ -60,6 +60,11 @@
             <div class="hand-card">
               <cardList :cardList="handCard"
                         :valueCards="valueCards"></cardList>
+              <div class="delay-time" v-show="time < 15 && sit.player.delayCount > 0
+              && actionUserId === sit.player.userId" @click="delayTime">
+                <i class="iconfont icon-clock "></i>
+                <span>{{sit.player.delayCount}}</span>
+              </div>
             </div>
             <div class="ready"
                  v-show="handCard && handCard.length === 0">ready
@@ -157,6 +162,14 @@
 
     private mapCard(cards: string[]) {
       return map(cards);
+    }
+
+    private delayTime() {
+      if(this.currPlayer.delayCount > 0) {
+        console.log('delay')
+        this.$emit('update:time', this.time  + 60);
+        this.$emit('delay')
+      }
     }
 
     private sitDown(sit: ISit) {
@@ -354,6 +367,29 @@
           }
         }
 
+        .delay-time{
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 999;
+          min-width: 24vw;
+          min-height: 10vh;
+          background: radial-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0) 70%);
+          i{
+            color: #fff;
+            font-size: 30px;
+          }
+          span{
+            font-size: 12px;
+            color: #fff;
+            margin-left: 2px;
+            font-weight: 600;
+          }
+        }
+
         .hand-card {
           position: absolute;
           top: 1vh;
@@ -464,7 +500,7 @@
             color: #fff;
             font-size: 14px;
             bottom: -48px;
-            width: 60 / 3.75vw;
+            width: 22vw;
             text-align: center;
             font-weight: 700;
           }

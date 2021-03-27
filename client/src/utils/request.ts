@@ -6,7 +6,7 @@ const request = async ({method = 'post' as Method, url = '', body = {}, timeout 
   if (!url) {
     return Promise.reject('Request url is null!');
   }
-  const token = cookie.get('token');
+  const token = cookie.get('token') || localStorage.getItem('token');
   const headers = {
     Authorization: `Bearer ${token}`,
   };
