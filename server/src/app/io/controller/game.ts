@@ -82,14 +82,15 @@ class GameController extends BaseSocketController {
             if (roomInfo.game) {
               console.log('come in', roomInfo.game.status);
               if (roomInfo.game.status < 6 && roomInfo.game.playerSize > 1) {
-                roomInfo.game.sendCard();
-                roomInfo.game.startActionRound();
+                // roomInfo.game.sendCard();
+                // roomInfo.game.startActionRound();
                 // has allin，deal slide pot
                 if (roomInfo.game.allInPlayers.length > 0) {
                   slidePots = roomInfo.game.slidePots;
                 }
                 await this.adapter('online', 'actionComplete', {
                   slidePots,
+                  actionEndTime: roomInfo.game.actionEndTime,
                   commonCard: roomInfo.game.commonCard,
                 });
               }
@@ -171,7 +172,7 @@ class GameController extends BaseSocketController {
           },
         });
         roomInfo.game.play();
-        roomInfo.game.startActionRound();
+        // roomInfo.game.startActionRound();
         console.log('hand card', roomInfo.game.allPlayer);
         // update counter, pot, status
         await this.updateGameInfo();
@@ -418,7 +419,9 @@ class GameController extends BaseSocketController {
         roomInfo.game.delayActionTime();
         console.log('delayTime：', roomInfo.game && roomInfo.game.currPlayer.node,
           userInfo);
-        await this.adapter('online', 'delayTime', {});
+        await this.adapter('online', 'delayTime', {
+          actionEndTime: roomInfo.game.actionEndTime,
+        });
       }
     } catch (e) {
       console.log(e);

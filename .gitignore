@@ -7,4 +7,5 @@ test/unit/coverage
 run/
 logs/
 npm-debug.*
-/server/src/config/
+/server/src/config/config.local.ts
+/server/src/config/config.prod.ts

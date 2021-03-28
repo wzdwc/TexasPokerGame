@@ -74,6 +74,7 @@ export default class BaseSocketController extends Controller {
         pot: roomInfo.game.pot,
         prevSize: roomInfo.game.prevSize,
         sitList: roomInfo.sit,
+        actionEndTime: roomInfo.game.actionEndTime,
         currPlayer: {
           userId: roomInfo.game.currPlayer.node.userId,
         },

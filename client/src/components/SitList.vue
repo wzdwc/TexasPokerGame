@@ -165,10 +165,9 @@
     }
 
     private delayTime() {
-      if(this.currPlayer.delayCount > 0) {
-        console.log('delay')
-        this.$emit('update:time', this.time  + 60);
-        this.$emit('delay')
+      if (this.currPlayer.delayCount > 0) {
+        // this.$emit('update:time', this.time  + 60);
+        this.$emit('delay');
       }
     }
 

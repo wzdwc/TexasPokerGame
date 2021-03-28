@@ -28,22 +28,14 @@
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/less/base.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/less/base.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SitList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SitList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/interface/IPlayer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/interface/IPlayer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/request.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src.zip" beforeDir="false" afterPath="$PROJECT_DIR$/server/src.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/Player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Player.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/config/config.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/config.prod.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/service/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/account.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +77,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedtslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/interface" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/src/config" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -101,15 +93,15 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/config" />
       <recent name="$PROJECT_DIR$/client/src/interface" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/database" />
-      <recent name="$PROJECT_DIR$/server/src/service" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -143,7 +135,9 @@
       <workItem from="1599739988741" duration="1817000" />
       <workItem from="1599904748126" duration="799000" />
       <workItem from="1599912369521" duration="681000" />
-      <workItem from="1616871635424" duration="298000" />
+      <workItem from="1616871635424" duration="5010000" />
+      <workItem from="1616902156349" duration="4139000" />
+      <workItem from="1616907672434" duration="3493000" />
     </task>
     <servers />
   </component>
@@ -171,7 +165,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="bk" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -185,44 +179,19 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600508433832">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state x="100" y="123" width="1240" height="622" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1616905008870">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
-    <state x="184" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827@0.23.1440.827" timestamp="1600508433832" />
-    <state x="100" y="100" width="1240" height="696" key="DiffContextDialog" timestamp="1607254387585">
-      <screen x="0" y="23" width="1440" height="823" />
+    <state x="100" y="123" width="1240" height="622" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.822@0.23.1440.822" timestamp="1616905008870" />
+    <state x="385" y="173" width="670" height="672" key="search.everywhere.popup" timestamp="1616902799000">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1593070402308" />
-    <state x="100" y="100" width="1240" height="696" key="DiffContextDialog/0.23.1440.823@0.23.1440.823" timestamp="1607254387585" />
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.828@0.23.1440.828" timestamp="1593348545499" />
-    <state x="100" y="99" width="1240" height="695" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1607254387585">
-      <screen x="0" y="23" width="1440" height="823" />
-    </state>
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1593351376798" />
-    <state x="100" y="99" width="1240" height="695" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.823@0.23.1440.823" timestamp="1607254387585" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.827@0.23.1440.827" timestamp="1593358666478" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.828@0.23.1440.828" timestamp="1599741084335" />
-    <state x="100" y="100" width="1240" height="702" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.832@0.23.1440.832" timestamp="1599912309818" />
-    <state x="378" y="207" width="683" height="490" key="find.popup" timestamp="1593070201850">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="378" y="207" width="683" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1593070201850" />
-    <state x="385" y="197" key="run.anything.popup" timestamp="1605708588099">
-      <screen x="0" y="23" width="1440" height="823" />
-    </state>
-    <state x="385" y="197" key="run.anything.popup/0.23.1440.823@0.23.1440.823" timestamp="1605708588099" />
-    <state x="385" y="173" width="670" height="673" key="search.everywhere.popup" timestamp="1616837414379">
-      <screen x="0" y="23" width="1440" height="823" />
-    </state>
-    <state x="385" y="173" width="670" height="672" key="search.everywhere.popup/0.23.1440.822@0.23.1440.822" timestamp="1615119618414" />
+    <state x="385" y="173" width="670" height="672" key="search.everywhere.popup/0.23.1440.822@0.23.1440.822" timestamp="1616902799000" />
     <state x="385" y="173" width="670" height="673" key="search.everywhere.popup/0.23.1440.823@0.23.1440.823" timestamp="1616837414379" />
-    <state x="385" y="174" width="670" height="676" key="search.everywhere.popup/0.23.1440.827@0.23.1440.827" timestamp="1600510032147" />
-    <state x="450" y="360" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1616839505918">
-      <screen x="0" y="23" width="1440" height="825" />
+    <state x="450" y="359" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1616873123947">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
-    <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900@0.0.1440.900" timestamp="1591504016729" />
+    <state x="450" y="359" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.822@0.23.1440.822" timestamp="1616873123947" />
     <state x="450" y="360" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.825@0.23.1440.825" timestamp="1616839505918" />
-    <state x="450" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.828@0.23.1440.828" timestamp="1599740214397" />
-    <state x="450" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.829@0.23.1440.829" timestamp="1600495902702" />
   </component>
 </project>

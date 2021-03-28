@@ -30,14 +30,14 @@
     </div>
     <div class="game-record iconfont icon-record" @click="getRecord(0)"></div>
     <actionDialog :base-size="baseSize"
-            :curr-player="currPlayer"
-            :is-action="isAction"
-            :is-pre-flop="commonCard.length === 0"
-            :min-action-size="minActionSize"
-            :is-two-player="gamePlayers.length === 2"
-            :pot="pot"
-            :prev-size="prevSize"
-            @action = 'action'
+                  :curr-player="currPlayer"
+                  :is-action="isAction"
+                  :is-pre-flop="commonCard.length === 0"
+                  :min-action-size="minActionSize"
+                  :is-two-player="gamePlayers.length === 2"
+                  :pot="pot"
+                  :prev-size="prevSize"
+                  @action = 'action'
     ></actionDialog>
     <div class="setting">
       <div class="iconfont icon-setting setting-btn"
@@ -150,6 +150,7 @@
     private time = ACTION_TIME;
     private timeSt = 0;
     private commandRecordList = [];
+    private actionEndTime = 0;
     private showCommandRecord = false;
     private gameList: IGameRecord [] = [];
     private currGameIndex = 0;
@@ -181,9 +182,13 @@
 
     @Watch('actionUserId')
     private actionUserIdChange() {
-      this.time = ACTION_TIME;
-      clearTimeout(this.timeSt);
-      this.doCountDown();
+      if (this.isPlay && this.actionEndTime) {
+        console.log('action player change-------', this.actionEndTime);
+        const now = Date.now();
+        this.time = Math.floor((this.actionEndTime - now) / 1000);
+        clearTimeout(this.timeSt);
+        this.doCountDown();
+      }
     }
 
     get msgListReverse() {
@@ -272,7 +277,9 @@
         return;
       }
       this.timeSt = setTimeout(() => {
-        this.time--;
+        console.log('this.actionEndTime', this.actionEndTime)
+        const now = Date.now();
+        this.time = Math.floor((this.actionEndTime - now) / 1000);
         this.doCountDown();
       }, 1000);
     }
@@ -344,7 +351,6 @@
       });
       this.socket.on('connect', () => {
         const id: string = this.socket.id;
-
         log('#connect,', id, this.socket);
 
         // 监听自身 id 以实现 p2p 通讯
@@ -369,6 +375,7 @@
             this.pot = payload.data.pot || 0;
             this.prevSize = payload.data.prevSize;
             this.commonCard = payload.data.commonCard;
+            this.actionEndTime = payload.data.actionEndTime;
             console.log('msg.data.currPlayer.userId', msg.data);
             this.actionUserId = payload.data.currPlayer.userId;
             // this.isAction = !!(this.userInfo
@@ -402,6 +409,7 @@
         if (msg.action === 'actionComplete') {
           this.commonCard = msg.data.commonCard;
           this.slidePots = msg.data.slidePots;
+          this.actionEndTime = msg.data.actionEndTime || Date.now() + 30 * 1000;
           console.log('players', msg.data);
         }
         if (msg.action === 'gameInfo') {
@@ -410,6 +418,7 @@
           this.roomConfig.smallBlind = msg.data.smallBlind;
           this.prevSize = msg.data.prevSize;
           this.actionUserId = msg.data.currPlayer.userId;
+          this.actionEndTime = msg.data.actionEndTime;
           // this.isAction = !!(this.userInfo && this.userInfo.userId === msg.data.currPlayer.userId);
           this.sitList = msg.data.sitList;
           console.log('gameInfo', msg.data);
@@ -452,9 +461,13 @@
         }
 
         if (msg.action === 'delayTime') {
-          if (this.currPlayer?.userId !== this.actionUserId) {
-            this.time += 60;
-          }
+          console.log('delay======', msg)
+          this.actionEndTime = msg.data.actionEndTime;
+          const now = Date.now();
+          this.time = Math.floor((this.actionEndTime - now) / 1000);
+          // if (this.currPlayer?.userId !== this.actionUserId) {
+          //   this.time += 60;
+          // }
         }
 
         if (msg.action === 'broadcast') {
@@ -468,7 +481,7 @@
       // 系统事件
       this.socket.on('disconnect', (msg: IMsg) => {
         this.$plugin.toast('room is disconnect');
-        this.socketInit()
+        this.socketInit();
         log('#disconnect', msg);
       });
 
@@ -586,6 +599,11 @@
       } catch (e) {
         console.log(e);
       }
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          this.socketInit();
+        }
+      });
     }
   }
 </script>

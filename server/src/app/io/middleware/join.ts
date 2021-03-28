@@ -113,6 +113,7 @@ export default function join(): any {
                 userId: roomInfo.game?.currPlayer.node.userId,
               },
               smallBlind: roomInfo.config.smallBlind,
+              actionEndTime: roomInfo.game?.actionEndTime || 0,
             };
             const game = ctx.helper.parseMsg('gameInfo', {
               data: gameInfo,

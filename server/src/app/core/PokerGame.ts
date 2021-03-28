@@ -48,6 +48,12 @@ export enum EGameStatus {
 const ACTION_TIME = 30 * 1000;
 
 /**
+ * Delay add time
+ * @type {number}
+ */
+const DELAY_ADD_TIME = 60 * 1000;
+
+/**
  * Class representing a poker game
  */
 export class PokerGame {
@@ -63,6 +69,7 @@ export class PokerGame {
   private readonly actionRoundComplete: () => void;
   private readonly gameOverCallBack: () => void;
   private readonly autoActionCallBack: (actionType: string, userId: string) => void;
+  public actionEndTime: number = 0;
   // hasStraddle = false;
   public slidePots: number [] = [];
   public prevSize: number;
@@ -101,6 +108,9 @@ export class PokerGame {
     this.setBlind();
     // UTG
     this.currPlayer = this.playerLink.getNode(3);
+    // first round
+    this.startActionRound();
+    this.actionEndTime = Date.now() + ACTION_TIME;
   }
 
   /**
@@ -331,7 +341,7 @@ export class PokerGame {
         console.log('come in delay round --------2', this.actionTimeDelayCount);
         this.actionTimeDelayCount --;
         clearTimeout(this.actionTimeOut);
-        this.startActionRound(60 * 1000);
+        this.startActionRound(DELAY_ADD_TIME);
         return ;
       }
       const userId = this.currPlayer.node.userId || '';
@@ -410,6 +420,7 @@ export class PokerGame {
         console.log('preSize', this.prevSize);
         this.currPlayer = this.currPlayer.next;
         // action time out, auto action fold
+        this.actionEndTime = Date.now() + ACTION_TIME;
         this.startActionRound();
         // this.actionTimeOut = setTimeout(() => {
         //   const actionType = 'fold';
@@ -500,6 +511,12 @@ export class PokerGame {
       setTimeout(() => {
         this.gameOver();
       }, 300);
+    }
+    // action round complete, start auto action interval
+    if (this.status < EGameStatus.GAME_SHOWDOWN && this.playerSize > 1) {
+      this.actionEndTime = Date.now() + ACTION_TIME;
+      this.sendCard();
+      this.startActionRound();
     }
     this.actionRoundComplete();
   }
@@ -640,8 +657,7 @@ export class PokerGame {
     if (this.currPlayer.node.delayCount > 0) {
       this.currPlayer.node.delayCount --;
       this.actionTimeDelayCount ++;
-      console.log('come in delay round --------', this.actionTimeDelayCount);
+      this.actionEndTime += DELAY_ADD_TIME;
     }
-    console.log('come in delay round --------', this.actionTimeDelayCount);
   }
 }
