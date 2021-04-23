@@ -26,8 +26,8 @@
             <div class="counter"
                  :class="{isAction: actionUserId === sit.player.userId,
                   'close-time-out': time > 0 && time < 10 && actionUserId === sit.player.userId }"
-                 v-show="sit.player.counter || sit.player.actionCommand === 'allin'">
-              {{ sit.player.counter }}
+                 v-show="sit.player.counter >= 0 || sit.player.actionCommand === 'allin'">
+              {{ sit.player.counter || 0 }}
             </div>
             <div class="action-size"
                  v-show="sit.player.actionSize > 0">
@@ -285,7 +285,11 @@
           }
 
           .user-name {
+            width: 45 / 3.75vw;
             color: #fff;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
           }
 
           .count-down {

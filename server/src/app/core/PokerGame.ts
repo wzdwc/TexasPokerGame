@@ -225,6 +225,8 @@ export class PokerGame {
    * Get player poker max poker style
    */
   getPlayerPokerStyle() {
+    // test
+    // this.commonCard = [ 'j4', 'k4', 'l4', 'm4', 'i4', ];
     this.allPlayer.map(p => {
       p.pokerStyle = new PokerStyle([ ...p.getHandCard(), ...this.commonCard ], this.isShort).getPokerWeight();
       return p;
@@ -440,11 +442,15 @@ export class PokerGame {
     if (this.playerSize === 0) {
       return true;
     }
+    // left 1 player and not one allin player
+    // left 1 player and current player allin, current counter small than prev player action size
+    // left 1 player and has allin player, current player action size big than allin player action size
     if (this.playerSize === 1
       && (this.currActionAllinPlayer.length === 0
         || (command === ECommand.ALL_IN
           && this.prevSize <= nextPlayer.actionSize
-          && this.currPlayer.node.actionSize < this.prevSize))) {
+          && this.currPlayer.node.actionSize < this.prevSize)
+        || (command !== ECommand.ALL_IN && this.currPlayer.node.actionSize >= this.prevSize))) {
       return true;
     }
     if (this.commonCard.length !== 0 && nextPlayer.actionSize === this.smallBlind * 2
@@ -622,7 +628,7 @@ export class PokerGame {
       let roundPotCount = 0;
       winnerList.forEach((winner, index) => {
         const pot = winner.evPot >= this.pot ? this.pot : winner.evPot;
-        const leftPot = pot - prevEvPot;
+        const leftPot = pot - prevEvPot - roundPotCount;
         let income = Math.floor(leftPot / (winnerList.length - index));
         if (index === winnerList.length - 1) {
           // not only one winner

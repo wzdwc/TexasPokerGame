@@ -349,6 +349,7 @@
         },
         transports: ['websocket'],
       });
+      log('#init,', this.socket);
       this.socket.on('connect', () => {
         const id: string = this.socket.id;
         log('#connect,', id, this.socket);
@@ -481,7 +482,7 @@
       // 系统事件
       this.socket.on('disconnect', (msg: IMsg) => {
         this.$plugin.toast('room is disconnect');
-        this.socketInit();
+        // this.socketInit();
         log('#disconnect', msg);
       });
 
@@ -599,11 +600,11 @@
       } catch (e) {
         console.log(e);
       }
-      document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) {
-          this.socketInit();
-        }
-      });
+      // document.addEventListener('visibilitychange', () => {
+      //   if (!document.hidden) {
+      //     this.socketInit();
+      //   }
+      // });
     }
   }
 </script>

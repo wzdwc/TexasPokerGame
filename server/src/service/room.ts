@@ -31,7 +31,7 @@ export default class RoomService implements IRoomService {
     return !!roomNumber;
   }
 
-  async add(isShort: boolean, smallBlind: number, expires: number = 36000) {
+  async add(isShort: boolean, smallBlind: number, expires: number = 360000) {
     const number = Math.floor(Math.random() * (1000000 - 100000)) + 100000;
     const result = await this.mysql.insert('room', {
       roomNumber: number,

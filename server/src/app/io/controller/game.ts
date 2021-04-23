@@ -397,10 +397,7 @@ class GameController extends BaseSocketController {
           delete s.player;
         }
       });
-      const sitList = roomInfo.sit;
-      await this.adapter('online', 'sitList', {
-        sitList,
-      });
+      await this.updateGameInfo();
     } catch (e) {
       console.log(e);
     }

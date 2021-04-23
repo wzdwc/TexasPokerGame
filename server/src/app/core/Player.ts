@@ -120,6 +120,7 @@ export class Player {
     }
 
     if (command === ECommand.ALL_IN) {
+      console.log('allin================', this.counter);
       size = this.counter;
     }
 
@@ -140,6 +141,7 @@ export class Player {
       this.counter -= size;
       this.inPot += size;
     }
+    console.log('allin================', this.counter);
     this.actionSize += size;
     if (command === ECommand.RAISE) {
       this.actionSize = raiseSize;
@@ -151,7 +153,7 @@ export class Player {
 
   clearActionSize() {
     this.actionSize = 0;
-    if (this.actionCommand !== 'fold') {
+    if (this.actionCommand !== 'fold' && this.actionCommand !== 'allin') {
       this.actionCommand = '';
     }
   }

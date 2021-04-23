@@ -3,7 +3,7 @@
     <div class="shadow"
          @click="show = false"></div>
     <div class="body">
-      <div class="title">record</div>
+      <div class="title">record <i>({{gameList[currGameIndex - 1].gameId}})</i></div>
       <div class="record-context">
       <ul class = 'td'>
         <div class="lo">
@@ -150,6 +150,10 @@
       height: 30px;
       padding: 5px 10px;
       border-bottom: 1px solid #fff;
+      i {
+        font-size: 12px;
+        font-style: normal;
+      }
     }
 
     .td{

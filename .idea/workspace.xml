@@ -26,16 +26,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/GameRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GameRecord.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SitList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SitList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app/core/Player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Player.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/middleware/join.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/baseSocketController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/service/room.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/room.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,6 +136,9 @@
       <workItem from="1616871635424" duration="5010000" />
       <workItem from="1616902156349" duration="4139000" />
       <workItem from="1616907672434" duration="3493000" />
+      <workItem from="1616912343465" duration="84000" />
+      <workItem from="1616914665901" duration="956000" />
+      <workItem from="1618503206086" duration="6965000" />
     </task>
     <servers />
   </component>
