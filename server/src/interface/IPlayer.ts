@@ -7,6 +7,13 @@ export interface IPlayerDTO {
   buyIn: number;
 }
 
+export interface UpdatePlayerDTO {
+  userId: string;
+  counter: number;
+  gameId: number;
+  playerId: number;
+}
+
 export interface IPlayerService {
   findByRoomNumber(roomNumber: number): Promise<IPlayerDTO []>;
 

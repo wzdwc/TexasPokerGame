@@ -56,7 +56,8 @@ class GameController extends BaseSocketController {
           counter: p.counter,
           handCard: player.getHandCard().join(',') || '',
         };
-        await playerRecordService.add(playerRecord);
+        const playerId = await playerRecordService.add(playerRecord);
+        player.playerId = playerId.insertId;
       }
     }
   }
@@ -69,6 +70,7 @@ class GameController extends BaseSocketController {
     try {
       const roomInfo = await this.getRoomInfo();
       const gameService = await this.app.applicationContext.getAsync('GameService');
+      const PlayerService = await this.app.applicationContext.getAsync('PlayerRecordService');
       const sitDownPlayer = await this.getSitDownPlayer(roomInfo);
       console.log('roomConfig-------------------', roomInfo.config);
       if (!roomInfo.game) {
@@ -150,6 +152,19 @@ class GameController extends BaseSocketController {
             const result = await gameService.update(gameRecord);
             if (!result.succeed) {
               throw 'update game error';
+            }
+
+            // update player counter
+            if (roomInfo.game) {
+              for await (const p of roomInfo.game.allPlayer) {
+                const uPlayer = {
+                  playerId: p.playerId,
+                  counter: p.counter,
+                  userId: p.userId,
+                  gameId: roomInfo.gameId || 0,
+                };
+                PlayerService.update(uPlayer);
+              }
             }
           },
           autoActionCallBack: async (command, userId) => {

@@ -27,13 +27,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/GameRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GameRecord.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SitList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SitList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Action.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Action.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Audio.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Audio.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/core/Player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Player.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/PokerGame.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/service/room.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/room.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/interface/IPlayer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/interface/IPlayer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/service/player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/player.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +75,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedtslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/src/config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -139,6 +139,10 @@
       <workItem from="1616912343465" duration="84000" />
       <workItem from="1616914665901" duration="956000" />
       <workItem from="1618503206086" duration="6965000" />
+      <workItem from="1619847843794" duration="477000" />
+      <workItem from="1619848446975" duration="298000" />
+      <workItem from="1619848860699" duration="11720000" />
+      <workItem from="1622876620759" duration="234000" />
     </task>
     <servers />
   </component>

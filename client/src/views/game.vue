@@ -58,7 +58,7 @@
     <record :players="players"
             v-model="showRecord"></record>
     <sendMsg @send = 'sendMsgHandle' :msg-list="msgListReverse"></sendMsg>
-    <iAudio :play="playIncome" type="income"></iAudio>
+<!--    <iAudio :play="playIncome" type="income"></iAudio>-->
     <gameRecord v-model="showCommandRecord"
                 :game-list="gameList"
                 @getRecord = "getRecord"
@@ -145,7 +145,7 @@
     private actionUserId = '';
     private showAllin = false;
     private showMsg = false;
-    private playIncome = false;
+    // private playIncome = false;
     private msg = '';
     private time = ACTION_TIME;
     private timeSt = 0;
@@ -277,7 +277,6 @@
         return;
       }
       this.timeSt = setTimeout(() => {
-        console.log('this.actionEndTime', this.actionEndTime)
         const now = Date.now();
         this.time = Math.floor((this.actionEndTime - now) / 1000);
         this.doCountDown();
@@ -315,7 +314,6 @@
     }
 
     private delay() {
-      console.log('delay')
       this.emit('delayTime');
     }
 
@@ -443,10 +441,10 @@
             });
           });
           // income music
-          this.playIncome = true;
-          setTimeout(() => {
-            this.playIncome = false;
-          }, 1000);
+          // this.playIncome = true;
+          // setTimeout(() => {
+          //   this.playIncome = false;
+          // }, 1000);
         }
 
         if (msg.action === 'newGame') {
@@ -462,7 +460,6 @@
         }
 
         if (msg.action === 'delayTime') {
-          console.log('delay======', msg)
           this.actionEndTime = msg.data.actionEndTime;
           const now = Date.now();
           this.time = Math.floor((this.actionEndTime - now) / 1000);

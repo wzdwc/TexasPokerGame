@@ -13,6 +13,7 @@ export interface IPlayer {
   actionSize: number;
   actionCommand: string;
   delayCount?: number;
+  id?: number;
 }
 
 export enum ECommand {
@@ -38,6 +39,7 @@ export class Player {
   position: number = 0;
   counter: number = 0;
   userId: string = '';
+  playerId: number = 0;
   delayCount: number = 3;
   socketId: string = '';
   nickName: string = '';

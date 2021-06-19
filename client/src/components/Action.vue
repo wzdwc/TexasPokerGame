@@ -123,12 +123,12 @@ import { IPlayer } from '@/interface/IPlayer';
   }
 
   private action(command: string) {
-    if (command.indexOf('raise') > -1 || command === 'allin' || command === 'call' ) {
-      this.playRaise = true;
-    }
-    if (command === 'fold' || command === 'check') {
-      this.playFold = true;
-    }
+    // if (command.indexOf('raise') > -1 || command === 'allin' || command === 'call' ) {
+    //   this.playRaise = true;
+    // }
+    // if (command === 'fold' || command === 'check') {
+    //   this.playFold = true;
+    // }
     if (!this.actioned) {
       this.actioned = true;
       this.$emit('action', command);

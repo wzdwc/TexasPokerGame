@@ -1,4 +1,8 @@
-import { IPlayerDTO, IPlayerService } from '../interface/IPlayer';
+import {
+  IPlayerDTO,
+  IPlayerService,
+  UpdatePlayerDTO,
+} from '../interface/IPlayer';
 import { Context, inject, plugin, provide } from 'midway';
 
 @provide('PlayerRecordService')
@@ -14,6 +18,14 @@ export class PlayerService implements IPlayerService {
     return await this.mysql.insert('player', {
       ...gameRecord,
     });
+  }
+
+  async update(updatePlayer: UpdatePlayerDTO) {
+    const row = {
+      id: updatePlayer.playerId,
+      counter: updatePlayer.counter,
+    };
+    return await this.mysql.update('player', row);
   }
 
   async findByRoomNumber(roomNumber: number): Promise<IPlayerDTO []> {
