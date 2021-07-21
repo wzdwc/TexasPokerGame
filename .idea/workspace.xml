@@ -27,13 +27,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Action.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Action.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Audio.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Audio.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/core/Player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/core/Player.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app/io/controller/game.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/interface/IPlayer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/interface/IPlayer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/service/player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/service/player.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +136,8 @@
       <workItem from="1619848446975" duration="298000" />
       <workItem from="1619848860699" duration="11720000" />
       <workItem from="1622876620759" duration="234000" />
+      <workItem from="1625991704189" duration="1640000" />
+      <workItem from="1626598050251" duration="893000" />
     </task>
     <servers />
   </component>
