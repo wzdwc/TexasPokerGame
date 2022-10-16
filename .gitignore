@@ -9,3 +9,6 @@ logs/
 npm-debug.*
 /server/src/config/config.local.ts
 /server/src/config/config.prod.ts
+/client/.idea
+/server/.idea
+/.idea
