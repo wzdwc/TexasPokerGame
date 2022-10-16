@@ -116,3 +116,10 @@ DELIMITER ;;
 CREATE TRIGGER `update_user_time` BEFORE UPDATE ON `user` FOR EACH ROW SET NEW.`UPDATE_TIME` = NOW()
 ;;
 DELIMITER ;
+
+
+/* 2022.10.16 command record 添加 user id 和 game id 索引 */
+ALTER TABLE `command_record` ADD INDEX `idx_user_id`(`userId`);
+ALTER TABLE `command_record` ADD INDEX `idx_game_id`(`gameId`);
+ALTER TABLE `player` ADD INDEX `idx_user_id`(`userId`);
+
