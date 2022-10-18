@@ -1,4 +1,3 @@
-
 export interface ICommandRecord {
   roomNumber: string;
   gameId: number;
@@ -13,7 +12,8 @@ export interface ICommandRecord {
 }
 
 export interface ICommandRecordService {
-  findById(gid: number): Promise<ICommandRecord>;
-  findByRoomNumber(gameId: number): Promise<ICommandRecord[]>;
+  findByGameID(gameID: number): Promise<ICommandRecord[]>;
+  findByGameIDs(gameIDs: number[]): Promise<ICommandRecord[]>;
   add(commandRecord: ICommandRecord): Promise<any>;
+  findPast7DayGameIDsByUserID(userID: number): Promise<number []>;
 }

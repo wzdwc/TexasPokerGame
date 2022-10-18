@@ -5,7 +5,7 @@ import Login from '../views/login.vue';
 import Register from '../views/register.vue';
 import Game from '../views/game.vue';
 import service from '../service';
-import origin from '../utils/origin';
+import cookie from 'js-cookie';
 
 Vue.use(VueRouter);
 
@@ -58,6 +58,7 @@ router.beforeEach(async (to, from, next) => {
     try {
       const result = await service.checkLogin();
       console.log(result);
+      cookie.set('user_id', result.data.userId);
       next();
     } catch (e) {
       await router.replace({ name: 'login' });

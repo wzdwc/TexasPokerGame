@@ -27,8 +27,14 @@ export class GameService implements IGameService {
     return { succeed: gameInfo.affectedRows === 1 };
   }
 
-  async findById(gid: number): Promise<IGame> {
+  async findByID(gid: number): Promise<IGame> {
     return await this.mysql.get('game', { id: gid });
+  }
+
+  async findByIDs(ids: number[]): Promise<IGame[]> {
+    return await this.mysql.select('game', {
+      where: { id: ids },
+    });
   }
 
   async findByRoomNumber(roomNumber: number): Promise<IGame []> {

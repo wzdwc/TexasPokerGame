@@ -33,4 +33,8 @@ export default {
     url: '/game/record/find/gameRecord',
     body: { roomNumber },
   }),
+  selfPast7DayGame: (userID: number) => request({
+    url: '/game/record/find/selfPast7DayGame',
+    body: { userID },
+  }),
 };
