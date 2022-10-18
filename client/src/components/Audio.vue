@@ -1,17 +1,21 @@
 <template>
   <div class="audio-container">
-<!--    <audio ref="click" controls>-->
-<!--      <source src="../assets/mp3/click.mp3" type="audio/mpeg">-->
-<!--      Your browser does not support the audio element.-->
-<!--    </audio>-->
-<!--    <audio ref="raise" controls>-->
-<!--      <source src="../assets/mp3/raise.mp3" type="audio/mpeg">-->
-<!--      Your browser does not support the audio element.-->
-<!--    </audio>-->
-<!--    <audio ref="fold" controls>-->
-<!--      <source src="../assets/mp3/fold.mp3" type="audio/mpeg">-->
-<!--      Your browser does not support the audio element.-->
-<!--    </audio>-->
+    <audio ref="click" controls>
+      <source src="../assets/mp3/click.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <audio ref="raise" controls>
+      <source src="../assets/mp3/raise.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <audio ref="fold" controls>
+      <source src="../assets/mp3/fold.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <audio ref="income" controls>
+      <source src="../assets/mp3/income.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
   </div>
 </template>
 

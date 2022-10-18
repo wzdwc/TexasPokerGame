@@ -20,8 +20,6 @@
              @click="raise(size)"
              v-show="showActionSize(size)"
           > {{Math.floor(size)}}</i>
-          <!--          <i @click="raise(pot)">{{pot}}</i>-->
-          <!--          <i @click="raise(pot * 2)">{{2*pot}}</i>-->
         </div>
       </div>
       <div class="action-other-size"
@@ -46,9 +44,11 @@
         <div class="shadow"
              @click="isRaise = false"></div>
       </div>
-      <iAudio :play="playClick" type="click"></iAudio>
-      <iAudio :play="playFold" type="fold"></iAudio>
-      <iAudio :play="playRaise" type="raise"></iAudio>
+      <div>
+        <iAudio :play="playClick && audioStatus" type="click"></iAudio>
+        <iAudio :play="playFold && audioStatus" type="fold"></iAudio>
+        <iAudio :play="playRaise && audioStatus" type="raise"></iAudio>
+      </div>
     </div>
   </div>
 </template>
@@ -73,6 +73,7 @@ import { IPlayer } from '@/interface/IPlayer';
   @Prop() private isPreFlop!: boolean;
   @Prop() private isTwoPlayer!: boolean;
   @Prop() private currPlayer!: IPlayer;
+  @Prop() private audioStatus?: boolean;
 
   private isRaise = false;
   private raiseSize: number = 0;
@@ -123,16 +124,15 @@ import { IPlayer } from '@/interface/IPlayer';
   }
 
   private action(command: string) {
-    // if (command.indexOf('raise') > -1 || command === 'allin' || command === 'call' ) {
-    //   this.playRaise = true;
-    // }
-    // if (command === 'fold' || command === 'check') {
-    //   this.playFold = true;
-    // }
+    if (command.indexOf('raise') > -1 || command === 'allin' || command === 'call' ) {
+      this.playRaise = true;
+    }
+    if (command === 'fold' || command === 'check') {
+      this.playFold = true;
+    }
     if (!this.actioned) {
       this.actioned = true;
       this.$emit('action', command);
-      // this.isAction = false;
       this.isRaise = false;
       this.actioned = false;
     }

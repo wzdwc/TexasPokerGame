@@ -26,7 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9039135-aa11-4abd-ad74-f40c84e4fdb2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/src/app/controller/foo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Action.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Action.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Audio.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Audio.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/game.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +141,13 @@
       <workItem from="1619848860699" duration="11720000" />
       <workItem from="1622876620759" duration="234000" />
       <workItem from="1625991704189" duration="1640000" />
-      <workItem from="1626598050251" duration="893000" />
+      <workItem from="1626598050251" duration="1027000" />
+      <workItem from="1628481482390" duration="13548000" />
+      <workItem from="1628783520074" duration="2544000" />
+      <workItem from="1629517950448" duration="175000" />
+      <workItem from="1629903360315" duration="5734000" />
+      <workItem from="1647001315115" duration="2876000" />
+      <workItem from="1665892838491" duration="4505000" />
     </task>
     <servers />
   </component>
@@ -179,19 +189,21 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="100" y="123" width="1240" height="622" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1616905008870">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1647002209329">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="100" y="123" width="1240" height="622" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.822@0.23.1440.822" timestamp="1616905008870" />
-    <state x="385" y="173" width="670" height="672" key="search.everywhere.popup" timestamp="1616902799000">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1647002209329" />
+    <state x="528" y="156" key="RollbackChangesDialog" timestamp="1647068368012">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="173" width="670" height="672" key="search.everywhere.popup/0.23.1440.822@0.23.1440.822" timestamp="1616902799000" />
-    <state x="385" y="173" width="670" height="673" key="search.everywhere.popup/0.23.1440.823@0.23.1440.823" timestamp="1616837414379" />
-    <state x="450" y="359" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1616873123947">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state x="528" y="156" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1647068368012" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1647068977589">
+      <screen x="0" y="25" width="1440" height="814" />
     </state>
-    <state x="450" y="359" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.822@0.23.1440.822" timestamp="1616873123947" />
-    <state x="450" y="360" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.825@0.23.1440.825" timestamp="1616839505918" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1440.814@0.25.1440.814" timestamp="1647068977589" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1647067452212">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1647067452212" />
   </component>
 </project>
