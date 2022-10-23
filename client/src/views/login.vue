@@ -43,7 +43,7 @@
       try {
         const result = await service.login(this.userAccount, this.password);
         const { token } = result.data;
-        cookie.set('token', token, {expires: 1});
+        cookie.set('token', token, { expires: 1 });
         localStorage.setItem('token', token);
         await this.$router.push({name: 'home'});
       } catch (e) {

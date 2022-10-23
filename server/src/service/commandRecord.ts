@@ -20,11 +20,31 @@ export class CommandRecord implements ICommandRecordService {
     return { succeed: result.affectedRows === 1 };
   }
 
-  async findById(gid: number): Promise<ICommandRecord> {
-    return await this.mysql.get('game_record', { id: gid });
+  async findPast7DayGameIDsByUserID(userID: number): Promise<number[]> {
+    const result = await this.mysql.query('SELECT\n' +
+      'DISTINCT gameId\n' +
+      'FROM command_record\n' +
+      'WHERE userId = ?\n' +
+      'AND create_time >= DATE_SUB(now(),interval 7 DAY)', [ userID ]);
+    const recordList = JSON.parse(JSON.stringify(result));
+    if (recordList) {
+      return recordList.map((item: ICommandRecord) => {
+        return item.gameId;
+      });
+    }
+    return [];
   }
 
-  async findByRoomNumber(gameId: number): Promise<ICommandRecord []> {
+  async findByGameIDs(gameIDs: number[]): Promise<ICommandRecord []> {
+    const result = await this.mysql.select('command_record', {
+      where: {
+        gameId: gameIDs,
+      },
+    });
+    return JSON.parse(JSON.stringify(result));
+  }
+
+  async findByGameID(gameID: number): Promise<ICommandRecord []> {
     const result = await this.mysql.query('SELECT\n' +
       '\tcommand_record.counter,\n' +
       '\tcommand_record.gameStatus,\n' +
@@ -39,7 +59,7 @@ export class CommandRecord implements ICommandRecordService {
       '\tcommand_record\n' +
       'INNER JOIN `user` ON `user`.id = command_record.userId\n' +
       'INNER JOIN player ON player.userId = command_record.userId\n' +
-      '\twhere command_record.gameId = ? and player.gameId = ?', [ gameId, gameId ]);
+      '\twhere command_record.gameId = ? and player.gameId = ?', [ gameID, gameID ]);
     console.log(result, '=============command');
     return JSON.parse(JSON.stringify(result));
   }

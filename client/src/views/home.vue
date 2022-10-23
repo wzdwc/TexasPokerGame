@@ -32,6 +32,9 @@
       <div class="btn"
            @click="getRecord(0)"><span>test record</span>
       </div>
+      <div class="btn" @click="selfPast7DayGame()">
+            <span>7 day game history</span>
+      </div>
     </div>
     <div class="room-number"
          v-show="isJoin">
@@ -65,7 +68,7 @@
   import gameRecord from '@/components/GameRecord.vue';
   import service from '../service';
   import cookie from 'js-cookie';
-  import {IGameRecord} from '@/interface/IGameRecord';
+  import { IGameRecord } from '@/interface/IGameRecord';
 
   @Component({
     components: {
@@ -125,6 +128,25 @@
         }
       } catch (e) {
         this.$plugin.toast('can\'t find the room');
+      }
+    }
+
+    private async selfPast7DayGame() {
+      try {
+        const userIDStr = cookie.get('user_id');
+        if (userIDStr) {
+          const userID = Number(userIDStr);
+          const {data} = await service.selfPast7DayGame(userID);
+          data.forEach((v: IGameRecord) => {
+            this.gameList.push({ gameId: v.gameId});
+          });
+          this.currGameIndex = data.length;
+          this.commandList = data[data.length - 1].gameCommandList;
+          this.showRecord = true;
+        }
+      } catch (e) {
+        console.log(e);
+        this.$plugin.toast('can\'t find the user command record list');
       }
     }
 

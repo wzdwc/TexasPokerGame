@@ -9,7 +9,8 @@ export interface IGame {
 }
 
 export interface IGameService {
-  findById(gid: number): Promise<IGame>;
+  findByID(gid: number): Promise<IGame>;
+  findByIDs(ids: number[]): Promise<IGame []>;
   findByRoomNumber(roomNumber: number): Promise<IGame []>;
   add(game: IGame): Promise<any>;
   update(game: IGame): Promise<any>;

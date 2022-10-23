@@ -306,8 +306,7 @@
       const sit = [];
       for (let i = 0; i < 9; i++) {
         sit.push(node.node);
-        const next = node.next;
-        node = next;
+        node = node.next;
       }
       return sit;
     }
@@ -526,7 +525,7 @@
     }
 
     private closeAudio() {
-      this.audioStatus = !this.audioStatus
+      this.audioStatus = !this.audioStatus;
     }
 
     private play() {
@@ -594,7 +593,6 @@
         this.$plugin.toast('can\'t find the room');
       }
     }
-
     private created() {
       try {
         this.socketInit();
