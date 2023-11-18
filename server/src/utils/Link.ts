@@ -71,8 +71,5 @@ export class Link<T> {
     linkNode.next = currNode;
   }
 
-  removeNode(position: number) {
-
-  }
-
+  removeNode(position: number) {}
 }

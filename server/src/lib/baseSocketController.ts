@@ -1,11 +1,10 @@
-import { Controller } from 'egg';
-import { IGameRoom, IRoomInfo } from '../interface/IGameRoom';
-import { IPlayer } from '../app/core/Player';
+import { Controller } from "egg";
+import { IGameRoom, IRoomInfo } from "../interface/IGameRoom";
+import { IPlayer } from "../app/core/Player";
 
 export default class BaseSocketController extends Controller {
-
   public app = this.ctx.app as any;
-  public nsp = this.app.io.of('/socket');
+  public nsp = this.app.io.of("/socket");
   public gameRooms = this.nsp.gameRooms;
   public socket = this.ctx.socket as any;
   public query = this.socket.handshake.query;
@@ -26,50 +25,62 @@ export default class BaseSocketController extends Controller {
   }
 
   protected adapter(type: string, actionName: string, data: any) {
-    return new Promise(resolve => {
-      this.nsp.adapter.clients([ this.roomNumber ], (err: any, clients: any) => {
+    return new Promise(() => {
+      this.nsp.adapter.clients([this.roomNumber], (err: any, clients: any) => {
         this.nsp.to(this.roomNumber).emit(type, {
           clients,
           action: actionName,
-          target: 'participator',
+          target: "participator",
           data,
         });
-        resolve();
       });
     });
   }
 
   protected async updateGameInfo() {
     const roomInfo = await this.getRoomInfo();
-    console.log(roomInfo, 'roomInfo ===============================');
-    if (roomInfo.game && roomInfo.game.status < 6 || (roomInfo.game?.status === 6 && roomInfo.game.playerSize === 1)) {
-      roomInfo.players.forEach(p => {
-        const currPlayer = roomInfo.game &&
-          roomInfo.game.getPlayers().find(player => player.userId === p.userId);
+    console.log(roomInfo, "roomInfo ===============================");
+    if (
+      (roomInfo.game && roomInfo.game.status < 6) ||
+      (roomInfo.game?.status === 6 && roomInfo.game.playerSize === 1)
+    ) {
+      roomInfo.players.forEach((p) => {
+        const currPlayer =
+          roomInfo.game &&
+          roomInfo.game
+            .getPlayers()
+            .find((player) => player.userId === p.userId);
         p.counter = currPlayer?.counter || p.counter;
-        p.type = currPlayer?.type || '';
+        p.type = currPlayer?.type || "";
         p.status = currPlayer ? 1 : p.status === -1 ? -1 : 0;
-        p.actionCommand = currPlayer && currPlayer.actionCommand || '';
-        p.delayCount = currPlayer && currPlayer.delayCount || 0;
-        p.actionSize = currPlayer && currPlayer.actionSize || 0;
+        p.actionCommand = (currPlayer && currPlayer.actionCommand) || "";
+        p.delayCount = (currPlayer && currPlayer.delayCount) || 0;
+        p.actionSize = (currPlayer && currPlayer.actionSize) || 0;
       });
-      console.log(roomInfo.players,
-        'roomInfo.players ===============================333');
+      console.log(
+        roomInfo.players,
+        "roomInfo.players ===============================333"
+      );
       const gameInfo = {
-        players: roomInfo.players.map(p => {
+        players: roomInfo.players.map((p) => {
           const currPlayer = roomInfo.game?.allPlayer.find(
-            player => player.userId === p.userId);
-          return Object.assign({}, {
-            counter: currPlayer?.counter || p.counter,
-            actionSize: currPlayer?.actionSize || 0,
-            actionCommand: currPlayer?.actionCommand || '',
-            nickName: p.nickName,
-            type: currPlayer?.type || '',
-            status: p.status || 0,
-            userId: p.userId,
-            buyIn: p.buyIn || 0,
-            delayCount: currPlayer?.delayCount || 0,
-          }, {});
+            (player) => player.userId === p.userId
+          );
+          return Object.assign(
+            {},
+            {
+              counter: currPlayer?.counter || p.counter,
+              actionSize: currPlayer?.actionSize || 0,
+              actionCommand: currPlayer?.actionCommand || "",
+              nickName: p.nickName,
+              type: currPlayer?.type || "",
+              status: p.status || 0,
+              userId: p.userId,
+              buyIn: p.buyIn || 0,
+              delayCount: currPlayer?.delayCount || 0,
+            },
+            {}
+          );
         }),
         pot: roomInfo.game.pot,
         prevSize: roomInfo.game.prevSize,
@@ -80,8 +91,8 @@ export default class BaseSocketController extends Controller {
         },
         smallBlind: roomInfo.config.smallBlind,
       };
-      console.log('gameInfo ==========', gameInfo);
-      await this.adapter('online', 'gameInfo', gameInfo);
+      console.log("gameInfo ==========", gameInfo);
+      await this.adapter("online", "gameInfo", gameInfo);
     }
   }
 }

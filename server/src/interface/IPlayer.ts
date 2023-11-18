@@ -15,7 +15,7 @@ export interface UpdatePlayerDTO {
 }
 
 export interface IPlayerService {
-  findByRoomNumber(roomNumber: number): Promise<IPlayerDTO []>;
+  findByRoomNumber(roomNumber: number): Promise<IPlayerDTO[]>;
 
   add(gameRecord: IPlayerDTO): Promise<any>;
 }

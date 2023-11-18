@@ -1,61 +1,61 @@
-import { PokerGame } from '../../../src/app/core/PokerGame';
+import { PokerGame } from "../../../src/app/core/PokerGame";
 // @ts-ignore
-import { expect } from 'chai';
-import { IPlayer } from '../../../src/app/core/Player';
+import { expect } from "chai";
+import { IPlayer } from "../../../src/app/core/Player";
 
-describe('test/app/core/pokerGame.test.ts', () => {
+describe("test/app/core/pokerGame.test.ts", () => {
   const users: IPlayer[] = [
     {
-      userId: '1',
+      userId: "1",
       counter: 511,
-      nickName: '1',
-      account: '1',
-      socketId: '1',
+      nickName: "1",
+      account: "1",
+      socketId: "1",
       buyIn: 0,
       reBuy: 0,
       actionSize: 0,
-      actionCommand: '',
+      actionCommand: "",
       status: 0,
-      type: '',
+      type: "",
     },
     {
-      userId: '2',
+      userId: "2",
       counter: 427,
-      nickName: '2',
-      account: '2',
-      socketId: '2',
+      nickName: "2",
+      account: "2",
+      socketId: "2",
       buyIn: 0,
       reBuy: 0,
       actionSize: 0,
-      actionCommand: '',
+      actionCommand: "",
       status: 0,
-      type: '',
+      type: "",
     },
     {
-      userId: '3',
+      userId: "3",
       counter: 730,
-      nickName: '3',
-      account: '3',
-      socketId: '3',
+      nickName: "3",
+      account: "3",
+      socketId: "3",
       buyIn: 0,
       reBuy: 0,
       actionSize: 0,
-      actionCommand: '',
+      actionCommand: "",
       status: 0,
-      type: '',
+      type: "",
     },
     {
-      userId: '4',
+      userId: "4",
       counter: 744,
-      nickName: '4',
-      account: '4',
-      socketId: '4',
+      nickName: "4",
+      account: "4",
+      socketId: "4",
       buyIn: 0,
       reBuy: 0,
       actionSize: 0,
-      actionCommand: '',
+      actionCommand: "",
       status: 0,
-      type: '',
+      type: "",
     },
     // {
     //   userId: '5',
@@ -221,7 +221,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
   //   // console.log(game.winner[0][0], game.commonCard);
   // });
   //
-  it('one player allin', async () => {
+  it("one player allin", async () => {
     const game = new PokerGame({
       smallBlind: 1,
       isShort: false,
@@ -237,29 +237,29 @@ describe('test/app/core/pokerGame.test.ts', () => {
     });
     game.play();
     // pre flop
-    console.log('curr----------------------------1', game.currPlayer);
+    console.log("curr----------------------------1", game.currPlayer);
     // game.action('fold'); // utg
     // console.log('curr----------------------------2', game.currPlayer);
-    game.action('raise:6'); // co
-    game.action('call'); // D
-    game.action('call'); // sb
-    game.action('call'); // sb
-    game.action('check'); // bb
-    game.action('raise:12'); // d
-    game.action('call'); // bb
-    game.action('call'); // bb
+    game.action("raise:6"); // co
+    game.action("call"); // D
+    game.action("call"); // sb
+    game.action("call"); // sb
+    game.action("check"); // bb
+    game.action("raise:12"); // d
+    game.action("call"); // bb
+    game.action("call"); // bb
 
     // game.action('call'); // bb
-    game.action('fold'); // sb
-    game.action('check'); // bb
-    game.action('check'); // bb
-    game.action('raise:30'); // bb
-    game.action('raise:90'); // bb
-    game.action('fold'); // sb
-    game.action('raise:180'); // bb
-    game.action('raise:360'); // bb
-    game.action('allin'); // bb
-    game.action('allin'); // bb
+    game.action("fold"); // sb
+    game.action("check"); // bb
+    game.action("check"); // bb
+    game.action("raise:30"); // bb
+    game.action("raise:90"); // bb
+    game.action("fold"); // sb
+    game.action("raise:180"); // bb
+    game.action("raise:360"); // bb
+    game.action("allin"); // bb
+    game.action("allin"); // bb
     // game.action('fold'); // bb
     // console.log(game.pot, 'pot1');
 
@@ -275,7 +275,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
     // game.action('allin'); // bb
     // game.action('fold'); // bb
     console.log(game.winner);
-    console.log(game.pot, 'pot2');
+    console.log(game.pot, "pot2");
     // // console.log('curr----------------------------3', game.currPlayer);
     // game.action('check'); // BB 200
     // game.action('check'); // utg
@@ -294,7 +294,7 @@ describe('test/app/core/pokerGame.test.ts', () => {
     // game over
     // game.action('raise:10');
     console.log(game.commonCard);
-    console.log(game.slidePots, 'slidePots');
+    console.log(game.slidePots, "slidePots");
     console.log(game.getPlayers());
     console.log(game.winner);
   });

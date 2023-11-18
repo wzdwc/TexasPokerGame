@@ -15,5 +15,5 @@ export interface ICommandRecordService {
   findByGameID(gameID: number): Promise<ICommandRecord[]>;
   findByGameIDs(gameIDs: number[]): Promise<ICommandRecord[]>;
   add(commandRecord: ICommandRecord): Promise<any>;
-  findPast7DayGameIDsByUserID(userID: number): Promise<number []>;
+  findPast7DayGameIDsByUserID(userID: number): Promise<number[]>;
 }
