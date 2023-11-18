@@ -1,0 +1,47 @@
+version: "2"
+
+
+services: 
+  mysql:
+    container_name: "taxas-mysql"
+    platform: linux/x86_64
+    image: mysql:5.7
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./config/mysql/conf.d:/etc/mysql/conf.d
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: poker
+      MYSQL_USER: poker
+      MYSQL_PASSWORD: 123456
+    networks:
+      - app-network
+  
+  redis:
+    container_name: "taxas-redis"
+    image: redis
+    command: /bin/sh -c 'redis-server --appendonly yes --requirepass 123456'
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+  fe:
+    image: nginx:alpine
+    container_name: DZP_fe
+    ports:
+      - 8080:80
+    restart: always
+    volumes:
+      - ../client/dist:/usr/share/nginx/html
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
