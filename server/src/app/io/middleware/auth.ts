@@ -1,7 +1,7 @@
 import { Context } from "@midwayjs/web";
 import { ITickMsg } from "../../../interface/ITickMsg";
 
-export default function auth(): any {
+export default () => {
   return async (ctx: Context, next: () => Promise<any>) => {
     const socket = ctx.socket as any;
     const id = socket.id;
@@ -10,6 +10,7 @@ export default function auth(): any {
     const query = socket.handshake.query;
     // 用户信息
     const { room, token } = query;
+
     function tick(id: number, msg: ITickMsg, nsp: any, socket: any) {
       // 踢出用户前发送消息
       socket.emit(id, ctx.helper.parseMsg("deny", msg));
@@ -19,9 +20,9 @@ export default function auth(): any {
       });
     }
 
-    function leave() {}
     try {
-      await app.jwt.verify(token);
+      const { user } = await app.jwt.verify(token);
+      ctx.state.user = user;
       // const { nick_name: userName } = userInfo.user;
 
       // 检查房间是否存在，不存在则踢出用户
@@ -41,7 +42,6 @@ export default function auth(): any {
       }
       console.log("play------------", room);
       await next();
-      leave();
     } catch (e) {
       console.log(e);
       tick(
@@ -53,6 +53,7 @@ export default function auth(): any {
         nsp,
         socket
       );
+      throw e;
     }
   };
-}
+};

@@ -63,7 +63,7 @@ export default (appInfo: MidwayAppInfo) => {
   config.io = {
     namespace: {
       "/socket": {
-        connectionMiddleware: ["auth", "join", "leave"],
+        connectionMiddleware: ["auth", "join"],
         packetMiddleware: ["log"],
       },
     },

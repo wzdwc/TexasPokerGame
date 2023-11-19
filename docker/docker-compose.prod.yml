@@ -17,6 +17,8 @@ services:
       MYSQL_DATABASE: poker
       MYSQL_USER: poker
       MYSQL_PASSWORD: 123456
+    networks:
+      - app-network
   
   redis:
     container_name: "taxas-redis"
@@ -25,3 +27,21 @@ services:
     restart: unless-stopped
     ports:
       - "6379:6379"
+    networks:
+      - app-network
+
+  fe:
+    image: nginx:alpine
+    container_name: DZP_fe
+    ports:
+      - 8080:80
+    restart: always
+    volumes:
+      - ../client/dist:/usr/share/nginx/html
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
