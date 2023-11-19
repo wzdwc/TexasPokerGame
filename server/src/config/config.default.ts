@@ -64,7 +64,7 @@ export default (appInfo: MidwayAppInfo) => {
     namespace: {
       "/socket": {
         connectionMiddleware: ["auth", "join", "leave"],
-        packetMiddleware: [],
+        packetMiddleware: ["log"],
       },
     },
     redis: {

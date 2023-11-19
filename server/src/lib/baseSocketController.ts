@@ -25,14 +25,12 @@ export default class BaseSocketController extends Controller {
   }
 
   protected adapter(type: string, actionName: string, data: any) {
-    return new Promise(() => {
-      this.nsp.adapter.clients([this.roomNumber], (err: any, clients: any) => {
-        this.nsp.to(this.roomNumber).emit(type, {
-          clients,
-          action: actionName,
-          target: "participator",
-          data,
-        });
+    this.nsp.adapter.clients([this.roomNumber], (err: any, clients: any) => {
+      this.nsp.to(this.roomNumber).emit(type, {
+        clients,
+        action: actionName,
+        target: "participator",
+        data,
       });
     });
   }
