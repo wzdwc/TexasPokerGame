@@ -1,12 +1,22 @@
-poke-game-center
-================
-> pokeGame server，base on TypeScript,midway,node,mysql,redis 
+# texas-poke-game-server
 
-### Setup
+texas poke game server，base on TypeScript,midway,node,mysql,redis 
+
+## socket.io
+
+使用了 socket.io 进行服务端与客户端的通信. 这里面把一些 room 和 game 的信息挂载到 `nsp` 上.
+
+没有实现 IPC, 所以部署时只能强制将 workers 设成 1, 这样子就只有一个进程了, 缺点不述.
+
+在 egg-socket.io 插件官网上, 要求使用 `--sticky` 参数.
+
+## 安装
+
 See: [egg document][eggjs], [midway document][midway]。
 
-- Redis for game room
-```
+### Redis
+
+``` typescript
 // config.default
   config.redis = {
     client: {
@@ -18,9 +28,12 @@ See: [egg document][eggjs], [midway document][midway]。
   };
 
 ```
-- DataBase
-> Mysql
-```
+
+### DataBase
+
+使用 Mysql
+
+```typescript
 // config.default
   config.mysql = {
     client: {
@@ -38,69 +51,42 @@ See: [egg document][eggjs], [midway document][midway]。
     app: true,
     agent: false,
   };
-
-
-```
-- Install
-```bash
-$ yarn
-$ yarn dev
-$ open http://localhost:7001/
 ```
 
-### Deploy
+### 安装依赖包
 
 ```bash
-$ npm start
-$ npm stop
+yarn
 ```
 
-### Test
-```
-yarn test
+## 本地开发
 
+```bash
+yarn dev
 ```
-- See [midway document - test](https://eggjs.org/zh-cn/core/unittest)。
 
-### Project structure
-```
-├─dist
-├─logs
-│  ├─ELKLog   // report log
-|  |  ├─info.log
-|  |  └─error.log
-│  └─node-loan-center   // system log
-├─node_modules
-├─src
-│  ├─app
-│  │  ├─controller     // http controller
-│  │  ├─core           // poker core code
-|  |  |  ├─Player.ts     // game player class
-|  |  |  ├─Poker.ts      // poker class, get random poker cards
-|  |  |  ├─PokerGame.ts   // poker game Class
-│  │  │  └─PokerStyle.ts   // Contrast poker style and all TexasPoker style
-│  │  ├─extend
-│  │  ├─helper
-│  │  ├─io
-│  │  │  ├─controller      // socket.io controller
-│  │  │  └─middleware      //do auth, join, leave middleware
-│  │  ├─middleware        // http middleware
-│  │  └─public           // client
-│  ├─config              // system base config
-│  ├─interface
-│  │  └─service
-│  ├─lib
-│  ├─service             // http service
-│  └─utils               // some tools
-└─test  // test case
-    └─app
-        └─controller
+## 部署
 
+鉴于上述 socket.io 小节所说, package.json 中的 `start` 相关的命令都加了 `--workers=1 --sticky`
+
+```bash
+yarn start
+# 关闭
+yarn stop
 ```
+
+### 性能
+
+为了将多核 CPU 充分发挥起来, 在不对代码进行大改的前提下, 可用以下方案
+
+- `--workers=1 --sticky` 不变
+- 开启 10 个进程部署代码, port 从 7000 到 7010
+- 7000 的进程可以说是给前端用来进行普通的 api 请求的(其实只要规定好一个 port 就好了)
+- 7001-7010 这九个进程, 按 roomNumber 的第一位数字, 来当做 socket.io 服务端
+- 前端需要在 socket.io 连接的时候, 根据 roomNumber 连接到不同的 socket.io 服务端
+- 说白了, 就是开多个端口, 利用一些规则进行分流
+
+## 参考
 
 [midway]: https://midwayjs.org
-[git-rules]: https://confluence.sui.work/pages/viewpage.action?pageId=51120607
 [eggjs]: https://eggjs.org/zh-cn/
-
-## License
-The MIT License (MIT)

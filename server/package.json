@@ -37,9 +37,9 @@
     "node": ">=10.16.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=taxes-poker --framework=@midwayjs/web --ts --sticky",
-    "start-no-daemon": "egg-scripts start --title=taxes-poker --framework=@midwayjs/web --ts --sticky",
-    "stop": "egg-scripts stop --title=taxes-poker",
+    "start": "egg-scripts start --daemon --title=taxes-poker-server --framework=@midwayjs/web --ts --sticky --workers=1",
+    "start-no-daemon": "egg-scripts start --title=taxes-poker-server --framework=@midwayjs/web --ts --sticky --workers=1",
+    "stop": "egg-scripts stop --title=taxes-poker-server",
     "start_build": "npm run build && NODE_ENV=production midway-bin dev",
     "clean": "midway-bin clean",
     "dev": "cross-env ets && cross-env NODE_ENV=local midway-bin dev --ts --sticky",
