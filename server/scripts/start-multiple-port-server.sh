@@ -7,7 +7,7 @@ TITLE_PREFIX="taxes-poker-server"
 
 function show_help() {
 cat <<HEREDOCUMENT
-用法: $0 (start|stop)
+用法: $0 (start|stop|restart)
 
 一次性开始10个 node 进程, 端口从 ${START_PORT} 到 ${END_PORT}
 
@@ -44,6 +44,9 @@ case $1 in
         ;;
     "stop")
         stop
+        ;;
+    "restart")
+        stop && start
         ;;
     *)
         echo 参数错误
