@@ -264,6 +264,15 @@
       this.initSitLink();
     }
 
+    private getSocketServerUrl() {
+      const firstNum = Number(this.roomId.charAt(0))
+      if (origin.urls[firstNum]) {
+        return `${origin.urls[firstNum]}/socket`
+      } else {
+        return `${origin.urls[0]}/socket`
+      }
+    }
+
     private sendMsgHandle(msgInfo: string) {
       const msg = `${this.userInfo.nickName}:${msgInfo}`;
       this.emit('broadcast', { msg });
@@ -340,7 +349,7 @@
       const log = console.log;
       this.roomConfig = JSON.parse(roomConfig);
       console.log(JSON.parse(roomConfig), 'roomConfig');
-      this.socket = io(`${origin.url}/socket`, {
+      this.socket = io(this.getSocketServerUrl(), {
         // 实际使用中可以在这里传递参数
         query: {
           room: this.roomId,
