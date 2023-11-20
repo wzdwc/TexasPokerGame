@@ -3,7 +3,7 @@ version: "2"
 
 services: 
   mysql:
-    container_name: "taxas-mysql"
+    container_name: "dzp-mysql"
     platform: linux/x86_64
     image: mysql:5.7
     volumes:
@@ -21,7 +21,7 @@ services:
       - app-network
   
   redis:
-    container_name: "taxas-redis"
+    container_name: "dzp-redis"
     image: redis
     command: /bin/sh -c 'redis-server --appendonly yes --requirepass 123456'
     restart: unless-stopped
