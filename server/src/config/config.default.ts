@@ -5,7 +5,7 @@ import { MidwayConfig, MidwayAppInfo } from "@midwayjs/core";
 export default (appInfo: MidwayAppInfo) => {
   const config = {} as PowerPartial<EggAppConfig>;
 
-  config.egg = { port: 7001 };
+  config.egg = { port: process.env.PORT || 7001 };
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + "_20231118221445";
