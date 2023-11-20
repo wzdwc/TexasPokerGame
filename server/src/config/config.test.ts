@@ -1,9 +1,8 @@
-import { EggAppConfig, PowerPartial } from 'egg';
+import { EggAppConfig, PowerPartial } from "egg";
 
 export default () => {
-    const config: PowerPartial<EggAppConfig> = {};
-    // business domain
-    config.apiDomain = {
-    };
-    return config;
+  const config: PowerPartial<EggAppConfig> = {};
+  // business domain
+  config.apiDomain = {};
+  return config;
 };

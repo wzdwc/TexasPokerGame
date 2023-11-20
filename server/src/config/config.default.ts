@@ -1,49 +1,38 @@
-import { EggAppConfig, EggAppInfo, PowerPartial, Context } from 'midway';
+import { Context } from "@midwayjs/web";
+import { EggAppConfig, PowerPartial } from "egg";
+import { MidwayConfig, MidwayAppInfo } from "@midwayjs/core";
 
-export type DefaultConfig = PowerPartial<EggAppConfig>;
+export default (appInfo: MidwayAppInfo) => {
+  const config = {} as PowerPartial<EggAppConfig>;
 
-export default (appInfo: EggAppInfo) => {
-  const config = {} as DefaultConfig;
+  config.egg = { port: 7001 };
 
   // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_{{keys}}';
-
-  // elk log，404
-  config.middleware = [ 'elkLogger', 'notFound' ];
+  config.keys = appInfo.name + "_20231118221445";
+  config.middleware = ["notFound"];
 
   const bizConfig = {
-    sourceUrl: '',
-    elkLogger: {
-      // request url match
-      match(ctx: Context) {
-        const reg = /.*/;
-        return reg.test(ctx.url);
-      },
-      enable: true,
-    },
+    sourceUrl: "",
   };
+
   // security
   config.security = {
-    csrf: {
-      enable: false,
-    },
-    methodnoallow: {
-      enable: false,
-    },
+    csrf: { enable: false },
+    methodnoallow: { enable: false },
   };
+
   // CORS
   config.cors = {
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+    allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS",
     credentials: true,
     origin(ctx: Context) {
-      const origin: string = ctx.get('origin');
-      // console.log(origin, 'orgin');
+      const origin: string = ctx.get("origin");
       // access origin
-      if (origin.indexOf('') > -1) {
+      if (origin.indexOf("") > -1) {
         // console.log('come in');
         return origin;
       } else {
-        return '*';
+        return "*";
       }
     },
   };
@@ -51,10 +40,10 @@ export default (appInfo: EggAppInfo) => {
   // logger
   config.logger = {
     outputJSON: false,
-    appLogName: 'app.log',
-    coreLogName: 'core.log',
-    agentLogName: 'agent.log',
-    errorLogName: 'error.log',
+    appLogName: "app.log",
+    coreLogName: "core.log",
+    agentLogName: "agent.log",
+    errorLogName: "error.log",
   };
 
   // business domain
@@ -62,7 +51,7 @@ export default (appInfo: EggAppInfo) => {
 
   // jsonwebtoken
   config.jwt = {
-    secret: '123456',
+    secret: "123456",
     enable: true,
     match(ctx: Context) {
       const reg = /login|register/;
@@ -73,38 +62,39 @@ export default (appInfo: EggAppInfo) => {
   // socket io setting
   config.io = {
     namespace: {
-      '/socket': {
-        connectionMiddleware: [ 'auth', 'join', 'leave' ],
-        packetMiddleware: [],
+      "/socket": {
+        connectionMiddleware: ["auth", "join"],
+        packetMiddleware: ["log"],
       },
     },
     redis: {
-      host: '127.0.0.1',
+      host: "127.0.0.1",
       port: 6379,
-      password: '123456',
+      password: "123456",
     },
   };
 
   config.redis = {
     client: {
       port: 6379,
-      host: '127.0.0.1',
-      password: '123456',
+      host: "127.0.0.1",
+      password: "123456",
       db: 0,
     },
   };
+
   config.mysql = {
     client: {
       // host
-      host: '127.0.0.1',
+      host: "127.0.0.1",
       // pot
-      port: '3306',
+      port: "3306",
       // userName
-      user: 'root',
+      user: "root",
       // password
-      password: '',
+      password: "123456",
       // database name
-      database: 'poker',
+      database: "poker",
     },
     app: true,
     agent: false,
@@ -113,5 +103,5 @@ export default (appInfo: EggAppInfo) => {
   return {
     ...bizConfig,
     ...config,
-  };
+  } as MidwayConfig;
 };

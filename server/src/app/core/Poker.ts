@@ -10,7 +10,7 @@ export interface IPoker {
  * Created by jorky on 2020/2/23.
  */
 export class Poker implements IPoker {
-  private pokers: string [] = [];
+  private pokers: string[] = [];
   private readonly isShort: boolean;
 
   constructor(isShort = false) {
@@ -20,32 +20,24 @@ export class Poker implements IPoker {
 
   init(): void {
     let size = [
-      'a',
-      'b',
-      'c',
-      'd',
-      'e',
-      'f',
-      'g',
-      'h',
-      'i',
-      'j',
-      'k',
-      'l',
-      'm' ];
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+    ];
     if (this.isShort) {
-      size = [
-        'e',
-        'f',
-        'g',
-        'h',
-        'i',
-        'j',
-        'k',
-        'l',
-        'm' ];
+      size = ["e", "f", "g", "h", "i", "j", "k", "l", "m"];
     }
-    const color = [ 1, 2, 3, 4 ];
+    const color = [1, 2, 3, 4];
     for (const i of size) {
       for (const j of color) {
         this.pokers.push(`${i}${j}`);
@@ -54,7 +46,7 @@ export class Poker implements IPoker {
   }
 
   getCard(): string {
-    if (this.pokers.length === 0) return 'done';
+    if (this.pokers.length === 0) return "done";
     const currCardIndex = this.getRandom(this.pokers.length);
     const currCard = this.pokers[currCardIndex];
     this.pokers.splice(currCardIndex, 1);
