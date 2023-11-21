@@ -1,11 +1,18 @@
-poke-game-front-ts
-=====================
+# poke-game-front-ts
+
 ## Setup
 
-```
+```bash
 yarn
 yarn serve
 ```
+
+## 环境变量
+
+```env
+VUE_APP_ENABLE_MULTIPLE_SOCKET
+```
+
 ### Compiles and minifies for production
 
 ```
@@ -33,7 +40,7 @@ yarn run test
     ├─store
     ├─utils
     └─views
-
 ```
+
 ## License
 The MIT License (MIT)
