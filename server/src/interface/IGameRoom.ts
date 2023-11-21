@@ -1,6 +1,6 @@
-import { PokerGame } from "../app/core/PokerGame";
-import { IPlayer } from "../app/core/Player";
-import { ILinkNode } from "../utils/Link";
+import { PokerGame } from '../app/core/PokerGame';
+import { IPlayer } from '../app/core/Player';
+import { ILinkNode } from '../utils/Link';
 
 export interface IGameRoom {
   number: string;
@@ -8,7 +8,7 @@ export interface IGameRoom {
 }
 
 export interface ISit {
-  player: IPlayer;
+  player?: IPlayer;
   position: number;
 }
 
