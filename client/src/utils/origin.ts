@@ -1,7 +1,7 @@
 const getUrls = () => {
   if (process.env.NODE_ENV === "production") {
     const baseUrl = "http://172.26.0.88";
-    if (process.env.VUE_APP_ENABLE_MULTIPLE_SOCKET) {
+    if (String(process.env.VUE_APP_ENABLE_MULTIPLE_SOCKET) !== "0") {
       const startPort = Number(process.env.START_PORT || 7000);
       const urls = [];
       for (var port = startPort; port <= startPort + 10; port++) {
