@@ -409,9 +409,10 @@ class GameController extends BaseSocketController {
       console.log(e);
     }
   }
+
   async standUp() {
     try {
-      console.log('come in');
+      console.log('stand up');
       const userInfo: IPlayer = await this.getUserInfo();
       const roomInfo = await this.getRoomInfo();
       roomInfo.sit.forEach((s: ISit) => {
