@@ -9,14 +9,15 @@ yarn serve
 
 ## 环境变量
 
-```env
+```bash
+VUE_APP_API_IP
 VUE_APP_ENABLE_MULTIPLE_SOCKET
 ```
 
-### Compiles and minifies for production
+### 编译
 
 ```
-yarn run build
+VUE_APP_API_IP=1.2.3.4 VUE_APP_ENABLE_MULTIPLE_SOCKET=0 NODE_ENV=production yarn build
 ```
 
 ### Run your tests
