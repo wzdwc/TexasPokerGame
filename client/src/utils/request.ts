@@ -15,7 +15,6 @@ const request = async ({
   const headers = {
     Authorization: `Bearer ${token}`,
   };
-  console.log("urls", origin.urls);
   url = `${origin.urls[0]}/node${url}`;
   const option: AxiosRequestConfig = {
     url,

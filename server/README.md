@@ -1,6 +1,6 @@
 # texas-poke-game-server
 
-texas poke game server，base on TypeScript,midway,node,mysql,redis 
+texas poke game server，base on TypeScript,midway,node,mysql,redis
 
 ## socket.io
 
@@ -16,17 +16,16 @@ See: [egg document][eggjs], [midway document][midway]。
 
 ### Redis
 
-``` typescript
+```typescript
 // config.default
-  config.redis = {
-    client: {
-      port: 6379,
-      host: '127.0.0.1',
-      password: '123456',
-      db: 0,
-    },
-  };
-
+config.redis = {
+  client: {
+    port: 6379,
+    host: '127.0.0.1',
+    password: '123456',
+    db: 0,
+  },
+};
 ```
 
 ### DataBase
@@ -35,22 +34,22 @@ See: [egg document][eggjs], [midway document][midway]。
 
 ```typescript
 // config.default
-  config.mysql = {
-    client: {
-      // mysql host
-      host: '',
-      // pot
-      port: '3306',
-      // userName
-      user: 'root',
-      // password
-      password: '',
-      // database name
-      database: 'poker',
-    },
-    app: true,
-    agent: false,
-  };
+config.mysql = {
+  client: {
+    // mysql host
+    host: '',
+    // pot
+    port: '3306',
+    // userName
+    user: 'root',
+    // password
+    password: '',
+    // database name
+    database: 'poker',
+  },
+  app: true,
+  agent: false,
+};
 ```
 
 ### 安装依赖包
@@ -85,6 +84,35 @@ yarn stop
 - 7001-7010 这九个进程, 按 roomNumber 的第一位数字, 来当做 socket.io 服务端
 - 前端需要在 socket.io 连接的时候, 根据 roomNumber 连接到不同的 socket.io 服务端
 - 说白了, 就是开多个端口, 利用一些规则进行分流
+
+## 扑克牌映射规则
+
+### 数字
+
+| 编号 | 扑克数字 |
+| ---- | -------- |
+| a    | 2        |
+| b    | 3        |
+| c    | 4        |
+| d    | 5        |
+| e    | 6        |
+| f    | 7        |
+| g    | 8        |
+| h    | 9        |
+| i    | T(10)    |
+| j    | J        |
+| k    | Q        |
+| l    | K        |
+| m    | A        |
+
+### 花色
+
+| 编号 | 扑克花色      |
+| ---- | ------------- |
+| 1    | 方块 dianmond |
+| 2    | 梅花 club     |
+| 3    | 红心 heart    |
+| 4    | 黑桃 spade    |
 
 ## 参考
 

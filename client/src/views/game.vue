@@ -265,10 +265,9 @@
     }
 
     private getSocketServerUrl() {
-      const firstNum = Number(this.roomId.charAt(0))
-      if (origin.urls[firstNum]) {
-        return `${origin.urls[firstNum]}/socket`
-      } else {
+      try {
+        return `${origin.urls[Number(this.roomId.charAt(0))]}/socket`
+      } catch (error) {
         return `${origin.urls[0]}/socket`
       }
     }
