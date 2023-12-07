@@ -53,7 +53,7 @@
     </div>
     <BuyIn :showBuyIn.sync='showBuyIn'
            :min='0'
-           :max='baseSize * 2000'
+           :max='baseSize * 1000'
            @buyIn='buyIn'></BuyIn>
     <toast :show.sync="showMsg"
            :text="msg"></toast>
