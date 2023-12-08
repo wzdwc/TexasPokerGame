@@ -265,11 +265,7 @@
     }
 
     private getSocketServerUrl() {
-      try {
-        return `${origin.urls[Number(this.roomId.charAt(0))]}/socket`
-      } catch (error) {
-        return `${origin.urls[0]}/socket`
-      }
+      return `${origin.urls[0]}/socket`
     }
 
     private sendMsgHandle(msgInfo: string) {
