@@ -4,3 +4,9 @@ export interface IRoom {
   time?: number;
   smallBlind: number;
 }
+
+export interface IRoomBasicInfo {
+  roomNumber: string;
+  createdAt: number;
+  playersNickName: string;
+}

@@ -53,7 +53,27 @@
       <div class="room-btn inline">
         <span @click="go">go</span>
       </div>
+
+      <div> 热门房间 </div>
+      <table class="hot-rooms" width="100%">
+        <thead>
+          <tr>
+            <th>房间号</th>
+            <th>玩家</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="room in rooms">
+            <td 
+              class="hot-room-number"
+              :data-roomNumber="room.roomNumber" 
+              @click="goByEvent($event)"> {{ room.roomNumber }} </td>
+            <td> {{ room.playersNickName }} </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
     <gameRecord v-model="showRecord"
                 :game-list="gameList"
                 :curr-game-index="currGameIndex"
@@ -69,6 +89,7 @@
   import service from '../service';
   import cookie from 'js-cookie';
   import { IGameRecord } from '@/interface/IGameRecord';
+  import { IRoomBasicInfo } from '@/interface/IRoom';
 
   @Component({
     components: {
@@ -87,6 +108,11 @@
     private commandList = [];
     private currGameIndex = 0;
     private gameList: IGameRecord [] = [];
+    private rooms: IRoomBasicInfo[] = [];
+
+    async mounted() {
+      await this.getRooms()
+    }
 
     private async createRoom() {
       try {
@@ -109,6 +135,7 @@
       this.showBtn = false;
     }
 
+
     private async go() {
       if (!/^\d+$/.test(this.roomNumber)) {
         this.isError = true;
@@ -129,6 +156,12 @@
       } catch (e) {
         this.$plugin.toast('can\'t find the room');
       }
+    }
+
+    private async goByEvent(event:any) {
+      const roomNumber = event.currentTarget.getAttribute('data-roomNumber')
+      this.roomNumber = roomNumber;
+      await this.go()
     }
 
     private async selfPast7DayGame() {
@@ -174,10 +207,18 @@
         this.$plugin.toast('can\'t find the room');
       }
     }
+
+    private async getRooms() {
+      try {
+        const result = await service.getRooms();
+        this.rooms = result.data
+      } catch (e) {
+        console.log('getRooms error: ', e);
+      }
+    }
   }
 </script>
-<style lang="less"
-       scoped>
+<style lang="less" scoped>
   .home-container {
     height: 100vh;
     display: flex;
@@ -285,6 +326,10 @@
         display: inline-block;
         vertical-align: middle;
       }
+    }
+
+    .hot-room-number {
+      text-decoration: underline;
     }
   }
 </style>
