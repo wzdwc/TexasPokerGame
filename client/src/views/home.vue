@@ -127,14 +127,23 @@ export default class Home extends Vue {
       this.isError = true;
       return;
     }
+    await this.goByRoomNumber(this.roomNumber);
+  }
+
+  private async goByEvent(event: any) {
+    const roomNumber = event.currentTarget.getAttribute('data-roomNumber');
+    await this.goByRoomNumber(roomNumber);
+  }
+
+  private async goByRoomNumber(roomNumber: string) {
     try {
-      const { data } = await service.findRoom(this.roomNumber);
+      const { data } = await service.findRoom(roomNumber);
       if (data) {
         const roomConfig = {
           ...data,
         };
         cookie.set('roomConfig', roomConfig, { expires: 1 });
-        this.$router.push({ name: 'game', params: { roomNumber: this.roomNumber } });
+        this.$router.push({ name: 'game', params: { roomNumber } });
       } else {
         this.$plugin.toast("can't find the room");
         console.log("can't find the room");
@@ -142,12 +151,6 @@ export default class Home extends Vue {
     } catch (e) {
       this.$plugin.toast("can't find the room");
     }
-  }
-
-  private async goByEvent(event: any) {
-    const roomNumber = event.currentTarget.getAttribute('data-roomNumber');
-    this.roomNumber = roomNumber;
-    await this.go();
   }
 
   private async selfPast7DayGame() {
