@@ -42,7 +42,7 @@ export class RoomController extends BaseController {
       const result = await this.roomService.getRooms(3);
       this.success({ ...result });
     } catch (e) {
-      this.fail('invalid room');
+      this.fail('fetch rooms error');
       console.log(e);
     }
   }
