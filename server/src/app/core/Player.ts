@@ -14,42 +14,50 @@ export interface IPlayer {
   actionCommand: string;
   delayCount?: number;
   id?: number;
+  /** 自愿 action 次数, 不包括 fold, 大小盲 */
+  voluntaryActionCount: number;
+  /** 总 action 次数, 包括 fold */
+  totalActionCount: number;
+  vpip: number;
 }
 
 export enum ECommand {
-  SMALL_BLIND = "sb",
-  BIG_BLIND = "bb",
-  STRADDLE = "straddle",
-  CALL = "call",
-  ALL_IN = "allin",
-  RAISE = "raise",
-  CHECK = "check",
-  FOLD = "fold",
+  SMALL_BLIND = 'sb',
+  BIG_BLIND = 'bb',
+  STRADDLE = 'straddle',
+  CALL = 'call',
+  ALL_IN = 'allin',
+  RAISE = 'raise',
+  CHECK = 'check',
+  FOLD = 'fold',
 }
 
 export enum EPlayerType {
-  DEFAULT = "",
-  DEALER = "d",
-  BIG_BLIND = "bb",
-  SMALL_BLIND = "sb",
+  DEFAULT = '',
+  DEALER = 'd',
+  BIG_BLIND = 'bb',
+  SMALL_BLIND = 'sb',
 }
 
 export class Player {
   private handCard: string[] = [];
   position: number = 0;
   counter: number = 0;
-  userId: string = "";
+  userId: string = '';
   playerId: number = 0;
   delayCount: number = 3;
-  socketId: string = "";
-  nickName: string = "";
+  socketId: string = '';
+  nickName: string = '';
   actionSize: number = 0;
-  actionCommand: string = "";
+  actionCommand: string = '';
   type: string = EPlayerType.DEFAULT;
   evPot: number = Infinity;
   inPot: number = 0;
   income: number = 0;
-  pokerStyle: string = "";
+  pokerStyle: string = '';
+  voluntaryActionCount = 0;
+  totalActionCount = 0;
+  vpip = 0;
 
   constructor(config: IPlayer) {
     this.counter = config.counter;
@@ -57,6 +65,9 @@ export class Player {
     this.userId = config.userId;
     this.socketId = config.socketId;
     this.nickName = config.nickName;
+    this.totalActionCount = config.totalActionCount || 0;
+    this.voluntaryActionCount = config.voluntaryActionCount || 0;
+    this.vpip = config.vpip || 0;
     if (this.position === 0) {
       this.type = EPlayerType.DEALER;
     }
@@ -83,21 +94,19 @@ export class Player {
    * @example action('command:raise:10')
    */
   action(commandString: string, prevSize: number = 0) {
-    const commandArr = commandString.split(":");
+    const commandArr = commandString.split(':');
     const command = commandArr[0];
     const raiseSize = Number(commandArr[1]);
+    this.updateVPIP(command as ECommand);
     let size = 0;
     if (
       command !== ECommand.ALL_IN &&
       command !== ECommand.FOLD &&
       (prevSize > this.counter + this.actionSize || raiseSize > this.counter)
     ) {
-      throw "player: error action, overflow action size";
+      throw 'player: error action, overflow action size';
     } else {
-      this.actionCommand =
-        command === ECommand.SMALL_BLIND || command === ECommand.BIG_BLIND
-          ? ""
-          : command;
+      this.actionCommand = command === ECommand.SMALL_BLIND || command === ECommand.BIG_BLIND ? '' : command;
     }
 
     // BLIND
@@ -111,7 +120,7 @@ export class Player {
       if (this.position === 3) {
         size = raiseSize;
       } else {
-        throw "player: error action STRADDLE";
+        throw 'player: error action STRADDLE';
       }
     }
 
@@ -119,21 +128,21 @@ export class Player {
     if (command === ECommand.RAISE) {
       // raise must double to prevSize
       if (raiseSize >= prevSize * 2) {
-        console.log("player: RAISE----------------", prevSize, this.actionSize);
+        console.log('player: RAISE----------------', prevSize, this.actionSize);
         const actionSize = this.actionSize >= 0 ? this.actionSize : 0;
         size = raiseSize - actionSize;
       } else {
-        throw "player: error action: raise size too small";
+        throw 'player: error action: raise size too small';
       }
     }
 
     if (command === ECommand.ALL_IN) {
-      console.log("allin================", this.counter);
+      console.log('allin================', this.counter);
       size = this.counter;
     }
 
     if (command === ECommand.CALL) {
-      console.log("player: call----------------", prevSize, this.actionSize);
+      console.log('player: call----------------', prevSize, this.actionSize);
       const actionSize = this.actionSize >= 0 ? this.actionSize : 0;
       size = prevSize - actionSize;
     }
@@ -149,7 +158,7 @@ export class Player {
       this.counter -= size;
       this.inPot += size;
     }
-    console.log("allin================", this.counter);
+    console.log('allin================', this.counter);
     this.actionSize += size;
     if (command === ECommand.RAISE) {
       this.actionSize = raiseSize;
@@ -161,14 +170,22 @@ export class Player {
 
   clearActionSize() {
     this.actionSize = 0;
-    if (this.actionCommand !== "fold" && this.actionCommand !== "allin") {
-      this.actionCommand = "";
+    if (this.actionCommand !== 'fold' && this.actionCommand !== 'allin') {
+      this.actionCommand = '';
     }
   }
 
   setIncome(size: number) {
-    console.log("size", size);
+    console.log('size', size);
     this.income = size;
     this.counter += size;
+  }
+
+  updateVPIP(command: ECommand) {
+    this.totalActionCount += 1;
+    if (![ECommand.FOLD, ECommand.SMALL_BLIND, ECommand.BIG_BLIND].includes(command)) {
+      this.voluntaryActionCount += 1;
+    }
+    this.vpip = this.totalActionCount === 0 ? 0 : this.voluntaryActionCount / this.totalActionCount;
   }
 }

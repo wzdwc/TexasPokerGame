@@ -110,10 +110,16 @@ class GameController extends BaseSocketController {
                 const sit = roomInfo.sit.find((s: ISit) => s.player?.userId === gamePlayer.userId);
                 if (player && sit) {
                   player.counter = gamePlayer.counter;
+                  player.voluntaryActionCount = gamePlayer.voluntaryActionCount;
+                  player.totalActionCount = gamePlayer.totalActionCount;
+                  player.vpip = gamePlayer.vpip;
                   player.actionCommand = '';
                   player.actionSize = 0;
                   player.type = '';
                   sit.player!.counter = gamePlayer.counter;
+                  sit.player!.voluntaryActionCount = gamePlayer.voluntaryActionCount;
+                  sit.player!.totalActionCount = gamePlayer.totalActionCount;
+                  sit.player!.vpip = gamePlayer.vpip;
                   sit.player!.actionCommand = '';
                   sit.player!.actionSize = 0;
                   sit.player!.type = '';
@@ -252,7 +258,7 @@ class GameController extends BaseSocketController {
 
   async reStart() {
     try {
-      const roomInfo: IRoomInfo = await this.getRoomInfo();
+      const roomInfo = this.getRoomInfo();
       const dealer = roomInfo.game?.allPlayer.filter((gamePlayer) => {
         return !!roomInfo.sit.find(
           (s) =>
@@ -276,6 +282,9 @@ class GameController extends BaseSocketController {
             // calculate re buy in
             s.player.counter = player.counter;
             s.player.counter += Number(player.reBuy);
+            s.player.voluntaryActionCount = player.voluntaryActionCount;
+            s.player.totalActionCount = player.totalActionCount;
+            s.player.vpip = player.vpip;
             console.log('cal reBuy ===============================', s.player, player.reBuy);
             player.reBuy = 0;
             s.player.reBuy = 0;
@@ -492,7 +501,7 @@ class GameController extends BaseSocketController {
         }
         console.log('fold ===============', roomInfo.players, roomInfo.game.allPlayer);
         // todo notice next player action
-        await this.updateGameInfo();
+        this.updateGameInfo();
         console.log('curr player', roomInfo.game.currPlayer.node);
         // add game record
         commandRecord.pot = roomInfo.game?.pot || 0;

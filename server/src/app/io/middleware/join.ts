@@ -1,6 +1,6 @@
-import { Context } from "@midwayjs/web";
-import { IGameRoom } from "../../../interface/IGameRoom";
-import { IPlayer } from "../../core/Player";
+import { Context } from '@midwayjs/web';
+import { IGameRoom } from '../../../interface/IGameRoom';
+import { IPlayer } from '../../core/Player';
 
 export default () => {
   function sendMsgToClients({
@@ -17,10 +17,10 @@ export default () => {
     // 在线列表
     nsp.adapter.clients([roomNumber], (err: any, clients: any) => {
       // 更新在线用户列表
-      nsp.to(roomNumber).emit("online", {
+      nsp.to(roomNumber).emit('online', {
         clients,
         action,
-        target: "participator",
+        target: 'participator',
         data: { players },
       });
     });
@@ -30,26 +30,21 @@ export default () => {
     const socket = ctx.socket as any;
     const id = socket.id;
     const app = ctx.app as any;
-    const nsp = app.io.of("/socket");
+    const nsp = app.io.of('/socket');
     const query = socket.handshake.query;
     const { room, roomConfig } = query;
-    console.log("socket-----join", id);
-    console.log("roomConfig-----roomConfig", JSON.parse(roomConfig));
+    console.log('socket-----join', id);
+    console.log('roomConfig-----roomConfig', JSON.parse(roomConfig));
     // room缓存信息是否存在
     if (!nsp.gameRooms) {
       nsp.gameRooms = [];
     }
 
     try {
-      const cachedRoom: IGameRoom | null = nsp.gameRooms.find(
-        (r: IGameRoom) => r.number === room
-      );
+      const cachedRoom: IGameRoom | null = nsp.gameRooms.find((r: IGameRoom) => r.number === room);
       const { user } = ctx.state;
       socket.join(room);
-      await socket.emit(
-        id,
-        ctx.helper.parseMsg("userInfo", { userInfo: user })
-      );
+      await socket.emit(id, ctx.helper.parseMsg('userInfo', { userInfo: user }));
       const player: IPlayer = {
         ...user,
         socketId: id,
@@ -57,6 +52,9 @@ export default () => {
         buyIn: 0,
         delayCount: 3,
         reBuy: 0,
+        voluntaryActionCount: 0,
+        totalActionCount: 0,
+        vpip: 0,
       };
 
       if (!cachedRoom) {
@@ -75,26 +73,22 @@ export default () => {
           },
         };
         nsp.gameRooms.push(gameRoom);
-        console.debug("...room not cached in nsp, create a new one");
+        console.debug('...room not cached in nsp, create a new one');
         console.debug(
-          "...current cached rooms: " +
-            JSON.stringify(nsp.gameRooms.map((room: IGameRoom) => room.number))
+          '...current cached rooms: ' + JSON.stringify(nsp.gameRooms.map((room: IGameRoom) => room.number)),
         );
         sendMsgToClients({
           roomNumber: room,
           players: gameRoom.roomInfo.players,
-          action: "players",
+          action: 'players',
           nsp,
         });
-        console.debug(
-          "...update game room with players: ",
-          JSON.stringify(gameRoom.roomInfo.players)
-        );
+        console.debug('...update game room with players: ', JSON.stringify(gameRoom.roomInfo.players));
       } else {
         // current room is cached in the nsp
         // 判断当前用户在不在nsp缓存的room的players列表里
         const currentPlayerInRoom = cachedRoom.roomInfo.players.find(
-          (player: IPlayer) => player.userId === user.userId
+          (player: IPlayer) => player.userId === user.userId,
         );
         // 不在则发消息告诉所有人, 更新 players
         if (!currentPlayerInRoom) {
@@ -103,23 +97,17 @@ export default () => {
           sendMsgToClients({
             roomNumber: room,
             players: cachedRoom.roomInfo.players,
-            action: "players",
+            action: 'players',
             nsp,
           });
         } else {
           // gaming, update hand cards
           currentPlayerInRoom.socketId = id;
-          const gamePlayer = cachedRoom.roomInfo.game?.allPlayer.find(
-            (player) => player.userId === user.userId
-          );
+          const gamePlayer = cachedRoom.roomInfo.game?.allPlayer.find((player) => player.userId === user.userId);
 
           if (gamePlayer) {
             // in the game, get hand card
-            const msg = ctx.helper.parseMsg(
-              "handCard",
-              { handCard: gamePlayer.getHandCard() },
-              { client: id }
-            );
+            const msg = ctx.helper.parseMsg('handCard', { handCard: gamePlayer.getHandCard() }, { client: id });
             socket.emit(id, msg);
           }
 
@@ -127,23 +115,24 @@ export default () => {
             const roomInfo = cachedRoom.roomInfo;
             const gameInfo = {
               players: roomInfo.players.map((p) => {
-                const currPlayer = roomInfo.game?.allPlayer.find(
-                  (player) => player.userId === p.userId
-                );
-                console.log("currPlayer ========== ", currPlayer);
+                const currPlayer = roomInfo.game?.allPlayer.find((player) => player.userId === p.userId);
+                console.log('currPlayer ========== ', currPlayer);
                 return Object.assign(
                   {},
                   {
                     counter: currPlayer?.counter || p.counter,
                     actionSize: currPlayer?.actionSize || 0,
-                    actionCommand: currPlayer?.actionCommand || "",
+                    actionCommand: currPlayer?.actionCommand || '',
                     nickName: p.nickName,
-                    type: currPlayer?.type || "",
+                    type: currPlayer?.type || '',
                     userId: p.userId,
                     status: p.status,
                     buyIn: p.buyIn || 0,
+                    voluntaryActionCount: currPlayer?.voluntaryActionCount || p.voluntaryActionCount,
+                    totalActionCount: currPlayer?.totalActionCount || p.totalActionCount,
+                    vpip: currPlayer?.vpip || p.vpip,
                   },
-                  {}
+                  {},
                 );
               }),
               commonCard: roomInfo.game?.commonCard || [],
@@ -153,27 +142,19 @@ export default () => {
               smallBlind: roomInfo.config.smallBlind,
               actionEndTime: roomInfo.game?.actionEndTime || 0,
             };
-            const game = ctx.helper.parseMsg(
-              "gameInfo",
-              { data: gameInfo },
-              { client: id }
-            );
+            const game = ctx.helper.parseMsg('gameInfo', { data: gameInfo }, { client: id });
             socket.emit(id, game);
           }
         }
 
         // get sitList
-        const msg = ctx.helper.parseMsg(
-          "sitList",
-          { sitList: cachedRoom.roomInfo.sit },
-          { client: id }
-        );
+        const msg = ctx.helper.parseMsg('sitList', { sitList: cachedRoom.roomInfo.sit }, { client: id });
         socket.emit(id, msg);
       }
       sendMsgToClients({
         roomNumber: room,
         players: `User(${user.nickName}) joined.`,
-        action: "join",
+        action: 'join',
         nsp,
       });
       await next();

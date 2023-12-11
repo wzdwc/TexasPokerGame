@@ -11,12 +11,18 @@
           <i>buy in</i>
           <i>counter</i>
           <i>income</i>
+          <i>V</i>
+          <i>A</i>
+          <i>VPIP</i>
         </li>
         <li v-for="player in players">
           <i>{{player.nickName}}</i>
           <i>{{player.buyIn}}</i>
           <i>{{player.counter}}</i>
           <i>{{player.counter - player.buyIn}}</i>
+          <i>{{player.voluntaryActionCount}}</i>
+          <i>{{player.totalActionCount}}</i>
+          <i>{{(player.vpip*100).toFixed(2)}}%</i>
         </li>
       </ul>
     </div>
