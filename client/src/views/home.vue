@@ -40,23 +40,25 @@
         <span @click="go">go</span>
       </div>
 
-      <div>热门房间</div>
-      <table class="hot-rooms" width="100%">
-        <thead>
-          <tr>
-            <th>房间号</th>
-            <th>玩家</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="room in rooms">
-            <td class="hot-room-number" :data-roomNumber="room.roomNumber" @click="goByEvent($event)">
-              {{ room.roomNumber }}
-            </td>
-            <td>{{ room.playersNickName }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div v-if="rooms.length > 0">
+        <p>热门房间</p>
+        <table class="hot-rooms" width="100%">
+          <thead>
+            <tr>
+              <th class="hot-room-number">房间号</th>
+              <th class="hot-room-player">玩家</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="room in rooms">
+              <td class="hot-room-number" :data-roomNumber="room.roomNumber" @click="goByEvent($event)">
+                {{ room.roomNumber }}
+              </td>
+              <td class="hot-room-player">{{ room.playersNickName }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <gameRecord
@@ -139,9 +141,7 @@ export default class Home extends Vue {
     try {
       const { data } = await service.findRoom(roomNumber);
       if (data) {
-        const roomConfig = {
-          ...data,
-        };
+        const roomConfig = { ...data };
         cookie.set('roomConfig', roomConfig, { expires: 1 });
         this.$router.push({ name: 'game', params: { roomNumber } });
       } else {
@@ -200,13 +200,14 @@ export default class Home extends Vue {
   private async getRooms() {
     try {
       const result = await service.getRooms();
-      this.rooms = result.data;
+      this.rooms = Object.values(result.data);
     } catch (e) {
       console.log('getRooms error: ', e);
     }
   }
 }
 </script>
+
 <style lang="less" scoped>
 .home-container {
   height: 100vh;
@@ -317,8 +318,40 @@ export default class Home extends Vue {
     }
   }
 
-  .hot-room-number {
-    text-decoration: underline;
+  table.hot-rooms {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    th {
+      border: 1px solid black;
+      background-color: #4caf50;
+      color: white;
+    }
+    th.hot-room-number {
+      width: 20%;
+    }
+
+    td {
+      border: 1px solid black;
+      word-wrap: break-word;
+    }
+    td.hot-room-number {
+      text-decoration: underline;
+      color: #0d6efd;
+    }
+
+    td.hot-room-number:hover {
+      color: #0a58ca;
+    }
+
+    td.hot-room-player {
+      word-wrap: break-word;
+    }
   }
 }
 </style>
