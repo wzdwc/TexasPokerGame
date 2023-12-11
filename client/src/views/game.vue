@@ -271,7 +271,6 @@ export default class Game extends Vue {
   }
 
   private init() {
-    console.log("123");
     this.joinMsg = "";
     this.handCard = [];
     this.commonCard = [];
@@ -639,9 +638,9 @@ export default class Game extends Vue {
     }
   }
 
-  private created() {
+  private async created() {
     try {
-      this.autoJoinRoom();
+      await this.autoJoinRoom();
       this.socketInit();
       if (!this.sitLink) {
         this.initSitLink();
