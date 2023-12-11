@@ -1,13 +1,14 @@
 import axios, { AxiosRequestConfig, Method } from "axios";
 import cookie from "js-cookie";
 import origin from "@/utils/origin";
+import { ResultCode, IResult } from "@/interface/IResult";
 
 const request = async ({
   method = "post" as Method,
   url = "",
   body = {},
   timeout = 8000,
-}) => {
+}): Promise<IResult> => {
   if (!url) {
     return Promise.reject("Request url is null!");
   }
@@ -26,7 +27,7 @@ const request = async ({
   };
   try {
     const result = await axios(option);
-    if (result.data.code === "000000") {
+    if (result.data.code === ResultCode.SUCCESS) {
       return result.data;
     } else {
       throw result.data;
