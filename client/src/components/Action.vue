@@ -291,10 +291,10 @@ import { IPlayer } from '@/interface/IPlayer';
             border-radius: 50%;
             background-color: rgba(0, 0, 0, 0.4);
             padding: 5px;
-            font-size: 12px;
-            width: 20px;
-            height: 20px;
-            line-height: 20px;
+            font-size: 30px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
           }
         }
       }
