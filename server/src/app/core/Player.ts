@@ -39,6 +39,7 @@ export enum EPlayerType {
   SMALL_BLIND = 'sb',
 }
 
+// 这个 player 对象， 每一局游戏结束后会重新 new
 export class Player {
   private handCard: string[] = [];
   position: number = 0;
@@ -55,6 +56,8 @@ export class Player {
   inPot: number = 0;
   income: number = 0;
   pokerStyle: string = '';
+  // 用来辅助 vpip计算, 代表 preflop 圈, 是不是第一次动作
+  isPreFlopFirstAction = true;
   voluntaryActionCountAtPreFlop = 0;
   totalActionCountAtPreFlop = 0;
   vpip = 0;
@@ -181,15 +184,18 @@ export class Player {
   }
 
   /** 计算VPIP, 注意仅在翻前计算
+   * - 计算公式为 主动下注次数 / (下注次数-walks 次数)
+   * - 下注次数只计算一次
    * - 非大小盲的时候, check, call, raise, allin 都加主动下注次数
    * - 小盲时候, 只有 call, raise, allin 加主动下注次数
    * - 大盲时候, 只有 raise, allin 加主动下注次数
+   * - walks 为, 大盲位，所有人 fold，大盲获胜
    * @param command
    * @param commonCardLength
    * @returns
    */
   updateVPIP(command: ECommand, commonCardLength: number) {
-    if (commonCardLength !== 0) return;
+    if (commonCardLength !== 0 || !this.isPreFlopFirstAction) return;
     const playerType = this.type as EPlayerType;
 
     this.totalActionCountAtPreFlop += 1;
@@ -214,5 +220,6 @@ export class Player {
 
     this.vpip =
       this.totalActionCountAtPreFlop === 0 ? 0 : this.voluntaryActionCountAtPreFlop / this.totalActionCountAtPreFlop;
+    this.isPreFlopFirstAction = false;
   }
 }
