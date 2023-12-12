@@ -1,8 +1,6 @@
 <template>
-  <div class="record-container"
-       v-show="show">
-    <div class="shadow"
-         @click="show = false"></div>
+  <div class="record-container" v-show="show">
+    <div class="shadow" @click="show = false"></div>
     <div class="body">
       <div class="title">record</div>
       <ul>
@@ -16,92 +14,89 @@
           <i>VPIP</i>
         </li>
         <li v-for="player in players">
-          <i>{{player.nickName}}</i>
-          <i>{{player.buyIn}}</i>
-          <i>{{player.counter}}</i>
-          <i>{{player.counter - player.buyIn}}</i>
-          <i>{{player.voluntaryActionCount}}</i>
-          <i>{{player.totalActionCount}}</i>
-          <i>{{(player.vpip*100).toFixed(2)}}%</i>
+          <i>{{ player.nickName }}</i>
+          <i>{{ player.buyIn }}</i>
+          <i>{{ player.counter }}</i>
+          <i>{{ player.counter - player.buyIn }}</i>
+          <i>{{ player.voluntaryActionCountAtPreFlop }}</i>
+          <i>{{ player.totalActionCountAtPreFlop }}</i>
+          <i>{{ (player.vpip * 100).toFixed(2) }}%</i>
         </li>
       </ul>
     </div>
-
   </div>
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator';
-  import { IPlayer } from '@/interface/IPlayer';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { IPlayer } from '@/interface/IPlayer';
 
-  @Component({
-    components: {},
-  })
-  export default class Record extends Vue {
-    @Prop() private value!: boolean;
-    @Prop() private players!: IPlayer[];
+@Component({
+  components: {},
+})
+export default class Record extends Vue {
+  @Prop() private value!: boolean;
+  @Prop() private players!: IPlayer[];
 
-    get show() {
-      return this.value;
-    }
-
-    set show(val) {
-      this.$emit('input', val);
-    }
+  get show() {
+    return this.value;
   }
+
+  set show(val) {
+    this.$emit('input', val);
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped
-       lang="less">
-  .record-container {
-    width: 80vw;
-    height: 100vh;
-    color: #fff;
-    background: #2a2a2a;
-    position: absolute;
+<style scoped lang="less">
+.record-container {
+  width: 80vw;
+  height: 100vh;
+  color: #fff;
+  background: #2a2a2a;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+
+  .shadow {
+    background: rgba(0, 0, 0, 0.3);
     left: 0;
     top: 0;
-    z-index: 9999;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 1;
+  }
 
-    .shadow {
-      background: rgba(0, 0, 0, 0.3);
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      position: fixed;
-      z-index: 1;
-    }
+  .body {
+    position: relative;
+    z-index: 9;
+  }
 
-    .body {
-      position: relative;
-      z-index: 9;
-    }
+  .title {
+    color: #fff;
+    text-align: left;
+    line-height: 30px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #fff;
+  }
 
-    .title {
-      color: #fff;
-      text-align: left;
-      line-height: 30px;
-      padding: 5px 10px;
-      border-bottom: 1px solid #fff;
-    }
+  ul {
+    li {
+      display: flex;
 
-    ul {
-      li {
-        display: flex;
-
-        i {
-          flex: 1;
-          padding: 5px 10px;
-          font-size: 16px;
-          line-height: 20px;
-          display: inline-block;
-          font-style: normal;
-          font-size: 12px;
-        }
+      i {
+        flex: 1;
+        padding: 5px 10px;
+        font-size: 16px;
+        line-height: 20px;
+        display: inline-block;
+        font-style: normal;
+        font-size: 12px;
       }
     }
   }
-
+}
 </style>

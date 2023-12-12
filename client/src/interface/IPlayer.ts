@@ -18,8 +18,8 @@ export interface IPlayer {
   isSit: boolean;
   delayCount: number;
   /** 自愿 action 次数, 不包括 fold, 大小盲 */
-  voluntaryActionCount: number;
+  voluntaryActionCountAtPreFlop: number;
   /** 总 action 次数, 包括 fold */
-  totalActionCount: number;
+  totalActionCountAtPreFlop: number;
   vpip: number;
 }

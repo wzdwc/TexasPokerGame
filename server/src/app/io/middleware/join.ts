@@ -52,8 +52,8 @@ export default () => {
         buyIn: 0,
         delayCount: 3,
         reBuy: 0,
-        voluntaryActionCount: 0,
-        totalActionCount: 0,
+        voluntaryActionCountAtPreFlop: 0,
+        totalActionCountAtPreFlop: 0,
         vpip: 0,
       };
 
@@ -128,8 +128,9 @@ export default () => {
                     userId: p.userId,
                     status: p.status,
                     buyIn: p.buyIn || 0,
-                    voluntaryActionCount: currPlayer?.voluntaryActionCount || p.voluntaryActionCount,
-                    totalActionCount: currPlayer?.totalActionCount || p.totalActionCount,
+                    voluntaryActionCountAtPreFlop:
+                      currPlayer?.voluntaryActionCountAtPreFlop || p.voluntaryActionCountAtPreFlop,
+                    totalActionCountAtPreFlop: currPlayer?.totalActionCountAtPreFlop || p.totalActionCountAtPreFlop,
                     vpip: currPlayer?.vpip || p.vpip,
                   },
                   {},

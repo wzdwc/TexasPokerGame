@@ -110,15 +110,15 @@ class GameController extends BaseSocketController {
                 const sit = roomInfo.sit.find((s: ISit) => s.player?.userId === gamePlayer.userId);
                 if (player && sit) {
                   player.counter = gamePlayer.counter;
-                  player.voluntaryActionCount = gamePlayer.voluntaryActionCount;
-                  player.totalActionCount = gamePlayer.totalActionCount;
+                  player.voluntaryActionCountAtPreFlop = gamePlayer.voluntaryActionCountAtPreFlop;
+                  player.totalActionCountAtPreFlop = gamePlayer.totalActionCountAtPreFlop;
                   player.vpip = gamePlayer.vpip;
                   player.actionCommand = '';
                   player.actionSize = 0;
                   player.type = '';
                   sit.player!.counter = gamePlayer.counter;
-                  sit.player!.voluntaryActionCount = gamePlayer.voluntaryActionCount;
-                  sit.player!.totalActionCount = gamePlayer.totalActionCount;
+                  sit.player!.voluntaryActionCountAtPreFlop = gamePlayer.voluntaryActionCountAtPreFlop;
+                  sit.player!.totalActionCountAtPreFlop = gamePlayer.totalActionCountAtPreFlop;
                   sit.player!.vpip = gamePlayer.vpip;
                   sit.player!.actionCommand = '';
                   sit.player!.actionSize = 0;
@@ -282,8 +282,8 @@ class GameController extends BaseSocketController {
             // calculate re buy in
             s.player.counter = player.counter;
             s.player.counter += Number(player.reBuy);
-            s.player.voluntaryActionCount = player.voluntaryActionCount;
-            s.player.totalActionCount = player.totalActionCount;
+            s.player.voluntaryActionCountAtPreFlop = player.voluntaryActionCountAtPreFlop;
+            s.player.totalActionCountAtPreFlop = player.totalActionCountAtPreFlop;
             s.player.vpip = player.vpip;
             console.log('cal reBuy ===============================', s.player, player.reBuy);
             player.reBuy = 0;
@@ -488,9 +488,10 @@ class GameController extends BaseSocketController {
           gameId: roomInfo.gameId || 0,
           counter: currPlayer.counter,
         };
+        const command = payload.command.split(':')[0];
+        roomInfo.game.currPlayer.node.updateVPIP(command, commonCard.length);
         roomInfo.game.action(payload.command);
-        const commandArr = payload.command.split(':');
-        const command = commandArr[0];
+        // currPlayer 在这里(action)后会改变了
         // fold change status: -1
         if (command === 'fold') {
           roomInfo.players.forEach((p) => {
