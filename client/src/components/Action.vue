@@ -21,7 +21,7 @@
           <div class="size" v-show="currPlayer && raiseSize === currPlayer.counter">Allin</div>
           <range
             :max="currPlayer && currPlayer.counter"
-            :min="0"
+            :min="prevSize <= 0 ? baseSize : prevSize"
             :is-horizontal="true"
             v-model="raiseSize"
             @change="getActionSize"
@@ -99,7 +99,9 @@ export default class Action extends Vue {
     if (this.prevSize > 1) {
       size = this.prevSize * 4;
     }
-    return size === this.baseSize * 2 ? [size, 2 * size, 3 * size] : [0.5 * size, 0.75 * size, size];
+    return size === this.baseSize * 2
+      ? [1 * size, 2 * size, 3 * size, 4 * size]
+      : [0.5 * size, 0.75 * size, 1 * size, 2 * size];
   }
 
   get canActionSize() {
