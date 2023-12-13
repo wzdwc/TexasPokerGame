@@ -488,10 +488,11 @@ class GameController extends BaseSocketController {
           gameId: roomInfo.gameId || 0,
           counter: currPlayer.counter,
         };
-        const command = payload.command.split(':')[0];
-        roomInfo.game.currPlayer.node.updateVPIP(command, commonCard.length);
+        roomInfo.game.currPlayer.node.updateVPIP(payload.command.split(':')[0], commonCard.length);
         roomInfo.game.action(payload.command);
         // currPlayer 在这里(action)后会改变了
+        const commandArr = payload.command.split(':');
+        const command = commandArr[0];
         // fold change status: -1
         if (command === 'fold') {
           roomInfo.players.forEach((p) => {
