@@ -14,10 +14,10 @@ export interface IPlayer {
   actionCommand: string;
   delayCount?: number;
   id?: number;
-  /** 自愿 action 次数, 不包括 fold, 大小盲 */
-  voluntaryActionCount: number;
-  /** 总 action 次数, 包括 fold */
-  totalActionCount: number;
+  /** 翻前自愿 action 次数, 不包括 fold, 大小盲 */
+  voluntaryActionCountAtPreFlop: number;
+  /** 翻前总 action 次数, 包括 fold */
+  totalActionCountAtPreFlop: number;
   vpip: number;
 }
 
@@ -39,6 +39,7 @@ export enum EPlayerType {
   SMALL_BLIND = 'sb',
 }
 
+// 这个 player 对象， 每一局游戏结束后会重新 new
 export class Player {
   private handCard: string[] = [];
   position: number = 0;
@@ -55,8 +56,10 @@ export class Player {
   inPot: number = 0;
   income: number = 0;
   pokerStyle: string = '';
-  voluntaryActionCount = 0;
-  totalActionCount = 0;
+  // 用来辅助 vpip计算, 代表 preflop 圈, 是不是第一次动作
+  isPreFlopFirstAction = true;
+  voluntaryActionCountAtPreFlop = 0;
+  totalActionCountAtPreFlop = 0;
   vpip = 0;
 
   constructor(config: IPlayer) {
@@ -65,8 +68,8 @@ export class Player {
     this.userId = config.userId;
     this.socketId = config.socketId;
     this.nickName = config.nickName;
-    this.totalActionCount = config.totalActionCount || 0;
-    this.voluntaryActionCount = config.voluntaryActionCount || 0;
+    this.voluntaryActionCountAtPreFlop = config.voluntaryActionCountAtPreFlop || 0;
+    this.totalActionCountAtPreFlop = config.totalActionCountAtPreFlop || 0;
     this.vpip = config.vpip || 0;
     if (this.position === 0) {
       this.type = EPlayerType.DEALER;
@@ -97,7 +100,6 @@ export class Player {
     const commandArr = commandString.split(':');
     const command = commandArr[0];
     const raiseSize = Number(commandArr[1]);
-    this.updateVPIP(command as ECommand);
     let size = 0;
     if (
       command !== ECommand.ALL_IN &&
@@ -181,11 +183,43 @@ export class Player {
     this.counter += size;
   }
 
-  updateVPIP(command: ECommand) {
-    this.totalActionCount += 1;
-    if (![ECommand.FOLD, ECommand.SMALL_BLIND, ECommand.BIG_BLIND].includes(command)) {
-      this.voluntaryActionCount += 1;
+  /** 计算VPIP, 注意仅在翻前计算
+   * - 计算公式为 主动下注次数 / (下注次数-walks 次数)
+   * - 下注次数只计算一次
+   * - 非大小盲的时候, check, call, raise, allin 都加主动下注次数
+   * - 小盲时候, 只有 call, raise, allin 加主动下注次数
+   * - 大盲时候, 只有 raise, allin 加主动下注次数
+   * - walks 为, 大盲位，所有人 fold，大盲获胜
+   * @param command
+   * @param commonCardLength
+   * @returns
+   */
+  updateVPIP(command: ECommand, commonCardLength: number) {
+    if (commonCardLength !== 0 || !this.isPreFlopFirstAction) return;
+    const playerType = this.type as EPlayerType;
+
+    this.totalActionCountAtPreFlop += 1;
+
+    // 非大小盲的时候, check, call, raise, allin 都加主动下注次数
+    if (
+      ![EPlayerType.SMALL_BLIND, EPlayerType.BIG_BLIND].includes(playerType) &&
+      [ECommand.CHECK, ECommand.CALL, ECommand.RAISE, ECommand.ALL_IN].includes(command)
+    ) {
+      this.voluntaryActionCountAtPreFlop += 1;
     }
-    this.vpip = this.totalActionCount === 0 ? 0 : this.voluntaryActionCount / this.totalActionCount;
+
+    // 小盲时候, 只有 call, raise, allin 加主动下注次数
+    if (EPlayerType.SMALL_BLIND === playerType && [ECommand.CALL, ECommand.RAISE, ECommand.ALL_IN].includes(command)) {
+      this.voluntaryActionCountAtPreFlop += 1;
+    }
+
+    // 大盲时候, 只有 raise, allin 加主动下注次数
+    if (EPlayerType.BIG_BLIND === playerType && [ECommand.RAISE, ECommand.ALL_IN].includes(command)) {
+      this.voluntaryActionCountAtPreFlop += 1;
+    }
+
+    this.vpip =
+      this.totalActionCountAtPreFlop === 0 ? 0 : this.voluntaryActionCountAtPreFlop / this.totalActionCountAtPreFlop;
+    this.isPreFlopFirstAction = false;
   }
 }

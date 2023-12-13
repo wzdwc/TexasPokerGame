@@ -50,8 +50,8 @@ export default class BaseSocketController extends Controller {
         p.actionCommand = (currPlayer && currPlayer.actionCommand) || '';
         p.delayCount = (currPlayer && currPlayer.delayCount) || 0;
         p.actionSize = (currPlayer && currPlayer.actionSize) || 0;
-        p.voluntaryActionCount = currPlayer?.voluntaryActionCount || p.voluntaryActionCount;
-        p.totalActionCount = currPlayer?.totalActionCount || p.totalActionCount;
+        p.voluntaryActionCountAtPreFlop = currPlayer?.voluntaryActionCountAtPreFlop || p.voluntaryActionCountAtPreFlop;
+        p.totalActionCountAtPreFlop = currPlayer?.totalActionCountAtPreFlop || p.totalActionCountAtPreFlop;
         p.vpip = currPlayer?.vpip || p.vpip;
       });
       console.log(roomInfo.players, 'roomInfo.players ===============================333');
@@ -70,8 +70,9 @@ export default class BaseSocketController extends Controller {
               userId: p.userId,
               buyIn: p.buyIn || 0,
               delayCount: currPlayer?.delayCount || 0,
-              voluntaryActionCount: currPlayer?.voluntaryActionCount || p.voluntaryActionCount,
-              totalActionCount: currPlayer?.totalActionCount || p.totalActionCount,
+              voluntaryActionCountAtPreFlop:
+                currPlayer?.voluntaryActionCountAtPreFlop || p.voluntaryActionCountAtPreFlop,
+              totalActionCountAtPreFlop: currPlayer?.totalActionCountAtPreFlop || p.totalActionCountAtPreFlop,
               vpip: currPlayer?.vpip || p.vpip,
             },
             {},
