@@ -19,23 +19,9 @@ export class Poker implements IPoker {
   }
 
   init(): void {
-    let size = [
-      "a",
-      "b",
-      "c",
-      "d",
-      "e",
-      "f",
-      "g",
-      "h",
-      "i",
-      "j",
-      "k",
-      "l",
-      "m",
-    ];
+    let size = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'];
     if (this.isShort) {
-      size = ["e", "f", "g", "h", "i", "j", "k", "l", "m"];
+      size = ['e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'];
     }
     const color = [1, 2, 3, 4];
     for (const i of size) {
@@ -46,7 +32,7 @@ export class Poker implements IPoker {
   }
 
   getCard(): string {
-    if (this.pokers.length === 0) return "done";
+    if (this.pokers.length === 0) return 'done';
     const currCardIndex = this.getRandom(this.pokers.length);
     const currCard = this.pokers[currCardIndex];
     this.pokers.splice(currCardIndex, 1);

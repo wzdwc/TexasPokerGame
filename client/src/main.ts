@@ -18,7 +18,6 @@ if (process.env.NODE_ENV !== 'production') {
 // @ts-ignore
 // fastClick.attach(document.body);
 
-
 new Vue({
   router,
   store,

@@ -1,31 +1,31 @@
-import BaseController from "../../lib/baseController";
-import { Controller, Inject, Post, Provide } from "@midwayjs/core";
-import { IAccountService } from "../../interface/service/IAccountService";
-import { IAccountInfo } from "../../interface/IAccountInfo";
+import BaseController from '../../lib/baseController';
+import { Controller, Inject, Post, Provide } from '@midwayjs/core';
+import { IAccountService } from '../../interface/service/IAccountService';
+import { IAccountInfo } from '../../interface/IAccountInfo';
 
 @Provide()
-@Controller("/node/user/")
+@Controller('/node/user/')
 export class Account extends BaseController {
-  @Inject("AccountService")
+  @Inject('AccountService')
   service: IAccountService;
 
-  @Post("/login")
+  @Post('/login')
   async login() {
     try {
       const { body } = this.getRequestBody();
-      console.log(body, "body");
+      console.log(body, 'body');
       const { userAccount, password } = body;
-      console.log(userAccount, "userAccount");
+      console.log(userAccount, 'userAccount');
       const accountInfo: IAccountInfo = { userAccount, password };
       const result = await this.service.login(accountInfo);
       this.success(result);
     } catch (e: any) {
-      this.ctx.logger.error("login-----:", e);
+      this.ctx.logger.error('login-----:', e);
       this.fail(e);
     }
   }
 
-  @Post("/register")
+  @Post('/register')
   async register() {
     try {
       const { body } = this.getRequestBody();
@@ -35,7 +35,7 @@ export class Account extends BaseController {
       const result = await this.service.register(accountInfo);
       this.success(result);
     } catch (e: any) {
-      this.ctx.logger.error("login-----:", e);
+      this.ctx.logger.error('login-----:', e);
       this.fail(e);
     }
   }

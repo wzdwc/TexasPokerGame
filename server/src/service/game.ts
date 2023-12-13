@@ -1,8 +1,8 @@
-import { Inject, Plugin, Provide } from "@midwayjs/core";
-import { Context } from "@midwayjs/web";
-import { IGame, IGameService } from "../interface/IGame";
+import { Inject, Plugin, Provide } from '@midwayjs/core';
+import { Context } from '@midwayjs/web';
+import { IGame, IGameService } from '../interface/IGame';
 
-@Provide("GameService")
+@Provide('GameService')
 export class GameService implements IGameService {
   @Inject()
   ctx: Context;
@@ -11,8 +11,8 @@ export class GameService implements IGameService {
   mysql: any;
 
   async add(game: IGame) {
-    console.log("this.mysql", this.mysql);
-    const gameInfo = await this.mysql.insert("game", {
+    console.log('this.mysql', this.mysql);
+    const gameInfo = await this.mysql.insert('game', {
       ...game,
     });
     console.log(gameInfo);
@@ -20,7 +20,7 @@ export class GameService implements IGameService {
   }
 
   async update(game: IGame) {
-    const gameInfo = await this.mysql.update("game", {
+    const gameInfo = await this.mysql.update('game', {
       ...game,
     });
     console.log(gameInfo);
@@ -28,20 +28,20 @@ export class GameService implements IGameService {
   }
 
   async findByID(gid: number): Promise<IGame> {
-    return await this.mysql.get("game", { id: gid });
+    return await this.mysql.get('game', { id: gid });
   }
 
   async findByIDs(ids: number[]): Promise<IGame[]> {
-    return await this.mysql.select("game", {
+    return await this.mysql.select('game', {
       where: { id: ids },
     });
   }
 
   async findByRoomNumber(roomNumber: number): Promise<IGame[]> {
-    const result = await this.mysql.select("game", {
+    const result = await this.mysql.select('game', {
       where: { roomNumber },
     });
-    console.log(result, "game -======================");
+    console.log(result, 'game -======================');
     return JSON.parse(JSON.stringify(result));
   }
 }

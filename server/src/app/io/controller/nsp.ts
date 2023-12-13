@@ -1,19 +1,19 @@
-"use strict";
+'use strict';
 
-import { Controller } from "egg";
+import { Controller } from 'egg';
 
 class NspController extends Controller {
   async exchange() {
     const { ctx } = this;
     const socket = ctx.socket as any;
     const app = ctx.app as any;
-    const nsp = app.io.of("/socket");
+    const nsp = app.io.of('/socket');
     const message = ctx.args[0] || {};
     const client = socket.id;
     try {
       const { target, payload } = message;
       if (!target) return;
-      const msg = ctx.helper.parseMsg("exchange", payload, { client, target });
+      const msg = ctx.helper.parseMsg('exchange', payload, { client, target });
       nsp.emit(target, msg);
     } catch (error) {
       app.logger.error(error);
@@ -24,7 +24,7 @@ class NspController extends Controller {
     const { ctx } = this;
     const socket = ctx.socket as any;
     const app = ctx.app as any;
-    const nsp = app.io.of("/socket");
+    const nsp = app.io.of('/socket');
     const message = ctx.args[0] || {};
     const { room } = socket.handshake.query;
     const rooms = [room];
@@ -32,10 +32,10 @@ class NspController extends Controller {
       const { payload } = message;
       nsp.adapter.clients(rooms, (err: any, clients: any) => {
         // 广播信息
-        nsp.to(room).emit("online", {
+        nsp.to(room).emit('online', {
           clients,
-          action: "broadcast",
-          target: "participator",
+          action: 'broadcast',
+          target: 'participator',
           message: payload,
         });
       });

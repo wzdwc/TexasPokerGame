@@ -15,15 +15,9 @@
       :actionUserId="actionUserId"
       :hand-card="handCard"
     ></sitList>
-    <common-card
-      :commonCard="commonCard"
-      :valueCards="valueCards"
-    ></common-card>
+    <common-card :commonCard="commonCard" :valueCards="valueCards"></common-card>
     <notice :message-list="messageList"></notice>
-    <div
-      class="winner-poke-style"
-      v-show="gameOver && winner[0][0].handCard.length > 0"
-    >
+    <div class="winner-poke-style" v-show="gameOver && winner[0][0].handCard.length > 0">
       {{ PokeStyle(winner[0] && winner[0][0] && winner[0][0].handCard) }} WIN!!
     </div>
     <div class="game-body">
@@ -47,25 +41,15 @@
       @action="action"
     ></actionDialog>
     <div class="setting">
-      <div
-        class="iconfont icon-setting setting-btn"
-        @click="showSetting = true"
-      ></div>
+      <div class="iconfont icon-setting setting-btn" @click="showSetting = true"></div>
       <div class="setting-body" :class="{ show: showSetting }">
         <i @click="showBuyInDialog()">buy in</i>
         <i @click="standUp()">stand Up</i>
         <i @click="showCounterRecord">counter record</i>
-        <i @click="closeAudio()"
-          >audio ({{ `${audioStatus ? "open" : "close"}` }})</i
-        >
+        <i @click="closeAudio()">audio ({{ `${audioStatus ? 'open' : 'close'}` }})</i>
       </div>
     </div>
-    <BuyIn
-      :showBuyIn.sync="showBuyIn"
-      :min="0"
-      :max="baseSize * 1000"
-      @buyIn="buyIn"
-    ></BuyIn>
+    <BuyIn :showBuyIn.sync="showBuyIn" :min="0" :max="baseSize * 1000" @buyIn="buyIn"></BuyIn>
     <toast :show.sync="showMsg" :text="msg"></toast>
     <record :players="players" v-model="showRecord"></record>
     <sendMsg @send="sendMsgHandle" :msg-list="msgListReverse"></sendMsg>
@@ -81,35 +65,35 @@
 </template>
 
 <script lang="ts">
-import { Vue, Watch } from "vue-property-decorator";
-import Component from "vue-class-component";
-import io from "socket.io-client";
-import cookie from "js-cookie";
-import sitList from "../components/SitList.vue";
-import commonCard from "../components/CommonCard.vue";
-import { IPlayer } from "@/interface/IPlayer";
-import { ILinkNode, Link } from "@/utils/Link";
-import ISit from "../interface/ISit";
-import BuyIn from "../components/BuyIn.vue";
-import toast from "../components/Toast.vue";
-import record from "../components/Record.vue";
-import notice from "../components/Notice.vue";
-import iAudio from "../components/Audio.vue";
-import sendMsg from "../components/SendMsg.vue";
-import actionDialog from "../components/Action.vue";
-import { PokerStyle } from "@/utils/PokerStyle";
-import origin from "../utils/origin";
-import { IRoom } from "@/interface/IRoom";
-import service from "../service";
-import gameRecord from "@/components/GameRecord.vue";
-import { IGameRecord } from "@/interface/IGameRecord";
+import { Vue, Watch } from 'vue-property-decorator';
+import Component from 'vue-class-component';
+import io from 'socket.io-client';
+import cookie from 'js-cookie';
+import sitList from '../components/SitList.vue';
+import commonCard from '../components/CommonCard.vue';
+import { IPlayer } from '@/interface/IPlayer';
+import { ILinkNode, Link } from '@/utils/Link';
+import ISit from '../interface/ISit';
+import BuyIn from '../components/BuyIn.vue';
+import toast from '../components/Toast.vue';
+import record from '../components/Record.vue';
+import notice from '../components/Notice.vue';
+import iAudio from '../components/Audio.vue';
+import sendMsg from '../components/SendMsg.vue';
+import actionDialog from '../components/Action.vue';
+import { PokerStyle } from '@/utils/PokerStyle';
+import origin from '../utils/origin';
+import { IRoom } from '@/interface/IRoom';
+import service from '../service';
+import gameRecord from '@/components/GameRecord.vue';
+import { IGameRecord } from '@/interface/IGameRecord';
 
 export enum ECommand {
-  CALL = "call",
-  ALL_IN = "allin",
-  RAISE = "raise",
-  CHECK = "check",
-  FOLD = "fold",
+  CALL = 'call',
+  ALL_IN = 'allin',
+  RAISE = 'raise',
+  CHECK = 'check',
+  FOLD = 'fold',
 }
 
 interface IMsg {
@@ -143,7 +127,7 @@ export default class Game extends Vue {
   // have a sit user
   private players: IPlayer[] = [];
   private userInfo: any = {};
-  private joinMsg = "";
+  private joinMsg = '';
   private handCard = [];
   private commonCard = [];
   private pot = 0;
@@ -152,14 +136,14 @@ export default class Game extends Vue {
   private winner: IPlayer[][] = [];
   private showBuyIn = false;
   private showSetting = false;
-  private sitLink: any = "";
+  private sitLink: any = '';
   private gaming = false;
   private sitList: ISit[] = [];
-  private actionUserId = "";
+  private actionUserId = '';
   private showAllin = false;
   private showMsg = false;
   private playIncome = false;
-  private msg = "";
+  private msg = '';
   private time = ACTION_TIME;
   private timeSt = 0;
   private commandRecordList = [];
@@ -175,20 +159,17 @@ export default class Game extends Vue {
   private messageList: any[] = [];
   private showRecord = false;
 
-  @Watch("players")
+  @Watch('players')
   private playerChange(players: IPlayer[]) {
-    console.log("player change-------");
+    console.log('player change-------');
     this.sitList = this.sitList.map((sit: ISit) => {
-      const player = players.find(
-        (p) =>
-          sit.player && p.userId === sit.player.userId && sit.player.counter > 0
-      );
+      const player = players.find((p) => sit.player && p.userId === sit.player.userId && sit.player.counter > 0);
       return Object.assign({}, {}, { player, position: sit.position }) as ISit;
     });
     this.initSitLink();
   }
 
-  @Watch("isPlay")
+  @Watch('isPlay')
   private isPlayChange(val: boolean) {
     if (val) {
       clearTimeout(this.timeSt);
@@ -196,10 +177,10 @@ export default class Game extends Vue {
     }
   }
 
-  @Watch("actionUserId")
+  @Watch('actionUserId')
   private actionUserIdChange() {
     if (this.isPlay && this.actionEndTime) {
-      console.log("action player change-------", this.actionEndTime);
+      console.log('action player change-------', this.actionEndTime);
       const now = Date.now();
       this.time = Math.floor((this.actionEndTime - now) / 1000);
       clearTimeout(this.timeSt);
@@ -235,10 +216,7 @@ export default class Game extends Vue {
   get valueCards() {
     if (this.gameOver && this.winner[0] && this.winner[0][0].handCard) {
       const handCards = this.winner[0][0].handCard;
-      const style = new PokerStyle(
-        [...handCards, ...this.commonCard],
-        this.roomConfig.isShort
-      );
+      const style = new PokerStyle([...handCards, ...this.commonCard], this.roomConfig.isShort);
       return style.getPokerValueCard();
     } else {
       return [];
@@ -253,9 +231,7 @@ export default class Game extends Vue {
   }
 
   get hasSit() {
-    return !!this.sitList.find(
-      (s) => s.player && s.player.userId === this.currPlayer?.userId
-    );
+    return !!this.sitList.find((s) => s.player && s.player.userId === this.currPlayer?.userId);
   }
 
   get currPlayer() {
@@ -271,7 +247,7 @@ export default class Game extends Vue {
   }
 
   private init() {
-    this.joinMsg = "";
+    this.joinMsg = '';
     this.handCard = [];
     this.commonCard = [];
     this.pot = 0;
@@ -288,7 +264,7 @@ export default class Game extends Vue {
 
   private sendMsgHandle(msgInfo: string) {
     const msg = `${this.userInfo.nickName}:${msgInfo}`;
-    this.emit("broadcast", { msg });
+    this.emit('broadcast', { msg });
   }
 
   private showCounterRecord() {
@@ -310,7 +286,7 @@ export default class Game extends Vue {
 
   private PokeStyle(cards: string[]) {
     if (this.commonCard.length === 0 || !cards) {
-      return "";
+      return '';
     }
     const commonCards = this.commonCard || [];
     const card = [...cards, ...commonCards];
@@ -334,34 +310,34 @@ export default class Game extends Vue {
   }
 
   private sitDown() {
-    this.emit("sitDown", { sitList: this.sitListMap() });
+    this.emit('sitDown', { sitList: this.sitListMap() });
   }
 
   private delay() {
-    this.emit("delayTime");
+    this.emit('delayTime');
   }
 
   private action(command: string) {
-    if (command === "fold") {
+    if (command === 'fold') {
       clearTimeout(this.timeSt);
     }
-    if (command === "allin") {
+    if (command === 'allin') {
       this.showAllin = true;
       setTimeout(() => {
         this.showAllin = false;
       }, 3000);
     }
-    this.emit("action", { command });
+    this.emit('action', { command });
     // this.isAction = false;
     // this.isRaise = false;
   }
 
   private socketInit() {
-    const token = cookie.get("token") || localStorage.getItem("token") || "";
+    const token = cookie.get('token') || localStorage.getItem('token') || '';
     const roomConfig = this.getRoomConfig();
     const log = console.log;
     this.roomConfig = JSON.parse(roomConfig);
-    console.log(JSON.parse(roomConfig), "roomConfig");
+    console.log(JSON.parse(roomConfig), 'roomConfig');
     this.socket = io(this.getSocketServerUrl(), {
       // 实际使用中可以在这里传递参数
       query: {
@@ -369,73 +345,73 @@ export default class Game extends Vue {
         token,
         roomConfig,
       },
-      transports: ["websocket"],
+      transports: ['websocket'],
     });
-    log("#init,", this.socket);
-    this.socket.on("connect", () => {
+    log('#init,', this.socket);
+    this.socket.on('connect', () => {
       const id: string = this.socket.id;
-      log("#connect,", id, this.socket);
+      log('#connect,', id, this.socket);
 
       // 监听自身 id 以实现 p2p 通讯
       this.socket.on(id, (msg: any) => {
-        log("#receive,", msg);
+        log('#receive,', msg);
         const data = msg.data;
-        if (data.action === "handCard") {
-          console.log("come in handCard =========", data);
+        if (data.action === 'handCard') {
+          console.log('come in handCard =========', data);
           this.handCard = data.payload.handCard;
-          console.log("come in handCard =========", this.handCard);
+          console.log('come in handCard =========', this.handCard);
         }
-        if (data.action === "userInfo") {
+        if (data.action === 'userInfo') {
           this.userInfo = data.payload.userInfo;
         }
-        if (data.action === "sitList") {
+        if (data.action === 'sitList') {
           this.sitList = data.payload.sitList;
           this.initSitLink();
         }
-        if (data.action === "gameInfo") {
+        if (data.action === 'gameInfo') {
           const payload = data.payload;
           this.players = payload.data.players;
           this.pot = payload.data.pot || 0;
           this.prevSize = payload.data.prevSize;
           this.commonCard = payload.data.commonCard;
           this.actionEndTime = payload.data.actionEndTime;
-          console.log("msg.data.currPlayer.userId", msg.data);
+          console.log('msg.data.currPlayer.userId', msg.data);
           this.actionUserId = payload.data.currPlayer.userId;
           // this.isAction = !!(this.userInfo
           //   && this.userInfo.userId === payload.data.currPlayer.userId);
         }
 
         // room time out
-        if (data.action === "deny") {
-          this.$plugin.toast("room is close");
+        if (data.action === 'deny') {
+          this.$plugin.toast('room is close');
           setTimeout(() => {
-            this.$router.replace({ name: "home" });
+            this.$router.replace({ name: 'home' });
           }, 1000);
         }
       });
     });
 
     // 接收在线用户信息
-    this.socket.on("online", (msg: IMsg) => {
-      log("#online,", msg);
-      if (msg.action === "sitList") {
-        console.log(msg.data, "sit");
+    this.socket.on('online', (msg: IMsg) => {
+      log('#online,', msg);
+      if (msg.action === 'sitList') {
+        console.log(msg.data, 'sit');
         this.sitList = msg.data.sitList;
         this.initSitLink();
       }
-      if (msg.action === "join") {
+      if (msg.action === 'join') {
         this.joinMsg = msg.data;
       }
-      if (msg.action === "players") {
+      if (msg.action === 'players') {
         this.players = msg.data.players;
       }
-      if (msg.action === "actionComplete") {
+      if (msg.action === 'actionComplete') {
         this.commonCard = msg.data.commonCard;
         this.slidePots = msg.data.slidePots;
         this.actionEndTime = msg.data.actionEndTime || Date.now() + 30 * 1000;
-        console.log("players", msg.data);
+        console.log('players', msg.data);
       }
-      if (msg.action === "gameInfo") {
+      if (msg.action === 'gameInfo') {
         this.players = msg.data.players;
         this.pot = msg.data.pot || 0;
         this.roomConfig.smallBlind = msg.data.smallBlind;
@@ -444,14 +420,14 @@ export default class Game extends Vue {
         this.actionEndTime = msg.data.actionEndTime;
         // this.isAction = !!(this.userInfo && this.userInfo.userId === msg.data.currPlayer.userId);
         this.sitList = msg.data.sitList;
-        console.log("gameInfo", msg.data);
-        console.log("handCard", this.handCard);
+        console.log('gameInfo', msg.data);
+        console.log('handCard', this.handCard);
       }
 
-      if (msg.action === "gameOver") {
-        console.log("gameOver", msg.data);
+      if (msg.action === 'gameOver') {
+        console.log('gameOver', msg.data);
         clearTimeout(this.timeSt);
-        this.actionUserId = "0";
+        this.actionUserId = '0';
         this.winner = msg.data.winner;
         this.commonCard = msg.data.commonCard;
         const allPlayers = msg.data.allPlayers;
@@ -471,19 +447,19 @@ export default class Game extends Vue {
         }, 1000);
       }
 
-      if (msg.action === "newGame") {
+      if (msg.action === 'newGame') {
         this.init();
       }
 
-      if (msg.action === "pause") {
+      if (msg.action === 'pause') {
         this.players = msg.data.players;
         this.sitList = msg.data.sitList;
-        console.log("players", this.players);
+        console.log('players', this.players);
         this.gaming = false;
         this.init();
       }
 
-      if (msg.action === "delayTime") {
+      if (msg.action === 'delayTime') {
         this.actionEndTime = msg.data.actionEndTime;
         const now = Date.now();
         this.time = Math.floor((this.actionEndTime - now) / 1000);
@@ -492,46 +468,43 @@ export default class Game extends Vue {
         // }
       }
 
-      if (msg.action === "broadcast") {
+      if (msg.action === 'broadcast') {
         this.messageList.push({
-          message: msg.message.msg || "",
+          message: msg.message.msg || '',
           top: Math.random() * 50 + 10,
         });
       }
     });
 
     // 系统事件
-    this.socket.on("disconnect", (msg: IMsg) => {
-      this.$plugin.toast("room is disconnect");
+    this.socket.on('disconnect', (msg: IMsg) => {
+      this.$plugin.toast('room is disconnect');
       // this.socketInit();
-      log("#disconnect", msg);
+      log('#disconnect', msg);
     });
 
-    this.socket.on("disconnecting", () => {
-      this.$plugin.toast("room is disconnecting");
-      log("#disconnecting");
+    this.socket.on('disconnecting', () => {
+      this.$plugin.toast('room is disconnecting');
+      log('#disconnecting');
     });
 
-    this.socket.on("error", () => {
-      this.$plugin.toast("room is error");
-      log("#error");
+    this.socket.on('error', () => {
+      this.$plugin.toast('room is error');
+      log('#error');
     });
   }
 
   private async buyIn(size: number) {
     if (size <= 0) {
-      this.$plugin.toast("buy in size too small");
+      this.$plugin.toast('buy in size too small');
       return;
     }
 
     try {
-      console.log("come in buyIn ==================", size);
+      console.log('come in buyIn ==================', size);
       this.showMsg = true;
-      this.msg =
-        this.hasSit && this.isPlay
-          ? `已补充买入 ${size},下局生效`
-          : `已补充买入 ${size}`;
-      this.emit("buyIn", {
+      this.msg = this.hasSit && this.isPlay ? `已补充买入 ${size},下局生效` : `已补充买入 ${size}`;
+      this.emit('buyIn', {
         buyInSize: size,
       });
     } catch (e) {
@@ -541,10 +514,10 @@ export default class Game extends Vue {
   private standUp() {
     // player in the game
     if (this.currPlayer && this.currPlayer.status === 1) {
-      this.$plugin.toast("sorry, please fold you hand!");
+      this.$plugin.toast('sorry, please fold you hand!');
       return;
     }
-    this.emit("standUp");
+    this.emit('standUp');
     this.showSetting = false;
   }
 
@@ -555,15 +528,15 @@ export default class Game extends Vue {
   private play() {
     if (this.players.length >= 2) {
       this.gaming = true;
-      this.emit("playGame");
+      this.emit('playGame');
     } else {
-      console.log("no enough player");
+      console.log('no enough player');
     }
   }
 
   private emit(eventType: string, data: any = {}) {
     this.socket.emit(eventType, {
-      target: "",
+      target: '',
       payload: {
         ...data,
       },
@@ -583,10 +556,7 @@ export default class Game extends Vue {
     }
     let link = new Link<ISit>(sitListMap).link;
     for (let i = 0; i < 9; i++) {
-      if (
-        link.node.player &&
-        link.node.player.userId === this.currPlayer?.userId
-      ) {
+      if (link.node.player && link.node.player.userId === this.currPlayer?.userId) {
         this.sitLink = link;
         return;
       }
@@ -604,12 +574,12 @@ export default class Game extends Vue {
         this.gameList = Object.values(result.data);
         gameId = this.gameList[this.gameList.length - 1].gameId;
         this.currGameIndex = this.gameList.length;
-        console.log("ccc len", this.gameList.length);
+        console.log('ccc len', this.gameList.length);
       } else {
         this.currGameIndex = index;
         gameId = this.gameList[index - 1].gameId;
       }
-      console.log(gameId, "ccc11");
+      console.log(gameId, 'ccc11');
       const { data } = await service.commandRecordList(this.roomId, gameId);
       this.commandRecordList = data.commandList;
       this.showCommandRecord = true;
@@ -621,7 +591,7 @@ export default class Game extends Vue {
   }
 
   private getRoomConfig() {
-    return cookie.get("roomConfig") || localStorage.getItem("roomConfig") || "";
+    return cookie.get('roomConfig') || localStorage.getItem('roomConfig') || '';
   }
 
   /**
@@ -631,7 +601,7 @@ export default class Game extends Vue {
   private async autoJoinRoom() {
     try {
       const { data } = await service.findRoom(this.roomId);
-      cookie.set("roomConfig", data, { expires: 1 });
+      cookie.set('roomConfig', data, { expires: 1 });
     } catch (e) {
       this.$plugin.toast((e as any).message);
       console.log(e);

@@ -1,12 +1,12 @@
-import { Context } from "@midwayjs/web";
-import { IFetchOptions } from "../interface/IFetchOptions";
-import { Inject, Config } from "@midwayjs/core";
+import { Context } from '@midwayjs/web';
+import { IFetchOptions } from '../interface/IFetchOptions';
+import { Inject, Config } from '@midwayjs/core';
 
 export default class BaseService {
   @Inject()
   protected ctx: Context;
 
-  @Config("apiDomain")
+  @Config('apiDomain')
   protected apiDomainConfig: any;
 
   /**
@@ -28,9 +28,9 @@ export default class BaseService {
       // 发起服务请求
       const result = await this.ctx.curl(ajaxUrl, {
         data,
-        type: option.type || "POST",
+        type: option.type || 'POST',
         headers,
-        dataType: "json",
+        dataType: 'json',
       });
       // 接口请求失败日志上报
       if (result.status !== 200) {

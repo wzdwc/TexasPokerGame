@@ -1,6 +1,6 @@
-import { Inject } from "@midwayjs/core";
-import { Context } from "@midwayjs/web";
-import { IResult, ResultCode } from "../interface/IResult";
+import { Inject } from '@midwayjs/core';
+import { Context } from '@midwayjs/web';
+import { IResult, ResultCode } from '../interface/IResult';
 
 export default class BaseController {
   @Inject()
@@ -13,7 +13,7 @@ export default class BaseController {
     // let params: IRequestBody;
     // params = this.ctx.request.body.params && JSON.parse(this.ctx.request.body.params) || {};
     // console.log(this.ctx.request.body, 'params');
-    console.log(this.ctx.request, "request");
+    console.log(this.ctx.request, 'request');
     return this.ctx.request;
   }
 
@@ -25,7 +25,7 @@ export default class BaseController {
     const result: IResult = {
       code: ResultCode.SUCCESS,
       data,
-      message: "successful",
+      message: 'successful',
     };
     this.ctx.body = result;
   }

@@ -1,6 +1,6 @@
 const POKER_STR = 'abcdefghijklm';
 
-function sort(cards: string []): string[] {
+function sort(cards: string[]): string[] {
   let temp = '';
   // 排序
   for (let i = 0; i < cards.length; i++) {
@@ -18,7 +18,7 @@ function sort(cards: string []): string[] {
 interface IPokerStyle {
   init(): void;
 
-  isStraight(str?: string []): string;
+  isStraight(str?: string[]): string;
 }
 
 enum PokerStyleEnum {
@@ -68,22 +68,12 @@ export class PokerStyle implements IPokerStyle {
     'THREE_KIND',
     'TWO_PAIR',
     'PAIR',
-    'HIGH_CARD'];
-  private pokerStyle: string[] = [
-    '0',
-    '0',
-    '0',
-    '0',
-    '0',
-    '0',
-    '0',
-    '0',
-    '0',
-    '0'];
-  private numObj: Map<string, number> = new Map(
-    POKER_STR.split('').map((m) => [m, 0]));
+    'HIGH_CARD',
+  ];
+  private pokerStyle: string[] = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'];
+  private numObj: Map<string, number> = new Map(POKER_STR.split('').map((m) => [m, 0]));
 
-  constructor(cards: string[], isShort= false) {
+  constructor(cards: string[], isShort = false) {
     this.cards = sort(cards);
     this.isShort = isShort;
     if (this.isShort) {
@@ -103,8 +93,8 @@ export class PokerStyle implements IPokerStyle {
     this.init();
   }
 
-  public isStraight(str?: string []): string {
-    const straightStr = str && str.join('') || [ ...new Set(this.straightArr) ].join('');
+  public isStraight(str?: string[]): string {
+    const straightStr = (str && str.join('')) || [...new Set(this.straightArr)].join('');
     let first = -1;
     let second = -1;
     let three = -1;
@@ -214,7 +204,10 @@ export class PokerStyle implements IPokerStyle {
         this.pokerStyle[0] = isRoyalFlush;
         return;
       }
-      this.pokerStyle[1] = this.isStraight(isFlush).split('').reverse().join('');
+      this.pokerStyle[1] = this.isStraight(isFlush)
+        .split('')
+        .reverse()
+        .join('');
       return;
     }
 
@@ -226,10 +219,8 @@ export class PokerStyle implements IPokerStyle {
     }
 
     // full house
-    if (isThree.length > 0 && isTwo.length > isThree.length ||
-      isThree.length === 2) {
-      const maxTwoCard = isThree.length === 2 ? isThree[1] : isThree[0] ===
-      isTwo[0] ? isTwo[1] : isTwo[0];
+    if ((isThree.length > 0 && isTwo.length > isThree.length) || isThree.length === 2) {
+      const maxTwoCard = isThree.length === 2 ? isThree[1] : isThree[0] === isTwo[0] ? isTwo[1] : isTwo[0];
       const maxThree = isThree[0];
       isFullHouse = maxThree + maxTwoCard;
       if (this.isShort) {

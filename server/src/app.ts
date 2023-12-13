@@ -1,4 +1,4 @@
-import { Application } from "egg";
+import { Application } from 'egg';
 
 export default (app: Application) => {
   app.beforeStart(async () => {});
@@ -6,13 +6,13 @@ export default (app: Application) => {
     try {
       await next();
     } catch (err: any) {
-      if (err.name === "UnauthorizedError") {
+      if (err.name === 'UnauthorizedError') {
         ctx.status = 401;
         ctx.body = {
           data: {},
-          message: "invalid token...",
+          message: 'invalid token...',
         };
-        ctx.logger.error("invalid token...", err);
+        ctx.logger.error('invalid token...', err);
       }
     }
   });

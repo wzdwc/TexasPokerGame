@@ -1,4 +1,4 @@
-import { HttpMethod } from "urllib";
+import { HttpMethod } from 'urllib';
 
 /**
  * @description User-Service abstractions

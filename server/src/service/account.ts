@@ -1,13 +1,13 @@
-import BaseService from "../lib/baseService";
-import { Inject, Provide, Plugin, Config } from "@midwayjs/core";
-import { Context } from "@midwayjs/web";
-import { IAccountInfo } from "../interface/IAccountInfo";
-import { IAccountService } from "../interface/service/IAccountService";
-import { ILoginResult } from "../interface/ILoginResult";
-import { IUserService } from "../interface/service/IUserService";
-import { IUser } from "../interface/IUser";
+import BaseService from '../lib/baseService';
+import { Inject, Provide, Plugin, Config } from '@midwayjs/core';
+import { Context } from '@midwayjs/web';
+import { IAccountInfo } from '../interface/IAccountInfo';
+import { IAccountService } from '../interface/service/IAccountService';
+import { ILoginResult } from '../interface/ILoginResult';
+import { IUserService } from '../interface/service/IUserService';
+import { IUser } from '../interface/IUser';
 
-@Provide("AccountService")
+@Provide('AccountService')
 export class AccountService extends BaseService implements IAccountService {
   @Inject()
   ctx: Context;
@@ -15,16 +15,16 @@ export class AccountService extends BaseService implements IAccountService {
   @Plugin()
   jwt: any;
 
-  @Inject("UserService")
+  @Inject('UserService')
   user: IUserService;
 
-  @Config("jwt")
+  @Config('jwt')
   protected jwtConfig: any;
 
   public login(accountInfo: IAccountInfo): Promise<ILoginResult> {
     return new Promise(async (resolve, reject) => {
       try {
-        let token = "";
+        let token = '';
         // 校验用户信息
         const isAuth = await this.authUser(accountInfo);
         if (isAuth) {
@@ -33,7 +33,7 @@ export class AccountService extends BaseService implements IAccountService {
         const result: ILoginResult = { token };
         resolve(result);
       } catch (e) {
-        this.ctx.logger.error("login service error:", e);
+        this.ctx.logger.error('login service error:', e);
         reject(e);
       }
     });
@@ -43,17 +43,17 @@ export class AccountService extends BaseService implements IAccountService {
     return new Promise(async (resolve, reject) => {
       try {
         const hasUser = await this.checkHasUser(accountInfo.userAccount);
-        console.log("accountInfo", hasUser, accountInfo);
+        console.log('accountInfo', hasUser, accountInfo);
         if (!hasUser) {
           const result = await this.user.addUser(accountInfo);
           if (result.succeed) {
-            resolve("user create successful");
+            resolve('user create successful');
           }
         } else {
-          reject("User already exists");
+          reject('User already exists');
         }
       } catch (e) {
-        this.ctx.logger.error("register service error:", e);
+        this.ctx.logger.error('register service error:', e);
         reject(e);
       }
     });
@@ -63,7 +63,7 @@ export class AccountService extends BaseService implements IAccountService {
     const user: IUser = await this.checkHasUser(accountInfo.userAccount);
     const valid = user.password === accountInfo.password;
     if (!valid) {
-      throw "incorrect user account or password.";
+      throw 'incorrect user account or password.';
     }
     return valid;
   }
@@ -73,9 +73,7 @@ export class AccountService extends BaseService implements IAccountService {
   }
 
   private async getToken(userAccount: string) {
-    const { nickName, account, id } = await this.user.findByAccount(
-      userAccount
-    );
+    const { nickName, account, id } = await this.user.findByAccount(userAccount);
     const token = this.jwt.sign(
       {
         user: {
@@ -85,7 +83,7 @@ export class AccountService extends BaseService implements IAccountService {
         },
       },
       this.jwtConfig.secret,
-      { expiresIn: 60 * 60 * 24 * 360 }
+      { expiresIn: 60 * 60 * 24 * 360 },
     );
     this.ctx.logger.info(`AccountService getToken token--${token}`);
     return token;

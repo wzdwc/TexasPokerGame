@@ -1,10 +1,10 @@
-import { Inject, Controller, Post, Provide, Plugin } from "@midwayjs/core";
-import { Context } from "@midwayjs/web";
-import BaseController from "../../lib/baseController";
-import { IUserService } from "../../interface/service/IUserService";
+import { Inject, Controller, Post, Provide, Plugin } from '@midwayjs/core';
+import { Context } from '@midwayjs/web';
+import BaseController from '../../lib/baseController';
+import { IUserService } from '../../interface/service/IUserService';
 
 @Provide()
-@Controller("/node/user")
+@Controller('/node/user')
 export class UserController extends BaseController {
   @Inject()
   ctx: Context;
@@ -12,20 +12,20 @@ export class UserController extends BaseController {
   @Plugin()
   jwt: any;
 
-  @Inject("UserService")
+  @Inject('UserService')
   user: IUserService;
 
   /**
    * 处理ocr数据转发
    */
-  @Post("/")
+  @Post('/')
   async index() {
     try {
       const state = this.ctx.state;
-      console.log(state, "state");
+      console.log(state, 'state');
       this.success(state.user.user);
     } catch (e) {
-      this.fail("server error");
+      this.fail('server error');
     }
   }
 }

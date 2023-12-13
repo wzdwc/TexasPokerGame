@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default class App extends Vue {}
 </script>
 
 <style lang="less">
-@import "assets/less/base";
+@import 'assets/less/base';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,30 +22,30 @@ export default class App extends Vue {}
   overflow: hidden;
   margin: auto;
 }
-  *{
-    padding: 0;
-    margin: 0;
-  }
-  body{
-    box-sizing: border-box;
-  }
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  box-sizing: border-box;
+}
 
-.container{
-  .input-bd{
+.container {
+  .input-bd {
     line-height: 30px;
     margin: 10px;
     font-size: 0;
-    .input-name{
+    .input-name {
       display: inline-block;
       min-width: 10vw;
       font-size: 14px;
       vertical-align: middle;
     }
-    .input-text{
+    .input-text {
       display: inline-block;
       font-size: 14px;
       vertical-align: middle;
-      input{
+      input {
         min-height: 30px;
         min-width: 40vw;
       }
@@ -53,7 +53,7 @@ export default class App extends Vue {}
   }
   .btn {
     margin-top: 15px;
-    span{
+    span {
       color: #fff;
       background-color: #00976e;
       border-radius: 8px;
@@ -61,7 +61,7 @@ export default class App extends Vue {}
       display: block;
       margin: 10px;
     }
-    b{
+    b {
       display: inline-block;
       border: aliceblue;
       font-size: 12px;

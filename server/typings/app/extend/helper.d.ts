@@ -4,5 +4,5 @@ import 'egg';
 import ExtendHelper from '../../../src/app/extend/helper';
 type ExtendHelperType = typeof ExtendHelper;
 declare module 'egg' {
-  interface IHelper extends ExtendHelperType { }
+  interface IHelper extends ExtendHelperType {}
 }

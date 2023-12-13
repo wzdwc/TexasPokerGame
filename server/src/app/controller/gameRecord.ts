@@ -1,13 +1,10 @@
-import { Inject, Controller, Post, Provide } from "@midwayjs/core";
-import { Context } from "@midwayjs/web";
-import BaseController from "../../lib/baseController";
-import { IPlayerService } from "../../interface/IPlayer";
-import {
-  ICommandRecord,
-  ICommandRecordService,
-} from "../../interface/ICommandRecord";
-import { IGameService } from "../../interface/IGame";
-import { EGameOverType } from "../core/PokerGame";
+import { Inject, Controller, Post, Provide } from '@midwayjs/core';
+import { Context } from '@midwayjs/web';
+import BaseController from '../../lib/baseController';
+import { IPlayerService } from '../../interface/IPlayer';
+import { ICommandRecord, ICommandRecordService } from '../../interface/ICommandRecord';
+import { IGameService } from '../../interface/IGame';
+import { EGameOverType } from '../core/PokerGame';
 
 interface IFindGameRecord {
   gameId: number;
@@ -16,21 +13,21 @@ interface IFindGameRecord {
 }
 
 @Provide()
-@Controller("/node/game/record")
+@Controller('/node/game/record')
 export class GameRecordController extends BaseController {
   @Inject()
   ctx: Context;
 
-  @Inject("PlayerRecordService")
+  @Inject('PlayerRecordService')
   playerService: IPlayerService;
 
-  @Inject("GameService")
+  @Inject('GameService')
   gameService: IGameService;
 
-  @Inject("CommandRecordService")
+  @Inject('CommandRecordService')
   commandService: ICommandRecordService;
 
-  @Post("/find/commandRecord")
+  @Post('/find/commandRecord')
   async find() {
     try {
       const { body } = this.getRequestBody();
@@ -38,40 +35,38 @@ export class GameRecordController extends BaseController {
       const commandList = await this.commandService.findByGameID(body.gameId);
       const gameList = await this.gameService.findByRoomNumber(body.roomNumber);
       let result: IFindGameRecord;
-      console.log(state, "user");
+      console.log(state, 'user');
       gameList.forEach((g) => {
         if (g.status === EGameOverType.GAME_OVER) {
-          const winner = JSON.parse(g.winners || "")[0][0];
+          const winner = JSON.parse(g.winners || '')[0][0];
           delete winner.handCard;
           g.winners = JSON.stringify([[winner]]);
         }
       });
       commandList.forEach((c) => {
         if (c.userId !== state.user.user.userId) {
-          c.handCard = "";
+          c.handCard = '';
         }
       });
       result = {
         commandList,
-        winners: gameList.find((g) => g.id === body.gameId)?.winners || "",
+        winners: gameList.find((g) => g.id === body.gameId)?.winners || '',
         gameId: body.gameId,
       };
       this.success({
         ...result,
       });
     } catch (e) {
-      this.fail("invalid game record");
+      this.fail('invalid game record');
       console.log(e);
     }
   }
 
-  @Post("/find/selfPast7DayGame")
+  @Post('/find/selfPast7DayGame')
   async selfPast7DayGame() {
     try {
       const { body } = this.getRequestBody();
-      const gameIDList = await this.commandService.findPast7DayGameIDsByUserID(
-        body.userID
-      );
+      const gameIDList = await this.commandService.findPast7DayGameIDsByUserID(body.userID);
 
       if (!gameIDList.length) {
         this.success([]);
@@ -83,7 +78,7 @@ export class GameRecordController extends BaseController {
       const result: any = [];
       gameList.forEach((g) => {
         if (g.status === EGameOverType.GAME_OVER) {
-          const winner = JSON.parse(g.winners || "")[0][0];
+          const winner = JSON.parse(g.winners || '')[0][0];
           delete winner.handCard;
           g.winners = JSON.stringify([[winner]]);
         }
@@ -95,7 +90,7 @@ export class GameRecordController extends BaseController {
         // 过滤其他人手牌
         gameCommandList.forEach((c) => {
           if (c.userId !== this.ctx.state.user.user.userId) {
-            c.handCard = "";
+            c.handCard = '';
           }
         });
 
@@ -107,24 +102,22 @@ export class GameRecordController extends BaseController {
       });
       this.success(result);
     } catch (e) {
-      this.fail("find self command record error");
+      this.fail('find self command record error');
       console.log(e);
     }
   }
 
-  @Post("/find/gameRecord")
+  @Post('/find/gameRecord')
   async index() {
     try {
       const { body } = this.getRequestBody();
       const gameList = await this.gameService.findByRoomNumber(body.roomNumber);
-      const result = gameList.map((g) =>
-        Object.assign({}, {}, { gameId: g.id })
-      );
+      const result = gameList.map((g) => Object.assign({}, {}, { gameId: g.id }));
       this.success({
         ...result,
       });
     } catch (e) {
-      this.fail("create room error");
+      this.fail('create room error');
       console.log(e);
     }
   }

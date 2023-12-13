@@ -1,5 +1,5 @@
-import { IAccountInfo } from "../IAccountInfo";
-import { ILoginResult } from "../ILoginResult";
+import { IAccountInfo } from '../IAccountInfo';
+import { ILoginResult } from '../ILoginResult';
 
 export interface IAccountService {
   /**

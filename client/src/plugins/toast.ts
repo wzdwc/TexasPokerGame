@@ -19,7 +19,9 @@ let instance: ToastExtendConstructor;
 let defaultOptions: IOptions;
 
 const getInstance = () => {
-  if (instance) { return instance; }
+  if (instance) {
+    return instance;
+  }
 
   instance = new ToastExtendConstructor({
     el: document.createElement('div'),

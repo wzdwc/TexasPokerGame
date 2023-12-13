@@ -1,18 +1,13 @@
-import axios, { AxiosRequestConfig, Method } from "axios";
-import cookie from "js-cookie";
-import origin from "@/utils/origin";
-import { ResultCode, IResult } from "@/interface/IResult";
+import axios, { AxiosRequestConfig, Method } from 'axios';
+import cookie from 'js-cookie';
+import origin from '@/utils/origin';
+import { ResultCode, IResult } from '@/interface/IResult';
 
-const request = async ({
-  method = "post" as Method,
-  url = "",
-  body = {},
-  timeout = 8000,
-}): Promise<IResult> => {
+const request = async ({ method = 'post' as Method, url = '', body = {}, timeout = 8000 }): Promise<IResult> => {
   if (!url) {
-    return Promise.reject("Request url is null!");
+    return Promise.reject('Request url is null!');
   }
-  const token = cookie.get("token") || localStorage.getItem("token");
+  const token = cookie.get('token') || localStorage.getItem('token');
   const headers = {
     Authorization: `Bearer ${token}`,
   };

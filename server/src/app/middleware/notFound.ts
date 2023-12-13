@@ -1,4 +1,4 @@
-import { Context } from "egg";
+import { Context } from 'egg';
 
 /**
  * 404
@@ -10,12 +10,12 @@ export default function notFound(): any {
     if (ctx.status === 404 && !ctx.body) {
       if (ctx.acceptJSON) {
         ctx.body = {
-          code: "404",
+          code: '404',
           data: {},
-          msg: "page not found",
+          msg: 'page not found',
         };
       } else {
-        ctx.body = "<h1>Page Not Found</h1>";
+        ctx.body = '<h1>Page Not Found</h1>';
       }
     }
   };
