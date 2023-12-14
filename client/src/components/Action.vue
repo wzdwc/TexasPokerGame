@@ -21,7 +21,7 @@
           <div class="size" v-show="currPlayer && raiseSize === currPlayer.counter">Allin</div>
           <range
             :max="currPlayer && currPlayer.counter"
-            :min="prevSize <= 0 ? baseSize : prevSize"
+            :min="minActionSize"
             :is-horizontal="true"
             v-model="raiseSize"
             @change="getActionSize"
