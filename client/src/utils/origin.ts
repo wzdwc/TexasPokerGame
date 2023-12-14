@@ -1,8 +1,5 @@
 const getUrls = () => {
-  let baseUrl = 'http://127.0.0.1';
-  if (process.env.NODE_ENV === 'production') {
-    baseUrl = 'http://' + process.env.VUE_APP_API_IP;
-  }
+  const baseUrl = 'http://' + (process.env.VUE_APP_API_IP || '127.0.0.1');
   const port = process.env.port || 7001;
   const urls = [`${baseUrl}:${port}`];
   return urls;
