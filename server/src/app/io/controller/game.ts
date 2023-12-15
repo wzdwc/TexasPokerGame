@@ -61,13 +61,13 @@ class GameController extends BaseSocketController {
         };
         const playerId = await playerRecordService.add(playerRecord);
         player.playerId = playerId.insertId;
+        this.logger.info(`${player.nickName} cards: `, player.getFormattedHandCard());
       }
     }
   }
 
   /**
    * Play game
-   * @returns {Promise<void>}
    */
   async playGame() {
     try {

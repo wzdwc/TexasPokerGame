@@ -1,3 +1,5 @@
+import { Poker } from './Poker';
+
 export interface IPlayer {
   counter: number;
   buyIn: number;
@@ -88,6 +90,10 @@ export class Player {
 
   getHandCard() {
     return this.handCard;
+  }
+
+  getFormattedHandCard() {
+    return Poker.formatCards(this.handCard) || '';
   }
 
   /**
