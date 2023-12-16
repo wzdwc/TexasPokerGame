@@ -106,6 +106,7 @@ export default class Register extends Vue {
 <style lang="less">
 .register-container {
   padding: 20px;
+  max-width: 600px;
   margin: auto;
 
   .logo {

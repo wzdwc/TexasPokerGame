@@ -202,11 +202,12 @@ export default class Action extends Vue {
 
     .raise-size {
       position: absolute;
-      top: -7vh;
+      top: -50px;
       left: 50%;
       width: 53vw;
       margin-left: -26.4vw;
       text-align: center;
+      white-space: nowrap;
 
       i {
         padding: 2px;

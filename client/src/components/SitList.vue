@@ -233,25 +233,33 @@ export default class SitList extends Vue {
   .sit-list {
     position: relative;
     width: 100vw;
-    height: 620 / 6.67vh;
+    height: calc(100vh - 40px);
+    transform: translateY(-20px);
+    max-width: 800px;
+    max-height: 800px;
     padding: 10px;
-    margin: 0 15px;
+    margin: auto;
     box-sizing: border-box;
 
     .sit {
       position: absolute;
       font-size: 12px;
 
+      @media (min-width: 800px) {
+        transform: scale(1.5);
+        transform-origin: center;
+      }
+
       .default {
         i {
-          width: 45 / 3.75vw;
-          height: 45 / 3.75vw;
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
           border: 1px solid #bababa;
           display: block;
           font-style: normal;
           font-size: 20px;
-          line-height: 45 / 3.75vw;
+          line-height: 48px;
           color: #fff;
         }
       }
@@ -260,29 +268,31 @@ export default class SitList extends Vue {
         position: relative;
 
         .icon {
-          width: 45 / 3.75vw;
-          height: 45 / 3.75vw;
+          width: 48px;
+          height: 48px;
           font-size: 45px;
-          line-height: 45 / 3.75vw;
+          line-height: 48px;
           border-radius: 50%;
           margin-bottom: 2px;
         }
 
         .user-name {
-          width: 45 / 3.75vw;
           color: #fff;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          text-shadow: 1px 1px 2px black;
         }
 
         .count-down {
-          height: 7vh;
-          line-height: 9vh;
-          width: 12vw;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
           position: absolute;
           left: 0;
-          top: 14px;
+          top: 18px;
+          bottom: 18px;
           color: #fff;
           font-weight: 700;
           font-size: 20px;
@@ -306,8 +316,8 @@ export default class SitList extends Vue {
         }
 
         .action-command {
-          top: 15 / 6.67vh;
-          left: 45 / 3.75vw;
+          top: 5px;
+          left: calc(100% + 2px);
           padding: 1px 8px;
           border-radius: 9px;
           color: #ffffff;
@@ -325,12 +335,12 @@ export default class SitList extends Vue {
           color: #2b2b2b;
           border-radius: 50%;
           padding: 2px;
-          width: 15 / 3.75vw;
+          width: 15px;
           height: 15px;
           line-height: 16px;
           position: absolute;
-          top: 53 / 6.67vh;
-          left: 38 / 3.75vw;
+          left: calc(100% + 2px);
+          top: 66px;
           font-size: 12px;
           transform: scale(0.8);
         }
@@ -339,14 +349,15 @@ export default class SitList extends Vue {
           background: rgba(0, 0, 0, 0.3) url('../assets/gold.svg') center left no-repeat;
           background-size: contain;
           border-radius: 2px;
-          padding: 1px 4px 1px 12px;
+          padding: 1px 4px 1px 17px;
           text-align: center;
-          min-width: 35 / 3.75vw;
           color: #fff;
           font-weight: 600;
           position: absolute;
-          top: 35 / 6.67vh;
-          left: 40 / 3.75vw;
+          left: calc(100% + 2px);
+          top: 40px;
+          min-width: 30px;
+          box-sizing: border-box;
         }
 
         &.fold {
@@ -362,8 +373,6 @@ export default class SitList extends Vue {
         justify-content: center;
         align-items: center;
         z-index: 999;
-        min-width: 24vw;
-        min-height: 10vh;
         background: radial-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 70%);
         i {
           color: #fff;
@@ -379,67 +388,71 @@ export default class SitList extends Vue {
 
       .hand-card {
         position: absolute;
-        top: 1vh;
+        top: 18px;
       }
 
       &:nth-child(1) {
-        left: 100 / 3.75vw;
-        top: 460 / 6.67vh;
+        left: 50%;
+        top: 80%;
+        margin-left: -90px;
 
         .action-command {
-          left: -22 / 3.75vw;
+          left: unset;
+          right: calc(100% + 2px);
         }
 
         .type {
-          left: -16 / 3.75vw;
+          left: unset;
+          right: calc(100% + 2px);
         }
 
         .action-size {
-          top: -5 / 6.67vh;
-          left: 57 / 3.75vw;
-          padding-right: 15px;
-          text-align: right;
+          top: 0;
+          left: calc(100% + 20px);
+          min-width: 84px;
+          padding-right: 17px;
+          text-align: center;
         }
       }
 
       &:nth-child(2) {
-        left: 0;
-        top: 330 / 6.67vh;
+        left: 10px;
+        top: 60%;
       }
 
       &:nth-child(3) {
-        left: 0;
-        top: 210 / 6.67vh;
+        left: 10px;
+        top: 40%;
       }
 
       &:nth-child(4) {
-        left: 0;
-        top: 100 / 6.67vh;
+        left: 10px;
+        top: 20%;
       }
 
       &:nth-child(5) {
-        left: 75 / 3.75vw;
-        top: 0;
+        left: 25%;
+        top: 20px;
       }
 
       &:nth-child(6) {
-        left: 240 / 3.75vw;
-        top: 0;
+        right: 25%;
+        top: 20px;
       }
 
       &:nth-child(7) {
-        left: 296 / 3.75vw;
-        top: 100 / 6.67vh;
+        right: 10px;
+        top: 20%;
       }
 
       &:nth-child(8) {
-        left: 296 / 3.75vw;
-        top: 210 / 6.67vh;
+        right: 10px;
+        top: 40%;
       }
 
       &:nth-child(9) {
-        left: 296 / 3.75vw;
-        top: 330 / 6.67vh;
+        right: 10px;
+        top: 60%;
       }
 
       &:nth-child(6),
@@ -447,16 +460,19 @@ export default class SitList extends Vue {
       &:nth-child(8),
       &:nth-child(9) {
         .action-command {
-          left: -22 / 3.75vw;
+          left: unset;
+          right: calc(100% + 2px);
         }
 
         .type {
-          left: -16 / 3.75vw;
+          left: unset;
+          right: calc(100% + 2px);
         }
 
         .action-size {
           background-position: right;
-          left: -40 / 3.75vw;
+          left: unset;
+          right: calc(100% + 2px);
           padding-left: 1px;
           padding-right: 17px;
           text-align: right;
@@ -470,8 +486,8 @@ export default class SitList extends Vue {
 
       .cards {
         position: absolute;
-        left: 52 / 3.75vw;
-        top: 20 / 6.67vh;
+        left: calc(100% + 20px);
+        top: 5px;
         min-width: 60 / 3.75vw;
         min-height: 60 / 6.67vh;
         line-height: 60 / 6.67vh;
@@ -486,8 +502,8 @@ export default class SitList extends Vue {
           position: absolute;
           color: #fff;
           font-size: 14px;
-          bottom: -48px;
-          width: 22vw;
+          line-height: 1;
+          top: 84px;
           text-align: center;
           font-weight: 700;
         }

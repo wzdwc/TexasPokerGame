@@ -56,10 +56,13 @@ export default class Login extends Vue {
   background-size: 100% 100%;
   width: 100vw;
   height: 100vh;
-  padding: 50vw 0;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .login-body {
     width: 85vw;
+    max-width: 600px;
     margin: auto;
     border-radius: 4px;
     box-sizing: border-box;
@@ -69,10 +72,11 @@ export default class Login extends Vue {
     .input-bd {
       border: 1px solid #bababa;
       border-radius: 20px;
-      width: 60vw;
       margin: 30px auto;
       text-align: left;
       .input-name {
+        min-width: 0;
+        width: 48px;
         text-align: center;
         font-size: 18px;
         color: #bababa;
