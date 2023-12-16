@@ -8,6 +8,10 @@
       <source src="../assets/mp3/raise.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
+    <audio ref="raise-notice" controls>
+      <source src="../assets/mp3/raise-notice.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
     <audio ref="fold" controls>
       <source src="../assets/mp3/fold.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.

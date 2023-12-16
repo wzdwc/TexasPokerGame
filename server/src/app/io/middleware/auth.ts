@@ -1,5 +1,6 @@
 import { Context } from '@midwayjs/web';
 import { ITickMsg } from '../../../interface/ITickMsg';
+import { P2PAction } from '../../../utils/constant';
 
 export default () => {
   return async (ctx: Context, next: () => Promise<any>) => {
@@ -13,7 +14,7 @@ export default () => {
 
     function tick(id: number, msg: ITickMsg, nsp: any, socket: any) {
       // 踢出用户前发送消息
-      socket.emit(id, ctx.helper.parseMsg('deny', msg));
+      socket.emit(id, ctx.helper.parseMsg(P2PAction.Deny, msg));
       // 调用 adapter 方法踢出用户，客户端触发 disconnect 事件
       nsp.adapter.remoteDisconnect(id, true, (err: any) => {
         ctx.logger.error('room service tick', err);

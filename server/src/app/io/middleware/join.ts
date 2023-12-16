@@ -1,6 +1,7 @@
 import { Context } from '@midwayjs/web';
 import { IGameRoom } from '../../../interface/IGameRoom';
 import { IPlayer } from '../../core/Player';
+import { Online, OnlineAction, P2PAction } from '../../../utils/constant';
 
 export default () => {
   function sendMsgToClients({
@@ -11,13 +12,13 @@ export default () => {
   }: {
     roomNumber: string;
     players: any;
-    action: string;
+    action: OnlineAction;
     nsp: any;
   }) {
     // 在线列表
     nsp.adapter.clients([roomNumber], (err: any, clients: any) => {
       // 更新在线用户列表
-      nsp.to(roomNumber).emit('online', {
+      nsp.to(roomNumber).emit(Online, {
         clients,
         action,
         target: 'participator',
@@ -44,7 +45,7 @@ export default () => {
       const cachedRoom: IGameRoom | null = nsp.gameRooms.find((r: IGameRoom) => r.number === room);
       const { user } = ctx.state;
       socket.join(room);
-      await socket.emit(id, ctx.helper.parseMsg('userInfo', { userInfo: user }));
+      await socket.emit(id, ctx.helper.parseMsg(P2PAction.UserInfo, { userInfo: user }));
       const player: IPlayer = {
         ...user,
         socketId: id,
@@ -80,7 +81,7 @@ export default () => {
         sendMsgToClients({
           roomNumber: room,
           players: gameRoom.roomInfo.players,
-          action: 'players',
+          action: OnlineAction.Players,
           nsp,
         });
         console.debug('...update game room with players: ', JSON.stringify(gameRoom.roomInfo.players));
@@ -97,7 +98,7 @@ export default () => {
           sendMsgToClients({
             roomNumber: room,
             players: cachedRoom.roomInfo.players,
-            action: 'players',
+            action: OnlineAction.Players,
             nsp,
           });
         } else {
@@ -107,7 +108,7 @@ export default () => {
 
           if (gamePlayer) {
             // in the game, get hand card
-            const msg = ctx.helper.parseMsg('handCard', { handCard: gamePlayer.getHandCard() }, { client: id });
+            const msg = ctx.helper.parseMsg(P2PAction.HandCard, { handCard: gamePlayer.getHandCard() }, { client: id });
             socket.emit(id, msg);
           }
 
@@ -143,19 +144,19 @@ export default () => {
               smallBlind: roomInfo.config.smallBlind,
               actionEndTime: roomInfo.game?.actionEndTime || 0,
             };
-            const game = ctx.helper.parseMsg('gameInfo', { data: gameInfo }, { client: id });
+            const game = ctx.helper.parseMsg(P2PAction.GameInfo, { data: gameInfo }, { client: id });
             socket.emit(id, game);
           }
         }
 
         // get sitList
-        const msg = ctx.helper.parseMsg('sitList', { sitList: cachedRoom.roomInfo.sit }, { client: id });
+        const msg = ctx.helper.parseMsg(P2PAction.SitList, { sitList: cachedRoom.roomInfo.sit }, { client: id });
         socket.emit(id, msg);
       }
       sendMsgToClients({
         roomNumber: room,
         players: `User(${user.nickName}) joined.`,
-        action: 'join',
+        action: OnlineAction.Join,
         nsp,
       });
       await next();
