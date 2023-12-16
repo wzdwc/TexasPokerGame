@@ -21,13 +21,16 @@ export default class App extends Vue {}
   max-width: 640rem;
   overflow: hidden;
   margin: auto;
+  height: 100%;
 }
 * {
   padding: 0;
   margin: 0;
 }
+html,
 body {
   box-sizing: border-box;
+  height: 100%;
 }
 
 .container {

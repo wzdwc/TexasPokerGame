@@ -227,14 +227,13 @@ export default class SitList extends Vue {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 
   .sit-list {
     position: relative;
     width: 100vw;
-    height: calc(100vh - 40px);
-    transform: translateY(-20px);
+    height: 100%;
     max-width: 800px;
     max-height: 800px;
     padding: 10px;
@@ -244,10 +243,11 @@ export default class SitList extends Vue {
     .sit {
       position: absolute;
       font-size: 12px;
+      z-index: 1;
 
-      @media (min-width: 800px) {
-        transform: scale(1.5);
-        transform-origin: center;
+      @media (min-width: 800px) and (min-height: 800px) {
+        transform: scale(1.25);
+        transform-origin: left bottom;
       }
 
       .default {
@@ -488,9 +488,6 @@ export default class SitList extends Vue {
         position: absolute;
         left: calc(100% + 20px);
         top: 5px;
-        min-width: 60 / 3.75vw;
-        min-height: 60 / 6.67vh;
-        line-height: 60 / 6.67vh;
 
         .ready {
           font-size: 14px;
