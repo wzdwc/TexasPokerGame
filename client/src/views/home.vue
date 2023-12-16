@@ -247,22 +247,20 @@ export default class Home extends Vue {
       .input-bd {
         display: flex;
         .input-name {
-          width: 20vw;
+          width: 70px;
           text-align: right;
+          flex: none;
         }
         .input-text {
           margin-left: 8px;
           line-height: 30px;
           input {
-            width: 10vw;
-            min-width: 10vw;
+            width: 100%;
             display: inline-block;
             text-align: center;
             vertical-align: middle;
             border-bottom: 1px solid #bababa;
             &[type='checkbox'] {
-              width: 4vw;
-              height: 4vw;
               min-width: auto;
               min-height: auto;
             }
@@ -273,10 +271,10 @@ export default class Home extends Vue {
   }
 
   .room-btn {
-    flex: 1;
+    max-width: 600px;
+    margin: auto;
 
     .btn {
-      width: 50vw;
       margin: 30px auto;
     }
   }

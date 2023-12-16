@@ -41,7 +41,7 @@ export default class CommonCard extends Vue {
   position: absolute;
   top: 50vh;
   left: 50%;
-  margin: -38px -114px;
+  margin: -38px auto auto -102px;
 
   .card {
     height: 60px;
