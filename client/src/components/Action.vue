@@ -1,6 +1,11 @@
 <template>
   <div class="action-container">
     <div class="action" v-show="isAction">
+      <div class="raise-size">
+        <div class="not-allin" v-show="showActionBtn('raise')">
+          <i v-for="size in raiseSizeMap" @click="raise(size)" v-show="showActionSize(size)"> {{ Math.floor(size) }}</i>
+        </div>
+      </div>
       <div class="action-type action-btn">
         <span @click="action('fold')">fold</span>
         <span @click="action('check')" v-show="showActionBtn('check')">check</span>
@@ -8,12 +13,14 @@
         <span @click="otherSizeHandle()" v-show="showActionBtn('raise')">more</span>
         <span @click="action('allin')" v-show="!showActionBtn('raise')">allin</span>
       </div>
-      <div class="raise-size">
-        <div class="not-allin" v-show="showActionBtn('raise')">
-          <i v-for="size in raiseSizeMap" @click="raise(size)" v-show="showActionSize(size)"> {{ Math.floor(size) }}</i>
-        </div>
+      <div>
+        <iAudio :play="playClick && audioStatus" type="click"></iAudio>
+        <iAudio :play="playFold && audioStatus" type="fold"></iAudio>
+        <iAudio :play="playRaise && audioStatus" type="raise"></iAudio>
       </div>
-      <div class="action-other-size" v-if="isRaise">
+    </div>
+
+    <div class="action-other-size" v-if="isRaise">
         <div class="action-other-size-body">
           <div class="size" v-show="currPlayer && raiseSize < currPlayer.counter">
             <input type="number" v-model="raiseSize" />
@@ -30,12 +37,6 @@
         </div>
         <div class="shadow" @click="isRaise = false"></div>
       </div>
-      <div>
-        <iAudio :play="playClick && audioStatus" type="click"></iAudio>
-        <iAudio :play="playFold && audioStatus" type="fold"></iAudio>
-        <iAudio :play="playRaise && audioStatus" type="raise"></iAudio>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -194,18 +195,17 @@ export default class Action extends Vue {
 .action-container {
   .action {
     position: absolute;
-    color: #fff;
-    width: 80vw;
-    top: 65vh;
     left: 50%;
+    bottom: calc(20% + 50px);
     transform: translateX(-50%);
+    color: #fff;
+
+    @media (min-height: 800px) {
+      top: calc(50% + 70px);
+    }
+
 
     .raise-size {
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      width: 53vw;
-      margin-left: -26.4vw;
       text-align: center;
       white-space: nowrap;
 
@@ -226,6 +226,10 @@ export default class Action extends Vue {
       }
     }
 
+    .action-type {
+      white-space: nowrap;
+    }
+
     .action-btn {
       span {
         border-radius: 50%;
@@ -241,53 +245,53 @@ export default class Action extends Vue {
       }
     }
 
-    .action-other-size {
-      background-color: rgba(0, 0, 0, 0);
-      position: fixed;
-      width: 50vw;
-      height: 30vh;
-      right: -16px;
-      top: -35vh;
-      z-index: 90;
+  }
+  .action-other-size {
+    background-color: rgba(0, 0, 0, 0);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 90;
 
-      .shadow {
-        position: absolute;
-        top: -30vh;
-        width: 99vw;
-        height: 100vh;
-        right: -5vw;
-        z-index: 8;
-        overflow: hidden;
-        background: linear-gradient(-70deg, black, transparent);
-      }
+    .shadow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 8;
+      overflow: hidden;
+      background: linear-gradient(-70deg, black, transparent);
+    }
 
-      .action-other-size-body {
-        z-index: 9;
-        position: absolute;
-        width: 50vw;
-        height: 30vh;
-        .size {
-          input {
-            background: transparent;
-            font-size: 20px;
-            width: 50px;
-            text-align: center;
-            color: #fff;
-          }
-        }
-        .btn {
-          position: absolute;
-          top: 34vh;
-          left: 20vw;
-          border: 1px solid #fff;
-          border-radius: 50%;
-          background-color: rgba(0, 0, 0, 0.4);
-          padding: 5px;
-          font-size: 30px;
+    .action-other-size-body {
+      z-index: 9;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(0, -50%);
+      text-align: center;
+      .size {
+        input {
+          background: transparent;
+          font-size: 20px;
           width: 50px;
-          height: 50px;
-          line-height: 50px;
+          text-align: center;
+          color: #fff;
         }
+      }
+      .btn {
+        display: inline-block;
+        color: white;
+        margin-top: 220px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 5px;
+        font-size: 30px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
       }
     }
   }

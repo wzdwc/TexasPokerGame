@@ -54,12 +54,13 @@ export default class Card extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .card-container {
+  display: inline-flex;
+  gap: 4px;
+
   .card {
+    position: relative;
     height: 60px;
     width: 40px;
-    position: absolute;
-    top: 0;
-    left: 0;
     transform-style: preserve-3d;
     opacity: 0;
     border-radius: 5px;
@@ -148,36 +149,6 @@ export default class Card extends Vue {
     &.turn {
       animation: turnA 1s forwards;
       animation-delay: 1s;
-    }
-
-    &:nth-child(1) {
-      &.show {
-        left: 0;
-      }
-    }
-
-    &:nth-child(2) {
-      &.show {
-        left: 44px;
-      }
-    }
-
-    &:nth-child(3) {
-      &.show {
-        left: 44 * 2px;
-      }
-    }
-
-    &:nth-child(4) {
-      &.show {
-        left: 44 * 3px;
-      }
-    }
-
-    &:nth-child(5) {
-      &.show {
-        left: 44 * 4px;
-      }
     }
   }
 

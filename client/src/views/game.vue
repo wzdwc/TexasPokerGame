@@ -15,19 +15,21 @@
       :actionUserId="actionUserId"
       :hand-card="handCard"
     ></sitList>
-    <common-card :commonCard="commonCard" :valueCards="valueCards"></common-card>
-    <notice :message-list="messageList"></notice>
-    <div class="winner-poke-style" v-show="gameOver && winner[0][0].handCard.length > 0">
-      {{ PokeStyle(winner[0] && winner[0][0] && winner[0][0].handCard) }} WIN!!
-    </div>
-    <div class="game-body">
-      <div class="pot">pot: {{ pot }}</div>
-      <div class="roomId">No.:{{ roomId }}</div>
-      <div class="btn play" v-show="isOwner && !isPlay">
-        <span @click="play">play game</span>
+
+    <div class="game-canvas">
+      <div class="game-body">
+        <div class="pot">pot: {{ pot }}</div>
+        <div class="roomId">No.:{{ roomId }}</div>
+        <div class="btn play" v-show="isOwner && !isPlay">
+          <span @click="play">play game</span>
+        </div>
+      </div>
+      <common-card class="common-cards" :commonCard="commonCard" :valueCards="valueCards"></common-card>
+      <div class="winner-poke-style" v-show="gameOver && winner[0][0].handCard.length > 0">
+        {{ PokeStyle(winner[0] && winner[0][0] && winner[0][0].handCard) }} WIN!!
       </div>
     </div>
-    <div class="game-record iconfont icon-record" @click="getRecord(0)"></div>
+
     <actionDialog
       :base-size="baseSize"
       :curr-player="currPlayer"
@@ -40,6 +42,9 @@
       :prev-size="prevSize"
       @action="action"
     ></actionDialog>
+
+    <notice :message-list="messageList"></notice>
+    <div class="game-record iconfont icon-record" @click="getRecord(0)"></div>
     <div class="setting">
       <div class="iconfont icon-setting setting-btn" @click="showSetting = true"></div>
       <div class="setting-body" :class="{ show: showSetting }">
@@ -631,30 +636,44 @@ export default class Game extends Vue {
 .game-container {
   background: radial-gradient(#00bf86, #006a55);
   background-size: 100% 100%;
-  height: 100vh;
+  height: calc(100% - 45px);
   width: 100vw;
   overflow: hidden;
-  .winner-poke-style {
+
+  .game-canvas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
-    top: 55vh;
     left: 50%;
-    transform: translate3d(-50%, 0, 0);
-    z-index: 0;
-    font-size: 14px;
-    color: #fff;
+    top: 50%;
+    transform: translate(-50%, -140px);
+    white-space: nowrap;
+
+    .game-body {
+      z-index: 0;
+
+      .roomId {
+        margin-top: 10px;
+        font-size: 14px;
+      }
+    }
+
+    @media (min-width: 800px) and (min-height: 800px) {
+      .common-cards /deep/ .card-container {
+        transform: scale(1.5);
+      }
+    }
   }
 
-  .game-body {
-    position: absolute;
-    top: 38vh;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    z-index: 0;
+  .common-cards {
+    margin-top: 30px;
+  }
 
-    .roomId {
-      margin-top: 10px;
-      font-size: 14px;
-    }
+  .winner-poke-style {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #fff;
   }
 
   .setting {
