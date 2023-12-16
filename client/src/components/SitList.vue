@@ -240,7 +240,6 @@ export default class SitList extends Vue {
     padding: 10px;
     margin: auto;
     box-sizing: border-box;
-    z-index: 9;
 
     .sit {
       position: absolute;
@@ -264,7 +263,6 @@ export default class SitList extends Vue {
           color: #fff;
         }
       }
-
 
       .player {
         position: relative;
