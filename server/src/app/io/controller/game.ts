@@ -7,6 +7,7 @@ import { ILinkNode, Link } from '../../../utils/Link';
 import { IGame } from '../../../interface/IGame';
 import { ICommandRecord } from '../../../interface/ICommandRecord';
 import { IPlayerDTO } from '../../../interface/IPlayer';
+import { Online, OnlineAction, P2PAction } from '../../../utils/constant';
 
 class GameController extends BaseSocketController {
   private async getSitDownPlayer(roomInfo: IRoomInfo): Promise<IPlayer[]> {
@@ -43,7 +44,7 @@ class GameController extends BaseSocketController {
     for (const p of roomInfo.players) {
       const player = roomInfo.game?.allPlayer.find((player) => player.userId === p.userId);
       const msg = this.ctx.helper.parseMsg(
-        'handCard',
+        P2PAction.HandCard,
         {
           handCard: player?.getHandCard(),
         },
@@ -93,7 +94,7 @@ class GameController extends BaseSocketController {
                 if (roomInfo.game.allInPlayers.length > 0) {
                   slidePots = roomInfo.game.slidePots;
                 }
-                await this.adapter('online', 'actionComplete', {
+                this.adapter(Online, OnlineAction.ActionComplete, {
                   slidePots,
                   actionEndTime: roomInfo.game.actionEndTime,
                   commonCard: roomInfo.game.commonCard,
@@ -141,7 +142,7 @@ class GameController extends BaseSocketController {
                   winner = roomInfo.game.winner;
                   allPlayers = roomInfo.game.getPlayers();
                 }
-                await this.adapter('online', 'gameOver', {
+                this.adapter(Online, OnlineAction.GameOver, {
                   winner,
                   allPlayers,
                   commonCard: roomInfo.game.commonCard,
@@ -312,13 +313,13 @@ class GameController extends BaseSocketController {
         roomInfo.sitLink = link;
         console.log('dealer ===================', dealer, link);
         // new game
-        await this.adapter('online', 'newGame', {});
+        this.adapter(Online, OnlineAction.NewGame, {});
         await this.playGame();
       } else {
         roomInfo.sitLink = null;
         console.log('come in only one player');
         // player not enough
-        await this.adapter('online', 'pause', {
+        this.adapter(Online, OnlineAction.Pause, {
           players: roomInfo.players,
           sitList: roomInfo.sit,
         });
@@ -366,7 +367,7 @@ class GameController extends BaseSocketController {
       }
       console.log(player, 'buy in player', roomInfo.players);
       if (!isGaming) {
-        await this.adapter('online', 'players', {
+        this.adapter(Online, OnlineAction.Players, {
           players: roomInfo.players,
         });
         console.log('ont in the game', player);
@@ -386,7 +387,7 @@ class GameController extends BaseSocketController {
         const gamePlayer = roomInfo.game.allPlayer.find((p) => player.socketId === p.socketId);
         if (gamePlayer) {
           const msg = this.ctx.helper.parseMsg(
-            'handCard',
+            P2PAction.HandCard,
             {
               handCard: gamePlayer.getHandCard(),
             },
@@ -411,7 +412,7 @@ class GameController extends BaseSocketController {
       console.log('sitList=============', sitList);
       console.log('roomInfo=============', roomInfo);
       roomInfo.sit = sitList;
-      await this.adapter('online', 'sitList', {
+      this.adapter(Online, OnlineAction.SitList, {
         sitList,
       });
     } catch (e) {
@@ -445,7 +446,7 @@ class GameController extends BaseSocketController {
       if (roomInfo.game && roomInfo.game.currPlayer.node.userId === userInfo.userId) {
         roomInfo.game.delayActionTime();
         console.log('delayTime: ', roomInfo.game && roomInfo.game.currPlayer.node, userInfo);
-        await this.adapter('online', 'delayTime', {
+        this.adapter(Online, OnlineAction.DelayTime, {
           actionEndTime: roomInfo.game.actionEndTime,
         });
       }
@@ -461,6 +462,10 @@ class GameController extends BaseSocketController {
       const roomInfo = await this.getRoomInfo();
       console.log('action: ', payload.command);
       console.log('action: ', roomInfo.game && roomInfo.game.currPlayer.node, userInfo);
+      this.adapter(Online, OnlineAction.LatestAction, {
+        latestAction: payload.command,
+        actionUserId: userInfo.userId,
+      });
       if (roomInfo.game && roomInfo.game.currPlayer.node.userId === userInfo.userId) {
         const currPlayer = roomInfo.game.currPlayer.node;
         const commonCard = roomInfo.game.commonCard;

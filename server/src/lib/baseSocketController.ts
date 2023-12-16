@@ -1,6 +1,7 @@
 import { Controller } from 'egg';
 import { IGameRoom, IRoomInfo } from '../interface/IGameRoom';
 import { IPlayer } from '../app/core/Player';
+import { AdapterType, Online, OnlineAction } from '../utils/constant';
 
 export default class BaseSocketController extends Controller {
   public app = this.ctx.app as any;
@@ -24,7 +25,7 @@ export default class BaseSocketController extends Controller {
     return roomInfo.roomInfo;
   }
 
-  protected adapter(type: string, actionName: string, data: any) {
+  protected adapter(type: AdapterType, actionName: OnlineAction, data: any) {
     this.nsp.adapter.clients([this.roomNumber], (err: any, clients: any) => {
       this.nsp.to(this.roomNumber).emit(type, {
         clients,
@@ -88,7 +89,7 @@ export default class BaseSocketController extends Controller {
         smallBlind: roomInfo.config.smallBlind,
       };
       console.log('gameInfo ==========', gameInfo);
-      this.adapter('online', 'gameInfo', gameInfo);
+      this.adapter(Online, OnlineAction.GameInfo, gameInfo);
     }
   }
 }

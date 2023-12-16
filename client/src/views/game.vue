@@ -59,6 +59,7 @@
     <record :players="players" v-model="showRecord"></record>
     <sendMsg @send="sendMsgHandle" :msg-list="msgListReverse"></sendMsg>
     <iAudio :play="playIncome && audioStatus" type="income"></iAudio>
+    <iAudio :play="playRaiseNotice && audioStatus" type="raise-notice"></iAudio>
     <gameRecord
       v-model="showCommandRecord"
       :game-list="gameList"
@@ -92,6 +93,7 @@ import { IRoom } from '@/interface/IRoom';
 import service from '../service';
 import gameRecord from '@/components/GameRecord.vue';
 import { IGameRecord } from '@/interface/IGameRecord';
+import { Online, OnlineAction, P2PAction } from '@/utils/constant';
 
 export enum ECommand {
   CALL = 'call',
@@ -163,6 +165,7 @@ export default class Game extends Vue {
   };
   private messageList: any[] = [];
   private showRecord = false;
+  private playRaiseNotice = false;
 
   @Watch('players')
   private playerChange(players: IPlayer[]) {
@@ -361,19 +364,19 @@ export default class Game extends Vue {
       this.socket.on(id, (msg: any) => {
         log('#receive,', msg);
         const data = msg.data;
-        if (data.action === 'handCard') {
+        if (data.action === P2PAction.HandCard) {
           console.log('come in handCard =========', data);
           this.handCard = data.payload.handCard;
           console.log('come in handCard =========', this.handCard);
         }
-        if (data.action === 'userInfo') {
+        if (data.action === P2PAction.UserInfo) {
           this.userInfo = data.payload.userInfo;
         }
-        if (data.action === 'sitList') {
+        if (data.action === P2PAction.SitList) {
           this.sitList = data.payload.sitList;
           this.initSitLink();
         }
-        if (data.action === 'gameInfo') {
+        if (data.action === P2PAction.GameInfo) {
           const payload = data.payload;
           this.players = payload.data.players;
           this.pot = payload.data.pot || 0;
@@ -387,7 +390,7 @@ export default class Game extends Vue {
         }
 
         // room time out
-        if (data.action === 'deny') {
+        if (data.action === P2PAction.Deny) {
           this.$plugin.toast('room is close');
           setTimeout(() => {
             this.$router.replace({ name: 'home' });
@@ -397,26 +400,26 @@ export default class Game extends Vue {
     });
 
     // 接收在线用户信息
-    this.socket.on('online', (msg: IMsg) => {
+    this.socket.on(Online, (msg: IMsg) => {
       log('#online,', msg);
-      if (msg.action === 'sitList') {
+      if (msg.action === OnlineAction.SitList) {
         console.log(msg.data, 'sit');
         this.sitList = msg.data.sitList;
         this.initSitLink();
       }
-      if (msg.action === 'join') {
+      if (msg.action === OnlineAction.Join) {
         this.joinMsg = msg.data;
       }
-      if (msg.action === 'players') {
+      if (msg.action === OnlineAction.Players) {
         this.players = msg.data.players;
       }
-      if (msg.action === 'actionComplete') {
+      if (msg.action === OnlineAction.ActionComplete) {
         this.commonCard = msg.data.commonCard;
         this.slidePots = msg.data.slidePots;
         this.actionEndTime = msg.data.actionEndTime || Date.now() + 30 * 1000;
         console.log('players', msg.data);
       }
-      if (msg.action === 'gameInfo') {
+      if (msg.action === OnlineAction.GameInfo) {
         this.players = msg.data.players;
         this.pot = msg.data.pot || 0;
         this.roomConfig.smallBlind = msg.data.smallBlind;
@@ -429,7 +432,7 @@ export default class Game extends Vue {
         console.log('handCard', this.handCard);
       }
 
-      if (msg.action === 'gameOver') {
+      if (msg.action === OnlineAction.GameOver) {
         console.log('gameOver', msg.data);
         clearTimeout(this.timeSt);
         this.actionUserId = '0';
@@ -452,11 +455,11 @@ export default class Game extends Vue {
         }, 1000);
       }
 
-      if (msg.action === 'newGame') {
+      if (msg.action === OnlineAction.NewGame) {
         this.init();
       }
 
-      if (msg.action === 'pause') {
+      if (msg.action === OnlineAction.Pause) {
         this.players = msg.data.players;
         this.sitList = msg.data.sitList;
         console.log('players', this.players);
@@ -464,7 +467,7 @@ export default class Game extends Vue {
         this.init();
       }
 
-      if (msg.action === 'delayTime') {
+      if (msg.action === OnlineAction.DelayTime) {
         this.actionEndTime = msg.data.actionEndTime;
         const now = Date.now();
         this.time = Math.floor((this.actionEndTime - now) / 1000);
@@ -473,7 +476,17 @@ export default class Game extends Vue {
         // }
       }
 
-      if (msg.action === 'broadcast') {
+      if (msg.action === OnlineAction.LatestAction) {
+        const { latestAction, actionUserId } = msg.data as Record<string, string>;
+        if (actionUserId !== this.userInfo.userId && latestAction.includes(ECommand.RAISE)) {
+          this.playRaiseNotice = true;
+          setTimeout(() => {
+            this.playRaiseNotice = false;
+          }, 1000);
+        }
+      }
+
+      if (msg.action === OnlineAction.Broadcast) {
         this.messageList.push({
           message: msg.message.msg || '',
           top: Math.random() * 50 + 10,

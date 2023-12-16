@@ -1,6 +1,7 @@
 'use strict';
 
 import { Controller } from 'egg';
+import { Online, OnlineAction } from '../../../utils/constant';
 
 class NspController extends Controller {
   async exchange() {
@@ -32,9 +33,9 @@ class NspController extends Controller {
       const { payload } = message;
       nsp.adapter.clients(rooms, (err: any, clients: any) => {
         // 广播信息
-        nsp.to(room).emit('online', {
+        nsp.to(room).emit(Online, {
           clients,
-          action: 'broadcast',
+          action: OnlineAction.Broadcast,
           target: 'participator',
           message: payload,
         });
