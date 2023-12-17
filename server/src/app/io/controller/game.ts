@@ -464,7 +464,8 @@ class GameController extends BaseSocketController {
       console.log('action: ', roomInfo.game && roomInfo.game.currPlayer.node, userInfo);
       this.adapter(Online, OnlineAction.LatestAction, {
         latestAction: payload.command,
-        actionUserId: userInfo.userId,
+        userId: userInfo.userId,
+        nickName: userInfo.nickName,
       });
       if (roomInfo.game && roomInfo.game.currPlayer.node.userId === userInfo.userId) {
         const currPlayer = roomInfo.game.currPlayer.node;

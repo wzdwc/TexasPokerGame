@@ -368,7 +368,7 @@ export default class SitList extends Vue {
 
       .delay-time {
         position: absolute;
-        top: 0;
+        top: 80px;
         left: 0;
         display: flex;
         justify-content: center;
@@ -377,10 +377,10 @@ export default class SitList extends Vue {
         background: radial-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 70%);
         i {
           color: #fff;
-          font-size: 30px;
+          font-size: 40px;
         }
         span {
-          font-size: 12px;
+          font-size: 20px;
           color: #fff;
           margin-left: 2px;
           font-weight: 600;
@@ -482,7 +482,7 @@ export default class SitList extends Vue {
 
         .hand-card {
           left: unset;
-          right: 0
+          right: 0;
         }
       }
 
