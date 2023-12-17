@@ -17,6 +17,14 @@
     ></sitList>
 
     <div class="game-canvas">
+      <animation
+        class="action-notice"
+        :animationName="latestSpecialActionMsg.toLocaleLowerCase().includes('allin') ? 'tada' : 'heartBeat'"
+        ref="actionNotice"
+        v-show="latestSpecialActionMsg"
+      >
+        {{ latestSpecialActionMsg }}
+      </animation>
       <div class="game-body">
         <div class="pot">pot: {{ pot }}</div>
         <div class="roomId">No.:{{ roomId }}</div>
@@ -71,7 +79,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Watch } from 'vue-property-decorator';
+import { Ref, Vue, Watch } from 'vue-property-decorator';
 import Component from 'vue-class-component';
 import io from 'socket.io-client';
 import cookie from 'js-cookie';
@@ -86,6 +94,7 @@ import record from '../components/Record.vue';
 import notice from '../components/Notice.vue';
 import iAudio from '../components/Audio.vue';
 import sendMsg from '../components/SendMsg.vue';
+import animation from '@/components/Animation.vue';
 import actionDialog from '../components/Action.vue';
 import { PokerStyle } from '@/utils/PokerStyle';
 import origin from '../utils/origin';
@@ -111,6 +120,11 @@ interface IMsg {
   data: any;
 }
 
+interface IAction {
+  actionUserId: number;
+  latestAction: ECommand;
+}
+
 const GAME_BASE_SIZE = 1;
 const ACTION_TIME = 30;
 
@@ -126,75 +140,10 @@ const ACTION_TIME = 30;
     iAudio,
     actionDialog,
     sendMsg,
+    animation,
   },
 })
 export default class Game extends Vue {
-  public socket: any = null;
-  // in the room user
-  // have a sit user
-  private players: IPlayer[] = [];
-  private userInfo: any = {};
-  private joinMsg = '';
-  private handCard = [];
-  private commonCard = [];
-  private pot = 0;
-  private slidePots = [];
-  private prevSize = 0;
-  private winner: IPlayer[][] = [];
-  private showBuyIn = false;
-  private showSetting = false;
-  private sitLink: any = '';
-  private gaming = false;
-  private sitList: ISit[] = [];
-  private actionUserId = '';
-  private showAllin = false;
-  private showMsg = false;
-  private playIncome = false;
-  private msg = '';
-  private time = ACTION_TIME;
-  private timeSt = 0;
-  private commandRecordList = [];
-  private actionEndTime = 0;
-  private showCommandRecord = false;
-  private gameList: IGameRecord[] = [];
-  private currGameIndex = 0;
-  private audioStatus = true;
-  private roomConfig: IRoom = {
-    isShort: false,
-    smallBlind: 1,
-  };
-  private messageList: any[] = [];
-  private showRecord = false;
-  private playRaiseNotice = false;
-
-  @Watch('players')
-  private playerChange(players: IPlayer[]) {
-    console.log('player change-------');
-    this.sitList = this.sitList.map((sit: ISit) => {
-      const player = players.find((p) => sit.player && p.userId === sit.player.userId && sit.player.counter > 0);
-      return Object.assign({}, {}, { player, position: sit.position }) as ISit;
-    });
-    this.initSitLink();
-  }
-
-  @Watch('isPlay')
-  private isPlayChange(val: boolean) {
-    if (val) {
-      clearTimeout(this.timeSt);
-      this.doCountDown();
-    }
-  }
-
-  @Watch('actionUserId')
-  private actionUserIdChange() {
-    if (this.isPlay && this.actionEndTime) {
-      console.log('action player change-------', this.actionEndTime);
-      const now = Date.now();
-      this.time = Math.floor((this.actionEndTime - now) / 1000);
-      clearTimeout(this.timeSt);
-      this.doCountDown();
-    }
-  }
 
   get msgListReverse() {
     const msg = JSON.parse(JSON.stringify(this.messageList));
@@ -252,6 +201,91 @@ export default class Game extends Vue {
 
   get baseSize() {
     return this.roomConfig.smallBlind || GAME_BASE_SIZE;
+  }
+
+  get latestSpecialActionMsg() {
+    const specialActions = [ECommand.RAISE, ECommand.ALL_IN];
+    const latestSpecialAction = this.currentRoundActions.filter((action) =>
+      specialActions.includes(action.latestAction.split(':')[0] as ECommand)).pop();
+    if (latestSpecialAction) {
+      const player = this.players.find((p) => latestSpecialAction.actionUserId === p.userId);
+      return `${player?.nickName} ${latestSpecialAction.latestAction}`;
+    }
+
+    return '';
+  }
+  public socket: any = null;
+  @Ref() public readonly actionNotice!: animation;
+  // in the room user
+  // have a sit user
+  private players: IPlayer[] = [];
+  private currentRoundActions: IAction[] = [];
+  private userInfo: any = {};
+  private joinMsg = '';
+  private handCard = [];
+  private commonCard = [];
+  private pot = 0;
+  private slidePots = [];
+  private prevSize = 0;
+  private winner: IPlayer[][] = [];
+  private showBuyIn = false;
+  private showSetting = false;
+  private sitLink: any = '';
+  private gaming = false;
+  private sitList: ISit[] = [];
+  private actionUserId = '';
+  private showAllin = false;
+  private showMsg = false;
+  private playIncome = false;
+  private msg = '';
+  private time = ACTION_TIME;
+  private timeSt = 0;
+  private commandRecordList = [];
+  private actionEndTime = 0;
+  private showCommandRecord = false;
+  private gameList: IGameRecord[] = [];
+  private currGameIndex = 0;
+  private audioStatus = true;
+  private roomConfig: IRoom = {
+    isShort: false,
+    smallBlind: 1,
+  };
+  private messageList: any[] = [];
+  private showRecord = false;
+  private playRaiseNotice = false;
+
+  @Watch('latestSpecialActionMsg')
+  public privateActionNoticeChange() {
+    this.actionNotice?.applyAnimation();
+  }
+
+  @Watch('players')
+  private playerChange(players: IPlayer[]) {
+    console.log('player change-------');
+    this.sitList = this.sitList.map((sit: ISit) => {
+      const player = players.find((p) => sit.player && p.userId === sit.player.userId && sit.player.counter > 0);
+      return Object.assign({}, {}, { player, position: sit.position }) as ISit;
+    });
+    this.initSitLink();
+  }
+
+  @Watch('isPlay')
+  private isPlayChange(val: boolean) {
+    if (val) {
+      clearTimeout(this.timeSt);
+      this.doCountDown();
+    }
+  }
+
+  @Watch('actionUserId')
+  private actionUserIdChange() {
+    if (this.isPlay && this.actionEndTime) {
+      console.log('action player change-------', this.actionEndTime);
+      const now = Date.now();
+      this.time = Math.floor((this.actionEndTime - now) / 1000);
+      clearTimeout(this.timeSt);
+      this.doCountDown();
+    }
   }
 
   private init() {
@@ -417,6 +451,7 @@ export default class Game extends Vue {
         this.commonCard = msg.data.commonCard;
         this.slidePots = msg.data.slidePots;
         this.actionEndTime = msg.data.actionEndTime || Date.now() + 30 * 1000;
+        this.currentRoundActions = [];
         console.log('players', msg.data);
       }
       if (msg.action === OnlineAction.GameInfo) {
@@ -438,6 +473,7 @@ export default class Game extends Vue {
         this.actionUserId = '0';
         this.winner = msg.data.winner;
         this.commonCard = msg.data.commonCard;
+        this.currentRoundActions = [];
         const allPlayers = msg.data.allPlayers;
         allPlayers.forEach((winner: IPlayer) => {
           this.players.forEach((p) => {
@@ -477,6 +513,7 @@ export default class Game extends Vue {
       }
 
       if (msg.action === OnlineAction.LatestAction) {
+        this.currentRoundActions.push(msg.data as IAction);
         const { latestAction, actionUserId } = msg.data as Record<string, string>;
         if (actionUserId !== this.userInfo.userId && latestAction.includes(ECommand.RAISE)) {
           this.playRaiseNotice = true;
@@ -604,7 +641,7 @@ export default class Game extends Vue {
       console.log(data);
     } catch (e) {
       console.log(e);
-      this.$plugin.toast("can't find the room");
+      this.$plugin.toast('can\'t find the room');
     }
   }
 
@@ -660,8 +697,17 @@ export default class Game extends Vue {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -140px);
+    transform: translate(-50%, -110px);
     white-space: nowrap;
+
+    .action-notice {
+      position: absolute;
+      bottom: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      color: #cc0202;
+      margin-bottom: 1em;
+    }
 
     .game-body {
       z-index: 0;
@@ -673,6 +719,12 @@ export default class Game extends Vue {
     }
 
     @media (min-width: 800px) and (min-height: 800px) {
+      transform: translate(-50%, -150px);
+
+      .action-notice {
+        font-size: 24px;
+      }
+
       .common-cards /deep/ .card-container {
         transform: scale(1.5);
       }

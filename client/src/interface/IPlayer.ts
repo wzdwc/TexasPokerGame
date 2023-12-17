@@ -10,7 +10,7 @@ export interface IPlayer {
   actionSize: number;
   actionCommand: string;
   type: string;
-  userId?: string;
+  userId?: number;
   handCard?: string[];
   buyIn: number;
   status: number;

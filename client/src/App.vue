@@ -12,6 +12,7 @@ export default class App extends Vue {}
 
 <style lang="less">
 @import 'assets/less/base';
+@import '~animate.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -50,7 +51,6 @@ body {
       vertical-align: middle;
       input {
         min-height: 30px;
-        min-width: 40vw;
       }
     }
   }

@@ -82,6 +82,7 @@ export default class Login extends Vue {
         color: #bababa;
       }
       input {
+        min-width: 0;
         height: 40px;
         background-color: transparent;
       }
