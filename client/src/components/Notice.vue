@@ -25,12 +25,13 @@ export default class Notice extends Vue {
     top: 0;
     left: 0;
     width: 100vw;
+    z-index: 999;
+    pointer-events: none;
     i {
       position: absolute;
       top: 20px;
       left: 0;
       transform: translate3d(100vw, 0, 0);
-      z-index: 10;
       animation: 8s move linear forwards;
       color: #fff;
       padding: 4px;

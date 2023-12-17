@@ -265,6 +265,7 @@ export default class SitList extends Vue {
       }
 
       .player {
+        width: 48px;
         position: relative;
 
         .icon {
@@ -316,8 +317,8 @@ export default class SitList extends Vue {
         }
 
         .action-command {
-          top: 5px;
-          left: calc(100% + 2px);
+          top: 14px;
+          left: calc(100% - 3px);
           padding: 1px 8px;
           border-radius: 9px;
           color: #ffffff;
@@ -339,7 +340,7 @@ export default class SitList extends Vue {
           height: 15px;
           line-height: 16px;
           position: absolute;
-          left: calc(100% + 2px);
+          left: 100%;
           top: 66px;
           font-size: 12px;
           transform: scale(0.8);
@@ -354,7 +355,7 @@ export default class SitList extends Vue {
           color: #fff;
           font-weight: 600;
           position: absolute;
-          left: calc(100% + 2px);
+          left: 100%;
           top: 40px;
           min-width: 30px;
           box-sizing: border-box;
@@ -388,6 +389,7 @@ export default class SitList extends Vue {
 
       .hand-card {
         position: absolute;
+        left: 0;
         top: 18px;
       }
 
@@ -398,12 +400,12 @@ export default class SitList extends Vue {
 
         .action-command {
           left: unset;
-          right: calc(100% + 2px);
+          right: calc(100% - 3px);
         }
 
         .type {
           left: unset;
-          right: calc(100% + 2px);
+          right: 100%;
         }
 
         .action-size {
@@ -461,26 +463,26 @@ export default class SitList extends Vue {
       &:nth-child(9) {
         .action-command {
           left: unset;
-          right: calc(100% + 2px);
+          right: calc(100% - 3px);
         }
 
         .type {
           left: unset;
-          right: calc(100% + 2px);
+          right: 100%;
         }
 
         .action-size {
           background-position: right;
           left: unset;
-          right: calc(100% + 2px);
+          right: 100%;
           padding-left: 1px;
           padding-right: 17px;
           text-align: right;
         }
 
         .hand-card {
-          left: -3vh;
-          top: 0;
+          left: unset;
+          right: 0
         }
       }
 
