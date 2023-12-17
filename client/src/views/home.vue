@@ -145,11 +145,11 @@ export default class Home extends Vue {
         cookie.set('roomConfig', roomConfig, { expires: 1 });
         this.$router.push({ name: 'game', params: { roomNumber } });
       } else {
-        this.$plugin.toast('can\'t find the room');
-        console.log('can\'t find the room');
+        this.$plugin.toast('cannot find the room');
+        console.log('cannot find the room');
       }
     } catch (e) {
-      this.$plugin.toast('can\'t find the room');
+      this.$plugin.toast('cannot find the room');
     }
   }
 
@@ -168,7 +168,7 @@ export default class Home extends Vue {
       }
     } catch (e) {
       console.log(e);
-      this.$plugin.toast('can\'t find the user command record list');
+      this.$plugin.toast('cannot find the user command record list');
     }
   }
 
@@ -193,7 +193,7 @@ export default class Home extends Vue {
       console.log(data);
     } catch (e) {
       console.log(e);
-      this.$plugin.toast('can\'t find the room');
+      this.$plugin.toast('cannot find the room');
     }
   }
 

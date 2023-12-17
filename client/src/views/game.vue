@@ -68,6 +68,7 @@
     <sendMsg @send="sendMsgHandle" :msg-list="msgListReverse"></sendMsg>
     <iAudio :play="playIncome && audioStatus" type="income"></iAudio>
     <iAudio :play="playRaiseNotice && audioStatus" type="raise-notice"></iAudio>
+    <iAudio :play="playAllInNotice && audioStatus" type="allin-notice"></iAudio>
     <gameRecord
       v-model="showCommandRecord"
       :game-list="gameList"
@@ -120,9 +121,11 @@ interface IMsg {
   data: any;
 }
 
-interface IAction {
-  actionUserId: number;
-  latestAction: ECommand;
+interface ILatestActionData {
+  userId: string;
+  nickName: string;
+  /** call, check, raise:4, raise:100, fold, allin */
+  latestAction: string;
 }
 
 const GAME_BASE_SIZE = 1;
@@ -144,7 +147,6 @@ const ACTION_TIME = 30;
   },
 })
 export default class Game extends Vue {
-
   get msgListReverse() {
     const msg = JSON.parse(JSON.stringify(this.messageList));
     return msg.reverse();
@@ -205,21 +207,28 @@ export default class Game extends Vue {
 
   get latestSpecialActionMsg() {
     const specialActions = [ECommand.RAISE, ECommand.ALL_IN];
-    const latestSpecialAction = this.currentRoundActions.filter((action) =>
-      specialActions.includes(action.latestAction.split(':')[0] as ECommand)).pop();
-    if (latestSpecialAction) {
-      const player = this.players.find((p) => latestSpecialAction.actionUserId === p.userId);
-      return `${player?.nickName} ${latestSpecialAction.latestAction}`;
+    const latestSpecialAction = this.currentRoundActions
+      .filter((action) => specialActions.includes(action.latestAction.split(':')[0] as ECommand))
+      .pop();
+    if (!latestSpecialAction) {
+      return '';
     }
-
+    if (latestSpecialAction.latestAction.includes(ECommand.ALL_IN)) {
+      return `${latestSpecialAction.nickName} ALL IN`;
+    }
+    if (latestSpecialAction.latestAction.includes(ECommand.RAISE)) {
+      const size = latestSpecialAction.latestAction.split(':')[1];
+      return `${latestSpecialAction.nickName} raise to ${this.pot}(+${size})`;
+    }
     return '';
   }
+
   public socket: any = null;
   @Ref() public readonly actionNotice!: animation;
   // in the room user
   // have a sit user
   private players: IPlayer[] = [];
-  private currentRoundActions: IAction[] = [];
+  private currentRoundActions: ILatestActionData[] = [];
   private userInfo: any = {};
   private joinMsg = '';
   private handCard = [];
@@ -253,6 +262,7 @@ export default class Game extends Vue {
   private messageList: any[] = [];
   private showRecord = false;
   private playRaiseNotice = false;
+  private playAllInNotice = false;
 
   @Watch('latestSpecialActionMsg')
   public privateActionNoticeChange() {
@@ -513,13 +523,22 @@ export default class Game extends Vue {
       }
 
       if (msg.action === OnlineAction.LatestAction) {
-        this.currentRoundActions.push(msg.data as IAction);
-        const { latestAction, actionUserId } = msg.data as Record<string, string>;
-        if (actionUserId !== this.userInfo.userId && latestAction.includes(ECommand.RAISE)) {
-          this.playRaiseNotice = true;
-          setTimeout(() => {
-            this.playRaiseNotice = false;
-          }, 1000);
+        const data = msg.data as ILatestActionData;
+        this.currentRoundActions.push(data);
+        const { latestAction, userId: actionUserId } = data;
+        if (actionUserId !== this.userInfo.userId) {
+          if (latestAction.includes(ECommand.RAISE)) {
+            this.playRaiseNotice = true;
+            setTimeout(() => {
+              this.playRaiseNotice = false;
+            }, 1000);
+          }
+          if (latestAction.includes(ECommand.ALL_IN)) {
+            this.playAllInNotice = true;
+            setTimeout(() => {
+              this.playAllInNotice = false;
+            }, 1000);
+          }
         }
       }
 
@@ -641,7 +660,7 @@ export default class Game extends Vue {
       console.log(data);
     } catch (e) {
       console.log(e);
-      this.$plugin.toast('can\'t find the room');
+      this.$plugin.toast('cannot find the room');
     }
   }
 

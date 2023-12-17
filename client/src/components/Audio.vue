@@ -20,6 +20,10 @@
       <source src="../assets/mp3/income.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
+    <audio ref="allin-notice" controls>
+      <source src="../assets/mp3/allin-notice.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
   </div>
 </template>
 
