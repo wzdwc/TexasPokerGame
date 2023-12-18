@@ -1,6 +1,7 @@
 import { Context } from '@midwayjs/web';
 import { EggAppConfig, PowerPartial } from 'egg';
 import { MidwayConfig, MidwayAppInfo } from '@midwayjs/core';
+import { MidwayTransformableInfo } from '@midwayjs/logger';
 
 export default (appInfo: MidwayAppInfo) => {
   const config = {} as PowerPartial<EggAppConfig>;
@@ -13,6 +14,21 @@ export default (appInfo: MidwayAppInfo) => {
 
   const bizConfig = {
     sourceUrl: '',
+    midwayLogger: {
+      clients: {
+        fullRecordLogger: {
+          format: (info: MidwayTransformableInfo) => {
+            // return `${info.timestamp} ${info.LEVEL} ${info.pid} [${ctx.userId} - ${Date.now() - ctx.startTime}ms ${ctx.method}] ${info.message}`;
+            return `${new Date().toISOString()} ${info.message}`;
+          },
+        },
+        cardsLogger: {
+          format: (info: MidwayTransformableInfo) => {
+            return `${new Date().toISOString()} ${info.message}`;
+          },
+        },
+      },
+    },
   };
 
   // security
@@ -44,6 +60,15 @@ export default (appInfo: MidwayAppInfo) => {
     coreLogName: 'core.log',
     agentLogName: 'agent.log',
     errorLogName: 'error.log',
+  };
+
+  config.customLogger = {
+    fullRecordLogger: {
+      file: 'full-record.log',
+    },
+    cardsLogger: {
+      file: 'cards.log',
+    },
   };
 
   // business domain

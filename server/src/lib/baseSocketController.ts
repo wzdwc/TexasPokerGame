@@ -2,6 +2,7 @@ import { Controller } from 'egg';
 import { IGameRoom, IRoomInfo } from '../interface/IGameRoom';
 import { IPlayer } from '../app/core/Player';
 import { AdapterType, Online, OnlineAction } from '../utils/constant';
+import * as FR from '../service/fullRecord';
 
 export default class BaseSocketController extends Controller {
   public app = this.ctx.app as any;
@@ -34,6 +35,46 @@ export default class BaseSocketController extends Controller {
         data,
       });
     });
+  }
+
+  /**
+   * 记录操作
+   * @param action 如 check, raise:10
+   * @returns
+   */
+  protected updateFullRecord(action: string) {
+    const roomInfo = this.getRoomInfo();
+    if (FR.fullRecord.players.length === 0) {
+      roomInfo.sit.map((sit) => {
+        const userId = sit.player?.userId;
+        const player = roomInfo.game?.allPlayer.find((p) => p.userId === userId);
+        const mirrorPlayer = roomInfo.players.find((p) => p.userId === userId);
+        if (!userId || !player || !mirrorPlayer) return;
+
+        FR.fullRecord.players.push({
+          userId,
+          nickName: player.nickName,
+          position: String(player.position), // to fix
+          handCard: player.getFormattedHandCard(false),
+          buyIn: mirrorPlayer?.buyIn,
+          counter: player?.counter,
+        });
+      });
+    }
+
+    if (!roomInfo.game) return;
+    const [command, size] = action.split(':');
+    FR.fullRecord.actions.push({
+      userId: roomInfo.game.currPlayer.node.userId,
+      commonCard: [...roomInfo.game.commonCard],
+      time: new Date().toISOString(),
+      command,
+      size: size ? Number(size) : undefined,
+    });
+  }
+
+  protected saveFullRecordAndClean(roomNumber: string) {
+    FR.saveFullRecordAndClean(this.app.getLogger('fullRecordLogger'), { roomNumber });
   }
 
   protected updateGameInfo() {

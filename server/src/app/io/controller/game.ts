@@ -8,6 +8,7 @@ import { IGame } from '../../../interface/IGame';
 import { ICommandRecord } from '../../../interface/ICommandRecord';
 import { IPlayerDTO } from '../../../interface/IPlayer';
 import { Online, OnlineAction, P2PAction } from '../../../utils/constant';
+import { EggLogger } from 'egg';
 
 class GameController extends BaseSocketController {
   private async getSitDownPlayer(roomInfo: IRoomInfo): Promise<IPlayer[]> {
@@ -62,7 +63,8 @@ class GameController extends BaseSocketController {
         };
         const playerId = await playerRecordService.add(playerRecord);
         player.playerId = playerId.insertId;
-        this.logger.info(`${player.nickName} cards: `, player.getFormattedHandCard());
+        const cardsLogger = this.app.getLogger('cardsLogger') as EggLogger;
+        cardsLogger.info(`room:${this.roomNumber} ${player.nickName} cards: `, player.getFormattedHandCard());
       }
     }
   }
@@ -178,6 +180,7 @@ class GameController extends BaseSocketController {
                 PlayerService.update(uPlayer);
               }
             }
+            this.saveFullRecordAndClean(this.roomNumber);
           },
           autoActionCallBack: async (command, userId) => {
             // fold change status: -1
@@ -194,6 +197,7 @@ class GameController extends BaseSocketController {
                 }
               });
             }
+            this.updateFullRecord(command);
             await this.updateGameInfo();
             console.log('auto Action');
           },
@@ -495,6 +499,7 @@ class GameController extends BaseSocketController {
           counter: currPlayer.counter,
         };
         roomInfo.game.currPlayer.node.updateVPIP(payload.command.split(':')[0], commonCard.length);
+        this.updateFullRecord(payload.command);
         roomInfo.game.action(payload.command);
         // currPlayer 在这里(action)后会改变了
         const commandArr = payload.command.split(':');
