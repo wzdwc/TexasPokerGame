@@ -24,11 +24,22 @@ const CardNumberMap = {
 };
 
 // 牌花色的编码
-const CardColorMap = {
+const CardColorEmojiMap = {
   1: '♦',
   2: '♣',
   3: '♥',
   4: '♠',
+};
+
+const CardColorLetterMap = {
+  /** diamond */
+  1: 'd',
+  /** club */
+  2: 'c',
+  /** heart */
+  3: 'h',
+  /** spade */
+  4: 's',
 };
 
 /**
@@ -72,24 +83,33 @@ export class Poker implements IPoker {
   /**
    * 将牌编码转换成实际的牌
    * @param code 如 a2
+   * @param useEmoji 默认true, 使用 emoji 显示花色
+   * - 否则使用英文代表花色, s 黑桃, h 红桃, c 梅花, d 方块
    * ```
    * formatCard('a2') -> ♣2
+   * formatCard('a2', false) -> 2c
    * ```
    */
-  static formatCard(code: string) {
+  static formatCard(code: string, useEmoji = true) {
     const num = code[0] as keyof typeof CardNumberMap;
-    const color = code[1] as unknown as keyof typeof CardColorMap;
-    return `${CardColorMap[color]}${CardNumberMap[num]}`;
+    const colorI = code[1] as unknown as keyof typeof CardColorEmojiMap;
+    let color = CardColorEmojiMap[colorI];
+    if (!useEmoji) {
+      color = CardColorLetterMap[colorI];
+    }
+    return `${color}${CardNumberMap[num]}`;
   }
 
   /**
    * 将 codes 使用 formatCard 格式化然后用英文逗号拼接
    * @param codes
+   * @param useEmoji 默认true, 使用 emoji 显示花色
+   * - 否则使用英文代表花色, s 黑桃, h 红桃, c 梅花, d 方块
    * @returns
    */
-  static formatCards(codes: string[]) {
+  static formatCards(codes: string[], useEmoji = true) {
     return codes
-      .map((code) => this.formatCard(code))
+      .map((code) => this.formatCard(code, useEmoji))
       .filter(Boolean)
       .join(',');
   }

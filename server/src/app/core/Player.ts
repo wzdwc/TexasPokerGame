@@ -92,8 +92,14 @@ export class Player {
     return this.handCard;
   }
 
-  getFormattedHandCard() {
-    return Poker.formatCards(this.handCard) || '';
+  /**
+   *
+   * @param useEmoji 默认true, 使用 emoji 显示花色
+   * - 否则使用英文代表花色, s 黑桃, h 红桃, c 梅花, d 方块
+   * @returns
+   */
+  getFormattedHandCard(useEmoji = true) {
+    return Poker.formatCards(this.handCard, useEmoji) || '';
   }
 
   /**
