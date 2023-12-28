@@ -72,7 +72,7 @@
         </div>
       </div>
     </div>
-    <BuyIn :showBuyIn.sync="showBuyIn" :min="0" :max="roomConfig.smallBlind * 1000" @buyIn="buyIn"></BuyIn>
+    <BuyIn :showBuyIn.sync="showBuyIn" :min="0" :max="roomConfig.smallBlind * 200" @buyIn="buyIn"></BuyIn>
   </div>
 </template>
 

@@ -62,7 +62,7 @@
         <i @click="closeAudio()">audio ({{ `${audioStatus ? 'open' : 'close'}` }})</i>
       </div>
     </div>
-    <BuyIn :showBuyIn.sync="showBuyIn" :min="0" :max="baseSize * 1000" @buyIn="buyIn"></BuyIn>
+    <BuyIn :showBuyIn.sync="showBuyIn" :min="0" :max="baseSize * 200" @buyIn="buyIn"></BuyIn>
     <toast :show.sync="showMsg" :text="msg"></toast>
     <record :players="players" v-model="showRecord"></record>
     <sendMsg @send="sendMsgHandle" :msg-list="msgListReverse"></sendMsg>
