@@ -19,7 +19,7 @@ export default class MsgList extends Vue {
 .list-container {
   background: #f5f5f5;
   position: absolute;
-  bottom: 45px;
+  bottom: 0;
   padding: 10px 0;
   ul {
     height: 100px;

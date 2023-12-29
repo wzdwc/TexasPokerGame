@@ -30,7 +30,7 @@
     <div class="room-number" v-show="isJoin">
       <div class="room-input inline">
         <div class="input-bd" :class="{ error: isError }">
-          <div class="input-name iconfont icon-password"></div>
+          <div class="input-name iconfont icon-password" :style="{minWidth: 0, width: '32px'}"></div>
           <div class="input-text">
             <input type="tel" maxlength="6" @focus="isError = false" v-model="roomNumber" />
           </div>
