@@ -3,7 +3,7 @@ export interface IPoker {
 
   getCard(): string;
 
-  getRandom(number: number): number;
+  // getRandom(number: number): number;
 }
 
 // 牌数字的编码
@@ -65,19 +65,31 @@ export class Poker implements IPoker {
         this.pokers.push(`${i}${j}`);
       }
     }
+    this.shuffle();
   }
 
-  getCard(): string {
-    if (this.pokers.length === 0) return 'done';
-    const currCardIndex = this.getRandom(this.pokers.length);
-    const currCard = this.pokers[currCardIndex];
-    this.pokers.splice(currCardIndex, 1);
-    return currCard;
+  // getCard(): string {
+  //   if (this.pokers.length === 0) return 'done';
+  //   const currCardIndex = this.getRandom(this.pokers.length);
+  //   const currCard = this.pokers[currCardIndex];
+  //   this.pokers.splice(currCardIndex, 1);
+  //   return currCard;
+  // }
+
+  // getRandom(number: number): number {
+  //   const maxNumber = Math.ceil(number);
+  //   return Math.floor(Math.random() * maxNumber);
+  // }
+
+  getCard() {
+    return this.pokers.shift() || 'done';
   }
 
-  getRandom(number: number): number {
-    const maxNumber = Math.ceil(number);
-    return Math.floor(Math.random() * maxNumber);
+  shuffle() {
+    for (let i = this.pokers.length - 1; i > 0; i--) {
+      const j = (Math.random() * (i + 1)) << 0;
+      [this.pokers[i], this.pokers[j]] = [this.pokers[j], this.pokers[i]];
+    }
   }
 
   /**

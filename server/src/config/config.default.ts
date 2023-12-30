@@ -17,12 +17,14 @@ export default (appInfo: MidwayAppInfo) => {
     midwayLogger: {
       clients: {
         fullRecordLogger: {
+          fileLogName: 'full-record.log',
           format: (info: MidwayTransformableInfo) => {
             // return `${info.timestamp} ${info.LEVEL} ${info.pid} [${ctx.userId} - ${Date.now() - ctx.startTime}ms ${ctx.method}] ${info.message}`;
             return `${new Date().toISOString()} ${info.message}`;
           },
         },
         cardsLogger: {
+          fileLogName: 'cards.log',
           format: (info: MidwayTransformableInfo) => {
             return `${new Date().toISOString()} ${info.message}`;
           },
