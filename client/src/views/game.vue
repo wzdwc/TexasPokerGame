@@ -205,11 +205,15 @@ export default class Game extends Vue {
     return this.roomConfig.smallBlind || GAME_BASE_SIZE;
   }
 
-  get latestSpecialActionMsg() {
+  get latestSpecialAction() {
     const specialActions = [ECommand.RAISE, ECommand.ALL_IN];
-    const latestSpecialAction = this.currentRoundActions
+    return this.currentRoundActions
       .filter((action) => specialActions.includes(action.latestAction.split(':')[0] as ECommand))
       .pop();
+  }
+
+  get latestSpecialActionMsg() {
+    const latestSpecialAction = this.latestSpecialAction;
     if (!latestSpecialAction) {
       return '';
     }
@@ -264,9 +268,11 @@ export default class Game extends Vue {
   private playRaiseNotice = false;
   private playAllInNotice = false;
 
-  @Watch('latestSpecialActionMsg')
-  public privateActionNoticeChange() {
-    this.actionNotice?.applyAnimation();
+  @Watch('latestSpecialAction')
+  public privateActionNoticeChange(newValue: ILatestActionData, oldValue: ILatestActionData) {
+    if (newValue?.nickName !== oldValue?.nickName) {
+      this.actionNotice?.applyAnimation();
+    }
   }
 
   @Watch('players')
