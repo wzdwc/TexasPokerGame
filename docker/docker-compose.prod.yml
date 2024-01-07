@@ -42,8 +42,6 @@ services:
         VUE_APP_API_PORT: 1111
     container_name: "dzp-nginx"
     restart: always
-    depends_on:
-      - api
     ports:
       - 1111:80
     volumes:
@@ -61,9 +59,6 @@ services:
         NODE_ENV: production
     container_name: "dzp-api"
     restart: always
-    depends_on:
-      - mysql
-      - redis
     environment:
       NODE_ENV: production
     expose:
