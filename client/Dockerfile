@@ -9,6 +9,7 @@ RUN yarn
 COPY . .
 
 ARG NODE_ENV
+ARG VUE_APP_API_IP
 ARG VUE_APP_API_PORT
 RUN yarn build
 

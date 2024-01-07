@@ -38,6 +38,7 @@ services:
       args:
         # DO NOT forgot to update Dockerfile
         NODE_ENV: production
+        VUE_APP_API_IP: adli.asuscomm.com
         VUE_APP_API_PORT: 1111
     container_name: "dzp-nginx"
     restart: always
