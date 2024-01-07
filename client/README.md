@@ -11,23 +11,24 @@ yarn serve
 
 ```bash
 VUE_APP_API_IP
-VUE_APP_ENABLE_MULTIPLE_SOCKET
+VUE_APP_API_PORT
 ```
 
 ### 编译
 
-```
-VUE_APP_API_IP=1.2.3.4 VUE_APP_ENABLE_MULTIPLE_SOCKET=0 NODE_ENV=production yarn build
+```bash
+VUE_APP_API_IP=1.2.3.4 VUE_APP_API_PORT=1111 NODE_ENV=production yarn build
 ```
 
 ### Run your tests
 
-```
+```bash
 yarn run test
 ```
 
 ## Project structure
-```
+
+```plain
 ├─public  // html
 └─src
     ├─assets
@@ -44,4 +45,5 @@ yarn run test
 ```
 
 ## License
+
 The MIT License (MIT)

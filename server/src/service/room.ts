@@ -27,8 +27,13 @@ export default class RoomService implements IRoomService {
    * @returns
    */
   async getRooms(size: number): Promise<IRoomBasicInfo[]> {
+    const ret: IRoomBasicInfo[] = [];
     const roomNumbersRet: string[] = await this.redis.keys(`${KeyPrefix}:*`);
     const roomNumbers = roomNumbersRet.map((e) => e.split(':')[1]);
+    if (!roomNumbers) {
+      return ret;
+    }
+
     const roomsInDB: { roomNumber: string; create_time: string }[] = await this.mysql.select('room', {
       where: { roomNumber: roomNumbers },
       columns: ['roomNumber', 'create_time'],
@@ -39,7 +44,6 @@ export default class RoomService implements IRoomService {
 
     const app = this.ctx.app as any;
     const cachedRooms = app.io.of('/socket').gameRooms;
-    const ret: IRoomBasicInfo[] = [];
     if (!cachedRooms) {
       return ret;
     }

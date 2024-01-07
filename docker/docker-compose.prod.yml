@@ -6,9 +6,6 @@ services:
     container_name: "dzp-mysql"
     platform: linux/x86_64
     image: mysql:5.7
-    volumes:
-      - ./data/mysql:/var/lib/mysql
-      - ./config/mysql/conf.d:/etc/mysql/conf.d
     restart: unless-stopped
     ports:
       - "3306:3306"
@@ -17,6 +14,10 @@ services:
       MYSQL_DATABASE: poker
       MYSQL_USER: poker
       MYSQL_PASSWORD: 123456
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./config/mysql/conf.d:/etc/mysql/conf.d
+      - ../database/poker.sql:/docker-entrypoint-initdb.d/99.poker.sql
     networks:
       - app-network
   
@@ -30,14 +31,45 @@ services:
     networks:
       - app-network
 
-  fe:
-    image: nginx:alpine
-    container_name: "dzp-fe"
-    ports:
-      - 8080:80
+  nginx:
+    image: dzp-nginx:latest
+    build:
+      context: ../client
+      args:
+        # DO NOT forgot to update Dockerfile
+        NODE_ENV: production
+        VUE_APP_API_PORT: 1111
+    container_name: "dzp-nginx"
     restart: always
+    depends_on:
+      - api
+    ports:
+      - 1111:80
     volumes:
-      - ../client/dist:/usr/share/nginx/html
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./config/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./config/nginx/htpasswd:/etc/nginx/htpasswd
+    networks:
+      - app-network
+  
+  api:
+    image: dzp-api:latest
+    build:
+      context: ../server
+      args:
+        NODE_ENV: production
+    container_name: "dzp-api"
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      NODE_ENV: production
+    expose:
+      - 7001
+    volumes:
+      - ./data/server/logs:/root/logs
+      - ./data/server/run:/app/run
     networks:
       - app-network
 

@@ -15,6 +15,8 @@ Date: 2020-07-08 15:11:08
 
 SET FOREIGN_KEY_CHECKS=0;
 
+USE poker;
+
 -- ----------------------------
 -- Table structure for command_record
 -- ----------------------------

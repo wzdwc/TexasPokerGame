@@ -2,6 +2,13 @@
 
 This is an online Texas Hold'em game, base on TypeScript,Egg,Node.js,Vue
 
+## Docker start
+
+```bash
+docker-compose -f docker-compose.prod.yml build --no-cache
+docker-compose -f docker-compose.prod.yml up -d
+```
+
 ## Server
 
 base on midway.js,TypeScript, socket.io, mysql.

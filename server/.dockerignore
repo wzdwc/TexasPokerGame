@@ -6,6 +6,6 @@ run/
 logs/
 npm-debug.*
 *.log
-/server/src/config/config.local.ts
+src/config/config.local.ts
 .idea/
 .vscode/

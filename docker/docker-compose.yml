@@ -9,6 +9,7 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./config/mysql/conf.d:/etc/mysql/conf.d
+      - ../database/poker.sql:/docker-entrypoint-initdb.d/99.poker.sql
     restart: unless-stopped
     ports:
       - "3306:3306"

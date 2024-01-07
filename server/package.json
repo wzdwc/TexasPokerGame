@@ -39,7 +39,7 @@
   },
   "scripts": {
     "start": "egg-scripts start --daemon --title=taxes-poker-server --framework=@midwayjs/web --ts --sticky --workers=1",
-    "start-no-daemon": "egg-scripts start --title=taxes-poker-server --framework=@midwayjs/web --ts --sticky --workers=1",
+    "online": "egg-scripts start --title=taxes-poker-server --framework=@midwayjs/web --ts --sticky --workers=1",
     "stop": "egg-scripts stop --title=taxes-poker-server",
     "start_build": "npm run build && NODE_ENV=production midway-bin dev",
     "clean": "midway-bin clean",
