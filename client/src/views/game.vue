@@ -54,7 +54,7 @@
     <notice :message-list="messageList"></notice>
     <div class="game-record iconfont icon-record" @click="getRecord(0)"></div>
     <div class="setting">
-      <div class="iconfont icon-setting setting-btn" @click="showSetting = true"></div>
+      <div class="iconfont icon-setting setting-btn" @click="showSetting = !showSetting"></div>
       <div class="setting-body" :class="{ show: showSetting }">
         <i @click="showBuyInDialog()">buy in</i>
         <i @click="standUp()">stand Up</i>
@@ -205,11 +205,15 @@ export default class Game extends Vue {
     return this.roomConfig.smallBlind || GAME_BASE_SIZE;
   }
 
-  get latestSpecialActionMsg() {
+  get latestSpecialAction() {
     const specialActions = [ECommand.RAISE, ECommand.ALL_IN];
-    const latestSpecialAction = this.currentRoundActions
+    return this.currentRoundActions
       .filter((action) => specialActions.includes(action.latestAction.split(':')[0] as ECommand))
       .pop();
+  }
+
+  get latestSpecialActionMsg() {
+    const latestSpecialAction = this.latestSpecialAction;
     if (!latestSpecialAction) {
       return '';
     }
@@ -264,9 +268,11 @@ export default class Game extends Vue {
   private playRaiseNotice = false;
   private playAllInNotice = false;
 
-  @Watch('latestSpecialActionMsg')
-  public privateActionNoticeChange() {
-    this.actionNotice?.applyAnimation();
+  @Watch('latestSpecialAction')
+  public privateActionNoticeChange(newValue: ILatestActionData, oldValue: ILatestActionData) {
+    if (newValue?.nickName !== oldValue?.nickName) {
+      this.actionNotice?.applyAnimation();
+    }
   }
 
   @Watch('players')
@@ -782,7 +788,7 @@ export default class Game extends Vue {
     .setting-body {
       position: absolute;
       left: 0;
-      top: 0;
+      top: 48px;
       transform: translate3d(-150px, 0px, 0px);
       z-index: 1;
       transition: transform 0.5s;
@@ -791,11 +797,11 @@ export default class Game extends Vue {
         display: block;
         width: 100px;
         height: 20px;
-        padding: 4px;
+        padding: 4px 8px;
         font-style: normal;
         text-align: left;
         line-height: 20px;
-        font-size: 12px;
+        font-size: 14px;
         color: #fff;
         background: rgba(0, 0, 0, 0.6);
         margin: 1px 0;
