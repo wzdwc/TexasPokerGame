@@ -3,7 +3,7 @@
     <div class="shadow" @click="show = false"></div>
     <div class="body">
       <div class="title">
-        record <i>({{ gameList[currGameIndex - 1] && gameList[currGameIndex - 1].gameId }})</i>
+        record <i>({{ gameList[currGameIndex - 1].gameId }})</i>
       </div>
       <div class="record-context">
         <ul class="td">
