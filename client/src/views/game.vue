@@ -289,6 +289,9 @@ export default class Game extends Vue {
 
   @Watch('actionUserId')
   private actionUserIdChange() {
+    if (this.isAction) {
+      this.speakText(this.userInfo.nickName + "，到你啦！");
+    }
     if (this.isPlay && this.actionEndTime) {
       console.log('action player change-------', this.actionEndTime);
       const now = Date.now();
@@ -334,6 +337,12 @@ export default class Game extends Vue {
       this.time = Math.floor((this.actionEndTime - now) / 1000);
       this.doCountDown();
     }, 1000);
+  }
+
+  private speakText(textToSpeak: string) {
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    utterance.lang = 'zh-HK';
+    speechSynthesis.speak(utterance);
   }
 
   private PokeStyle(cards: string[]) {
@@ -547,6 +556,9 @@ export default class Game extends Vue {
           message: msg.message.msg || '',
           top: Math.random() * 50 + 10,
         });
+        if (msg.message.msg.split(":")[0] != this.userInfo.nickName) {
+          this.speakText(msg.message.msg.replace(":", "话 "));
+        }
       }
     });
 
