@@ -39,7 +39,16 @@ export default class CardStyle extends Vue {
     return this.pathObj[this.type];
   }
   get color() {
-    return this.type === 'h' || this.type === 'd' ? 'red' : 'black';
+    switch (this.type) {
+      case 'h':
+        return 'red';
+      case 's':
+        return 'black';
+      case 'c':
+        return 'green';
+      case 'd':
+        return 'blue';
+    }
   }
 }
 </script>
