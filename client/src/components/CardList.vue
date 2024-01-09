@@ -2,7 +2,7 @@
   <div class="card-container">
     <div class="card" v-for="(card, key) in cardList" v-bind:class="{ show: show, turn: show && card !== '' }">
       <i></i>
-      <span class="card-bg red" :class="{ black: isBlack(map(card)[1]) }">
+      <span class="card-bg red" :class="getColor(map(card)[1])">
         <div class="shadow" v-show="shadow(card)"></div>
         <b class="number">{{ map(card)[0] }}</b>
         <b class="color">
@@ -34,8 +34,17 @@ export default class Card extends Vue {
     return this.cardList.length !== 0;
   }
 
-  private isBlack(type: string) {
-    return type === 's' || type === 'c';
+  private getColor(type: string) {
+    switch (type) {
+      case 'h':
+        return { red: true };
+      case 's':
+        return { black: true };
+      case 'c':
+        return { green: true };
+      case 'd':
+        return { blue: true };
+    }
   }
 
   private map(card: string) {
@@ -109,11 +118,19 @@ export default class Card extends Vue {
       }
 
       &.red {
-        color: #e8050a;
+        color: red;
       }
 
       &.black {
-        color: #000;
+        color: black;
+      }
+
+      &.blue {
+        color: blue;
+      }
+
+      &.green {
+        color: green;
       }
 
       .number {
