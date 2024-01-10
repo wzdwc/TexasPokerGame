@@ -326,13 +326,10 @@ export default class Game extends Vue {
     // Reminder for Raise and Allin
     if (this.audioStatus && this.isAction && this.playRaiseReminderSound()) {
       const latestSpecialAction = this.latestSpecialAction;
-      if (!latestSpecialAction) {
-        return;
-      }
-      if (latestSpecialAction.latestAction.includes(ECommand.ALL_IN)) {
+      if (latestSpecialAction && latestSpecialAction.latestAction.includes(ECommand.ALL_IN)) {
         this.speakText(`${latestSpecialAction.nickName} ALL IN!`);
       }
-      if (latestSpecialAction.latestAction.includes(ECommand.RAISE)) {
+      if (latestSpecialAction && latestSpecialAction.latestAction.includes(ECommand.RAISE)) {
         const size = latestSpecialAction.latestAction.split(':')[1];
         this.speakText(`${latestSpecialAction.nickName} raise 到 ${size}!`);
       }
