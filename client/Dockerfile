@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package.json ./
 COPY tsconfig.json ./
 COPY yarn.lock ./
-COPY .yarnrc ./
+RUN yarn config set registry https://registry.npmmirror.com/
 RUN yarn
 
 COPY . .
