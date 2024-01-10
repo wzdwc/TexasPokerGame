@@ -38,7 +38,7 @@ export default class RoomService implements IRoomService {
       where: { roomNumber: roomNumbers },
       columns: ['roomNumber', 'create_time'],
       orders: [['create_time', 'desc']],
-      limit: size,
+      limit: Math.max(3*size, 100),
       offset: 0,
     });
 
@@ -52,9 +52,11 @@ export default class RoomService implements IRoomService {
       if (!room) return;
       const sitPlayers = room.roomInfo.sit;
       const names = sitPlayers.map((sit) => sit.player?.nickName).filter(Boolean);
-      ret.push({ roomNumber: r.roomNumber, createdAt: Number(r.create_time), playersNickName: names.join(',') });
+      ret.push({ roomNumber: r.roomNumber, createdAt: Number(r.create_time), playersNickName: names.join(','), playersCount: names.length });
     });
-    return ret;
+    // > 0, then y, x
+    ret.sort((x, y) => y.playersCount - x.playersCount)
+    return ret.slice(0, size);
   }
 
   async findRoomNumber(roomNumber: string): Promise<IRoom> {

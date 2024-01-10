@@ -9,6 +9,7 @@ export interface IRoomBasicInfo {
   roomNumber: string;
   createdAt: number;
   playersNickName: string;
+  playersCount: number;
 }
 
 export interface IRoomService {
