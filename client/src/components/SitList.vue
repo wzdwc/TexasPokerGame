@@ -1,17 +1,19 @@
 <template>
-  <div class="sit-list-container">
+  <div class="sit-list-container" ref="container">
+    <div class="indicator" :style="indicatorStyle" v-if="actionUserId"></div>
     <div class="sit-list">
       <div class="sit" v-for="(sit, key) in sitList" :key="key" @click="sitDown(sit)">
         <div class="default" v-show="!sit.player">
           <i>sit</i>
         </div>
         <div class="sit-player" v-if="sit.player">
-          <div class="player" :class="{ fold: sit.player.status === -1 }">
+          <div class="player" :class="{ fold: sit.player.status === -1 }" :data-player-id="sit.player.userId">
             <div class="count-down" v-show="actionUserId === sit.player.userId">{{ time }}</div>
             <div class="user-name" v-show="sit.player.nickName">
               {{ sit.player.nickName }}
             </div>
             <div class="icon iconfont icon-user-avatar"></div>
+            <span v-show="playersStatus[sit.player.userId] && playersStatus[sit.player.userId].speaking" class="speaking-icon">🎙️</span>
             <div
               class="counter"
               :class="{
@@ -79,6 +81,7 @@
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 import { IPlayer } from '@/interface/IPlayer';
+import { IPlayersStatus } from '@/interface/IPlayersStatus';
 import { ILinkNode } from '@/utils/Link';
 import ISit from '@/interface/ISit';
 import cardList from './CardList.vue';
@@ -105,6 +108,7 @@ export default class SitList extends Vue {
   @Prop() private actionUserId!: string;
   @Prop() private valueCards!: string;
   @Prop({ default: 30, type: Number }) private time!: number;
+  @Prop() private playersStatus!: IPlayersStatus;
 
   private sitLinkNode: any = '';
   private showBuyIn = false;
@@ -146,6 +150,47 @@ export default class SitList extends Vue {
 
   get hasSit() {
     return !!this.sitList.find((s) => s.player && s.player.userId === this.currPlayer?.userId);
+  }
+
+  get indicatorStyle() {
+    const { actionUserId, sitLink } = this;
+
+    if (actionUserId && sitLink) {
+      const computeIndicatorStyle = (targetEl: HTMLDivElement, containerEl: HTMLDivElement) => {
+        if (targetEl) {
+          const { left, top, width, height } = targetEl.getBoundingClientRect();
+          const containerRect = containerEl.getBoundingClientRect();
+          const targetX = left + width / 2;
+          const targetY = top + height / 2;
+          const centerX = containerRect.left + containerRect.width / 2;
+          const centerY = containerRect.top + containerRect.height / 2;
+          const indicatorWidth = Math.sqrt(Math.abs(targetX - centerX) ** 2 + Math.abs(targetY - centerY) ** 2);
+          let degree = Math.asin(Math.abs(targetY - centerY) / indicatorWidth) * 180 / Math.PI;
+
+          if (targetX >= centerX && targetY < centerY) {
+            degree = 360 - degree;
+          } else if (targetX < centerX && targetY < centerY) {
+            degree += 180;
+          } else if (targetX < centerX && targetY >= centerY) {
+            degree = 180 - degree;
+          }
+
+          return {
+            width: indicatorWidth + 'px',
+            transform: `rotate3D(0, 0, 1, ${degree}deg)`,
+          };
+        }
+      };
+
+      const containerElement = this.$refs.container as HTMLDivElement;
+      const playerElement = containerElement?.querySelector<HTMLDivElement>(`[data-player-id="${actionUserId}"]`);
+
+      if (playerElement) {
+        return computeIndicatorStyle(playerElement, containerElement);
+      }
+    }
+
+    return null;
   }
 
   private mapCard(cards: string[]) {
@@ -224,11 +269,29 @@ export default class SitList extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .sit-list-container {
+  position: relative;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
   height: 100%;
   width: 100vw;
+
+  .indicator {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 180px;
+    margin-top: -90px;
+    background-image: linear-gradient(90deg, transparent 5%, rgba(255, 255, 255, 0.2) 75%, transparent);
+    clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 50%);
+    transform-origin: left center;
+    pointer-events: none;
+
+    @media (max-height: 680px) {
+      height: 100px;
+      margin-top: -50px;
+    }
+  }
 
   .sit-list {
     position: relative;
@@ -275,6 +338,13 @@ export default class SitList extends Vue {
           line-height: 48px;
           border-radius: 50%;
           margin-bottom: 2px;
+        }
+
+        .speaking-icon {
+          font-size: 18px;
+          position: absolute;
+          top: 45px;
+          left: 0;
         }
 
         .user-name {
@@ -329,6 +399,7 @@ export default class SitList extends Vue {
 
         .card-style {
           color: #fff;
+          margin-top: 4px;
         }
 
         .type {
@@ -483,6 +554,10 @@ export default class SitList extends Vue {
         .hand-card {
           left: unset;
           right: 0;
+        }
+        .card-style {
+          min-width: 100%;
+          float: right;
         }
       }
 
