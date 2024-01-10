@@ -2,7 +2,8 @@
   <div class="speak-settings" v-show="showSpeakSettings">
     <div class="shadow" @click="closeSpeakSettings"></div>
     <div class="speak-settings-body">
-      <ul class="voice-list">
+      <h3>一. 可用中文语音包</h3>
+      <ul v-if="voices.length > 0" class="voice-list">
         <li v-for="voice in voices" 
             :key="voice.name" 
             :class="{ 'selected-voice': selectedVoice === voice.name }" 
@@ -10,24 +11,26 @@
           {{ voice.name }} ({{ voice.lang }})
         </li>
       </ul>
+      <p v-else>没有可用的中文语音包</p>
+      <h3>二. 语音播放场景</h3>
       <div class="option">
         <label>
           <input type="checkbox" v-model="playReminderSound" @change="saveSettings">
-          轮到你时的提醒音
+          轮到你执行操作时
         </label>
       </div>
 
       <div class="option">
         <label>
           <input type="checkbox" v-model="playMessageSound" @change="saveSettings">
-          别人发的消息语音
+          别人发送消息语音时
         </label>
       </div>
 
       <div class="option">
         <label>
           <input type="checkbox" v-model="playRaiseReminderSound" @change="saveSettings">
-          Raise的提醒
+          到你时提示别人的Raise
         </label>
       </div>
     </div>
@@ -126,6 +129,10 @@ export default class SpeakSettings extends Vue {
     box-sizing: border-box;
     background: #fff;
     padding: 20px;
+
+  h3:not(:first-of-type) {
+    padding-top: 30px;
+  }
 
     .voice-list {
       max-height: 200px;
