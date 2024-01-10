@@ -10,6 +10,19 @@
           {{ voice.name }} ({{ voice.lang }})
         </li>
       </ul>
+      <div class="option">
+        <label>
+          <input type="checkbox" v-model="playReminderSound" @change="saveSettings">
+          轮到你时的提醒音
+        </label>
+      </div>
+
+      <div class="option">
+        <label>
+          <input type="checkbox" v-model="playMessageSound" @change="saveSettings">
+          别人发的消息语音
+        </label>
+      </div>
     </div>
   </div>
 </template>
@@ -22,6 +35,8 @@ export default class SpeakSettings extends Vue {
   @Prop() private showSpeakSettings!: boolean;
   private voices: SpeechSynthesisVoice[] = [];
   private selectedVoice: string | null = null;
+  private playReminderSound: boolean = true;
+  private playMessageSound: boolean = true;
 
   mounted() {
     this.fetchVoices();
@@ -29,6 +44,20 @@ export default class SpeakSettings extends Vue {
       speechSynthesis.onvoiceschanged = this.fetchVoices;
     }
     this.loadSelectedVoice();
+    this.loadSettings();
+  }
+
+  private loadSettings() {
+    const reminderSetting = localStorage.getItem('playReminderSound');
+    const messageSetting = localStorage.getItem('playMessageSound');
+
+    this.playReminderSound = reminderSetting !== null ? reminderSetting === 'true' : true;
+    this.playMessageSound = messageSetting !== null ? messageSetting === 'true' : true;
+  }
+
+  private saveSettings() {
+    localStorage.setItem('playReminderSound', this.playReminderSound.toString());
+    localStorage.setItem('playMessageSound', this.playMessageSound.toString());
   }
 
   private fetchVoices() {
@@ -80,8 +109,8 @@ export default class SpeakSettings extends Vue {
     position: fixed;
     left: 50%;
     top: 50%;
-    margin: -100px -150px;
-    width: 300px;
+    transform: translate(-50%, -150px);
+    width: 90%;
     border-radius: 12px;
     box-sizing: border-box;
     background: #fff;
@@ -96,6 +125,10 @@ export default class SpeakSettings extends Vue {
     .selected-voice {
       font-weight: bold;
     }
+  }
+
+  .option {
+    margin-top: 10px;
   }
 }
 </style>

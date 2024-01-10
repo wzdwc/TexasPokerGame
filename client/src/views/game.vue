@@ -55,13 +55,13 @@
     <notice :message-list="messageList"></notice>
     <div class="game-record iconfont icon-record" @click="getRecord(0)"></div>
     <div class="setting">
-      <div class="iconfont icon-setting setting-btn" @click="showSetting = true"></div>
+      <div class="iconfont icon-setting setting-btn" @click="showSetting = !showSetting"></div>
       <div class="setting-body" :class="{ show: showSetting }">
         <i @click="showBuyInDialog()">buy in</i>
         <i @click="standUp()">stand Up</i>
         <i @click="showCounterRecord">counter record</i>
-        <i @click="closeAudio()">audio ({{ `${audioStatus ? 'open' : 'close'}` }})</i>
         <i @click="speakSettings()">speak settings</i>
+        <i @click="closeAudio()">audio ({{ `${audioStatus ? 'open' : 'close'}` }})</i>
       </div>
     </div>
     <BuyIn :showBuyIn.sync="showBuyIn" :min="0" :max="baseSize * 200" @buyIn="buyIn"></BuyIn>
@@ -301,9 +301,19 @@ export default class Game extends Vue {
     }
   }
 
+  private playReminderSound() {
+    const reminderSetting = localStorage.getItem('playReminderSound');
+    return reminderSetting !== null ? reminderSetting === 'true' : true;
+  }
+
+  private playMessageSound() {
+    const messageSetting = localStorage.getItem('playMessageSound');
+    return messageSetting !== null ? messageSetting === 'true' : true;
+  }
+
   @Watch('actionUserId')
   private actionUserIdChange() {
-    if (this.isAction) {
+    if (this.audioStatus && this.isAction && this.playReminderSound()) {
       this.speakText(this.userInfo.nickName + '，到你啦！');
     }
     if (this.isPlay && this.actionEndTime) {
@@ -596,9 +606,8 @@ export default class Game extends Vue {
             top: Math.random() * 50 + 10,
           });
 
-          if (msg.message.msg.split(':')[0] !== this.userInfo.userId) {
-            // this is requested to be disabled
-            // this.speakText(msg.message.msg.replace(':', '话 '));
+          if (this.audioStatus && msg.message.msg.split(':')[0] !== this.userInfo.nickName && this.playMessageSound()) {
+            this.speakText(msg.message.msg.replace(':', '话 '));
           }
         }
 
