@@ -280,7 +280,7 @@ export default class Game extends Vue {
   public privateActionNoticeChange(newValue: ILatestActionData, oldValue: ILatestActionData) {
     if (newValue?.nickName !== oldValue?.nickName) {
       this.actionNotice?.applyAnimation();
-    }
+}    
   }
 
   @Watch('players')
@@ -596,8 +596,9 @@ export default class Game extends Vue {
             top: Math.random() * 50 + 10,
           });
 
-          if (msg.message.msg.split(':')[0] !== this.userInfo.nickName) {
-            this.speakText(msg.message.msg.replace(':', '话 '));
+          if (msg.message.msg.split(':')[0] !== this.userInfo.userId) {
+            // this is requested to be disabled
+            // this.speakText(msg.message.msg.replace(':', '话 '));
           }
         }
 
