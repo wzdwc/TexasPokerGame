@@ -12,6 +12,7 @@
               {{ sit.player.nickName }}
             </div>
             <div class="icon iconfont icon-user-avatar"></div>
+            <span v-show="playersStatus[sit.player.userId] && playersStatus[sit.player.userId].speaking" class="speaking-icon">🎙️</span>
             <div
               class="counter"
               :class="{
@@ -79,6 +80,7 @@
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 import { IPlayer } from '@/interface/IPlayer';
+import { IPlayersStatus } from '@/interface/IPlayersStatus';
 import { ILinkNode } from '@/utils/Link';
 import ISit from '@/interface/ISit';
 import cardList from './CardList.vue';
@@ -105,6 +107,7 @@ export default class SitList extends Vue {
   @Prop() private actionUserId!: string;
   @Prop() private valueCards!: string;
   @Prop({ default: 30, type: Number }) private time!: number;
+  @Prop() private playersStatus!: IPlayersStatus;
 
   private sitLinkNode: any = '';
   private showBuyIn = false;
@@ -275,6 +278,13 @@ export default class SitList extends Vue {
           line-height: 48px;
           border-radius: 50%;
           margin-bottom: 2px;
+        }
+
+        .speaking-icon {
+          font-size: 18px;
+          position: absolute;
+          top: 45px;
+          left: 0;
         }
 
         .user-name {

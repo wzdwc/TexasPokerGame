@@ -15,8 +15,9 @@
             <button class="btn-add-preset" @click="addPreset">+</button>
           </li>
         </ul>
+        <div class="msg-btn btn" @click="send"><span>send</span></div>
       </div>
-      <div class="msg-btn btn" @click="send"><span>send</span></div>
+      <voice @audio="sendAudio"></voice>
     </div>
   </div>
 </template>
@@ -24,12 +25,14 @@
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 import msgList from '@/components/msgList.vue';
+import Voice from '@/components/Voice.vue';
 
 const PRESET_STORE_KEY = 'msg-presets';
 
 @Component({
   components: {
     msgList,
+    Voice,
   },
 })
 export default class SendMsg extends Vue {
@@ -80,6 +83,10 @@ export default class SendMsg extends Vue {
       this.msg = '';
       this.showPresets = false;
     }
+  }
+
+  private sendAudio(audioData: any) {
+    this.$emit('sendAudio', audioData);
   }
 
   private sendPreset(msg: string) {
@@ -145,6 +152,7 @@ export default class SendMsg extends Vue {
     align-items: center;
 
     .msg-name {
+      flex: none;
       width: 40px;
       font-size: 30px;
       color: #009870;
@@ -154,16 +162,29 @@ export default class SendMsg extends Vue {
     .msg-input {
       position: relative;
       flex: 1;
-      border-radius: 4px;
-      background-color: rgba(0, 0, 0, 0.05);
       text-align: left;
+      display: flex;
+      align-items: center;
 
       input {
         height: 30px;
-        width: 90%;
+        flex: 1;
         padding: 0 5px;
         font-size: 12px;
-        background: none;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      .msg-btn {
+        flex: none;
+        width: 80px;
+        margin-top: 0;
+        margin-left: 0;
+        text-align: center;
+
+        span {
+          padding: 5px 10px;
+        }
       }
     }
 
@@ -227,18 +248,12 @@ export default class SendMsg extends Vue {
         }
       }
     }
-
-    .msg-btn {
-      width: 80px;
-      margin-top: 0;
-      margin-left: 0;
-      text-align: center;
-
-      span {
-        padding: 5px 10px;
-      }
-    }
   }
 
+  /deep/ .voice-indicator {
+    left: unset;
+    right: 0;
+    transform: none;
+  }
 }
 </style>

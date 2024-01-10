@@ -3,6 +3,7 @@
     <sitList
       :sitLink.sync="sitLink"
       :currPlayer="currPlayer"
+      :playersStatus="playersStatus"
       :commonCard="commonCard"
       @sit="sitDown"
       @buyIn="buyIn"
@@ -65,7 +66,7 @@
     <BuyIn :showBuyIn.sync="showBuyIn" :min="0" :max="baseSize * 200" @buyIn="buyIn"></BuyIn>
     <toast :show.sync="showMsg" :text="msg"></toast>
     <record :players="players" v-model="showRecord"></record>
-    <sendMsg @send="sendMsgHandle" :msg-list="msgListReverse"></sendMsg>
+    <sendMsg @send="sendMsgHandle" @sendAudio="sendAudio" :msg-list="msgListReverse"></sendMsg>
     <iAudio :play="playIncome && audioStatus" type="income"></iAudio>
     <iAudio :play="playRaiseNotice && audioStatus" type="raise-notice"></iAudio>
     <iAudio :play="playAllInNotice && audioStatus" type="allin-notice"></iAudio>
@@ -87,6 +88,7 @@ import cookie from 'js-cookie';
 import sitList from '../components/SitList.vue';
 import commonCard from '../components/CommonCard.vue';
 import { IPlayer } from '@/interface/IPlayer';
+import { IPlayersStatus } from '@/interface/IPlayersStatus';
 import { ILinkNode, Link } from '@/utils/Link';
 import ISit from '../interface/ISit';
 import BuyIn from '../components/BuyIn.vue';
@@ -263,6 +265,7 @@ export default class Game extends Vue {
   private showRecord = false;
   private playRaiseNotice = false;
   private playAllInNotice = false;
+  private playersStatus: IPlayersStatus = {};
 
   @Watch('latestSpecialActionMsg')
   public privateActionNoticeChange() {
@@ -290,7 +293,7 @@ export default class Game extends Vue {
   @Watch('actionUserId')
   private actionUserIdChange() {
     if (this.isAction) {
-      this.speakText(this.userInfo.nickName + "，到你啦！");
+      this.speakText(this.userInfo.nickName + '，到你啦！');
     }
     if (this.isPlay && this.actionEndTime) {
       console.log('action player change-------', this.actionEndTime);
@@ -320,6 +323,14 @@ export default class Game extends Vue {
   private sendMsgHandle(msgInfo: string) {
     const msg = `${this.userInfo.nickName}:${msgInfo}`;
     this.emit('broadcast', { msg });
+  }
+
+  private sendAudio(audioData: any) {
+    this.emit('broadcast', {
+      type: 'audio',
+      audioData,
+      from: this.currPlayer?.userId,
+    });
   }
 
   private showCounterRecord() {
@@ -552,12 +563,30 @@ export default class Game extends Vue {
       }
 
       if (msg.action === OnlineAction.Broadcast) {
-        this.messageList.push({
-          message: msg.message.msg || '',
-          top: Math.random() * 50 + 10,
-        });
-        if (msg.message.msg.split(":")[0] != this.userInfo.nickName) {
-          this.speakText(msg.message.msg.replace(":", "话 "));
+        if (msg.message.msg) {
+          this.messageList.push({
+            message: msg.message.msg || '',
+            top: Math.random() * 50 + 10,
+          });
+
+          if (msg.message.msg.split(':')[0] !== this.userInfo.nickName) {
+            this.speakText(msg.message.msg.replace(':', '话 '));
+          }
+        }
+
+        if (msg.message.type === 'audio') {
+          const { data, options } = msg.message.audioData;
+          const playerId = msg.message.from;
+          this.$set(this.playersStatus, playerId, { ...this.playersStatus[playerId], speaking: true });
+          const blob = new Blob(data, options);
+          const audioURL = window.URL.createObjectURL(blob);
+          const audio = document.createElement('audio');
+          audio.src = audioURL;
+          audio.play();
+          audio.onended = () => {
+            window.URL.revokeObjectURL(audioURL);
+            this.$set(this.playersStatus, playerId, { ...this.playersStatus[playerId], speaking: false });
+          };
         }
       }
     });
@@ -794,7 +823,7 @@ export default class Game extends Vue {
     .setting-body {
       position: absolute;
       left: 0;
-      top: 0;
+      top: 48px;
       transform: translate3d(-150px, 0px, 0px);
       z-index: 1;
       transition: transform 0.5s;
@@ -803,11 +832,11 @@ export default class Game extends Vue {
         display: block;
         width: 100px;
         height: 20px;
-        padding: 4px;
+        padding: 4px 8px;
         font-style: normal;
         text-align: left;
         line-height: 20px;
-        font-size: 12px;
+        font-size: 14px;
         color: #fff;
         background: rgba(0, 0, 0, 0.6);
         margin: 1px 0;
