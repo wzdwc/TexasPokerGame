@@ -13,7 +13,11 @@
               {{ sit.player.nickName }}
             </div>
             <div class="icon iconfont icon-user-avatar"></div>
-            <span v-show="playersStatus[sit.player.userId] && playersStatus[sit.player.userId].speaking" class="speaking-icon">🎙️</span>
+            <span
+              v-show="playersStatus[sit.player.userId] && playersStatus[sit.player.userId].speaking"
+              class="speaking-icon"
+              >🎙️</span
+            >
             <div
               class="counter"
               :class="{
@@ -165,7 +169,7 @@ export default class SitList extends Vue {
           const centerX = containerRect.left + containerRect.width / 2;
           const centerY = containerRect.top + containerRect.height / 2;
           const indicatorWidth = Math.sqrt(Math.abs(targetX - centerX) ** 2 + Math.abs(targetY - centerY) ** 2);
-          let degree = Math.asin(Math.abs(targetY - centerY) / indicatorWidth) * 180 / Math.PI;
+          let degree = (Math.asin(Math.abs(targetY - centerY) / indicatorWidth) * 180) / Math.PI;
 
           if (targetX >= centerX && targetY < centerY) {
             degree = 360 - degree;
@@ -439,8 +443,8 @@ export default class SitList extends Vue {
 
       .delay-time {
         position: absolute;
-        top: 80px;
-        left: 0;
+        top: 0;
+        left: 120px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -448,10 +452,10 @@ export default class SitList extends Vue {
         background: radial-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 70%);
         i {
           color: #fff;
-          font-size: 40px;
+          font-size: 50px;
         }
         span {
-          font-size: 20px;
+          font-size: 25px;
           color: #fff;
           margin-left: 2px;
           font-weight: 600;
