@@ -23,6 +23,13 @@
           别人发的消息语音
         </label>
       </div>
+
+      <div class="option">
+        <label>
+          <input type="checkbox" v-model="playRaiseReminderSound" @change="saveSettings">
+          Raise的提醒
+        </label>
+      </div>
     </div>
   </div>
 </template>
@@ -37,6 +44,7 @@ export default class SpeakSettings extends Vue {
   private selectedVoice: string | null = null;
   private playReminderSound: boolean = true;
   private playMessageSound: boolean = true;
+  private playRaiseReminderSound: boolean = true;
 
   mounted() {
     this.fetchVoices();
@@ -50,14 +58,17 @@ export default class SpeakSettings extends Vue {
   private loadSettings() {
     const reminderSetting = localStorage.getItem('playReminderSound');
     const messageSetting = localStorage.getItem('playMessageSound');
+    const raiseReminderSetting = localStorage.getItem('playRaiseReminderSound'); 
 
     this.playReminderSound = reminderSetting !== null ? reminderSetting === 'true' : true;
     this.playMessageSound = messageSetting !== null ? messageSetting === 'true' : true;
+    this.playRaiseReminderSound = raiseReminderSetting !== null ? raiseReminderSetting === 'true' : true;
   }
 
   private saveSettings() {
     localStorage.setItem('playReminderSound', this.playReminderSound.toString());
     localStorage.setItem('playMessageSound', this.playMessageSound.toString());
+    localStorage.setItem('playRaiseReminderSound', this.playRaiseReminderSound.toString());
   }
 
   private fetchVoices() {
