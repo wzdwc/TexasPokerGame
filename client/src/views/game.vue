@@ -61,9 +61,11 @@
         <i @click="standUp()">stand Up</i>
         <i @click="showCounterRecord">counter record</i>
         <i @click="closeAudio()">audio ({{ `${audioStatus ? 'open' : 'close'}` }})</i>
+        <i @click="speakSettings()">speak settings</i>
       </div>
     </div>
     <BuyIn :showBuyIn.sync="showBuyIn" :min="0" :max="baseSize * 200" @buyIn="buyIn"></BuyIn>
+    <SpeakSettings :showSpeakSettings.sync="showSpeakSettings"></SpeakSettings>
     <toast :show.sync="showMsg" :text="msg"></toast>
     <record :players="players" v-model="showRecord"></record>
     <sendMsg @send="sendMsgHandle" @sendAudio="sendAudio" :msg-list="msgListReverse"></sendMsg>
@@ -97,6 +99,7 @@ import record from '../components/Record.vue';
 import notice from '../components/Notice.vue';
 import iAudio from '../components/Audio.vue';
 import sendMsg from '../components/SendMsg.vue';
+import SpeakSettings from '@/components/SpeakSettings.vue';
 import animation from '@/components/Animation.vue';
 import actionDialog from '../components/Action.vue';
 import { PokerStyle } from '@/utils/PokerStyle';
@@ -146,6 +149,7 @@ const ACTION_TIME = 30;
     actionDialog,
     sendMsg,
     animation,
+    SpeakSettings,
   },
 })
 export default class Game extends Vue {
@@ -212,7 +216,7 @@ export default class Game extends Vue {
     return this.currentRoundActions
       .filter((action) => specialActions.includes(action.latestAction.split(':')[0] as ECommand))
       .pop();
-  }
+}
 
   get latestSpecialActionMsg() {
     const latestSpecialAction = this.latestSpecialAction;
@@ -270,6 +274,7 @@ export default class Game extends Vue {
   private playRaiseNotice = false;
   private playAllInNotice = false;
   private playersStatus: IPlayersStatus = {};
+  private showSpeakSettings = false;
 
   @Watch('latestSpecialAction')
   public privateActionNoticeChange(newValue: ILatestActionData, oldValue: ILatestActionData) {
@@ -319,6 +324,7 @@ export default class Game extends Vue {
     this.time = ACTION_TIME;
     this.winner = [];
     this.showBuyIn = false;
+    this.showSpeakSettings = false;
     this.initSitLink();
   }
 
@@ -357,10 +363,25 @@ export default class Game extends Vue {
   }
 
   private speakText(textToSpeak: string) {
+    const selectedVoiceName = localStorage.getItem('selectedVoice');
+
+    if (!selectedVoiceName) {
+      // 如果没有选择语音，则不发声
+      return;
+    }
+
+    const voice = window.speechSynthesis.getVoices().find(v => v.name === selectedVoiceName);
+
+    if (!voice) {
+      // 如果找不到对应的语音，也不发声
+      return;
+    }
+
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
-    utterance.lang = 'zh-HK';
-    speechSynthesis.speak(utterance);
+    utterance.voice = voice; // 使用用户选择的语音
+    window.speechSynthesis.speak(utterance);
   }
+
 
   private PokeStyle(cards: string[]) {
     if (this.commonCard.length === 0 || !cards) {
@@ -644,6 +665,12 @@ export default class Game extends Vue {
 
   private closeAudio() {
     this.audioStatus = !this.audioStatus;
+  }
+
+  private speakSettings() {
+    console.log("showSpeakSettins");
+    this.showSpeakSettings = true;
+    this.showSetting = false;
   }
 
   private play() {
