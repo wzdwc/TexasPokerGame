@@ -35,6 +35,13 @@
           到你时提示别人的Raise
         </label>
       </div>
+      <h3>三. 语音播放额外设置</h3>
+      <div class="option">
+        <label>
+          <input type="checkbox" v-model="isRandomVoice" @change="saveSettings" />
+          随机语音模式
+        </label>
+      </div>
     </div>
   </div>
 </template>
@@ -50,8 +57,9 @@ export default class SpeakSettings extends Vue {
   private playReminderSound: boolean = true;
   private playMessageSound: boolean = true;
   private playRaiseReminderSound: boolean = true;
+  private isRandomVoice: boolean = true;
 
-  mounted() {
+  private mounted() {
     this.fetchVoices();
     if (speechSynthesis.onvoiceschanged !== undefined) {
       speechSynthesis.onvoiceschanged = this.fetchVoices;
@@ -64,16 +72,19 @@ export default class SpeakSettings extends Vue {
     const reminderSetting = localStorage.getItem('playReminderSound');
     const messageSetting = localStorage.getItem('playMessageSound');
     const raiseReminderSetting = localStorage.getItem('playRaiseReminderSound');
+    const isRandomVoice = localStorage.getItem('tts:isRandomVoice');
 
     this.playReminderSound = reminderSetting !== null ? reminderSetting === 'true' : true;
     this.playMessageSound = messageSetting !== null ? messageSetting === 'true' : true;
     this.playRaiseReminderSound = raiseReminderSetting !== null ? raiseReminderSetting === 'true' : true;
+    this.isRandomVoice = isRandomVoice !== null ? isRandomVoice === 'true' : true;
   }
 
   private saveSettings() {
     localStorage.setItem('playReminderSound', this.playReminderSound.toString());
     localStorage.setItem('playMessageSound', this.playMessageSound.toString());
     localStorage.setItem('playRaiseReminderSound', this.playRaiseReminderSound.toString());
+    localStorage.setItem('tts:isRandomVoice', this.isRandomVoice.toString());
   }
 
   private fetchVoices() {

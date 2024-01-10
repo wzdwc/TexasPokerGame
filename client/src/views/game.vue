@@ -392,18 +392,31 @@ export default class Game extends Vue {
   }
 
   private speakText(textToSpeak: string) {
-    const selectedVoiceName = localStorage.getItem('selectedVoice');
+    const isRandomVoice = localStorage.getItem('tts:isRandomVoice');
 
-    if (!selectedVoiceName) {
-      // 如果没有选择语音，则不发声
-      return;
-    }
+    let voice: SpeechSynthesisVoice;
+    if ([null, 'true'].includes(isRandomVoice)) {
+      const voices = window.speechSynthesis.getVoices().filter((v) => v.lang.startsWith('zh'));
+      if (voices.length === 0) {
+        return;
+      }
 
-    const voice = window.speechSynthesis.getVoices().find((v) => v.name === selectedVoiceName);
+      const i = Math.floor(Math.random() * voices.length);
+      voice = voices[i];
+    } else {
+      const selectedVoiceName = localStorage.getItem('selectedVoice');
+      if (!selectedVoiceName) {
+        // 如果没有选择语音，则不发声
+        return;
+      }
 
-    if (!voice) {
-      // 如果找不到对应的语音，也不发声
-      return;
+      const selectedVoice = window.speechSynthesis.getVoices().find((v) => v.name === selectedVoiceName);
+
+      if (!selectedVoice) {
+        // 如果找不到对应的语音，也不发声
+        return;
+      }
+      voice = selectedVoice;
     }
 
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
@@ -696,7 +709,6 @@ export default class Game extends Vue {
   }
 
   private speakSettings() {
-    console.log('showSpeakSettins');
     this.showSpeakSettings = true;
     this.showSetting = false;
   }
