@@ -629,19 +629,19 @@ export default class Game extends Vue {
           }
         }
 
-        if (msg.message.type === 'audio' && this.audioStatus) {
-          const { data, options } = msg.message.audioData;
+        if (msg.message.type === 'audio') {
+          const { data, duration } = msg.message.audioData;
           const playerId = msg.message.from;
           this.$set(this.playersStatus, playerId, { ...this.playersStatus[playerId], speaking: true });
-          const blob = new Blob(data, options);
-          const audioURL = window.URL.createObjectURL(blob);
-          const audio = document.createElement('audio');
-          audio.src = audioURL;
-          audio.play();
-          audio.onended = () => {
-            window.URL.revokeObjectURL(audioURL);
-            this.$set(this.playersStatus, playerId, { ...this.playersStatus[playerId], speaking: false });
-          };
+          setTimeout(() => {
+            this.playersStatus[playerId].speaking = false;
+          }, duration);
+
+          if (this.audioStatus && this.currPlayer?.userId !== playerId) {
+            const audio = document.createElement('audio');
+            audio.src = data;
+            audio.play();
+          }
         }
       }
     });
