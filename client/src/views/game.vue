@@ -55,13 +55,13 @@
     <notice :message-list="messageList"></notice>
     <div class="game-record iconfont icon-record" @click="getRecord(0)"></div>
     <div class="setting">
-      <div class="iconfont icon-setting setting-btn" @click="showSetting = true"></div>
+      <div class="iconfont icon-setting setting-btn" @click="showSetting = !showSetting"></div>
       <div class="setting-body" :class="{ show: showSetting }">
         <i @click="showBuyInDialog()">buy in</i>
         <i @click="standUp()">stand Up</i>
         <i @click="showCounterRecord">counter record</i>
-        <i @click="closeAudio()">audio ({{ `${audioStatus ? 'open' : 'close'}` }})</i>
         <i @click="speakSettings()">speak settings</i>
+        <i @click="closeAudio()">audio ({{ `${audioStatus ? 'open' : 'close'}` }})</i>
       </div>
     </div>
     <BuyIn :showBuyIn.sync="showBuyIn" :min="0" :max="baseSize * 200" @buyIn="buyIn"></BuyIn>
@@ -224,11 +224,11 @@ export default class Game extends Vue {
       return '';
     }
     if (latestSpecialAction.latestAction.includes(ECommand.ALL_IN)) {
-      return `${latestSpecialAction.nickName} ALL IN`;
+            return `${latestSpecialAction.nickName} ALL IN`;
     }
     if (latestSpecialAction.latestAction.includes(ECommand.RAISE)) {
       const size = latestSpecialAction.latestAction.split(':')[1];
-      return `${latestSpecialAction.nickName} raise to ${this.pot}(+${size})`;
+            return `${latestSpecialAction.nickName} raise to ${this.pot}(+${size})`;
     }
     return '';
   }
@@ -301,11 +301,40 @@ export default class Game extends Vue {
     }
   }
 
+  private playReminderSound() {
+    const reminderSetting = localStorage.getItem('playReminderSound');
+    return reminderSetting !== null ? reminderSetting === 'true' : true;
+  }
+
+  private playMessageSound() {
+    const messageSetting = localStorage.getItem('playMessageSound');
+    return messageSetting !== null ? messageSetting === 'true' : true;
+  }
+
+  private playRaiseReminderSound() {
+    const raiseReminderSetting = localStorage.getItem('playRaiseReminderSound');
+    return raiseReminderSetting !== null ? raiseReminderSetting === 'true' : true;
+  }
+
   @Watch('actionUserId')
   private actionUserIdChange() {
-    if (this.isAction) {
+    // Reminder for current user
+    if (this.audioStatus && this.isAction && this.playReminderSound()) {
       this.speakText(this.userInfo.nickName + '，到你啦！');
     }
+
+    // Reminder for Raise and Allin
+    if (this.audioStatus && this.isAction && this.playRaiseReminderSound()) {
+      const latestSpecialAction = this.latestSpecialAction;
+      if (latestSpecialAction.latestAction.includes(ECommand.ALL_IN)) {
+        this.speakText(`${latestSpecialAction.nickName} ALL IN!`);
+      }
+      if (latestSpecialAction.latestAction.includes(ECommand.RAISE)) {
+        const size = latestSpecialAction.latestAction.split(':')[1];
+        this.speakText(`${latestSpecialAction.nickName} raise 到 ${size}!`); 
+      }
+    }
+
     if (this.isPlay && this.actionEndTime) {
       console.log('action player change-------', this.actionEndTime);
       const now = Date.now();
@@ -575,13 +604,13 @@ export default class Game extends Vue {
         const { latestAction, userId: actionUserId } = data;
         if (actionUserId !== this.userInfo.userId) {
           if (latestAction.includes(ECommand.RAISE)) {
-            this.playRaiseNotice = true;
+                        this.playRaiseNotice = true;
             setTimeout(() => {
               this.playRaiseNotice = false;
             }, 1000);
           }
           if (latestAction.includes(ECommand.ALL_IN)) {
-            this.playAllInNotice = true;
+                        this.playAllInNotice = true;
             setTimeout(() => {
               this.playAllInNotice = false;
             }, 1000);
@@ -596,9 +625,8 @@ export default class Game extends Vue {
             top: Math.random() * 50 + 10,
           });
 
-          if (msg.message.msg.split(':')[0] !== this.userInfo.userId) {
-            // this is requested to be disabled
-            // this.speakText(msg.message.msg.replace(':', '话 '));
+          if (this.audioStatus && msg.message.msg.split(':')[0] !== this.userInfo.nickName && this.playMessageSound()) {
+            this.speakText(msg.message.msg.replace(':', '话 '));
           }
         }
 

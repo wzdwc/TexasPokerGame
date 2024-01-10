@@ -2,7 +2,8 @@
   <div class="speak-settings" v-show="showSpeakSettings">
     <div class="shadow" @click="closeSpeakSettings"></div>
     <div class="speak-settings-body">
-      <ul class="voice-list">
+      <h3>一. 可用中文语音包</h3>
+      <ul v-if="voices.length > 0" class="voice-list">
         <li v-for="voice in voices" 
             :key="voice.name" 
             :class="{ 'selected-voice': selectedVoice === voice.name }" 
@@ -10,6 +11,28 @@
           {{ voice.name }} ({{ voice.lang }})
         </li>
       </ul>
+      <p v-else>没有可用的中文语音包</p>
+      <h3>二. 语音播放场景</h3>
+      <div class="option">
+        <label>
+          <input type="checkbox" v-model="playReminderSound" @change="saveSettings">
+          轮到你执行操作时
+        </label>
+      </div>
+
+      <div class="option">
+        <label>
+          <input type="checkbox" v-model="playMessageSound" @change="saveSettings">
+          别人发送消息语音时
+        </label>
+      </div>
+
+      <div class="option">
+        <label>
+          <input type="checkbox" v-model="playRaiseReminderSound" @change="saveSettings">
+          到你时提示别人的Raise
+        </label>
+      </div>
     </div>
   </div>
 </template>
@@ -22,6 +45,9 @@ export default class SpeakSettings extends Vue {
   @Prop() private showSpeakSettings!: boolean;
   private voices: SpeechSynthesisVoice[] = [];
   private selectedVoice: string | null = null;
+  private playReminderSound: boolean = true;
+  private playMessageSound: boolean = true;
+  private playRaiseReminderSound: boolean = true;
 
   mounted() {
     this.fetchVoices();
@@ -29,6 +55,23 @@ export default class SpeakSettings extends Vue {
       speechSynthesis.onvoiceschanged = this.fetchVoices;
     }
     this.loadSelectedVoice();
+    this.loadSettings();
+  }
+
+  private loadSettings() {
+    const reminderSetting = localStorage.getItem('playReminderSound');
+    const messageSetting = localStorage.getItem('playMessageSound');
+    const raiseReminderSetting = localStorage.getItem('playRaiseReminderSound'); 
+
+    this.playReminderSound = reminderSetting !== null ? reminderSetting === 'true' : true;
+    this.playMessageSound = messageSetting !== null ? messageSetting === 'true' : true;
+    this.playRaiseReminderSound = raiseReminderSetting !== null ? raiseReminderSetting === 'true' : true;
+  }
+
+  private saveSettings() {
+    localStorage.setItem('playReminderSound', this.playReminderSound.toString());
+    localStorage.setItem('playMessageSound', this.playMessageSound.toString());
+    localStorage.setItem('playRaiseReminderSound', this.playRaiseReminderSound.toString());
   }
 
   private fetchVoices() {
@@ -80,12 +123,16 @@ export default class SpeakSettings extends Vue {
     position: fixed;
     left: 50%;
     top: 50%;
-    margin: -100px -150px;
-    width: 300px;
+    transform: translate(-50%, -150px);
+    width: 90%;
     border-radius: 12px;
     box-sizing: border-box;
     background: #fff;
     padding: 20px;
+
+  h3:not(:first-of-type) {
+    padding-top: 30px;
+  }
 
     .voice-list {
       max-height: 200px;
@@ -96,6 +143,10 @@ export default class SpeakSettings extends Vue {
     .selected-voice {
       font-weight: bold;
     }
+  }
+
+  .option {
+    margin-top: 10px;
   }
 }
 </style>
