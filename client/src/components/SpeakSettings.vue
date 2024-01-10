@@ -137,7 +137,7 @@ export default class SpeakSettings extends Vue {
     top: 20%;
     transform: translate(-50%, -150px);
     width: 90%;
-    height: 90%;
+    height: 70%;
     border-radius: 12px;
     box-sizing: border-box;
     background: #fff;
