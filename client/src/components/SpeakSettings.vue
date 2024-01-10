@@ -4,10 +4,12 @@
     <div class="speak-settings-body">
       <h3>一. 可用中文语音包</h3>
       <ul v-if="voices.length > 0" class="voice-list">
-        <li v-for="voice in voices" 
-            :key="voice.name" 
-            :class="{ 'selected-voice': selectedVoice === voice.name }" 
-            @click="testVoice(voice)">
+        <li
+          v-for="voice in voices"
+          :key="voice.name"
+          :class="{ 'selected-voice': selectedVoice === voice.name }"
+          @click="testVoice(voice)"
+        >
           {{ voice.name }} ({{ voice.lang }})
         </li>
       </ul>
@@ -15,21 +17,21 @@
       <h3>二. 语音播放场景</h3>
       <div class="option">
         <label>
-          <input type="checkbox" v-model="playReminderSound" @change="saveSettings">
+          <input type="checkbox" v-model="playReminderSound" @change="saveSettings" />
           轮到你执行操作时
         </label>
       </div>
 
       <div class="option">
         <label>
-          <input type="checkbox" v-model="playMessageSound" @change="saveSettings">
+          <input type="checkbox" v-model="playMessageSound" @change="saveSettings" />
           别人发送消息语音时
         </label>
       </div>
 
       <div class="option">
         <label>
-          <input type="checkbox" v-model="playRaiseReminderSound" @change="saveSettings">
+          <input type="checkbox" v-model="playRaiseReminderSound" @change="saveSettings" />
           到你时提示别人的Raise
         </label>
       </div>
@@ -61,7 +63,7 @@ export default class SpeakSettings extends Vue {
   private loadSettings() {
     const reminderSetting = localStorage.getItem('playReminderSound');
     const messageSetting = localStorage.getItem('playMessageSound');
-    const raiseReminderSetting = localStorage.getItem('playRaiseReminderSound'); 
+    const raiseReminderSetting = localStorage.getItem('playRaiseReminderSound');
 
     this.playReminderSound = reminderSetting !== null ? reminderSetting === 'true' : true;
     this.playMessageSound = messageSetting !== null ? messageSetting === 'true' : true;
@@ -75,11 +77,11 @@ export default class SpeakSettings extends Vue {
   }
 
   private fetchVoices() {
-    this.voices = window.speechSynthesis.getVoices().filter(voice => voice.lang.startsWith('zh'));
+    this.voices = window.speechSynthesis.getVoices().filter((voice) => voice.lang.startsWith('zh'));
   }
 
   private testVoice(voice: SpeechSynthesisVoice) {
-    const utterance = new SpeechSynthesisUtterance("牌友，你好啊");
+    const utterance = new SpeechSynthesisUtterance('牌友，你好啊');
     utterance.voice = voice;
     window.speechSynthesis.speak(utterance);
 
@@ -100,7 +102,6 @@ export default class SpeakSettings extends Vue {
   }
 }
 </script>
-
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
@@ -130,9 +131,9 @@ export default class SpeakSettings extends Vue {
     background: #fff;
     padding: 20px;
 
-  h3:not(:first-of-type) {
-    padding-top: 30px;
-  }
+    h3:not(:first-of-type) {
+      padding-top: 30px;
+    }
 
     .voice-list {
       max-height: 200px;

@@ -216,7 +216,7 @@ export default class Game extends Vue {
     return this.currentRoundActions
       .filter((action) => specialActions.includes(action.latestAction.split(':')[0] as ECommand))
       .pop();
-}
+  }
 
   get latestSpecialActionMsg() {
     const latestSpecialAction = this.latestSpecialAction;
@@ -224,11 +224,11 @@ export default class Game extends Vue {
       return '';
     }
     if (latestSpecialAction.latestAction.includes(ECommand.ALL_IN)) {
-            return `${latestSpecialAction.nickName} ALL IN`;
+      return `${latestSpecialAction.nickName} ALL IN`;
     }
     if (latestSpecialAction.latestAction.includes(ECommand.RAISE)) {
       const size = latestSpecialAction.latestAction.split(':')[1];
-            return `${latestSpecialAction.nickName} raise to ${this.pot}(+${size})`;
+      return `${latestSpecialAction.nickName} raise to ${this.pot}(+${size})`;
     }
     return '';
   }
@@ -280,7 +280,7 @@ export default class Game extends Vue {
   public privateActionNoticeChange(newValue: ILatestActionData, oldValue: ILatestActionData) {
     if (newValue?.nickName !== oldValue?.nickName) {
       this.actionNotice?.applyAnimation();
-}    
+    }
   }
 
   @Watch('players')
@@ -331,7 +331,7 @@ export default class Game extends Vue {
       }
       if (latestSpecialAction.latestAction.includes(ECommand.RAISE)) {
         const size = latestSpecialAction.latestAction.split(':')[1];
-        this.speakText(`${latestSpecialAction.nickName} raise 到 ${size}!`); 
+        this.speakText(`${latestSpecialAction.nickName} raise 到 ${size}!`);
       }
     }
 
@@ -399,7 +399,7 @@ export default class Game extends Vue {
       return;
     }
 
-    const voice = window.speechSynthesis.getVoices().find(v => v.name === selectedVoiceName);
+    const voice = window.speechSynthesis.getVoices().find((v) => v.name === selectedVoiceName);
 
     if (!voice) {
       // 如果找不到对应的语音，也不发声
@@ -410,7 +410,6 @@ export default class Game extends Vue {
     utterance.voice = voice; // 使用用户选择的语音
     window.speechSynthesis.speak(utterance);
   }
-
 
   private PokeStyle(cards: string[]) {
     if (this.commonCard.length === 0 || !cards) {
@@ -604,13 +603,13 @@ export default class Game extends Vue {
         const { latestAction, userId: actionUserId } = data;
         if (actionUserId !== this.userInfo.userId) {
           if (latestAction.includes(ECommand.RAISE)) {
-                        this.playRaiseNotice = true;
+            this.playRaiseNotice = true;
             setTimeout(() => {
               this.playRaiseNotice = false;
             }, 1000);
           }
           if (latestAction.includes(ECommand.ALL_IN)) {
-                        this.playAllInNotice = true;
+            this.playAllInNotice = true;
             setTimeout(() => {
               this.playAllInNotice = false;
             }, 1000);
@@ -697,7 +696,7 @@ export default class Game extends Vue {
   }
 
   private speakSettings() {
-    console.log("showSpeakSettins");
+    console.log('showSpeakSettins');
     this.showSpeakSettings = true;
     this.showSetting = false;
   }
