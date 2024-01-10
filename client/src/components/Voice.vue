@@ -9,12 +9,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+declare var MediaRecorder: any;
 
 @Component
 export default class Voice extends Vue {
   public isSupported = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
   private mediaStream!: MediaStream | null;
-  private mediaRecorder!: MediaRecorder | null;
+  private mediaRecorder!: any;
   private isRecording = false;
 
   public stop() {
@@ -44,7 +45,7 @@ export default class Voice extends Vue {
         audioBitsPerSecond: 16000,
       });
       mediaRecorder.start();
-      mediaRecorder.ondataavailable = (e) => {
+      mediaRecorder.ondataavailable = (e: any) => {
         chunks.push(e.data);
       };
       mediaRecorder.onstop = () => {

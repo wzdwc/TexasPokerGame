@@ -601,7 +601,7 @@ export default class Game extends Vue {
           }
         }
 
-        if (msg.message.type === 'audio') {
+        if (msg.message.type === 'audio' && this.audioStatus) {
           const { data, options } = msg.message.audioData;
           const playerId = msg.message.from;
           this.$set(this.playersStatus, playerId, { ...this.playersStatus[playerId], speaking: true });
