@@ -318,11 +318,6 @@ export default class Game extends Vue {
 
   @Watch('actionUserId')
   private actionUserIdChange() {
-    // Reminder for current user
-    if (this.audioStatus && this.isAction && this.playReminderSound()) {
-      this.speakText(this.userInfo.nickName + '，到你啦！');
-    }
-
     // Reminder for Raise and Allin
     if (this.audioStatus && this.isAction && this.playRaiseReminderSound()) {
       const latestSpecialAction = this.latestSpecialAction;
@@ -333,6 +328,11 @@ export default class Game extends Vue {
         const size = latestSpecialAction.latestAction.split(':')[1];
         this.speakText(`${latestSpecialAction.nickName} raise 到 ${size}!`);
       }
+    }
+
+    // Reminder for current user
+    if (this.audioStatus && this.isAction && this.playReminderSound()) {
+      this.speakText(this.userInfo.nickName + '，到你啦！');
     }
 
     if (this.isPlay && this.actionEndTime) {
