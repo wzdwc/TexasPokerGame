@@ -395,7 +395,7 @@ export default class Game extends Vue {
     const isRandomVoice = localStorage.getItem('tts:isRandomVoice');
 
     let voice: SpeechSynthesisVoice;
-    if ([null, 'true'].includes(isRandomVoice)) {
+    if (isRandomVoice === 'true') {
       const voices = window.speechSynthesis.getVoices().filter((v) => v.lang.startsWith('zh'));
       if (voices.length === 0) {
         return;

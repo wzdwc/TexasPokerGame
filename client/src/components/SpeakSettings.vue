@@ -57,7 +57,7 @@ export default class SpeakSettings extends Vue {
   private playReminderSound: boolean = true;
   private playMessageSound: boolean = true;
   private playRaiseReminderSound: boolean = true;
-  private isRandomVoice: boolean = true;
+  private isRandomVoice: boolean = false;
 
   private mounted() {
     this.fetchVoices();
@@ -77,7 +77,7 @@ export default class SpeakSettings extends Vue {
     this.playReminderSound = reminderSetting !== null ? reminderSetting === 'true' : true;
     this.playMessageSound = messageSetting !== null ? messageSetting === 'true' : true;
     this.playRaiseReminderSound = raiseReminderSetting !== null ? raiseReminderSetting === 'true' : true;
-    this.isRandomVoice = isRandomVoice !== null ? isRandomVoice === 'true' : true;
+    this.isRandomVoice = isRandomVoice !== null ? isRandomVoice === 'true' : false;
   }
 
   private saveSettings() {
@@ -134,13 +134,15 @@ export default class SpeakSettings extends Vue {
     z-index: 99;
     position: fixed;
     left: 50%;
-    top: 50%;
+    top: 20%;
     transform: translate(-50%, -150px);
     width: 90%;
+    height: 90%;
     border-radius: 12px;
     box-sizing: border-box;
     background: #fff;
     padding: 20px;
+    overflow-y: auto;
 
     h3:not(:first-of-type) {
       padding-top: 30px;
