@@ -134,10 +134,10 @@ export default class SpeakSettings extends Vue {
     z-index: 99;
     position: fixed;
     left: 50%;
-    top: 20%;
-    transform: translate(-50%, -150px);
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 90%;
-    height: 70%;
+    height: 60%;
     border-radius: 12px;
     box-sizing: border-box;
     background: #fff;
