@@ -118,8 +118,8 @@ export default class SendMsg extends Vue {
           this.presets = this.presets.filter((_, idx) => idx !== index );
           this.savePresets();
         }
-      }
-    })
+      },
+    });
   }
 
   private savePresets(presets?: string[]) {
@@ -137,12 +137,12 @@ export default class SendMsg extends Vue {
 
   private confirm({
     message,
-    callback = () => {}
+    callback,
   }: {
     message: string,
-    callback: (confirm: boolean) => void
+    callback: (confirm: boolean) => void,
   }) {
-    const modal = document.createElement('div')
+    const modal = document.createElement('div');
     Object.assign(modal.style, {
       position: 'fixed',
       left: '50%',
@@ -160,20 +160,20 @@ export default class SendMsg extends Vue {
         <a href="javascript:void(0)" data-action='cancel' style="text-decoration: none; color: #777">取消</a>
         <a href="javascript:void(0)" data-action='confirm' style="text-decoration: none; color: #00976e; margin-left: 2em">确认</a>
       </div>
-    `
-    modal.addEventListener('click', e => {
+    `;
+    modal.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      const target = e.target as HTMLDivElement
-      if (target?.matches("[data-action='cancel']")) {
-        modal.remove()
-        callback(false)
-      } else if (target?.matches("[data-action='confirm']")) {
-        modal.remove()
-        callback(true)
+      const target = e.target as HTMLDivElement;
+      if (target?.matches('[data-action=\'cancel\']')) {
+        modal.remove();
+        callback(false);
+      } else if (target?.matches('[data-action=\'confirm\']')) {
+        modal.remove();
+        callback(true);
       }
-    })
-    document.body.append(modal)
+    });
+    document.body.append(modal);
   }
 }
 </script>
