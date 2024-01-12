@@ -367,7 +367,6 @@ export class PokerGame {
       const command = commands[0];
       let size = Number(commands[1]);
       if (command === ECommand.ALL_IN) {
-        console.log('counter', this.currPlayer.node.counter);
         // Counting player action size, if player's counter less than prevSize then use prevSize
         size = this.currPlayer.node.counter > this.prevSize ? this.currPlayer.node.counter : this.prevSize;
         this.currActionAllinPlayer.push(this.currPlayer.node);
@@ -377,7 +376,6 @@ export class PokerGame {
       if (command === ECommand.CALL) {
         size = this.prevSize;
         const actionSize = this.currPlayer.node.actionSize >= 0 ? this.currPlayer.node.actionSize : 0;
-        console.log('call----------', actionSize);
         this.pot += size - actionSize;
       }
       if (command === ECommand.FOLD) {
@@ -404,7 +402,7 @@ export class PokerGame {
       }
       if (command === ECommand.RAISE) {
         // counter not enough raise
-        if (size < this.prevSize * 2) {
+        if (size === 0 || size < this.prevSize * 2) {
           throw `incorrect action: raise ========= action size: ${this.currPlayer.node.actionSize}, prevSize: ${this.prevSize}`;
         }
         const prevActionSize = this.currPlayer.node.actionSize >= 0 ? this.currPlayer.node.actionSize : 0;
