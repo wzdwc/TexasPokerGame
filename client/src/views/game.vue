@@ -229,7 +229,8 @@ export default class Game extends Vue {
     }
     if (latestSpecialAction.latestAction.includes(ECommand.RAISE)) {
       const size = latestSpecialAction.latestAction.split(':')[1];
-      return `${latestSpecialAction.nickName} raise to ${this.pot}(+${size})`;
+      const prevPot = this.pot - Number(size);
+      return `${latestSpecialAction.nickName} raise to ${this.pot}(${prevPot}+${size})`;
     }
     return '';
   }
@@ -333,7 +334,7 @@ export default class Game extends Vue {
 
     // Reminder for current user
     if (this.audioStatus && this.isAction && this.playReminderSound()) {
-      this.speakText(this.userInfo.nickName + '，到你啦！');
+      this.speakText(this.userInfo.nickName + ',到你啦!');
     }
 
     if (this.isPlay && this.actionEndTime) {
