@@ -109,6 +109,7 @@ import service from '../service';
 import gameRecord from '@/components/GameRecord.vue';
 import { IGameRecord } from '@/interface/IGameRecord';
 import { Online, OnlineAction, P2PAction } from '@/utils/constant';
+import { Howl } from 'howler';
 
 export enum ECommand {
   CALL = 'call',
@@ -651,9 +652,13 @@ export default class Game extends Vue {
           }, duration);
 
           if (this.audioStatus && this.currPlayer?.userId !== playerId) {
-            const audio = document.createElement('audio');
-            audio.src = data;
-            audio.play();
+            const audio = new Howl({
+              src: data,
+              autoplay: true,
+              onend: () => {
+                audio.unload();
+              },
+            });
           }
         }
       }
@@ -822,7 +827,6 @@ export default class Game extends Vue {
   height: calc(100% - 45px);
   width: 100vw;
   overflow: hidden;
-
   .game-canvas {
     display: flex;
     flex-direction: column;

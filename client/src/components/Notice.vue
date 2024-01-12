@@ -1,7 +1,7 @@
 <template>
   <div class="notice-container">
     <div class="notice-body">
-      <i v-for="message in messageList" v-if="message !== ''" :style="{ top: `${message.top}vh` }">{{
+      <i v-for="message in messageList" v-if="message !== ''" :style="{ top: `${message.top}vh`, animationDuration: `${duration}s` }">{{
         message.message
       }}</i>
     </div>
@@ -14,6 +14,23 @@ import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 @Component
 export default class Notice extends Vue {
   @Prop() private messageList!: any[];
+  private duration = 8;
+
+  private resetDuration() {
+    const pageWidth = document.documentElement.clientWidth;
+    this.duration = pageWidth > 800
+      ? Math.round(pageWidth / 375 * 4)
+      : Math.round(pageWidth / 375 * 8);
+  }
+
+  private mounted() {
+    this.resetDuration();
+    window.addEventListener('resize', this.resetDuration);
+  }
+
+  private beforeDestroy() {
+    window.removeEventListener('resize', this.resetDuration);
+  }
 }
 </script>
 
@@ -39,6 +56,11 @@ export default class Notice extends Vue {
       font-style: normal;
       border-radius: 2px;
       background-color: rgba(0, 0, 0, 0.4);
+
+      @media (min-width: 800px) {
+        border-radius: 4px;
+        font-size: 16px;
+      }
     }
   }
   @-webkit-keyframes move /* Safari 与 Chrome */ {

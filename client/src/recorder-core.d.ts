@@ -1,10 +1,13 @@
 declare module 'recorder-core' {
-  interface RecorderInstace {
-    [index: string]: any;
+  function Recorder(...args: any[]): Recorder.RecorderInstace;
+
+  namespace Recorder {
+    interface RecorderInstace {
+      [index: string]: any;
+    }
+
+    function Support(): boolean;
   }
 
-  function Recorder(options: any): RecorderInstace;
-
-  export default Recorder;
+  export = Recorder;
 }
-

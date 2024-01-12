@@ -8,7 +8,7 @@
         <ul class="presets" :class="{ show: showPresets }" ref="presetsContainer">
           <li v-for="(item, index) in presets" :key="index">
             <div class="preset-content" @click="sendPreset(item)">{{ item }}</div>
-            <button class="btn-remove-preset" @click="removePreset(index)">-</button>
+            <button class="btn-remove-preset" @click="removePreset(index)">×</button>
           </li>
           <li class="custom-preset">
             <input v-model="customPreset" @keyup.13="addPreset"/>
@@ -17,7 +17,7 @@
         </ul>
         <div class="msg-btn btn" @click="send"><span>send</span></div>
       </div>
-      <voice @audio="sendAudio"></voice>
+      <voice-recorder @audio="sendAudio"></voice-recorder>
     </div>
   </div>
 </template>
@@ -25,14 +25,14 @@
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 import msgList from '@/components/msgList.vue';
-import Voice from '@/components/Voice.vue';
+import VoiceRecorder from '@/components/VoiceRecorder.vue';
 
 const PRESET_STORE_KEY = 'msg-presets';
 
 @Component({
   components: {
     msgList,
-    Voice,
+    VoiceRecorder,
   },
 })
 export default class SendMsg extends Vue {
@@ -111,12 +111,15 @@ export default class SendMsg extends Vue {
   }
 
   private removePreset(index: number) {
-    const yes = window.confirm('是否删除?');
-
-    if (yes) {
-      this.presets = this.presets.filter((_, idx) => idx !== index );
-      this.savePresets();
-    }
+    this.confirm({
+      message: '是否删除?',
+      callback: (yes) => {
+        if (yes) {
+          this.presets = this.presets.filter((_, idx) => idx !== index );
+          this.savePresets();
+        }
+      },
+    });
   }
 
   private savePresets(presets?: string[]) {
@@ -130,6 +133,47 @@ export default class SendMsg extends Vue {
 
   private documentClickHandler() {
     this.showPresets = false;
+  }
+
+  private confirm({
+    message,
+    callback,
+  }: {
+    message: string,
+    callback: (confirm: boolean) => void,
+  }) {
+    const modal = document.createElement('div');
+    Object.assign(modal.style, {
+      position: 'fixed',
+      left: '50%',
+      top: '50%',
+      minWidth: '200px',
+      transform: 'translate(-50%, -50%)',
+      zIndex: 9999,
+      background: 'white',
+      borderRadius: '4px',
+      fontSize: '14px',
+    });
+    modal.innerHTML = `
+      <div style="text-align: center; padding: 12px;">${message}</div>
+      <div style="text-align: right; padding: 12px;">
+        <a href="javascript:void(0)" data-action='cancel' style="text-decoration: none; color: #777">取消</a>
+        <a href="javascript:void(0)" data-action='confirm' style="text-decoration: none; color: #00976e; margin-left: 2em">确认</a>
+      </div>
+    `;
+    modal.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const target = e.target as HTMLDivElement;
+      if (target?.matches('[data-action=\'cancel\']')) {
+        modal.remove();
+        callback(false);
+      } else if (target?.matches('[data-action=\'confirm\']')) {
+        modal.remove();
+        callback(true);
+      }
+    });
+    document.body.append(modal);
   }
 }
 </script>

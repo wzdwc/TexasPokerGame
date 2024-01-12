@@ -1,6 +1,6 @@
 <template>
   <div class="voice" v-show="isSupported" @contextmenu.stop.prevent="() => null">
-    <span class="voice-input" @touchstart="onStart">🎙️</span>
+    <span class="voice-input" @touchstart="onStart" @mousedown="onStart">🎙️</span>
     <div class="voice-indicator" v-show="isRecording">
       {{ isRecording ? 'recording' : '' }}
     </div>
@@ -17,7 +17,7 @@ import 'recorder-core/src/extensions/waveview';
 
 @Component
 export default class Voice extends Vue {
-  public isSupported = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  public isSupported = Recorder.Support();
   private mediaRecorder!: ReturnType<typeof Recorder> | null;
   private isRecording = false;
 
@@ -28,6 +28,8 @@ export default class Voice extends Vue {
         this.$emit('audio', { data: reader.result, duration });
       };
       reader.readAsDataURL(blob);
+      this.mediaRecorder?.close();
+      this.mediaRecorder = null;
     });
     this.isRecording = false;
   }
@@ -37,20 +39,18 @@ export default class Voice extends Vue {
       return;
     }
 
-    if (this.mediaRecorder) {
-      this.isRecording = true;
-      return this.mediaRecorder.start();
-    }
-
     const mediaRecorder = Recorder({
       type: 'mp3',
-      bitRate: 16,
+      bitRate: 32,
       sampleRate: 16000,
     });
 
     mediaRecorder.open(() => {
+      this.isRecording = true;
       mediaRecorder.start();
+      document.addEventListener('touchcancel', this.stop);
       document.addEventListener('touchend', this.stop);
+      document.addEventListener('mouseup', this.stop);
     }, (errMsg: string, isUserNotAllow: boolean) => {
       console.log('open recorder error: ', errMsg, isUserNotAllow && 'user not allow');
     });
@@ -61,7 +61,9 @@ export default class Voice extends Vue {
   private beforeDestroy() {
     this.mediaRecorder?.close();
     this.mediaRecorder = null;
+    document.removeEventListener('touchcancel', this.stop);
     document.removeEventListener('touchend', this.stop);
+    document.removeEventListener('mouseup', this.stop);
   }
 }
 </script>

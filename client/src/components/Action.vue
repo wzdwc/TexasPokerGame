@@ -193,6 +193,7 @@ export default class Action extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .action-container {
+  user-select: none;
   .action {
     position: absolute;
     left: 50%;

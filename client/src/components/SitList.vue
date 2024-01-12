@@ -279,6 +279,7 @@ export default class SitList extends Vue {
   align-items: center;
   height: 100%;
   width: 100vw;
+  user-select: none;
 
   .indicator {
     position: absolute;
