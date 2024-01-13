@@ -24,11 +24,11 @@
 
     <div class="action-other-size" v-if="isRaise">
       <div class="action-other-size-body">
-        <div class="size" v-show="currPlayer && raiseSize < currPlayer.counter">
-          <input type="number" v-model="raiseSize" />
+        <div class="size" v-show="currPlayer && moreSize < currPlayer.counter">
+          <input type="number" v-model="moreSize" />
         </div>
-        <div class="size" v-show="currPlayer && raiseSize === currPlayer.counter">Allin</div>
-        <range :max="currPlayer && currPlayer.counter" :min="minActionSize" :is-horizontal="true" v-model="raiseSize"
+        <div class="size" v-show="currPlayer && moreSize === currPlayer.counter">Allin</div>
+        <range :max="currPlayer && currPlayer.counter" :min="minActionSize" :is-horizontal="true" v-model="moreSize"
           @change="getActionSize"></range>
         <div class="btn" @click="addSize">ok</div>
       </div>
