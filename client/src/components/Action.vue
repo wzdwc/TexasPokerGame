@@ -6,12 +6,14 @@
           <i v-for="size in raiseSizeMap" @click="raise(size)" v-show="showActionSize(size)"> {{ Math.floor(size) }}</i>
         </div>
       </div>
-      <div class="action-type action-btn">
-        <span @click="action('fold')">fold</span>
-        <span @click="action('check')" v-show="showActionBtn('check')">check</span>
-        <span @click="action('call')" v-show="showActionBtn('call')">call</span>
-        <span @click="otherSizeHandle()" v-show="showActionBtn('raise')">more</span>
-        <span @click="action('allin')" v-show="!showActionBtn('raise')">allin</span>
+      <div class="action-type">
+        <span class="action-btn" @click="action('fold')">fold</span>
+        <span class="action-btn" @click="action('check')" v-show="showActionBtn('check')">check</span>
+        <span class="action-btn" @click="action('call')" v-show="showActionBtn('call')">call</span>
+        <span class="action-btn" @click="otherSizeHandle()" v-show="showActionBtn('raise')">more</span>
+        <span class="action-btn action-btn--allin" @dblclick="action('allin')" v-show="!showActionBtn('raise')"
+          >ALLIN</span
+        >
       </div>
       <div>
         <iAudio :play="playClick && audioStatus" type="click"></iAudio>
@@ -21,22 +23,22 @@
     </div>
 
     <div class="action-other-size" v-if="isRaise">
-        <div class="action-other-size-body">
-          <div class="size" v-show="currPlayer && raiseSize < currPlayer.counter">
-            <input type="number" v-model="raiseSize" />
-          </div>
-          <div class="size" v-show="currPlayer && raiseSize === currPlayer.counter">Allin</div>
-          <range
-            :max="currPlayer && currPlayer.counter"
-            :min="minActionSize"
-            :is-horizontal="true"
-            v-model="raiseSize"
-            @change="getActionSize"
-          ></range>
-          <div class="btn" @click="addSize">ok</div>
+      <div class="action-other-size-body">
+        <div class="size" v-show="currPlayer && raiseSize < currPlayer.counter">
+          <input type="number" v-model="raiseSize" />
         </div>
-        <div class="shadow" @click="isRaise = false"></div>
+        <div class="size" v-show="currPlayer && raiseSize === currPlayer.counter">Allin</div>
+        <range
+          :max="currPlayer && currPlayer.counter"
+          :min="minActionSize"
+          :is-horizontal="true"
+          v-model="raiseSize"
+          @change="getActionSize"
+        ></range>
+        <div class="btn" @click="addSize">ok</div>
       </div>
+      <div class="shadow" @click="isRaise = false"></div>
+    </div>
   </div>
 </template>
 
@@ -205,7 +207,6 @@ export default class Action extends Vue {
       top: calc(50% + 70px);
     }
 
-
     .raise-size {
       text-align: center;
       white-space: nowrap;
@@ -232,21 +233,25 @@ export default class Action extends Vue {
     }
 
     .action-btn {
-      span {
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        padding: 2px;
-        text-align: center;
-        margin: 0 10px;
-        line-height: 40px;
-        border: 1px solid #fff;
-        font-size: 14px;
-        display: inline-block;
-      }
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      padding: 2px;
+      text-align: center;
+      margin: 0 10px;
+      line-height: 40px;
+      border: 1px solid #fff;
+      font-size: 14px;
+      display: inline-block;
     }
 
+    .action-btn--allin {
+      border: thick double red;
+      color: red;
+      font-weight: bold;
+    }
   }
+
   .action-other-size {
     background-color: rgba(0, 0, 0, 0);
     position: fixed;

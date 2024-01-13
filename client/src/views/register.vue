@@ -1,7 +1,7 @@
 <template>
   <div class="register-container container">
     <div class="register-body">
-      <div class="logo">J-POKER</div>
+      <div class="logo">D Z P</div>
       <div class="title">Create Account</div>
       <div class="user-name">
         <XInput
