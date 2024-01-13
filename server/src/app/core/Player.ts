@@ -27,6 +27,7 @@ export enum ECommand {
   SMALL_BLIND = 'sb',
   BIG_BLIND = 'bb',
   STRADDLE = 'straddle',
+  BET = 'bet',
   CALL = 'call',
   ALL_IN = 'allin',
   RAISE = 'raise',
@@ -136,6 +137,10 @@ export class Player {
       } else {
         throw 'player: error action STRADDLE';
       }
+    }
+
+    if (command === ECommand.BET) {
+      size = raiseSize;
     }
 
     // player raise,get the raise size

@@ -28,7 +28,6 @@ export default class Range extends Vue {
   set rangeSize(val) {
     const valNum = Number(val);
     const size = valNum === 0 ? this.min : Math.floor((valNum / 100) * (this.max - this.min)) + this.min;
-    console.log('size', size);
     this.$emit('change', size);
     this.$emit('input', size);
   }

@@ -3,7 +3,8 @@
     <div class="action" v-show="isAction">
       <div class="raise-size">
         <div class="not-allin" v-show="showActionBtn('raise')">
-          <i v-for="size in raiseSizeMap" @click="raise(size)" v-show="showActionSize(size)"> {{ Math.floor(size) }}</i>
+          <i v-for="size in moreSizeMap" @click="raiseOrBet(size)" v-show="showActionSize(size)">
+            {{ Math.floor(size) }}</i>
         </div>
       </div>
       <div class="action-type">
@@ -11,9 +12,8 @@
         <span class="action-btn" @click="action('check')" v-show="showActionBtn('check')">check</span>
         <span class="action-btn" @click="action('call')" v-show="showActionBtn('call')">call</span>
         <span class="action-btn" @click="otherSizeHandle()" v-show="showActionBtn('raise')">more</span>
-        <span class="action-btn action-btn--allin" @dblclick="action('allin')" v-show="!showActionBtn('raise')"
-          >ALLIN</span
-        >
+        <span class="action-btn action-btn--allin" @dblclick="action('allin')"
+          v-show="!showActionBtn('raise')">ALLIN</span>
       </div>
       <div>
         <iAudio :play="playClick && audioStatus" type="click"></iAudio>
@@ -28,13 +28,8 @@
           <input type="number" v-model="raiseSize" />
         </div>
         <div class="size" v-show="currPlayer && raiseSize === currPlayer.counter">Allin</div>
-        <range
-          :max="currPlayer && currPlayer.counter"
-          :min="minActionSize"
-          :is-horizontal="true"
-          v-model="raiseSize"
-          @change="getActionSize"
-        ></range>
+        <range :max="currPlayer && currPlayer.counter" :min="minActionSize" :is-horizontal="true" v-model="raiseSize"
+          @change="getActionSize"></range>
         <div class="btn" @click="addSize">ok</div>
       </div>
       <div class="shadow" @click="isRaise = false"></div>
@@ -66,23 +61,11 @@ export default class Action extends Vue {
   @Prop() private audioStatus?: boolean;
 
   private isRaise = false;
-  private raiseSize: number = 0;
+  private moreSize: number = 0;
   private actioned = false;
   private playClick = false;
   private playRaise = false;
   private playFold = false;
-  // private raiseSizeMap = {
-  //   firsAction: {
-  //     two: 2,
-  //     three: 3,
-  //     four: 4,
-  //   },
-  //   other: {
-  //     oneThirdPot: 0.5,
-  //     halfPot: 0.75,
-  //     pot: 1,
-  //   },
-  // };
 
   @Watch('isAction')
   private wAction(val: boolean) {
@@ -92,12 +75,12 @@ export default class Action extends Vue {
     this.playFold = false;
   }
 
-  @Watch('raiseSize')
-  private wRaiseSize(val: number) {
-    this.raiseSize = val > this.currPlayer.counter ? this.currPlayer.counter : val;
+  @Watch('moreSize')
+  private wmoreSize(val: number) {
+    this.moreSize = val > this.currPlayer.counter ? this.currPlayer.counter : val;
   }
 
-  get raiseSizeMap() {
+  get moreSizeMap() {
     let size = this.pot > this.baseSize * 4 ? this.pot : this.baseSize * 2;
     if (this.prevSize > 1) {
       size = this.prevSize * 4;
@@ -111,8 +94,13 @@ export default class Action extends Vue {
     return Number(this.currPlayer && this.currPlayer.counter + this.currPlayer.actionSize);
   }
 
-  private raise(size: number) {
-    this.action(`raise:${Math.floor(size)}`);
+  private raiseOrBet(size: number) {
+    const actionSize = Math.floor(size);
+    if (this.prevSize === 0) {
+      this.action(`bet:${actionSize}`);
+    } else {
+      this.action(`raise:${actionSize}`);
+    }
   }
 
   private action(command: string) {
@@ -141,22 +129,24 @@ export default class Action extends Vue {
 
   private otherSizeHandle() {
     this.isRaise = true;
-    this.raiseSize = this.minActionSize;
+    this.moreSize = this.minActionSize;
   }
 
   private getActionSize(size: number) {
     if (size > this.minActionSize) {
-      this.raiseSize = size;
+      this.moreSize = size;
     } else {
       this.$plugin.toast('raise size too small');
     }
   }
 
   private addSize() {
-    if (this.raiseSize === this.currPlayer?.counter) {
+    if (this.moreSize === this.currPlayer?.counter) {
       this.action('allin');
+    } else if (this.prevSize === 0) {
+      this.action(`bet:${this.moreSize}`);
     } else {
-      this.action(`raise:${this.raiseSize}`);
+      this.action(`raise:${this.moreSize}`);
     }
   }
 
@@ -196,6 +186,7 @@ export default class Action extends Vue {
 <style scoped lang="less">
 .action-container {
   user-select: none;
+
   .action {
     position: absolute;
     left: 50%;
@@ -277,6 +268,7 @@ export default class Action extends Vue {
       top: 50%;
       transform: translate(0, -50%);
       text-align: center;
+
       .size {
         input {
           background: transparent;
@@ -286,6 +278,7 @@ export default class Action extends Vue {
           color: #fff;
         }
       }
+
       .btn {
         display: inline-block;
         color: white;

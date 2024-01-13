@@ -366,6 +366,7 @@ export class PokerGame {
       const commands = commandString.split(':');
       const command = commands[0];
       let size = Number(commands[1]);
+      const actionSize = this.currPlayer.node.actionSize >= 0 ? this.currPlayer.node.actionSize : 0;
       if (command === ECommand.ALL_IN) {
         // Counting player action size, if player's counter less than prevSize then use prevSize
         size = this.currPlayer.node.counter > this.prevSize ? this.currPlayer.node.counter : this.prevSize;
@@ -375,7 +376,9 @@ export class PokerGame {
       }
       if (command === ECommand.CALL) {
         size = this.prevSize;
-        const actionSize = this.currPlayer.node.actionSize >= 0 ? this.currPlayer.node.actionSize : 0;
+        this.pot += size - actionSize;
+      }
+      if(command === ECommand.BET) {
         this.pot += size - actionSize;
       }
       if (command === ECommand.FOLD) {
@@ -405,8 +408,7 @@ export class PokerGame {
         if (size === 0 || size < this.prevSize * 2) {
           throw `incorrect action: raise ========= action size: ${this.currPlayer.node.actionSize}, prevSize: ${this.prevSize}`;
         }
-        const prevActionSize = this.currPlayer.node.actionSize >= 0 ? this.currPlayer.node.actionSize : 0;
-        this.pot += size - prevActionSize;
+        this.pot += size - actionSize;
       }
       try {
         clearTimeout(this.actionTimeOut);
