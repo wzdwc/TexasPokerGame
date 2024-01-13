@@ -5,31 +5,34 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Test build for server
-      uses: actions/setup-node@v4
-      with:
-        node-version: 18.18.2
-        cache: 'yarn'
-    - working-directory: ./server
-      run: |
-        yarn install --frozen-lockfile
-        yarn build
-        
-    - name: Test build for Client
-      uses: actions/setup-node@v4
-      with:
-        node-version: 10.24.1
-        cache: 'yarn'
-    - working-directory: ./client
-      run: |
-        yarn install --frozen-lockfile
-        yarn build
+      - uses: actions/checkout@v4
+
+      - name: Test build for server
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.18.2
+          cache: "yarn"
+          cache-dependency-path: ./server/yarn.lock
+      - run: |
+          yarn install --frozen-lockfile
+          yarn build
+        working-directory: ./server
+
+      - name: Test build for client
+        uses: actions/setup-node@v4
+        with:
+          node-version: 10.24.1
+          cache: "yarn"
+          cache-dependency-path: ./client/yarn.lock
+      - run: |
+          yarn install --frozen-lockfile
+          yarn build
+        working-directory: ./client

@@ -331,7 +331,9 @@ export default class Game extends Vue {
     // Reminder for Raise and Allin
     if (this.audioStatus && this.isAction && this.playRaiseReminderSound()) {
       const latestMsg = this.latestSpecialActionMsg;
-      latestMsg ? this.speakText(latestMsg.replace('to', '到')) : null;
+      if (latestMsg) {
+        this.speakText(latestMsg.replace('to', '到'));
+      }
     }
 
     // Reminder for current user
