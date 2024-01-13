@@ -114,11 +114,12 @@ import { Online, OnlineAction, P2PAction } from '@/utils/constant';
 import { Howl } from 'howler';
 
 export enum ECommand {
-  CALL = 'call',
   ALL_IN = 'allin',
-  RAISE = 'raise',
+  BET = 'bet',
+  CALL = 'call',
   CHECK = 'check',
   FOLD = 'fold',
+  RAISE = 'raise',
 }
 
 interface IMsg {
@@ -132,7 +133,7 @@ interface IMsg {
 interface ILatestActionData {
   userId: string;
   nickName: string;
-  /** call, check, raise:4, raise:100, fold, allin */
+  /** call, check, bet:4, raise:4, raise:100, fold, allin */
   latestAction: string;
 }
 
@@ -216,7 +217,7 @@ export default class Game extends Vue {
   }
 
   get latestSpecialAction() {
-    const specialActions = [ECommand.RAISE, ECommand.ALL_IN];
+    const specialActions = [ECommand.BET, ECommand.RAISE, ECommand.ALL_IN];
     return this.currentRoundActions
       .filter((action) => specialActions.includes(action.latestAction.split(':')[0] as ECommand))
       .pop();
@@ -227,13 +228,13 @@ export default class Game extends Vue {
     if (!latestSpecialAction) {
       return '';
     }
-    if (latestSpecialAction.latestAction.includes(ECommand.ALL_IN)) {
-      return `${latestSpecialAction.nickName} ALL IN`;
+    const [command, size] = latestSpecialAction.latestAction.split(':');
+    if (command === ECommand.ALL_IN) {
+      return `${latestSpecialAction.nickName} ALL IN!`;
     }
-    if (latestSpecialAction.latestAction.includes(ECommand.RAISE)) {
-      const size = latestSpecialAction.latestAction.split(':')[1];
+    if ([ECommand.RAISE, ECommand.BET].includes(command as ECommand)) {
       const prevPot = this.pot - Number(size);
-      return `${latestSpecialAction.nickName} raise to ${this.pot}(${prevPot}+${size})`;
+      return `${latestSpecialAction.nickName} ${command.toLocaleLowerCase()} to ${this.pot}(${prevPot}+${size})!`;
     }
     return '';
   }
@@ -329,14 +330,8 @@ export default class Game extends Vue {
   private actionUserIdChange() {
     // Reminder for Raise and Allin
     if (this.audioStatus && this.isAction && this.playRaiseReminderSound()) {
-      const latestSpecialAction = this.latestSpecialAction;
-      if (latestSpecialAction && latestSpecialAction.latestAction.includes(ECommand.ALL_IN)) {
-        this.speakText(`${latestSpecialAction.nickName} ALL IN!`);
-      }
-      if (latestSpecialAction && latestSpecialAction.latestAction.includes(ECommand.RAISE)) {
-        const size = latestSpecialAction.latestAction.split(':')[1];
-        this.speakText(`${latestSpecialAction.nickName} raise 到 ${size}!`);
-      }
+      const latestMsg = this.latestSpecialActionMsg;
+      latestMsg ? this.speakText(latestMsg.replace('to', '到')) : null;
     }
 
     // Reminder for current user
@@ -345,7 +340,6 @@ export default class Game extends Vue {
     }
 
     if (this.isPlay && this.actionEndTime) {
-      console.log('action player change-------', this.actionEndTime);
       const now = Date.now();
       this.time = Math.floor((this.actionEndTime - now) / 1000);
       clearTimeout(this.timeSt);
@@ -624,7 +618,7 @@ export default class Game extends Vue {
         this.currentRoundActions.push(data);
         const { latestAction, userId: actionUserId } = data;
         if (actionUserId !== this.userInfo.userId) {
-          if (latestAction.includes(ECommand.RAISE)) {
+          if (latestAction.includes(ECommand.RAISE) || latestAction.includes(ECommand.BET)) {
             this.playRaiseNotice = true;
             setTimeout(() => {
               this.playRaiseNotice = false;
