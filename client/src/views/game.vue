@@ -1,5 +1,6 @@
 <template>
-  <div class="game-container container">
+  <Loader class="loader-center" v-if="!socketStatus" :active="true" message="服务器连接中..." />
+  <div class="game-container container" v-else>
     <sitList
       :sitLink.sync="sitLink"
       :currPlayer="currPlayer"
@@ -107,6 +108,7 @@ import origin from '../utils/origin';
 import { IRoom } from '@/interface/IRoom';
 import service from '../service';
 import gameRecord from '@/components/GameRecord.vue';
+import Loader from '@/components/Loader.vue';
 import { IGameRecord } from '@/interface/IGameRecord';
 import { Online, OnlineAction, P2PAction } from '@/utils/constant';
 import { Howl } from 'howler';
@@ -151,6 +153,7 @@ const ACTION_TIME = 30;
     sendMsg,
     animation,
     SpeakSettings,
+    Loader,
   },
 })
 export default class Game extends Vue {
@@ -235,6 +238,10 @@ export default class Game extends Vue {
     return '';
   }
 
+  get socketStatus() {
+    return this.socket?.connected;
+  }
+
   public socket: any = null;
   @Ref() public readonly actionNotice!: animation;
   // in the room user
@@ -279,7 +286,7 @@ export default class Game extends Vue {
   private showSpeakSettings = false;
 
   @Watch('latestSpecialAction')
-  public privateActionNoticeChange(newValue: ILatestActionData, oldValue: ILatestActionData) {
+  private privateActionNoticeChange(newValue: ILatestActionData, oldValue: ILatestActionData) {
     if (newValue?.nickName !== oldValue?.nickName) {
       this.actionNotice?.applyAnimation();
     }
@@ -828,6 +835,7 @@ export default class Game extends Vue {
   height: calc(100% - 45px);
   width: 100vw;
   overflow: hidden;
+
   .game-canvas {
     display: flex;
     flex-direction: column;
@@ -925,6 +933,7 @@ export default class Game extends Vue {
       }
     }
   }
+
   .game-record {
     position: absolute;
     right: 10px;
@@ -932,5 +941,12 @@ export default class Game extends Vue {
     font-size: 36px;
     color: #fff;
   }
+}
+
+.loader-center {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
