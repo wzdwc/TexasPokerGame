@@ -1,6 +1,7 @@
 <template>
-  <Loader class="loader-center" v-if="!socketStatus" :active="true" message="服务器连接中..." />
-  <div class="game-container container" v-else>
+  <div class="game-container container">
+    <Loader class="loader-position" :active="!socketStatus" message="服务器连接中..." />
+
     <sitList
       :sitLink.sync="sitLink"
       :currPlayer="currPlayer"
@@ -337,7 +338,7 @@ export default class Game extends Vue {
           this.speakText(`${latestSpecialAction.nickName} ALL IN!`);
         }
         if ([ECommand.RAISE, ECommand.BET].includes(command as ECommand)) {
-          this.speakText(`${latestSpecialAction.nickName} ${command.toLocaleLowerCase()} 到 ${size}!`);
+          this.speakText(`${latestSpecialAction.nickName} ${command.toLocaleLowerCase()} ${size} 到 ${this.pot}!`);
         }
       }
     }
@@ -945,10 +946,10 @@ export default class Game extends Vue {
   }
 }
 
-.loader-center {
-  position: fixed;
+.loader-position {
+  position: absolute;
   left: 50%;
-  top: 50%;
+  top: 30%;
   transform: translate(-50%, -50%);
 }
 </style>
