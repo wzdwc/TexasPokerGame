@@ -454,7 +454,7 @@ export default class Game extends Vue {
   private sitListMap() {
     let node = this.sitLink;
     const sit = [];
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
       sit.push(node.node);
       node = node.next;
     }
@@ -750,7 +750,7 @@ export default class Game extends Vue {
   private initSitLink() {
     const sitListMap = this.sitList || [];
     if (sitListMap.length === 0) {
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 10; i++) {
         const sit = {
           player: null,
           position: i + 1,
@@ -759,7 +759,7 @@ export default class Game extends Vue {
       }
     }
     let link = new Link<ISit>(sitListMap).link;
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
       if (link.node.player && link.node.player.userId === this.currPlayer?.userId) {
         this.sitLink = link;
         return;

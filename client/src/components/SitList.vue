@@ -216,7 +216,7 @@ export default class SitList extends Vue {
         return;
       }
       let sitNode = this.sitLinkNode;
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 10; i++) {
         if (sitNode) {
           const next = sitNode.next;
           if (sitNode.node.player?.nickName === this.currPlayer?.nickName) {
@@ -225,7 +225,7 @@ export default class SitList extends Vue {
           sitNode = next as ILinkNode<ISit>;
         }
       }
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 10; i++) {
         if (sitNode) {
           const next = sitNode.next;
           if (sit.position === sitNode.node.position) {
@@ -244,7 +244,7 @@ export default class SitList extends Vue {
     const sitMap: ISit[] = [];
     if (this.sitLinkNode) {
       let link = this.sitLinkNode;
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 10; i++) {
         if (link.node.player && link.node.player.userId === this.currPlayer?.userId) {
           this.sitLinkNode = link;
           break;
@@ -253,7 +253,7 @@ export default class SitList extends Vue {
         link = next as ILinkNode<ISit>;
       }
       let sitNode = this.sitLinkNode;
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 10; i++) {
         const next = sitNode.next;
         sitMap.push(sitNode.node);
         sitNode = next as ILinkNode<ISit>;
@@ -495,48 +495,54 @@ export default class SitList extends Vue {
 
       &:nth-child(2) {
         left: 10px;
-        top: 60%;
+        top: 65%;
       }
 
       &:nth-child(3) {
         left: 10px;
-        top: 40%;
+        top: 45%;
       }
 
       &:nth-child(4) {
         left: 10px;
-        top: 20%;
+        top: 25%;
       }
 
       &:nth-child(5) {
-        left: 25%;
-        top: 20px;
+        left: 10px;
+        top: 40px;
       }
 
       &:nth-child(6) {
-        right: 25%;
-        top: 20px;
+        right: 45%;
+        top: 40px;
       }
 
       &:nth-child(7) {
         right: 10px;
-        top: 20%;
+        top: 40px;
       }
 
       &:nth-child(8) {
         right: 10px;
-        top: 40%;
+        top: 25%;
       }
 
       &:nth-child(9) {
         right: 10px;
-        top: 60%;
+        top: 45%;
+      }
+
+      &:nth-child(10) {
+        right: 10px;
+        top: 65%;
       }
 
       &:nth-child(6),
       &:nth-child(7),
       &:nth-child(8),
-      &:nth-child(9) {
+      &:nth-child(9),
+      &:nth-child(10) {
         .action-command {
           left: unset;
           right: calc(100% - 3px);
